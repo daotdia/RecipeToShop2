@@ -1,0 +1,40 @@
+package com.otero.recipetoshop.android.presentation.navigation
+
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material.Button
+import androidx.compose.material.Divider
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.navArgument
+import androidx.navigation.compose.rememberNavController
+import com.otero.recipetoshop.android.presentation.recipe_detail.DescripcionReceta
+import com.otero.recipetoshop.android.presentation.recipe_list.ListaRecetas
+
+@Composable
+fun Navegacion(){
+    val navControlador = rememberNavController()
+    NavHost(navController = navControlador, startDestination = Pantalla.RecipeList.route){
+        composable(
+            route = Pantalla.RecipeList.route
+        ){
+          ListaRecetas(
+              onSelectedRecipe = { recipeId ->
+                  navControlador.navigate(Pantalla.RecipeDetail.route + "/$recipeId")
+              }
+          )
+        }
+        composable(
+            route = Pantalla.RecipeDetail.route + "/{recipeId}",
+            arguments = listOf(navArgument("recipeId"){
+                type = NavType.IntType
+            })
+        ){
+            DescripcionReceta(
+                recipeId = it.arguments?.getInt("recipeId")
+            )
+        }
+    }
+}
