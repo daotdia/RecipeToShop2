@@ -5,14 +5,32 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import com.otero.recipetoshop.android.dependenceinjection.Prueba
 import com.otero.recipetoshop.android.presentation.navigation.Navegacion
+import com.otero.recipetoshop.datasource.network.KtorClientFactory
 import dagger.hilt.android.AndroidEntryPoint
+import io.ktor.client.request.*
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+const val BASE_URL = "https://recipesapi.herokuapp.com/api/get?rId="
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val ktorClient = KtorClientFactory().build()
+
+        CoroutineScope(IO).launch {
+            val recipeId = 41470
+            val recipe = ktorClient.get<String>{
+                url("$BASE_URL$recipeId")
+            }
+            println("KtorTest: ${recipe}")
+        }
+
         setContent{
            Navegacion()
         }
