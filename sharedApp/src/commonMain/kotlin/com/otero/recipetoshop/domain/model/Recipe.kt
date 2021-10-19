@@ -1,7 +1,4 @@
-package com.otero.recipetoshop.datasource.domain.model
-
-import kotlinx.datetime.LocalDateTime
-import kotlinx.serialization.json.Json
+package com.otero.recipetoshop.domain.model
 
 data class Recipe(
     val id: Int,

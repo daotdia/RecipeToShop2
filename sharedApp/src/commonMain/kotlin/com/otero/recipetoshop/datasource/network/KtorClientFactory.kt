@@ -1,6 +1,6 @@
 package com.otero.recipetoshop.datasource.network
 
-import com.otero.recipetoshop.datasource.domain.model.Recipe
+import com.otero.recipetoshop.domain.model.Recipe
 import com.otero.recipetoshop.datasource.network.model.RecipeDetailsDto
 import com.otero.recipetoshop.datasource.network.model.RecipeDto
 import io.ktor.client.*

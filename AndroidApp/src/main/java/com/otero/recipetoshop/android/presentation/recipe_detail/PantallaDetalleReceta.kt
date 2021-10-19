@@ -2,14 +2,15 @@ package com.otero.recipetoshop.android.presentation.recipe_detail
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import com.otero.recipetoshop.domain.model.Recipe
 
 @Composable
 fun DescripcionReceta(
-    recipeId: Int?,
+    recipe: Recipe?,
 ){
-    if(recipeId == null) {
+    if(recipe == null) {
         Text("Error")
     }else{
-        Text("Receta ID: ${recipeId}")
+        Text("Detalles de la receta: ${recipe.title}")
     }
 }
