@@ -6,6 +6,8 @@ import androidx.activity.compose.setContent
 import com.otero.recipetoshop.android.dependenceinjection.Prueba
 import com.otero.recipetoshop.android.presentation.navigation.Navegacion
 import com.otero.recipetoshop.datasource.network.KtorClientFactory
+import com.otero.recipetoshop.datasource.network.model.RecipeDto
+import com.otero.recipetoshop.datasource.network.toRecipe
 import dagger.hilt.android.AndroidEntryPoint
 import io.ktor.client.request.*
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -25,10 +27,10 @@ class MainActivity : AppCompatActivity() {
 
         CoroutineScope(IO).launch {
             val recipeId = 41470
-            val recipe = ktorClient.get<String>{
+            val recipe = ktorClient.get<RecipeDto>{
                 url("$BASE_URL$recipeId")
-            }
-            println("KtorTest: ${recipe}")
+            }.toRecipe()
+            println("KtorTest titulo: ${recipe.title}")
         }
 
         setContent{
