@@ -17,6 +17,7 @@ import androidx.navigation.compose.rememberNavController
 import com.otero.recipetoshop.android.presentation.recipe_detail.DescripcionReceta
 import com.otero.recipetoshop.android.presentation.recipe_detail.RecipeDetailViewModel
 import com.otero.recipetoshop.android.presentation.recipe_list.ListaRecetas
+import com.otero.recipetoshop.android.presentation.recipe_list.RecipeListViewModel
 
 @Composable
 fun Navegacion(){
@@ -24,12 +25,14 @@ fun Navegacion(){
     NavHost(navController = navControlador, startDestination = Pantalla.RecipeList.route){
         composable(
             route = Pantalla.RecipeList.route
-        ){ navBackStackEntry ->
-          ListaRecetas(
+        ){ navBackStackEntry ->val factory = HiltViewModelFactory(LocalContext.current, navBackStackEntry)
+            val viewModel: RecipeListViewModel = viewModel("RecipeListViewModel", factory )
+            ListaRecetas(
               onSelectedRecipe = { recipeId ->
                   navControlador.navigate(Pantalla.RecipeDetail.route + "/$recipeId")
               }
-          )
+            )
+            viewModel.loadRecipes()
         }
         composable(
             route = Pantalla.RecipeDetail.route + "/{recipeId}",
