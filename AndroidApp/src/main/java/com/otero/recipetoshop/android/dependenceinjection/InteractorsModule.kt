@@ -1,5 +1,6 @@
 package com.otero.recipetoshop.android.dependenceinjection
 
+import com.otero.recipetoshop.Interactors.RecipeList.GetRecipe
 import com.otero.recipetoshop.Interactors.RecipeList.SearchRecipes
 import com.otero.recipetoshop.datasource.network.RecipeService
 import dagger.Module
@@ -18,5 +19,13 @@ object InteractorsModule {
         recipeService: RecipeService
     ): SearchRecipes{
         return SearchRecipes(recipeService = recipeService)
+    }
+
+    @Singleton
+    @Provides
+    fun provideGetRecipe(
+        recipeService: RecipeService
+    ): GetRecipe{
+        return GetRecipe(recipeService = recipeService)
     }
 }

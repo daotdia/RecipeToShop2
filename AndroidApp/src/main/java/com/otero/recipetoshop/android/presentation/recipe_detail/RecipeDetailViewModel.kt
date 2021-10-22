@@ -5,9 +5,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.otero.recipetoshop.Interactors.RecipeList.GetRecipe
 import com.otero.recipetoshop.datasource.network.RecipeService
 import com.otero.recipetoshop.domain.model.Recipe
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import java.lang.Exception
 import javax.inject.Inject
@@ -17,7 +20,7 @@ class RecipeDetailViewModel
 @Inject
 constructor(
     private val savedStateHandle: SavedStateHandle,
-    private val recipeService: RecipeService
+    private val getRecipe: GetRecipe
 ):ViewModel()
 {
     val recipe: MutableState<Recipe?> = mutableStateOf(null)
@@ -25,12 +28,26 @@ constructor(
         try {
             savedStateHandle.get<Int>("recipeId")?.let{ recipeId ->
                 viewModelScope.launch {
-                    recipe.value = recipeService.get(recipeId)
-                    println("KtorTest ViewModel: ${recipe.value!!.title}")
+                   getRecipe(recipeid = 41470)// Igualar al recipid con una API que esté bien configurada
                 }
             }
         } catch (e: Exception){
             println("Algo salió mal")
         }
+    }
+
+    private fun getRecipe(recipeid: Int){
+        getRecipe.execute(recipeid = recipeid).onEach { dataState ->
+            println("RecipeDetailVM: ${dataState.isLoading}")
+
+            dataState.data?.let { recipe ->
+                println("RecipeDetailVM: ${recipe}")
+                this.recipe.value = recipe
+            }
+
+            dataState.message?.let { message ->
+                println("RecipeDetailVM: ${message}")
+            }
+        }.launchIn(viewModelScope)
     }
 }
