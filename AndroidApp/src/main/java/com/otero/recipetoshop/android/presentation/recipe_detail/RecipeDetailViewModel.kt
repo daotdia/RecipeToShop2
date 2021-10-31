@@ -5,8 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.otero.recipetoshop.Interactors.RecipeList.GetRecipe
-import com.otero.recipetoshop.datasource.network.RecipeService
+import com.otero.recipetoshop.Interactors.RecipeDetail.GetRecipe
 import com.otero.recipetoshop.domain.model.Recipe
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
@@ -28,7 +27,7 @@ constructor(
         try {
             savedStateHandle.get<Int>("recipeId")?.let{ recipeId ->
                 viewModelScope.launch {
-                   getRecipe(recipeid = 41470)// Igualar al recipid con una API que esté bien configurada
+                   getRecipe(recipeid = 0)// En cache sólo está la última receta de la búsqueda de pollo porque las id de la API no tienen sentido y se sobrescriben todas como 0
                 }
             }
         } catch (e: Exception){
