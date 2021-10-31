@@ -3,8 +3,10 @@ package com.otero.recipetoshop.android.presentation.navigation
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Button
 import androidx.compose.material.Divider
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.HiltViewModelFactory
 import androidx.lifecycle.ViewModel
@@ -19,6 +21,8 @@ import com.otero.recipetoshop.android.presentation.recipe_detail.RecipeDetailVie
 import com.otero.recipetoshop.android.presentation.recipe_list.ListaRecetas
 import com.otero.recipetoshop.android.presentation.recipe_list.RecipeListViewModel
 
+@ExperimentalComposeUiApi
+@ExperimentalMaterialApi
 @Composable
 fun Navegacion(){
     val navControlador = rememberNavController()
