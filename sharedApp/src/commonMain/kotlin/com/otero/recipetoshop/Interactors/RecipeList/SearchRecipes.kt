@@ -28,6 +28,7 @@ class SearchRecipes (
 
             println("Lista de recetas obtenidas de network: " + recipes)
             val cacheResult = if(query.isBlank()){
+                //Obtengo todas las recetas en cache, sino se está buscando nada se muestran las recetas que se hanbuscao hasta le momento y que están en cache.
                 recipeCache.getAll(page = page)
             }else{
                 recipeCache.search(

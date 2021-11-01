@@ -16,10 +16,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.rememberNavController
-import com.otero.recipetoshop.android.presentation.recipe_detail.DescripcionReceta
-import com.otero.recipetoshop.android.presentation.recipe_detail.RecipeDetailViewModel
-import com.otero.recipetoshop.android.presentation.recipe_list.ListaRecetas
-import com.otero.recipetoshop.android.presentation.recipe_list.RecipeListViewModel
+import com.otero.recipetoshop.android.presentation.navigation.screens.recipe_detail.DescripcionReceta
+import com.otero.recipetoshop.android.presentation.navigation.screens.recipe_detail.RecipeDetailViewModel
+import com.otero.recipetoshop.android.presentation.navigation.screens.recipe_list.ListaRecetas
+import com.otero.recipetoshop.android.presentation.navigation.screens.recipe_list.RecipeListViewModel
 
 @ExperimentalComposeUiApi
 @ExperimentalMaterialApi
@@ -32,9 +32,10 @@ fun Navegacion(){
         ){ navBackStackEntry ->val factory = HiltViewModelFactory(LocalContext.current, navBackStackEntry)
             val viewModel: RecipeListViewModel = viewModel("RecipeListViewModel", factory )
             ListaRecetas(
-              onSelectedRecipe = { recipeId ->
-                  navControlador.navigate(Pantalla.RecipeDetail.route + "/$recipeId")
-              }
+                state = viewModel.state.value,
+                onClickRecipeListItem = { recipeId ->
+                    navControlador.navigate(Pantalla.RecipeDetail.route + "/$recipeId")
+                }
             )
             viewModel.loadRecipes()
         }

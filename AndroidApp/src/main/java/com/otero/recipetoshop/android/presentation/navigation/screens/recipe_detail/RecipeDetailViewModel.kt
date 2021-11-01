@@ -1,4 +1,4 @@
-package com.otero.recipetoshop.android.presentation.recipe_detail
+package com.otero.recipetoshop.android.presentation.navigation.screens.recipe_detail
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
