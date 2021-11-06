@@ -25,7 +25,11 @@ constructor(
     //Creo una clase donde guardo el estado del viewModel mutable.
     val state: MutableState<RecipeListState> = mutableStateOf(RecipeListState())
 
-     fun loadRecipes(){
+    init{
+        loadRecipes()
+    }
+
+    private fun loadRecipes(){
          //Actualizo el estado del viewModel confoeme llegan daaStates asíncronos.
         searchRecipes.execute(
             page= state.value.page,

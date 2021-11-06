@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.otero.recipetoshop.android.presentation.components.util.CircularIndeterminateProgressBar
 import java.util.*
 
 private val LightThemeColors = lightColors(
@@ -48,6 +49,7 @@ fun AppTheme(
                 .background(color = secondaryDarkColor)
         ){
             content()
+            CircularIndeterminateProgressBar(isDisplayed = displayProgressBar, verticalBias = 0.3f)
         }
     }
 }

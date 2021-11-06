@@ -37,7 +37,6 @@ fun Navegacion(){
                     navControlador.navigate(Pantalla.RecipeDetail.route + "/$recipeId")
                 }
             )
-            viewModel.loadRecipes()
         }
         composable(
             route = Pantalla.RecipeDetail.route + "/{recipeId}",

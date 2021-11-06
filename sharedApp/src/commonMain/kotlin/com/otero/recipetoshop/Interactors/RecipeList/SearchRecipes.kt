@@ -4,6 +4,7 @@ import com.otero.recipetoshop.datasource.cache.RecipeCache
 import com.otero.recipetoshop.datasource.network.RecipeService
 import com.otero.recipetoshop.domain.model.Recipe
 import com.otero.recipetoshop.domain.util.DataState
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -24,6 +25,9 @@ class SearchRecipes (
                 page = page,
                 query = query
             )
+
+            delay(5000)
+
             recipeCache.insert(recipes)
 
             println("Lista de recetas obtenidas de network: " + recipes)

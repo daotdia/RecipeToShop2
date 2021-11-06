@@ -25,7 +25,10 @@ fun ListaRecetas(
     state: RecipeListState,
     onClickRecipeListItem: (Int) -> Unit
 ){
-    AppTheme(displayProgressBar = false, onRemoveHeadMessageFromQueue = { /*TODO*/ }) {
+    AppTheme(
+        displayProgressBar = state.isLoading,
+        onRemoveHeadMessageFromQueue = { /*TODO*/ }
+    ) {
         RecipeList(
             loading = state.isLoading,
             recipes = state.recipes,
