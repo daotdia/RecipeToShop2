@@ -33,6 +33,7 @@ fun Navegacion(){
             val viewModel: RecipeListViewModel = viewModel("RecipeListViewModel", factory )
             ListaRecetas(
                 state = viewModel.state.value,
+                onTriggerEvent = viewModel::onTriggerEvent,
                 onClickRecipeListItem = { recipeId ->
                     navControlador.navigate(Pantalla.RecipeDetail.route + "/$recipeId")
                 }

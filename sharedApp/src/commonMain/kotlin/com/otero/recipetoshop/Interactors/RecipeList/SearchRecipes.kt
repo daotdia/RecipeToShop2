@@ -26,7 +26,7 @@ class SearchRecipes (
                 query = query
             )
 
-            delay(5000)
+            delay(500)
 
             recipeCache.insert(recipes)
 

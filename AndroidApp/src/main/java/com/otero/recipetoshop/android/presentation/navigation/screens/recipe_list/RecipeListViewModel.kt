@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.otero.recipetoshop.Interactors.RecipeList.RecipeListEvents
 import com.otero.recipetoshop.Interactors.RecipeList.SearchRecipes
 import com.otero.recipetoshop.domain.model.Recipe
 import com.otero.recipetoshop.presentattion.screens.recipe_list.RecipeListState
@@ -26,6 +27,42 @@ constructor(
     val state: MutableState<RecipeListState> = mutableStateOf(RecipeListState())
 
     init{
+        onTriggerEvent(RecipeListEvents.LoadRecipes)
+    }
+
+    fun onTriggerEvent(event: RecipeListEvents){
+        when(event){
+            RecipeListEvents.LoadRecipes -> {
+                loadRecipes()
+            }
+            RecipeListEvents.NextPage -> {
+                //Pasar a siguiente página
+                nextPage()
+            }
+            RecipeListEvents.NewSearch -> {
+                //EJecutar una nueva búsqueda de la query actual en el state.
+                newSearch()
+            }
+            is RecipeListEvents.OnUpdateQuery -> {
+                //Actualizo el valor de query del estado con la query actual en pantalla.
+                state.value = state.value.copy(query = event.query)
+            }
+            else -> {
+                //Manejar los errores.
+                handleError("Evento desconocido")
+            }
+        }
+    }
+
+    private fun newSearch(){
+        //Reseteo la lista de recetas actual.
+        state.value = state.value.copy(page = 1, recipes = listOf())
+        //Realizo la busqueda con la nueva query (ya está en el state actual).
+        loadRecipes()
+    }
+
+    private fun nextPage(){
+        state.value = state.value.copy(page = state.value.page + 1)
         loadRecipes()
     }
 
@@ -42,7 +79,7 @@ constructor(
             }
 
             dataState.message?.let { message ->
-                println("RecipeListVM: ${message}")
+                handleError(message)
             }
         }.launchIn(viewModelScope)
     }
@@ -51,5 +88,9 @@ constructor(
         val current = ArrayList(state.value.recipes)
         current.addAll(recipes)
         state.value = state.value.copy(recipes = current)
+    }
+
+    private fun handleError(errorMessage: String){
+        //Por hacer el manejo de errores
     }
 }
