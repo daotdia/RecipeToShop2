@@ -7,12 +7,19 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.otero.recipetoshop.Interactors.RecipeList.RecipeListEvents
 import com.otero.recipetoshop.Interactors.RecipeList.SearchRecipes
+import com.otero.recipetoshop.domain.model.GenericMessageInfo
 import com.otero.recipetoshop.domain.model.Recipe
+import com.otero.recipetoshop.domain.model.UIComponentType
+import com.otero.recipetoshop.domain.util.GenericMessageInfoUtil
+import com.otero.recipetoshop.domain.util.Queue
 import com.otero.recipetoshop.presentattion.screens.recipe_list.RecipeListState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import java.lang.Exception
+import java.util.*
 import javax.inject.Inject
+import kotlin.collections.ArrayList
 
 @HiltViewModel
 class RecipeListViewModel
@@ -32,14 +39,14 @@ constructor(
 
     fun onTriggerEvent(event: RecipeListEvents){
         when(event){
-            RecipeListEvents.LoadRecipes -> {
+            is RecipeListEvents.LoadRecipes -> {
                 loadRecipes()
             }
-            RecipeListEvents.NextPage -> {
+            is RecipeListEvents.NextPage -> {
                 //Pasar a siguiente página
                 nextPage()
             }
-            RecipeListEvents.NewSearch -> {
+            is RecipeListEvents.NewSearch -> {
                 //EJecutar una nueva búsqueda de la query actual en el state.
                 newSearch()
             }
@@ -47,9 +54,19 @@ constructor(
                 //Actualizo el valor de query del estado con la query actual en pantalla.
                 state.value = state.value.copy(query = event.query)
             }
+            is RecipeListEvents.OnRemoveHeadMessageFromQueu -> {
+                //Eliminar el mensaje de error de la cola.
+                remmoveHeadErrorMessage()
+            }
             else -> {
                 //Manejar los errores.
-                handleError("Evento desconocido")
+                handleError(
+                    GenericMessageInfo.Builder()
+                    .id(UUID.randomUUID().toString())
+                    .title("Error")
+                    .uiComponentType(UIComponentType.Dialog)
+                    .description("Invalid Event")
+                )
             }
         }
     }
@@ -90,7 +107,28 @@ constructor(
         state.value = state.value.copy(recipes = current)
     }
 
-    private fun handleError(errorMessage: String){
-        //Por hacer el manejo de errores
+    private fun handleError(errorMessage: GenericMessageInfo.Builder){
+        //Compruebo que en la cola de errores no existe ya un error con el mismo identiificador.
+        if (!GenericMessageInfoUtil().doesMessageAlreadyExistInQueue(
+                queue = state.value.queueError,
+                messageInfo = errorMessage.build()
+        )) {
+            //Por hacer el manejo de errores
+            val queueError = state.value.queueError
+            queueError.add(errorMessage.build())
+            state.value = state.value.copy(queueError = queueError)
+        }
+    }
+
+    private fun remmoveHeadErrorMessage(){
+        try{
+            val queue = state.value.queueError
+            queue.remove()
+            //Actualizo el estado y fuerzo a que el compose se recompose (si se modifica una lista no se recompone automaticamente).
+            state.value = state.value.copy(queueError = Queue(mutableListOf()))
+            state.value = state.value.copy(queueError = queue)
+        } catch(e: Exception){
+            //La cola está vacía, no hay nada que eliminar.
+        }
     }
 }

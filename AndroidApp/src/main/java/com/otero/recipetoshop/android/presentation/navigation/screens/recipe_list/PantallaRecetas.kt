@@ -31,7 +31,10 @@ fun ListaRecetas(
 ){
     AppTheme(
         displayProgressBar = state.isLoading,
-        onRemoveHeadMessageFromQueue = { /*TODO*/ }
+        onRemoveHeadMessageFromQueue = {
+            onTriggerEvent(RecipeListEvents.OnRemoveHeadMessageFromQueu)
+        },
+        dialogQueue = state.queueError
     ) {
         Scaffold(
             topBar = {

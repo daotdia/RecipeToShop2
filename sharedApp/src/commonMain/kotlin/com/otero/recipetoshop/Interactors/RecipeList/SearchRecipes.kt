@@ -2,7 +2,7 @@ package com.otero.recipetoshop.Interactors.RecipeList
 
 import com.otero.recipetoshop.datasource.cache.RecipeCache
 import com.otero.recipetoshop.datasource.network.RecipeService
-import com.otero.recipetoshop.domain.model.Recipe
+import com.otero.recipetoshop.domain.model.*
 import com.otero.recipetoshop.domain.util.DataState
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -28,6 +28,9 @@ class SearchRecipes (
 
             delay(500)
 
+            if(query == "error"){
+                throw Exception("Es una forzado de error para probar la cola de errorres")
+            }
             recipeCache.insert(recipes)
 
             println("Lista de recetas obtenidas de network: " + recipes)
@@ -44,7 +47,29 @@ class SearchRecipes (
             emit(DataState.data(message = null, data = cacheResult))
         } catch (e: Exception){
             //Para emitir error
-            emit(DataState.error(message = e.message ?: "Error desconocido"))
+            emit(DataState.error<List<Recipe>>(
+                message = GenericMessageInfo.Builder()
+                    .id("SearchRecipes Error")
+                    .title("Error")
+                    .uiComponentType(UIComponentType.Dialog)
+                    .description(e.message?: "Unknown Error")
+                    .positive(
+                        PositiveAction(
+                            positiveBtnTxt = "OK",
+                            onPositiveAction = {
+                                //Que hacer al cancelar el error.
+                            }
+                        )
+                    )
+                    .negative(
+                        NegativeAction(
+                            negativeBtnTxt = "Cancel",
+                            onNegativeAction = {
+                                //Que nhacer al cancelar el error
+                            }
+                        )
+                    )
+            ))
         }
     }
 }

@@ -9,4 +9,7 @@ sealed class RecipeListEvents {
     object NewSearch: RecipeListEvents()
 
     data class OnUpdateQuery(val query:String): RecipeListEvents()
+
+    object OnRemoveHeadMessageFromQueu: RecipeListEvents()
+
 }

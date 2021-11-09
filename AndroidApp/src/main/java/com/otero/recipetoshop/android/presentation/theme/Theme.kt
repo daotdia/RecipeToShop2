@@ -12,8 +12,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.otero.recipetoshop.android.presentation.components.errorhandle.ProcessDialogQueue
 import com.otero.recipetoshop.android.presentation.components.util.CircularIndeterminateProgressBar
-import java.util.*
+import com.otero.recipetoshop.domain.model.GenericMessageInfo
+import com.otero.recipetoshop.domain.util.Queue
 
 private val LightThemeColors = lightColors(
     primary = primaryColor,
@@ -35,6 +37,7 @@ private val LightThemeColors = lightColors(
 @Composable
 fun AppTheme(
     displayProgressBar: Boolean,
+    dialogQueue: Queue<GenericMessageInfo> = Queue(mutableListOf()),
     onRemoveHeadMessageFromQueue: () -> Unit,
     content: @Composable () -> Unit,
 ) {
@@ -48,6 +51,10 @@ fun AppTheme(
                 .fillMaxSize()
                 .background(color = secondaryDarkColor)
         ){
+            ProcessDialogQueue(
+                dialogQueue = dialogQueue,
+                onRemoveHeadMessageFromQueue = onRemoveHeadMessageFromQueue
+            )
             content()
             CircularIndeterminateProgressBar(isDisplayed = displayProgressBar, verticalBias = 0.3f)
         }
