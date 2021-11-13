@@ -1,0 +1,31 @@
+CREATE TABLE  food_Entity(
+    nombre TEXT NOT NULL PRIMARY KEY UNIQUE,
+    tipo TEXT NOT NULL,
+    cantidad INTEGER NOT NULL
+);
+
+selectAll:
+SELECT *
+FROM food_Entity;
+
+insertFood:
+INSERT OR REPLACE
+INTO food_Entity (
+    nombre,
+    tipo,
+    cantidad
+) VALUES (?, ?, ?);
+
+searchFoods:
+SELECT * FROM food_Entity
+WHERE nombre LIKE ('%' || :query || '%')
+ORDER BY nombre DESC;
+
+getAllFoods:
+SELECT * FROM food_Entity
+ORDER BY nombre DESC;
+
+
+getFoodById:
+SELECT * FROM food_Entity
+WHERE nombre = :nombre;

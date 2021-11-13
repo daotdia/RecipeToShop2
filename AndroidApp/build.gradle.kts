@@ -67,5 +67,8 @@ dependencies {
     implementation(Ktor.android)
 
     debugImplementation(SquareUp.leakCanary)
+
+    implementation("androidx.compose.material:material-icons-extended:1.0.0-beta06")
+
 }
 

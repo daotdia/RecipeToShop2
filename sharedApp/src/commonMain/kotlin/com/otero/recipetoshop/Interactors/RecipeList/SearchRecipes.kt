@@ -1,6 +1,5 @@
 package com.otero.recipetoshop.Interactors.RecipeList
 
-import com.otero.recipetoshop.datasource.cache.RecipeCache
 import com.otero.recipetoshop.datasource.network.RecipeService
 import com.otero.recipetoshop.domain.model.*
 import com.otero.recipetoshop.domain.util.DataState
@@ -10,7 +9,6 @@ import kotlinx.coroutines.flow.flow
 
 class SearchRecipes (
     private val recipeService: RecipeService,
-    private val recipeCache: RecipeCache
         ) {
     fun execute(
         page: Int,
@@ -31,20 +29,20 @@ class SearchRecipes (
             if(query == "error"){
                 throw Exception("Es una forzado de error para probar la cola de errorres")
             }
-            recipeCache.insert(recipes)
-
-            println("Lista de recetas obtenidas de network: " + recipes)
-            val cacheResult = if(query.isBlank()){
-                //Obtengo todas las recetas en cache, sino se está buscando nada se muestran las recetas que se hanbuscao hasta le momento y que están en cache.
-                recipeCache.getAll(page = page)
-            }else{
-                recipeCache.search(
-                    query = query,
-                    page = page
-                )
-            }
-            println("Lista de recetas guardadas en la network " + cacheResult)
-            emit(DataState.data(message = null, data = cacheResult))
+////            recipeCache.insert(recipes)
+////
+////            println("Lista de recetas obtenidas de network: " + recipes)
+////            val cacheResult = if(query.isBlank()){
+////                //Obtengo todas las recetas en cache, sino se está buscando nada se muestran las recetas que se hanbuscao hasta le momento y que están en cache.
+////                recipeCache.getAll(page = page)
+////            }else{
+////                recipeCache.search(
+////                    query = query,
+////                    page = page
+////                )
+////            }
+//            println("Lista de recetas guardadas en la network " + cacheResult)
+//            emit(DataState.data(message = null, data = cacheResult))
         } catch (e: Exception){
             //Para emitir error
             emit(DataState.error<List<Recipe>>(

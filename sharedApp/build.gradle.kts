@@ -75,8 +75,12 @@ kotlin {
 }
 
 sqldelight{
-    database("RecipeDataBase"){
-        packageName = "com.otero.recipetoshop.datasource.cache"
+//    database("RecipeDataBase"){
+//        packageName = "com.otero.recipetoshop.datasource.cacherecipe"
+//        sourceFolders = listOf("sqldelight")
+//    }
+    database("FoodDataBase"){
+        packageName = "com.otero.recipetoshop.datasource.cachedespensa"
         sourceFolders = listOf("sqldelight")
     }
 }
