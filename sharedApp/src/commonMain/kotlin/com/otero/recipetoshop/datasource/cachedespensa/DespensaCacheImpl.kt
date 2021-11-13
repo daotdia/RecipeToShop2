@@ -41,4 +41,16 @@ class DespensaCacheImpl(
             null
         }
     }
+
+    override fun removeAll() {
+        return queries.removeAll()
+    }
+
+    override fun removeFood(food: Food) {
+        return try {
+            queries.removeFood(nombre = food.nombre)
+        }catch (e: NullPointerException){
+            println(e.message + "    ////  No se ha podido obtener el alimento con nombre: ${food.nombre}")
+        }
+    }
 }

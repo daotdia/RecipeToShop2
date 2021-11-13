@@ -12,4 +12,8 @@ interface DespensaCache {
     fun getAll(): List<Food>
 
     fun get(foodName: String): Food?
+
+    fun removeAll(): Unit
+
+    fun removeFood(food: Food): Unit
 }

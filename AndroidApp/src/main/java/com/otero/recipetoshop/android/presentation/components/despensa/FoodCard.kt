@@ -1,29 +1,31 @@
 package com.otero.recipetoshop.android.presentation.components.despensa
 
-import android.widget.EditText
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
+import android.graphics.Paint
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Remove
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.otero.recipetoshop.Interactors.despensa.FoodListEvents
-import com.otero.recipetoshop.android.R
-import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
+import androidx.compose.ui.unit.sp
+import com.otero.recipetoshop.android.presentation.theme.Lora
+import com.otero.recipetoshop.android.presentation.theme.appShapes
+import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.domain.model.despensa.Food
 
 
@@ -38,56 +40,81 @@ fun FoodCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 6.dp, bottom = 6.dp),
-        elevation = 4.dp
+            .wrapContentHeight()
+            .padding(top = 1.dp, bottom = 1.dp)
+        ,
+        elevation = 6.dp,
+        shape = appShapes.medium
     ) {
         Row(
             modifier = Modifier
                 .fillMaxSize()
+                .padding(16.dp)
+            ,
         ){
-            Text(text = stateFood.value.nombre)
             Row(
-                modifier = Modifier
-                    .fillMaxHeight(),
-                horizontalArrangement = Arrangement.End,
+                modifier = Modifier.weight(2f),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Image(
-                    modifier = Modifier
-                        .width(6.dp)
-                        .height(6.dp)
-                        .clickable(onClick = {
-                            TODO("Disminuir el contenido del texto editable siguiente")
-                        }),
-                    painter = painterResource(id = R.drawable.ic_minus),
+                Text(
+                    text = stateFood.value.nombre,
+                    style = MaterialTheme.typography.h6
+                )
+            }
+            Row(
+                modifier = Modifier.weight(1f),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    Icons.Filled.Remove,
                     contentDescription = "menos",
-                    contentScale = ContentScale.Crop
+                    modifier = Modifier
+                        .size(28.dp)
+                        .padding(2.dp)
+                    ,
+                    tint = primaryDarkColor
                 )
                 TextField(
                     value = stateFood.value.cantidad.toString(),
-                    onValueChange = onCantidadChange,
+                    onValueChange = {
+                        stateFood.value = stateFood.value.copy(cantidad = it.toInt())
+                    },
                     modifier = Modifier
-                        .width(24.dp)
-                        .height(12.dp),
-                    label = { Text(text = "0") },
+                        .width(72.dp)
+                        .height(24.dp),
+                    label = { Text(text = stateFood.value.cantidad.toString()) },
                     keyboardOptions = KeyboardOptions(
                         keyboardType = KeyboardType.Number,
                         imeAction = ImeAction.Done,
                     ),
-                    textStyle = TextStyle(color = MaterialTheme.colors.onSurface),
+                    keyboardActions = KeyboardActions(
+                        onDone = {
+                            onCantidadChange(stateFood.value.cantidad.toString())
+                            keyboardController?.hide()
+                        }
+                    ),
+                    textStyle = TextStyle(
+                        color = Color.Black,
+                        textAlign = TextAlign.Center,
+                        fontFamily = Lora,
+                        fontWeight = FontWeight.Normal,
+                        fontSize = 24.sp
+                    ),
                     colors = TextFieldDefaults.textFieldColors(
-                        backgroundColor = secondaryLightColor
-                    )
+                        backgroundColor = Color.White,
+                        unfocusedIndicatorColor = Color.Transparent
+                    ),
                 )
-                Image(
+                Icon(
+                    Icons.Filled.Add,
+                    contentDescription = "más",
                     modifier = Modifier
-                        .width(6.dp)
-                        .height(6.dp)
-                        .clickable(onClick = {
-                            TODO("Disminuir el contenido del texto editable siguiente")
-                        }),
-                    painter = painterResource(id = R.drawable.ic_plus),
-                    contentDescription = "menos",
-                    contentScale = ContentScale.Crop
+                        .size(28.dp)
+                        .padding(2.dp)
+                    ,
+                    tint = primaryDarkColor
                 )
             }
         }

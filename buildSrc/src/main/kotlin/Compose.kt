@@ -16,4 +16,6 @@ object Compose {
 
     private const val composeNavigationVerson = "2.4.0-alpha01"
     const val navigation = "androidx.navigation:navigation-compose:${composeNavigationVerson}"
+
+    const val iconsPlus = "androidx.compose.material:material-icons-extended:${composeVersion}"
 }

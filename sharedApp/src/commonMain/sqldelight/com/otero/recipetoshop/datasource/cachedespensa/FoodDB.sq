@@ -29,3 +29,11 @@ ORDER BY nombre DESC;
 getFoodById:
 SELECT * FROM food_Entity
 WHERE nombre = :nombre;
+
+removeAll:
+DELETE FROM food_Entity;
+
+removeFood:
+DELETE FROM food_Entity
+WHERE nombre =: nombre;
+

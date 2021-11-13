@@ -55,6 +55,7 @@ dependencies {
     implementation(Compose.constraintLayout)
     implementation(Compose.activity)
     implementation(Compose.navigation)
+    implementation(Compose.iconsPlus)
 
     implementation(Google.material)
 
@@ -68,7 +69,7 @@ dependencies {
 
     debugImplementation(SquareUp.leakCanary)
 
-    implementation("androidx.compose.material:material-icons-extended:1.0.0-beta06")
+    implementation(Compose.iconsPlus)
 
 }
 

@@ -18,3 +18,5 @@ val triadicColorTwo = Color(0xFF0040ef)
 
 val primaryTextColor = Color(0xFF000000)
 val secondaryTextColor = Color(0xFF666666)
+
+val dialogCancel = Color(0xFFFFCDD2)

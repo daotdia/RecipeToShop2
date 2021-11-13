@@ -9,7 +9,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.otero.recipetoshop.android.R
 
-private val Lora = FontFamily(
+val Lora = FontFamily(
     Font(R.font.lora_regular, FontWeight.W300),
     Font(R.font.lora_medium, FontWeight.W400),
     Font(R.font.lora_semibold, FontWeight.W500),

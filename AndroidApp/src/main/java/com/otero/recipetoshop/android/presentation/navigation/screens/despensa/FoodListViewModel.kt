@@ -1,15 +1,19 @@
 package com.otero.recipetoshop.android.presentation.navigation.screens.despensa
 
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.otero.recipetoshop.Interactors.RecipeList.RecipeListEvents
 import com.otero.recipetoshop.Interactors.despensa.ChangeCantidadFood
-import com.otero.recipetoshop.Interactors.despensa.FoodListEvents
+import com.otero.recipetoshop.Interactors.despensa.DeleteFoods
+import com.otero.recipetoshop.events.despensa.FoodListEvents
+import com.otero.recipetoshop.Interactors.despensa.GetFoods
 import com.otero.recipetoshop.Interactors.despensa.InsertNewFoodItem
-import com.otero.recipetoshop.domain.model.GenericMessageInfo
-import com.otero.recipetoshop.domain.model.UIComponentType
+import com.otero.recipetoshop.android.presentation.components.despensa.NewFoodPopUp
 import com.otero.recipetoshop.domain.model.despensa.Food
 import com.otero.recipetoshop.domain.util.TipoUnidad
 import com.otero.recipetoshop.presentattion.screens.despensa.FoodListState
@@ -17,7 +21,6 @@ import com.otero.recipetoshop.presentattion.screens.despensa.FoodState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import java.util.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 
@@ -26,10 +29,17 @@ class FoodListViewModel
 @Inject
 constructor(
     private val changeCantidadFood: ChangeCantidadFood,
-    private val insertNewFoodItem: InsertNewFoodItem
+    private val insertNewFoodItem: InsertNewFoodItem,
+    private val getFoods: GetFoods,
+    private val deleteFoods: DeleteFoods
 ): ViewModel(){
     val listState: MutableState<FoodListState> = mutableStateOf(FoodListState())
     val foodState: MutableState<FoodState> = mutableStateOf(FoodState())
+
+    init{
+        obtainFoodsCache()
+    }
+
 
     fun onTriggerEvent(event: FoodListEvents){
         when(event){
@@ -46,6 +56,11 @@ constructor(
                 )
                 insertFoodItem(food = food)
             }
+            is FoodListEvents.onSelectedNestedMenuItem -> {
+                if(event.option.equals("Eliminar Despensa")){
+                    removeFoodsCache()
+                }
+            }
             else -> {
                 //Manejar los errores.
 //                handleError(
@@ -57,6 +72,28 @@ constructor(
 //                )
             }
         }
+    }
+
+    private fun removeFoodsCache() {
+        deleteFoods.deletFoods().onEach { dataState ->
+            dataState.data?.let {
+                listState.value = listState.value.copy(alimentos = listOf())
+            }
+            dataState.message?.let { message ->
+                //handleError(message)
+            }
+        }.launchIn(viewModelScope)
+    }
+
+    private fun obtainFoodsCache() {
+        getFoods.getFoods().onEach { dataState ->
+            dataState.data?.let { foods ->
+                listState.value = listState.value.copy(alimentos = foods)
+            }
+            dataState.message?.let { message ->
+                //handleError(message)
+            }
+        }.launchIn(viewModelScope)
     }
 
     private fun insertFoodItem(food: Food){
@@ -79,13 +116,22 @@ constructor(
             cantidad = cantidad,
             food = food
         ).onEach { dataState ->
-            dataState.data?.let { food ->
-                appendFood(food)
+            dataState.data?.let { updatedFood ->
+                updateFood(updatedFood,food)
             }
             dataState.message?.let { message ->
                 //handleError(message)
             }
         }.launchIn(viewModelScope)
+    }
+
+    private fun updateFood(updatedFood: Food, food: Food) {
+        val currentFoods = ArrayList(listState.value.alimentos)
+        val currentIndex = currentFoods.indexOf(food)
+        currentFoods.set(currentIndex,updatedFood)
+        //Reseteo el estado de lista de limetnos actual.
+        listState.value = listState.value.copy(alimentos = listOf())
+        listState.value = listState.value.copy(alimentos = currentFoods)
     }
 
     private fun appendFood(food: Food){
@@ -107,4 +153,15 @@ constructor(
             cantidad = cantidad.toInt()
         )
     }
+}
+@ExperimentalComposeUiApi
+@Preview
+@Composable
+fun ComposanlePreview(){
+    NewFoodPopUp(
+        onAddFood = { nombre, tipo, cantidad ->
+            {}
+        },
+        listState = remember {mutableStateOf(FoodListState())}
+    )
 }
