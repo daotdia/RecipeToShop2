@@ -8,11 +8,8 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.otero.recipetoshop.Interactors.despensa.ChangeCantidadFood
-import com.otero.recipetoshop.Interactors.despensa.DeleteFoods
+import com.otero.recipetoshop.Interactors.despensa.*
 import com.otero.recipetoshop.events.despensa.FoodListEvents
-import com.otero.recipetoshop.Interactors.despensa.GetFoods
-import com.otero.recipetoshop.Interactors.despensa.InsertNewFoodItem
 import com.otero.recipetoshop.android.presentation.components.despensa.NewFoodPopUp
 import com.otero.recipetoshop.domain.model.despensa.Food
 import com.otero.recipetoshop.domain.util.TipoUnidad
@@ -31,7 +28,8 @@ constructor(
     private val changeCantidadFood: ChangeCantidadFood,
     private val insertNewFoodItem: InsertNewFoodItem,
     private val getFoods: GetFoods,
-    private val deleteFoods: DeleteFoods
+    private val deleteFoods: DeleteFoods,
+    private val deleteFood: DeleteFood
 ): ViewModel(){
     val listState: MutableState<FoodListState> = mutableStateOf(FoodListState())
     val foodState: MutableState<FoodState> = mutableStateOf(FoodState())
@@ -61,6 +59,9 @@ constructor(
                     removeFoodsCache()
                 }
             }
+            is FoodListEvents.onFoodDelete -> {
+                deleteFood(event.food)
+            }
             else -> {
                 //Manejar los errores.
 //                handleError(
@@ -72,6 +73,24 @@ constructor(
 //                )
             }
         }
+    }
+
+    private fun deleteFood(food: Food) {
+        deleteFood.deleteFood(food = food).onEach { dataState ->
+            dataState.data?.let {
+                //Elimino de caché el alimento.
+                //ELimino del estado actual el alimento
+                println("Ha llegado hasta el modelo vista")
+                val currentFoods = ArrayList(listState.value.alimentos)
+                deleteFood.deleteFood(food)
+                currentFoods.remove(food)
+                listState.value = listState.value.copy(alimentos = currentFoods)
+            }
+            dataState.message?.let { message ->
+                //handleError(message)
+            }
+        }.launchIn(viewModelScope)
+
     }
 
     private fun removeFoodsCache() {
@@ -125,13 +144,17 @@ constructor(
         }.launchIn(viewModelScope)
     }
 
+   private fun refreshFoods(currentFoods: List<Food>){
+       listState.value = listState.value.copy(alimentos = listOf())
+       listState.value = listState.value.copy(alimentos = currentFoods)
+   }
+
     private fun updateFood(updatedFood: Food, food: Food) {
         val currentFoods = ArrayList(listState.value.alimentos)
         val currentIndex = currentFoods.indexOf(food)
         currentFoods.set(currentIndex,updatedFood)
         //Reseteo el estado de lista de limetnos actual.
-        listState.value = listState.value.copy(alimentos = listOf())
-        listState.value = listState.value.copy(alimentos = currentFoods)
+        refreshFoods(currentFoods = currentFoods)
     }
 
     private fun appendFood(food: Food){

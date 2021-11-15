@@ -15,4 +15,6 @@ sealed class FoodListEvents {
     data class onCantidadAdd(val nombre: String): FoodListEvents()
 
     data class onSelectedNestedMenuItem(val option: String): FoodListEvents()
+
+    data class onFoodDelete(val food: Food) : FoodListEvents()
 }

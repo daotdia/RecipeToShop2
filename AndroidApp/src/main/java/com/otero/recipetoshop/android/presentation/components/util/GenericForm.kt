@@ -12,6 +12,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.otero.recipetoshop.android.presentation.theme.primaryColor
+import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
 import com.otero.recipetoshop.domain.model.NegativeAction
@@ -67,7 +68,7 @@ fun GenericForm(
                         onClick = {
                             positiveAction.onPositiveAction()
                         },
-                        colors = ButtonDefaults.buttonColors(backgroundColor = primaryColor),
+                        colors = ButtonDefaults.buttonColors(backgroundColor = primaryDarkColor),
                         enabled = positiveEnabled.value
                         ) {
                         Text(

@@ -24,7 +24,7 @@ import com.otero.recipetoshop.presentattion.screens.recipe_list.RecipeListState
 @ExperimentalMaterialApi
 @ExperimentalComposeUiApi
 @Composable
-fun ListaRecetas(
+fun ListaReceta(
     state: RecipeListState,
     onTriggerEvent: (RecipeListEvents) -> Unit,
     onClickRecipeListItem: (Int) -> Unit

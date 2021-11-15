@@ -18,4 +18,5 @@ object Compose {
     const val navigation = "androidx.navigation:navigation-compose:${composeNavigationVerson}"
 
     const val iconsPlus = "androidx.compose.material:material-icons-extended:${composeVersion}"
+
 }

@@ -71,5 +71,8 @@ dependencies {
 
     implementation(Compose.iconsPlus)
 
+    implementation("de.charlex.compose:revealswipe:1.0.0-beta05")
+
+
 }
 

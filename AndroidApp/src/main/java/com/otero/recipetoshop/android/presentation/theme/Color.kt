@@ -20,3 +20,4 @@ val primaryTextColor = Color(0xFF000000)
 val secondaryTextColor = Color(0xFF666666)
 
 val dialogCancel = Color(0xFFFFCDD2)
+val delteColor = Color(0xFFFF5252)

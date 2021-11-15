@@ -1,10 +1,7 @@
 package com.otero.recipetoshop.android.dependenceinjection
 
 import com.otero.recipetoshop.Interactors.RecipeList.SearchRecipes
-import com.otero.recipetoshop.Interactors.despensa.ChangeCantidadFood
-import com.otero.recipetoshop.Interactors.despensa.DeleteFoods
-import com.otero.recipetoshop.Interactors.despensa.GetFoods
-import com.otero.recipetoshop.Interactors.despensa.InsertNewFoodItem
+import com.otero.recipetoshop.Interactors.despensa.*
 import com.otero.recipetoshop.datasource.cachedespensa.DespensaCache
 import com.otero.recipetoshop.datasource.network.RecipeService
 import dagger.Module
@@ -67,6 +64,14 @@ object InteractorsModule {
         despensaCache: DespensaCache
     ): DeleteFoods{
         return DeleteFoods(foodCache = despensaCache)
+    }
+
+    @Singleton
+    @Provides
+    fun provideDeleteFood(
+        despensaCache: DespensaCache
+    ): DeleteFood{
+        return DeleteFood(foodCache = despensaCache)
     }
 
 }

@@ -9,6 +9,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Remove
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -21,12 +22,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.otero.recipetoshop.android.presentation.theme.Lora
 import com.otero.recipetoshop.android.presentation.theme.appShapes
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.domain.model.despensa.Food
+import com.otero.recipetoshop.domain.util.TipoUnidad
+import com.otero.recipetoshop.events.despensa.FoodListEvents
 
 
 @ExperimentalComposeUiApi
@@ -34,6 +38,7 @@ import com.otero.recipetoshop.domain.model.despensa.Food
 fun FoodCard(
     food: Food,
     onCantidadChange: (String) -> Unit,
+    elevation: Dp,
 ){
     val keyboardController = LocalSoftwareKeyboardController.current
     val stateFood = remember { mutableStateOf(food)}
@@ -41,9 +46,9 @@ fun FoodCard(
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
-            .padding(top = 1.dp, bottom = 1.dp)
+            .padding(top = 2.dp, bottom = 2.dp)
         ,
-        elevation = 6.dp,
+        elevation = elevation,
         shape = appShapes.medium
     ) {
         Row(
@@ -100,7 +105,7 @@ fun FoodCard(
                         textAlign = TextAlign.Center,
                         fontFamily = Lora,
                         fontWeight = FontWeight.Normal,
-                        fontSize = 24.sp
+                        fontSize = 40.sp
                     ),
                     colors = TextFieldDefaults.textFieldColors(
                         backgroundColor = Color.White,
@@ -116,6 +121,10 @@ fun FoodCard(
                     ,
                     tint = primaryDarkColor
                 )
+//                Text(
+//                    text = TipoUnidad.valueOf(stateFood.value.tipoUnidad.name).name,
+//                    style = MaterialTheme.typography.subtitle1
+//                )
             }
         }
     }

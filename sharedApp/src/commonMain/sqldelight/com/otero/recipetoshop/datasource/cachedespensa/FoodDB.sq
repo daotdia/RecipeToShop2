@@ -1,5 +1,5 @@
 CREATE TABLE  food_Entity(
-    nombre TEXT NOT NULL PRIMARY KEY UNIQUE,
+    nombre TEXT NOT NULL PRIMARY KEY,
     tipo TEXT NOT NULL,
     cantidad INTEGER NOT NULL
 );
@@ -28,12 +28,12 @@ ORDER BY nombre DESC;
 
 getFoodById:
 SELECT * FROM food_Entity
-WHERE nombre = :nombre;
+WHERE nombre= :nombre;
 
 removeAll:
 DELETE FROM food_Entity;
 
 removeFood:
 DELETE FROM food_Entity
-WHERE nombre =: nombre;
+WHERE nombre= :nombre;
 
