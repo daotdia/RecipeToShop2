@@ -1,6 +1,5 @@
 package com.otero.recipetoshop.android.presentation.navigation
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ExperimentalMaterialApi
@@ -11,15 +10,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.HiltViewModelFactory
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.navArgument
-import androidx.navigation.compose.rememberNavController
 import com.otero.recipetoshop.android.presentation.components.despensa.FoodList
+import com.otero.recipetoshop.android.presentation.components.recetas.ListaDeListaRectas
 import com.otero.recipetoshop.android.presentation.navigation.screens.despensa.FoodListViewModel
+import com.otero.recipetoshop.android.presentation.navigation.screens.recetas.RecetasListViewModel
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
 
 @ExperimentalComposeUiApi
@@ -74,9 +71,24 @@ fun Navegacion(
             }
         }
 
-        //Pantalla de recetas.
+        //Pantalla de lista de listas de recetas.
         composable(
-            route = RutasNavegacion.Recetas.route
+            route = RutasNavegacion.ListaDeListaRecetas.route
+        ){navBackStackEntry ->
+            val factory = HiltViewModelFactory(LocalContext.current, navBackStackEntry)
+            val recetasViewModel: RecetasListViewModel = viewModel("RecetasListViewModel", factory )
+            Surface(color = secondaryLightColor){
+                ListaDeListaRectas(
+                    navController = navController,
+                    recetasState = recetasViewModel.recetasState,
+                    onTriggeEvent = recetasViewModel::onTriggerEvent
+                )
+            }
+        }
+
+        //Pantalla de lista de recetas.
+        composable(
+            route = RutasNavegacion.ListaRecetas.route
         ){
             Surface(color = secondaryLightColor){}
         }

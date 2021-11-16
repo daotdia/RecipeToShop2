@@ -44,7 +44,7 @@ class DespensaCacheImpl(
 
     override fun removeAll() {
         println("Una vuelta")
-        return queries.removeAll()
+        return queries.removeAllFoods()
     }
 
     override fun removeFood(food: Food) {

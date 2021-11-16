@@ -34,8 +34,6 @@ import com.otero.recipetoshop.domain.model.despensa.Food
 fun RecetaCard(
     nombre: MutableState<String>,
     elevation: Dp,
-    readOnly: MutableState<Boolean>,
-    onNombreChange: (String) -> Unit
 ) {
     val keyboardController = LocalSoftwareKeyboardController.current
     Card(
@@ -53,44 +51,9 @@ fun RecetaCard(
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            TextField(
-                value = nombre.value,
-                onValueChange = { it ->
-                    nombre.value = it
-                },
-                readOnly = readOnly.value,
-                keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Number,
-                    imeAction = ImeAction.Done,
-                ),
-                keyboardActions = KeyboardActions(
-                    onDone = {
-                        onNombreChange(nombre.value)
-                        keyboardController?.hide()
-                    }
-                ),
-                textStyle = TextStyle(
-                    color = Color.Black,
-                    textAlign = TextAlign.Center,
-                    fontFamily = Lora,
-                    fontWeight = FontWeight.Normal,
-                    fontSize = 46.sp
-                ),
-                colors = TextFieldDefaults.textFieldColors(
-                    backgroundColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent,
-                    textColor = Color.Black,
-                    disabledIndicatorColor = Color.Transparent,
-                    disabledLabelColor = Color.Transparent,
-                    disabledLeadingIconColor = Color.Transparent,
-                    disabledPlaceholderColor = Color.Transparent,
-                    disabledTextColor = Color.Transparent,
-                    disabledTrailingIconColor = Color.Transparent,
-                    focusedIndicatorColor = Color.Transparent,
-                    placeholderColor = Color.Transparent,
-                    unfocusedLabelColor = Color.Transparent,
-                    focusedLabelColor = Color.Transparent
-                ),
+            Text(
+                text = nombre.value,
+                style = MaterialTheme.typography.h3
             )
         }
     }

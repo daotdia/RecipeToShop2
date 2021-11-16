@@ -22,7 +22,9 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.otero.recipetoshop.android.presentation.components.despensa.FoodCard
+import com.otero.recipetoshop.android.presentation.navigation.RutasNavegacion
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
 import com.otero.recipetoshop.domain.model.recetas.Receta
@@ -35,7 +37,8 @@ import de.charlex.compose.RevealSwipe
 @ExperimentalComposeUiApi
 @ExperimentalMaterialApi
 @Composable
-fun ListaRecetas(
+fun ListaDeListaRectas(
+    navController: NavController,
     recetasState: MutableState<RecetasListState>,
     onTriggeEvent: (RecetasListEvents) -> Unit
 ) {
@@ -44,7 +47,8 @@ fun ListaRecetas(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    recetasState.value = recetasState.value.copy(onNewReceta = true)
+                    //Hay que navegar a la pantalla de creación de nueva lista de recetas.
+                    navController.navigate(RutasNavegacion.ListaRecetas.route)
                 },
                 backgroundColor = primaryDarkColor,
                 contentColor = secondaryLightColor,
@@ -71,14 +75,6 @@ fun ListaRecetas(
                     directions = setOf(
                         RevealDirection.EndToStart
                     ),
-                    hiddenContentStart = {
-                        Icon(
-                            modifier = Modifier.padding(horizontal = 25.dp),
-                            imageVector = Icons.Outlined.Edit,
-                            contentDescription = null,
-                            tint = Color.White
-                        )
-                    },
                     hiddenContentEnd = {
                         Icon(
                             modifier = Modifier
@@ -93,10 +89,6 @@ fun ListaRecetas(
                     RecetaCard(
                         nombre = remember { mutableStateOf(item.nombre) },
                         elevation = 4.dp,
-                        readOnly = readOnly,
-                        onNombreChange = {
-                            onTriggeEvent(RecetasListEvents.onNombreListaChange(it))
-                        }
                     )
                 }
             }

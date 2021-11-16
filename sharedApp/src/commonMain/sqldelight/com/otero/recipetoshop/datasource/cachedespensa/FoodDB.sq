@@ -1,10 +1,10 @@
 CREATE TABLE  food_Entity(
-    nombre TEXT NOT NULL PRIMARY KEY,
+    nombre TEXT NOT NULL PRIMARY KEY UNIQUE,
     tipo TEXT NOT NULL,
     cantidad INTEGER NOT NULL
 );
 
-selectAll:
+selectAllFoods:
 SELECT *
 FROM food_Entity;
 
@@ -30,10 +30,123 @@ getFoodById:
 SELECT * FROM food_Entity
 WHERE nombre= :nombre;
 
-removeAll:
+removeAllFoods:
 DELETE FROM food_Entity;
 
 removeFood:
 DELETE FROM food_Entity
+WHERE nombre= :nombre;
+
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+CREATE TABLE listarecetas_Entity(
+    nombre TEXT NOT NULL PRIMARY KEY UNIQUE
+);
+
+insertListaRecetas:
+INSERT OR REPLACE
+INTO listarecetas_Entity (
+    nombre
+) VALUES (?);
+
+getAllListaRecetas:
+SELECT * FROM listarecetas_Entity
+ORDER BY nombre DESC;
+
+
+getListaRecetaById:
+SELECT * FROM listarecetas_Entity
+WHERE nombre= :nombre;
+
+removeAllListaRecetas:
+DELETE FROM listarecetas_Entity;
+
+removeListaReceta:
+DELETE FROM listarecetas_Entity
+WHERE nombre= :nombre;
+
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+CREATE TABLE  receta_Entity(
+    id_listarecetas TEXT NOT NULL UNIQUE ,
+    nombre TEXT NOT NULL PRIMARY KEY UNIQUE,
+    cantidad INTEGER NOT NULL,
+    tipo TEXT ,
+    FOREIGN KEY (id_listarecetas) REFERENCES listarecetas_Entity(nombre)
+    ON DELETE CASCADE
+);
+
+
+insertReceta:
+INSERT OR REPLACE
+INTO receta_Entity (
+    id_listarecetas,
+    nombre,
+    cantidad,
+    tipo
+) VALUES (?, ?, ?, ?);
+
+getAllRecetas:
+SELECT * FROM receta_Entity
+ORDER BY nombre DESC;
+
+getRecetasByListaRecetas:
+SELECT * FROM receta_Entity
+WHERE id_listarecetas = :id_listarecetas;
+
+getRecetaById:
+SELECT * FROM receta_Entity
+WHERE nombre= :nombre;
+
+removeAllRecetas:
+DELETE FROM receta_Entity;
+
+removeReceta:
+DELETE FROM receta_Entity
+WHERE nombre= :nombre;
+
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+CREATE TABLE  ingredients_Entity(
+    id_receta TEXT NOT NULL UNIQUE ,
+    nombre TEXT NOT NULL PRIMARY KEY UNIQUE,
+    tipo TEXT NOT NULL,
+    cantidad INTEGER NOT NULL,
+    FOREIGN KEY (id_receta) REFERENCES receta_Entity(nombre)
+    ON DELETE CASCADE
+);
+
+insertIngrediente:
+INSERT OR REPLACE
+INTO ingredients_Entity (
+    id_receta,
+    nombre,
+    tipo,
+    cantidad
+) VALUES (?, ?, ?,?);
+
+getAllIngredientes:
+SELECT * FROM ingredients_Entity
+ORDER BY nombre DESC;
+
+getIngredientesByReceta:
+SELECT * FROM ingredients_Entity
+WHERE id_receta = :id_receta;
+
+getIngredienteById:
+SELECT * FROM ingredients_Entity
+WHERE nombre= :nombre;
+
+removeAllIngredientes:
+DELETE FROM ingredients_Entity;
+
+removeIngrediente:
+DELETE FROM ingredients_Entity
 WHERE nombre= :nombre;
 
