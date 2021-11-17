@@ -17,6 +17,9 @@ class RecetasListViewModel
 constructor(
     private val addNewListaReceta: AddNewListaReceta
 ): ViewModel(){
+    init {
+
+    }
     val recetasState: MutableState<RecetasListState> = mutableStateOf(RecetasListState())
     fun onTriggerEvent(event: RecetasListEvents){
         when(event){
