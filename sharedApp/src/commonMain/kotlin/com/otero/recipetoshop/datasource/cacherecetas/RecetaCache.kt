@@ -9,7 +9,9 @@ interface RecetaCache {
 
     fun insertListaDeLIstarecetas(listaDeListaRecetas: List<ListaRecetas>)
 
-    fun getAllListaRecetas(): List<ListaRecetas>
+    fun getAllListaRecetas(): List<ListaRecetas>?
+
+    fun getRecetasByIdOfListaDeRecetas(nombreListaDeLista: String): List<Receta>?
 
     fun getListaRecetas(nombrelistaReceta: String): ListaRecetas?
 

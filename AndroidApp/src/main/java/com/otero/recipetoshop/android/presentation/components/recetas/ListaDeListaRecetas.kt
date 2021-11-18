@@ -79,16 +79,21 @@ fun ListaDeListaRectas(
                         Icon(
                             modifier = Modifier
                                 .padding(horizontal = 25.dp)
-//                                    .clickable {onTriggeEvent(RecetasListEvents.onNombreListaChange())}
                             ,
                             imageVector = Icons.Outlined.Delete,
                             contentDescription = null
                         )
                     }
                 ) {
-                    RecetaCard(
+                    ListaRecetaCard(
                         nombre = remember { mutableStateOf(item.nombre) },
                         elevation = 4.dp,
+                        onClick = {
+                            //Hay que obtener las recetas de la listaa de recetas a través del viewmodel.
+                            onTriggeEvent(RecetasListEvents.onEnterListaDeLisaDeRecetas(item.nombre))
+                            //Posteriormente se navega a la pantalal de lista de recetas clicada.
+                            navController.navigate(RutasNavegacion.ListaRecetas.route)
+                        }
                     )
                 }
             }

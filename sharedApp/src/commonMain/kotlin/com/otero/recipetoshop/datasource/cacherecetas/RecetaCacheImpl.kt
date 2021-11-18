@@ -4,6 +4,7 @@ import com.otero.recipetoshop.datasource.cachedespensa.FoodDBQueries
 import com.otero.recipetoshop.datasource.cachedespensa.FoodDataBase
 import com.otero.recipetoshop.domain.model.despensa.Food
 import com.otero.recipetoshop.domain.model.recetas.ListaRecetas
+import com.otero.recipetoshop.domain.model.recetas.Receta
 
 class RecetaCacheImpl(
     private val recetaDataBase: FoodDataBase
@@ -28,6 +29,10 @@ class RecetaCacheImpl(
     //Lista de lista de recetas con ingredientes nulos.
     override fun getAllListaRecetas(): List<ListaRecetas> {
         return queries.getAllListaRecetas().executeAsList().toListaDeListaRecetas()
+    }
+
+    override fun getRecetasByIdOfListaDeRecetas(nombreListaDeLista: String): List<Receta> {
+        return queries.getRecetasByListaRecetas(nombreListaDeLista).executeAsList().toListaRecetas()
     }
 
     //Devuelve lista de receta con ingredientes nulos, hay que llamar otra vez con su nombre por si se quieren los ingredientes.

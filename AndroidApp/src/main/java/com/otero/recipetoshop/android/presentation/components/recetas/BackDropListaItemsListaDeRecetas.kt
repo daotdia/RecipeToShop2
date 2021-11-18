@@ -1,39 +1,35 @@
 package com.otero.recipetoshop.android.presentation.components.recetas
 
 import android.hardware.TriggerEvent
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
-import androidx.compose.material.icons.filled.Menu
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.*
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
 import com.otero.recipetoshop.android.presentation.components.despensa.FoodList
 import com.otero.recipetoshop.android.presentation.components.util.BackLayerBackDrop
 import com.otero.recipetoshop.android.presentation.components.util.MenuItemBackLayer
 import com.otero.recipetoshop.android.presentation.theme.primaryColor
-import com.otero.recipetoshop.android.presentation.theme.secondaryColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryDarkColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
+import com.otero.recipetoshop.domain.model.despensa.Food
+import com.otero.recipetoshop.domain.model.recetas.Receta
+import com.otero.recipetoshop.domain.model.recetas.toFood
+import com.otero.recipetoshop.events.despensa.FoodListEvents
 import com.otero.recipetoshop.events.recetas.RecetasListEvents
+import com.otero.recipetoshop.presentattion.screens.despensa.FoodListState
+import com.otero.recipetoshop.presentattion.screens.recetas.RecetasListState
 import kotlinx.coroutines.launch
-import java.lang.reflect.Modifier
 
 @ExperimentalComposeUiApi
 @ExperimentalMaterialApi
 @Composable
-fun ListaRecetas(
-    onTriggerEvent: (RecetasListEvents) -> Unit
+fun BackDropListaItemsListaDeRecetas(
+    stateListaRecetas: MutableState<RecetasListState>,
+    onTriggeEventReceta: (RecetasListEvents) -> Unit,
 ){
     val backdropScaffoldState = rememberBackdropScaffoldState(initialValue = BackdropValue.Revealed)
     val coroutineScope = rememberCoroutineScope()
@@ -45,7 +41,7 @@ fun ListaRecetas(
                 backgroundColor = secondaryDarkColor,
                 contentColor = secondaryLightColor,
                 onClick = {
-                    onTriggerEvent(RecetasListEvents.onAddreceta(
+                    onTriggeEventReceta(RecetasListEvents.onAddreceta(
 
                     ))
                 },
@@ -102,13 +98,24 @@ fun ListaRecetas(
                 when(rutaActual.value){
                     "recetas" -> {
                         RecetasList(
-
+                            stateListaRecetas = stateListaRecetas,
+                            onTriggeEvent = onTriggeEventReceta
                         )
                     }
                     "alimentos" -> {
-                        FoodList(
-                            listState = ,
-                            onTriggeEvent =
+                        //Obtengo de los items aquellos que son alimentos, es decir su tipo no es null.
+                        val foods: ArrayList<Receta> = arrayListOf()
+                        stateListaRecetas.value.recetas.forEach{
+                            if(it.tipo != null){
+                                foods.add(it)
+                            }
+                        }
+                        val foodListState = remember { mutableStateOf(RecetasListState())}
+                        foodListState.value = foodListState.value.copy(recetas = foods)
+
+                        AlimentosList(
+                            listState = foodListState,
+                            onTriggeEvent = onTriggeEventReceta
                         )
                     }
                 }

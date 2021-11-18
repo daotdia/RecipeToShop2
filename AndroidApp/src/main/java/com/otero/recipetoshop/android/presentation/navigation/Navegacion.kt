@@ -15,6 +15,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.otero.recipetoshop.android.presentation.components.despensa.FoodList
 import com.otero.recipetoshop.android.presentation.components.recetas.ListaDeListaRectas
+import com.otero.recipetoshop.android.presentation.components.recetas.BackDropListaItemsListaDeRecetas
 import com.otero.recipetoshop.android.presentation.navigation.screens.despensa.FoodListViewModel
 import com.otero.recipetoshop.android.presentation.navigation.screens.recetas.RecetasListViewModel
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
@@ -80,7 +81,7 @@ fun Navegacion(
             Surface(color = secondaryLightColor){
                 ListaDeListaRectas(
                     navController = navController,
-                    recetasState = recetasViewModel.recetasState,
+                    recetasState = recetasViewModel.listadelistarecetasstate,
                     onTriggeEvent = recetasViewModel::onTriggerEvent
                 )
             }
@@ -89,8 +90,14 @@ fun Navegacion(
         //Pantalla de lista de recetas.
         composable(
             route = RutasNavegacion.ListaRecetas.route
-        ){
-            Surface(color = secondaryLightColor){}
+        ){ navBackStackEntry ->
+            val factory = HiltViewModelFactory(LocalContext.current, navBackStackEntry)
+            val recetasViewModel: RecetasListViewModel = viewModel("RecetasListViewModel", factory )
+
+            BackDropListaItemsListaDeRecetas(
+                stateListaRecetas = recetasViewModel.listaRecetasState,
+                onTriggeEventReceta = recetasViewModel::onTriggerEvent
+            )
         }
 
         //Pantalla de Lista de la Compra.
