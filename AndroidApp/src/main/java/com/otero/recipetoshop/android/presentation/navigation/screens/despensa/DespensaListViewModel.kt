@@ -121,10 +121,19 @@ constructor(
             food = food
         ).onEach { dataState ->
             dataState.data?.let { food ->
-                appendFood(food)
+                rePrintFoods()
             }
             dataState.message?.let { message ->
                 //handleError(message)
+            }
+        }.launchIn(viewModelScope)
+    }
+
+    //Es importante que cada vez que se inserte un nuevo elemnto se refrescque la lista obteniendolo de cache parar así obteneer los items cons sus id (auotincrementados).
+    private fun rePrintFoods() {
+        getFoods.getFoods().onEach { dataState ->
+            dataState.data?.let { currentAlimentos ->
+                listState.value = listState.value.copy(alimentos = currentAlimentos)
             }
         }.launchIn(viewModelScope)
     }
@@ -157,12 +166,6 @@ constructor(
         refreshFoods(currentFoods = currentFoods)
     }
 
-    private fun appendFood(food: Food){
-        val currentFoods = ArrayList(listState.value.alimentos)
-        currentFoods.add(food)
-        listState.value = listState.value.copy(alimentos = currentFoods)
-    }
-
     private fun createFood(nombre: String, nombretipo: String, cantidad: String): Food{
         var tipo: TipoUnidad = TipoUnidad.GRAMOS
         TipoUnidad.values().forEach { it ->
@@ -176,15 +179,4 @@ constructor(
             cantidad = cantidad.toInt()
         )
     }
-}
-@ExperimentalComposeUiApi
-@Preview
-@Composable
-fun ComposanlePreview(){
-    NewFoodPopUp(
-        onAddFood = { nombre, tipo, cantidad ->
-            {}
-        },
-        listState = remember {mutableStateOf(FoodListState())}
-    )
 }

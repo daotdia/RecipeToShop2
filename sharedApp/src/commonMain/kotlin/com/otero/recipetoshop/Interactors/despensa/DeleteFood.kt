@@ -17,11 +17,11 @@ class DeleteFood (
         //Emito de manera predefinida que se está cargando la modificación.
         emit(DataState.loading())
         //Obtengo los alimentos actuales.
-        val foods = foodCache.getAll()
+        val foods = foodCache.getAllFoodsDespensa()
         //Si hay recetas guardadas en cache.
-        if(!foods.isEmpty()){
+        if(foods != null){
             //Elimino el alimento de la lista.
-            foodCache.removeFood(food)
+            foodCache.removeFoodDespensaById(food.id_food)
             emit(DataState.data(message = null, data = Unit))
         } else{
             //En caso contrario emito un error.

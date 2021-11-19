@@ -9,10 +9,10 @@ import com.otero.recipetoshop.domain.util.DataState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class AddNewListaReceta(
+class AddNewListaRecetas(
     private val recetaCache: RecetaCache
 ) {
-    fun addListaReceta(
+    fun addListaRecetas(
         listareceta: ListaRecetas
     ): Flow<DataState<Boolean>> = flow {
         //Emito de manera predefinida que se está cargando la modificación.
@@ -21,9 +21,11 @@ class AddNewListaReceta(
         //Compruebo que el alimento no se encuentre ya.
         var igual: Boolean = false
         val currentListaDeListaRecetas = recetaCache.getAllListaRecetas()
-        currentListaDeListaRecetas.forEach { listaDeListaRecetas ->
-            if (listaDeListaRecetas.nombre.equals(listareceta.nombre)) {
-                igual = true
+        if(currentListaDeListaRecetas != null){
+            currentListaDeListaRecetas.forEach { listaDeListaRecetas ->
+                if (listaDeListaRecetas.nombre.equals(listareceta.nombre)) {
+                    igual = true
+                }
             }
         }
         //Si no se ha encontrado

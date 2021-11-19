@@ -20,17 +20,19 @@ class ChangeCantidadFood(
 
         //Actualizo la cantidad del alimento y emito el alimento nuevo en el caso de que éste exista claro.
         var alimento: Food? = null
-        val currentFoods = foodCache.getAll()
-        currentFoods.forEach { element ->
-            if(element.nombre.equals(food.nombre)){
-                alimento = element
+        val currentFoods = foodCache.getAllFoodsDespensa()
+        if(currentFoods != null){
+            currentFoods.forEach { element ->
+                if (element.nombre.equals(food.nombre)) {
+                    alimento = element
+                }
+                //Seteo su nueva cantidad.
+                alimento?.cantidad = cantidad.toInt()
             }
-            //Seteo su nueva cantidad.
-            alimento?.cantidad = cantidad.toInt()
         }
         if(alimento != null){
             //Guardo en cache el alimento con la cantidad modificada
-                foodCache.insert(alimento!!)
+                foodCache.insertFoodDespensa(alimento!!)
             // Emito el alimento ya seteado en cantidad
             emit(DataState.data(message = null,data = alimento))
         } else{

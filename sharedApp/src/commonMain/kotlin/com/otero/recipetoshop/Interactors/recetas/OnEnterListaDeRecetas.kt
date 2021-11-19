@@ -11,11 +11,11 @@ class OnEnterListaDeRecetas (
     private val recetaCache: RecetaCache
     ){
     fun onEnterReceta(
-        nombreLista: String
+        id_listaReceta: Int
     ): Flow<DataState<List<Receta>>> = flow {
         emit(DataState.loading())
 
-        val itemsListaRecetas = recetaCache.getRecetasByIdOfListaDeRecetas(nombreLista)
+        val itemsListaRecetas = recetaCache.getRecetasByListaRecetasInListaRecetas(id_listaReceta = id_listaReceta)
         if(itemsListaRecetas != null){
             emit(DataState.data(message = null, data = itemsListaRecetas))
         }

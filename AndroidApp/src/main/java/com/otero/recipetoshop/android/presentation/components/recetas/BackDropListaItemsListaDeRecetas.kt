@@ -17,7 +17,6 @@ import com.otero.recipetoshop.android.presentation.theme.secondaryDarkColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
 import com.otero.recipetoshop.domain.model.despensa.Food
 import com.otero.recipetoshop.domain.model.recetas.Receta
-import com.otero.recipetoshop.domain.model.recetas.toFood
 import com.otero.recipetoshop.events.despensa.FoodListEvents
 import com.otero.recipetoshop.events.recetas.RecetasListEvents
 import com.otero.recipetoshop.presentattion.screens.despensa.FoodListState
@@ -41,9 +40,9 @@ fun BackDropListaItemsListaDeRecetas(
                 backgroundColor = secondaryDarkColor,
                 contentColor = secondaryLightColor,
                 onClick = {
-                    onTriggeEventReceta(RecetasListEvents.onAddreceta(
-
-                    ))
+//                    onTriggeEventReceta(RecetasListEvents.onAddreceta(
+//
+//                    ))
                 },
                 content = {
                     Icon(Icons.Default.Add, null)
@@ -103,20 +102,10 @@ fun BackDropListaItemsListaDeRecetas(
                         )
                     }
                     "alimentos" -> {
-                        //Obtengo de los items aquellos que son alimentos, es decir su tipo no es null.
-                        val foods: ArrayList<Receta> = arrayListOf()
-                        stateListaRecetas.value.recetas.forEach{
-                            if(it.tipo != null){
-                                foods.add(it)
-                            }
-                        }
-                        val foodListState = remember { mutableStateOf(RecetasListState())}
-                        foodListState.value = foodListState.value.copy(recetas = foods)
-
-                        AlimentosList(
-                            listState = foodListState,
-                            onTriggeEvent = onTriggeEventReceta
-                        )
+//                        AlimentodList(
+//                            listState = stateListaRecetas,
+//                            onTriggeEvent = onTriggeEventReceta
+//                        )
                     }
                 }
             },

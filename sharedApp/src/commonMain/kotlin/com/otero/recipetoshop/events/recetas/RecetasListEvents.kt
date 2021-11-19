@@ -7,7 +7,7 @@ sealed class RecetasListEvents {
     //data class onCantidadChange(val cantidad: String, val food: Food) : FoodListEvents()
     data class onNombreListaChange(val nombre: String): RecetasListEvents()
 
-    data class onEnterListaDeLisaDeRecetas(val nombre: String): RecetasListEvents()
+    data class onEnterListaDeLisaDeRecetas(val id_listaRecetas: Int): RecetasListEvents()
 
     data class onAddreceta(val nombre: String, val cantidad: Int, val tipo: String): RecetasListEvents()
 

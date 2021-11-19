@@ -8,7 +8,7 @@ class DespensaCacheImpl(
 ) :DespensaCache{
     private val queries: FoodDBQueries = foodDataBase.foodDBQueries
 
-    override fun insert(food: Food) {
+    override fun insertFoodDespensa(food: Food) {
         queries.insertFood(
             nombre = food.nombre,
             tipo = food.tipoUnidad.name,
@@ -16,43 +16,44 @@ class DespensaCacheImpl(
         )
     }
 
-    override fun insert(foods: List<Food>) {
+    override fun insertFoodsDespensa(foods: List<Food>) {
         for(food in foods){
-            insert(food)
+            insertFoodDespensa(food)
         }
     }
 
-    override fun search(query: String): List<Food> {
+    override fun searchFoodDespensa(query: String): List<Food> {
         return queries.searchFoods(
             query = query,
-        ).executeAsList().toFoodList() // Faltan convertir las entidades de recetas a recetas.
+        ).executeAsList().toFoodList()
     }
 
-    override fun getAll(): List<Food> {
+    override fun getAllFoodsDespensa(): List<Food> {
         return queries.getAllFoods()
-            .executeAsList().toFoodList() // Faltan convertir las entidades de recetas a recetas.
+            .executeAsList()
+            .toFoodList()
     }
 
-    override fun get(foodName: String): Food? {
+    override fun getFoodDespensaById(id_food: Int): Food? {
         return try {
-            queries.getFoodById(nombre = foodName).executeAsOne().toFood() // Faltan convertir las entidades de recetas a recetas.
+            queries.getFoodById(id_food.toLong())
+                .executeAsOne()
+                .toFood()
         }catch (e: NullPointerException){
-            println(e.message + "    ////  No se ha podido obtener el alimento con nombre: ${foodName}")
+            println(e.message + "    ////  No se ha podido obtener el alimento con id: ${id_food}")
             null
         }
     }
 
-    override fun removeAll() {
-        println("Una vuelta")
+    override fun removeAllFoodsDespensa() {
         return queries.removeAllFoods()
     }
 
-    override fun removeFood(food: Food) {
+    override fun removeFoodDespensaById(id_food: Int) {
         return try {
-            println("Una vuelta")
-            queries.removeFood(nombre = food.nombre)
+            queries.removeFoodById(id_despensa = id_food.toLong())
         }catch (e: NullPointerException){
-            println(e.message + "    ////  No se ha podido obtener el alimento con nombre: ${food.nombre}")
+            println(e.message + "    ////  No se ha podido obtener el alimento con id: ${id_food}")
         }
     }
 }

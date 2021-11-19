@@ -96,7 +96,7 @@ fun FoodList (
             .offset(y = 48.dp)
             .padding(1.dp),
     ) {
-        items(listState.value.alimentos, {listItem: Food -> listItem.nombre}) { item ->
+        items(listState.value.alimentos, {listItem: Food -> listItem.id_food!!}) { item ->
             var delete by remember { mutableStateOf(false) }
             val dismissState = rememberDismissState(
                 confirmStateChange = {

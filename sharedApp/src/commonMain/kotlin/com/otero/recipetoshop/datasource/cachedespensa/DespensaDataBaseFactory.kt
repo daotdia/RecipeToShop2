@@ -16,8 +16,9 @@ expect class FoodDriverFactory{
     fun createDriver(): SqlDriver
 }
 
-fun Food_Entity.toFood(): Food {
+fun Despensa_Entity.toFood(): Food {
     return Food(
+        id_food = id_despensa.toInt(),
         nombre = nombre,
         tipoUnidad = parserTipoUnidad(tipo),
         cantidad = cantidad.toInt()
@@ -39,7 +40,7 @@ private fun parserTipoUnidad(tipo: String): TipoUnidad{
     return TipoUnidad.GRAMOS
 }
 
-fun List<Food_Entity>.toFoodList(): List<Food>{
+fun List<Despensa_Entity>.toFoodList(): List<Food>{
     return map{it.toFood()}
 }
 

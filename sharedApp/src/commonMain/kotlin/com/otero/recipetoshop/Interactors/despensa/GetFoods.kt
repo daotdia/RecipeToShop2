@@ -16,9 +16,9 @@ class GetFoods(
         emit(DataState.loading())
 
         //Obtengo los alimentos actuales.
-        val foods = foodCache.getAll()
+        val foods = foodCache.getAllFoodsDespensa()
         //Si hay recetas guardadas en cache.
-        if(!foods.isEmpty()){
+        if(foods != null){
             // Emito el alimento ya seteado en cantidad
             emit(DataState.data(message = null,data = foods))
         } else{

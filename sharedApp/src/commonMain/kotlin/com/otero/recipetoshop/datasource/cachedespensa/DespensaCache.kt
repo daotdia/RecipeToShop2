@@ -3,17 +3,17 @@ package com.otero.recipetoshop.datasource.cachedespensa
 import com.otero.recipetoshop.domain.model.despensa.Food
 
 interface DespensaCache {
-    fun insert(food: Food)
+    fun insertFoodDespensa(food: Food): Unit
 
-    fun insert(foods: List<Food>)
+    fun insertFoodsDespensa(foods: List<Food>): Unit
 
-    fun search(query: String): List<Food>
+    fun searchFoodDespensa(query: String): List<Food>?
 
-    fun getAll(): List<Food>
+    fun getAllFoodsDespensa(): List<Food>?
 
-    fun get(foodName: String): Food?
+    fun getFoodDespensaById(id_food: Int): Food?
 
-    fun removeAll(): Unit
+    fun removeAllFoodsDespensa(): Unit
 
-    fun removeFood(food: Food): Unit
+    fun removeFoodDespensaById(id_food: Int): Unit
 }
