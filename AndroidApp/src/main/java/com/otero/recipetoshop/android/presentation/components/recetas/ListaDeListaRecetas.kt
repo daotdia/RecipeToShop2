@@ -23,6 +23,7 @@ import androidx.navigation.NavController
 import com.otero.recipetoshop.android.presentation.navigation.RutasNavegacion
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
+import com.otero.recipetoshop.domain.model.recetas.ListaRecetas
 import com.otero.recipetoshop.domain.model.recetas.Receta
 import com.otero.recipetoshop.events.recetas.RecetasListEvents
 import com.otero.recipetoshop.presentattion.screens.recetas.RecetasListState
@@ -60,8 +61,8 @@ fun ListaDeListaRectas(
                 .padding(1.dp),
         ) {
             items(
-                items = recetasState.value.recetas,
-                { listItem: Receta -> listItem.nombre }
+                items = recetasState.value.listasRecetas,
+                { listItem: ListaRecetas -> listItem.id_listaRecetas!! }
             )
             { item ->
                 RevealSwipe(
@@ -85,7 +86,7 @@ fun ListaDeListaRectas(
                         elevation = 4.dp,
                         onClick = {
                             //Hay que obtener las recetas de la listaa de recetas a través del viewmodel.
-                            onTriggeEvent(RecetasListEvents.onEnterListaDeLisaDeRecetas(item.id_listaRecetas))
+                            onTriggeEvent(RecetasListEvents.onEnterListaDeLisaDeRecetas(item.id_listaRecetas!!))
                             //Posteriormente se navega a la pantalal de lista de recetas clicada.
                             navController.navigate(RutasNavegacion.ListaRecetas.route)
                         }

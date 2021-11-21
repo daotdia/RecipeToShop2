@@ -1,14 +1,11 @@
-package com.otero.recipetoshop.android.presentation.components.despensa
+package com.otero.recipetoshop.android.presentation.components.recetas
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.InteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material.icons.filled.ArrowDropUp
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -18,32 +15,29 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.otero.recipetoshop.android.presentation.components.util.GenericForm
-import com.otero.recipetoshop.android.presentation.theme.analogousColorGreen
-import com.otero.recipetoshop.android.presentation.theme.primaryColor
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
 import com.otero.recipetoshop.domain.model.NegativeAction
 import com.otero.recipetoshop.domain.model.PositiveAction
-import com.otero.recipetoshop.domain.model.despensa.Food
+import com.otero.recipetoshop.domain.model.recetas.Receta
 import com.otero.recipetoshop.domain.util.TipoUnidad
-import com.otero.recipetoshop.presentattion.screens.despensa.FoodListState
+import com.otero.recipetoshop.events.recetas.RecetasListEvents
 import com.otero.recipetoshop.presentattion.screens.despensa.FoodState
+import com.otero.recipetoshop.presentattion.screens.recetas.RecetaState
 
 @ExperimentalComposeUiApi
 @Composable
-fun NewFoodPopUp(
-    onAddFood: (String,String,String) -> Unit,
-    onNewFood: MutableState<Boolean>,
-) {
-    val newFoodState = remember { mutableStateOf(FoodState()) }
+fun NewRecetaPopUp(
+    onAddReceta: (String,String) -> Unit,
+    onNewReceta: MutableState<Boolean>,
+){
+    val newRecetaState = remember { mutableStateOf(RecetaState()) }
     val nombreError = remember { mutableStateOf(false) }
     val cantidadError = remember { mutableStateOf(false) }
     val isAceptable = remember { mutableStateOf(false) }
@@ -52,8 +46,8 @@ fun NewFoodPopUp(
     if(
         !nombreError.value &&
         !cantidadError.value &&
-        !newFoodState.value.nombre.isBlank() &&
-        !newFoodState.value.cantidad.isBlank()
+        !newRecetaState.value.nombre.isBlank() &&
+        !newRecetaState.value.cantidad.isBlank()
     ){
         isAceptable.value = true
     }
@@ -64,23 +58,22 @@ fun NewFoodPopUp(
             .fillMaxHeight(0.75f)
         ,
         onDismiss = {
-            onNewFood.value = false
+            onNewReceta.value = false
         },
         title = {},
         negativeAction = NegativeAction(
             negativeBtnTxt = "Cancelar",
             onNegativeAction = {
-                onNewFood.value = false
+                onNewReceta.value = false
             }
         ),
         positiveAction = PositiveAction(
             positiveBtnTxt = "Añadir",
             onPositiveAction = {
-                onNewFood.value = false
-                onAddFood(
-                    newFoodState.value.nombre,
-                    newFoodState.value.tipo,
-                    newFoodState.value.cantidad
+                onNewReceta.value = false
+                onAddReceta(
+                    newRecetaState.value.nombre,
+                    newRecetaState.value.cantidad
                 )
             },
         ),
@@ -94,7 +87,7 @@ fun NewFoodPopUp(
                 verticalArrangement = Arrangement.SpaceEvenly,
                 horizontalAlignment = Alignment.CenterHorizontally,
 
-            ) {
+                ) {
                 val keyboardController = LocalSoftwareKeyboardController.current
                 Row(
                     modifier = Modifier
@@ -108,7 +101,7 @@ fun NewFoodPopUp(
                             .fillMaxWidth()
                             .padding(top = 4.dp, bottom = 8.dp),
                         textAlign = TextAlign.Center,
-                        text = "Registro Nuevo Alimento",
+                        text = "Registro Nueva Receta",
                         style = MaterialTheme.typography.subtitle1,
                         color = primaryDarkColor
                     )
@@ -122,13 +115,13 @@ fun NewFoodPopUp(
                 ) {
                     //Campo para el nombre del alimento.
                     OutlinedTextField(
-                        value = newFoodState.value.nombre,
+                        value = newRecetaState.value.nombre,
                         onValueChange = {
-                            newFoodState.value = newFoodState.value.copy(nombre = it)
+                            newRecetaState.value = newRecetaState.value.copy(nombre = it)
                             //En el caso de que el campo de nombre esté vacío lo indico como error.
                             if(
-                                newFoodState.value.nombre.equals("") ||
-                                newFoodState.value.nombre.isBlank()
+                                newRecetaState.value.nombre.equals("") ||
+                                newRecetaState.value.nombre.isBlank()
                             ){
                                 nombreError.value = true
                             }else{
@@ -152,56 +145,6 @@ fun NewFoodPopUp(
                         isError = nombreError.value
                     )
                 }
-                Row(
-                    modifier = Modifier
-                        .wrapContentHeight()
-                    ,
-                    horizontalArrangement = Arrangement.SpaceEvenly,
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    //Campo para el tipo de unidades del alimento.
-                    val expand = remember { mutableStateOf(false)}
-                    val iconMenu = if(expand.value){
-                        Icons.Filled.ChevronRight
-                    }else{
-                        Icons.Filled.ChevronRight
-                    }
-                    //En este campo hay tanto un primer campo que luego se coinvierte en un desplegable seleccionable con el tipo de alimento de mediad,.
-                    OutlinedTextField(
-                        modifier = Modifier
-                            .clickable { expand.value = !expand.value }
-                            .fillMaxWidth()
-                        ,
-                        readOnly = true,
-                        value = newFoodState.value.tipo,
-                        onValueChange = {
-                            newFoodState.value = newFoodState.value.copy(tipo = it)
-                        },
-                        label = { Text(text = "Unidad Medición")},
-                        textStyle = MaterialTheme.typography.body1,
-                        trailingIcon = {
-                            Icon(
-                                iconMenu,
-                                contentDescription = "menu unidad de medida",
-                                modifier = Modifier.clickable { expand.value = !expand.value }
-                            )
-                        },
-                    )
-                    DropdownMenu(
-                        modifier = Modifier.fillMaxWidth(),
-                        expanded = expand.value,
-                        onDismissRequest = { expand.value = false },
-                    ) {
-                        TipoUnidad.values().forEach { tipo ->
-                            DropdownMenuItem(onClick = {
-                                newFoodState.value = newFoodState.value.copy(tipo = tipo.name)
-                                expand.value = false
-                            }) {
-                                Text(text = tipo.name)
-                            }
-                        }
-                    }
-                }
                 //El campo de cantidad lo pongo en otra linea de la ventana.
                 Row(
                     modifier = Modifier
@@ -212,12 +155,12 @@ fun NewFoodPopUp(
                 ) {
                     //Campo para añadir la cantidad numérica
                     OutlinedTextField(
-                        value = newFoodState.value.cantidad,
+                        value = newRecetaState.value.cantidad,
                         onValueChange = {
-                            newFoodState.value = newFoodState.value.copy(cantidad = it)                    //En el caso de que el campo de cantidad esté vacío lo indico como error.
+                            newRecetaState.value = newRecetaState.value.copy(cantidad = it)                    //En el caso de que el campo de cantidad esté vacío lo indico como error.
                             if(
-                                newFoodState.value.cantidad.isBlank() ||
-                                newFoodState.value.cantidad.toInt() <= 0
+                                newRecetaState.value.cantidad.isBlank() ||
+                                newRecetaState.value.cantidad.toInt() <= 0
                             ){
                                 cantidadError.value = true
                             }else{
@@ -246,4 +189,3 @@ fun NewFoodPopUp(
         }
     )
 }
-

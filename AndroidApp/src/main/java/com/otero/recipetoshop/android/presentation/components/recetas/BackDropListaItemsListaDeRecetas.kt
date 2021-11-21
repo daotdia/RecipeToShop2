@@ -1,25 +1,26 @@
 package com.otero.recipetoshop.android.presentation.components.recetas
 
-import android.hardware.TriggerEvent
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
+import androidx.compose.material.icons.filled.Save
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.otero.recipetoshop.android.presentation.components.despensa.FoodList
+import androidx.compose.ui.unit.dp
+import com.otero.recipetoshop.android.presentation.components.despensa.NewFoodPopUp
 import com.otero.recipetoshop.android.presentation.components.util.BackLayerBackDrop
 import com.otero.recipetoshop.android.presentation.components.util.MenuItemBackLayer
 import com.otero.recipetoshop.android.presentation.theme.primaryColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryDarkColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
-import com.otero.recipetoshop.domain.model.despensa.Food
-import com.otero.recipetoshop.domain.model.recetas.Receta
-import com.otero.recipetoshop.events.despensa.FoodListEvents
+import com.otero.recipetoshop.domain.util.TipoUnidad
 import com.otero.recipetoshop.events.recetas.RecetasListEvents
-import com.otero.recipetoshop.presentattion.screens.despensa.FoodListState
 import com.otero.recipetoshop.presentattion.screens.recetas.RecetasListState
 import kotlinx.coroutines.launch
 
@@ -33,6 +34,7 @@ fun BackDropListaItemsListaDeRecetas(
     val backdropScaffoldState = rememberBackdropScaffoldState(initialValue = BackdropValue.Revealed)
     val coroutineScope = rememberCoroutineScope()
     val rutaActual = remember {mutableStateOf("recetas")}
+    val dialogElement = remember { mutableStateOf(false)}
 
     Scaffold(
         floatingActionButton = {
@@ -40,10 +42,8 @@ fun BackDropListaItemsListaDeRecetas(
                 backgroundColor = secondaryDarkColor,
                 contentColor = secondaryLightColor,
                 onClick = {
-//                    onTriggeEventReceta(RecetasListEvents.onAddreceta(
-//
-//                    ))
-                },
+                    dialogElement.value = true
+                          },
                 content = {
                     Icon(Icons.Default.Add, null)
                 }
@@ -60,7 +60,7 @@ fun BackDropListaItemsListaDeRecetas(
                             coroutineScope.launch { backdropScaffoldState.conceal() }
                         } else if (backdropScaffoldState.isConcealed) {
                             coroutineScope.launch { backdropScaffoldState.reveal() }
-                        } else {}
+                        }
                     },
                 ) {
                     if(backdropScaffoldState.isRevealed){
@@ -102,10 +102,10 @@ fun BackDropListaItemsListaDeRecetas(
                         )
                     }
                     "alimentos" -> {
-//                        AlimentodList(
-//                            listState = stateListaRecetas,
-//                            onTriggeEvent = onTriggeEventReceta
-//                        )
+                        AlimentosList(
+                            stateListaRecetas = stateListaRecetas,
+                            onTriggeEvent = onTriggeEventReceta
+                        )
                     }
                 }
             },
@@ -113,7 +113,60 @@ fun BackDropListaItemsListaDeRecetas(
             backLayerContentColor = secondaryLightColor,
             frontLayerBackgroundColor = secondaryLightColor,
         ) {
-
+            if(dialogElement.value){
+                if(rutaActual.value.equals("recetas")){
+                    NewFoodPopUp(
+                        onAddFood = { nombre, tipo, cantidad ->
+                            onTriggeEventReceta(
+                                RecetasListEvents.onAddAlimento(
+                                    nombre = nombre,
+                                    cantidad = cantidad.toInt(),
+                                    tipoUnidad = TipoUnidad.valueOf(tipo)
+                                )
+                            )
+                        },
+                        onNewFood = dialogElement,
+                    )
+                }else {
+                    NewRecetaPopUp(
+                        onAddReceta = { nombre, cantidad ->
+                            onTriggeEventReceta(
+                                RecetasListEvents.onAddReceta(
+                                    nombre = nombre,
+                                    cantidad = cantidad.toInt()
+                                )
+                            )
+                        },
+                        onNewReceta = dialogElement
+                    )
+                }
+            }
+            val dialogSaveReceta = remember { mutableStateOf(false)}
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .wrapContentHeight()
+                    .padding(2.dp),
+                horizontalAlignment = Alignment.Start,
+                verticalArrangement = Arrangement.Bottom,
+            ) {
+                FloatingActionButton(
+                    backgroundColor = secondaryDarkColor,
+                    contentColor = secondaryLightColor,
+                    onClick = {
+                              dialogSaveReceta.value = true
+                    },
+                ){
+                    Icon(Icons.Default.Save, "Guardar Lista Recetas")
+                }
+            }
+            if(dialogSaveReceta.value){
+                NewListaRecetaPopUp(
+                    onAddListaReceta = { nombre ->
+                        onTriggeEventReceta(RecetasListEvents.onAddListaReceta(nombre = nombre))
+                    },
+                    onNewListaReceta = dialogSaveReceta)
+            }
         }
     }
 }

@@ -77,7 +77,6 @@ CREATE TABLE  receta_Entity(
     id_receta INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     nombre TEXT NOT NULL,
     cantidad INTEGER NOT NULL,
-    tipo TEXT ,
     FOREIGN KEY (id_listarecetas) REFERENCES listarecetas_Entity(nombre)
     ON DELETE CASCADE
 );

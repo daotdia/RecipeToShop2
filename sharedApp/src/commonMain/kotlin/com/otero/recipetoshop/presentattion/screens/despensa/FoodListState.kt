@@ -6,7 +6,6 @@ import com.otero.recipetoshop.domain.util.Queue
 
 data class FoodListState(
     val alimentos: List<Food> = listOf(),
-    var onNewFood: Boolean = false,
     val queueError: Queue<GenericMessageInfo> = Queue(mutableListOf())
 )
 

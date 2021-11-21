@@ -45,8 +45,6 @@ constructor(
                 updateCantidadAlimento(event.cantidad, event.food)
             }
             is FoodListEvents.onAddFood -> {
-                //Elimino el popup
-                listState.value = listState.value.copy(onNewFood = false)
                 val food = createFood(
                     nombre = event.nombre,
                     nombretipo = event.tipo,

@@ -44,13 +44,14 @@ fun FoodList (
     listState: MutableState<FoodListState>,
     onTriggeEvent: (FoodListEvents) -> Unit
 ) {
+    val onNewFood = remember { mutableStateOf(false)}
     //El contenido lo organizo en un scaffold para poner facilmente floatingbutton
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    listState.value = listState.value.copy(onNewFood = true)
+                    onNewFood.value = true
                 },
                 backgroundColor = primaryDarkColor,
                 contentColor = secondaryLightColor,
@@ -60,7 +61,7 @@ fun FoodList (
         }
     ) {
         //PopUp de la ventana para crear nuevo alimento.
-        if (listState.value.onNewFood) {
+        if (onNewFood.value) {
             NewFoodPopUp(
                 onAddFood = { nombre, tipo, cantidad ->
                     onTriggeEvent(
@@ -71,7 +72,7 @@ fun FoodList (
                         )
                     )
                 },
-                listState = listState,
+                onNewFood = onNewFood,
             )
         }
     }
@@ -133,7 +134,10 @@ fun FoodList (
                     )
 
                     Box(
-                        Modifier.fillMaxSize().background(color).padding(horizontal = 20.dp),
+                        Modifier
+                            .fillMaxSize()
+                            .background(color)
+                            .padding(horizontal = 20.dp),
                         contentAlignment = alignment
                     ) {
                         Icon(

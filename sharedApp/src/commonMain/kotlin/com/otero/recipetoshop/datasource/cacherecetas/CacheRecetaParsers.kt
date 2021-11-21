@@ -14,7 +14,6 @@ fun Listarecetas_Entity.toListaRecetas(): ListaRecetas{
     return ListaRecetas(
         id_listaRecetas = id_listarceras.toInt(),
         nombre = nombre,
-        recetas = listOf()
     )
 }
 
@@ -29,7 +28,6 @@ fun Receta_Entity.toReceta(): Receta {
         id_Receta = id_receta.toInt(),
         nombre = nombre,
         cantidad = cantidad.toInt(),
-        ingredientes = listOf()
     )
 }
 

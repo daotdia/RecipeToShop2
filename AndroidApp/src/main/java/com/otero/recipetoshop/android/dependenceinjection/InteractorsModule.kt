@@ -1,8 +1,10 @@
 package com.otero.recipetoshop.android.dependenceinjection
 
 import com.otero.recipetoshop.Interactors.despensa.*
+import com.otero.recipetoshop.Interactors.recetas.AddElementoListaRecetas
 import com.otero.recipetoshop.Interactors.recetas.AddNewListaRecetas
 import com.otero.recipetoshop.Interactors.recetas.OnEnterListaDeRecetas
+import com.otero.recipetoshop.Interactors.recetas.PrintListaDeListasRecetas
 import com.otero.recipetoshop.datasource.cachedespensa.DespensaCache
 import com.otero.recipetoshop.datasource.cacherecetas.RecetaCache
 import dagger.Module
@@ -89,5 +91,21 @@ object InteractorsModule {
         recetaCache: RecetaCache
     ): OnEnterListaDeRecetas{
         return OnEnterListaDeRecetas(recetaCache = recetaCache)
+    }
+
+    @Singleton
+    @Provides
+    fun providesPrintListaDeListasRecetas(
+        recetaCache: RecetaCache
+    ): PrintListaDeListasRecetas{
+        return PrintListaDeListasRecetas(recetaCache = recetaCache)
+    }
+
+    @Singleton
+    @Provides
+    fun providesAddElementoListaRecetas(
+        recetaCache: RecetaCache
+    ): AddElementoListaRecetas{
+        return AddElementoListaRecetas(recetaCache = recetaCache)
     }
 }
