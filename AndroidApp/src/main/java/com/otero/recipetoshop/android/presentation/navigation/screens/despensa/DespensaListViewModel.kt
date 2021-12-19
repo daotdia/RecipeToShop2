@@ -29,20 +29,19 @@ constructor(
     private val insertNewFoodItem: InsertNewFoodItem,
     private val getFoods: GetFoods,
     private val deleteFoods: DeleteFoods,
-    private val deleteFood: DeleteFood
+    private val deleteFood: DeleteFood,
+    private val onCLickFoodDespensa: OnCLickFoodDespensa
 ): ViewModel(){
     val listState: MutableState<FoodListState> = mutableStateOf(FoodListState())
-    val foodState: MutableState<FoodState> = mutableStateOf(FoodState())
 
     init{
         obtainFoodsCache()
     }
 
-
     fun onTriggerEvent(event: FoodListEvents){
         when(event){
             is FoodListEvents.onCantidadChange -> {
-                updateCantidadAlimento(event.cantidad, event.food)
+                updateAlimento(food = event.food, cantidad = event.cantidad, )
             }
             is FoodListEvents.onAddFood -> {
                 val food = createFood(
@@ -59,6 +58,9 @@ constructor(
             }
             is FoodListEvents.onFoodDelete -> {
                 deleteFood(event.food)
+            }
+            is FoodListEvents.onClickFood -> {
+                updateAlimento(food = event.alimento, active = event.active)
             }
             else -> {
                 //Manejar los errores.
@@ -79,10 +81,10 @@ constructor(
                 //Elimino de caché el alimento.
                 //ELimino del estado actual el alimento
                 println("Ha llegado hasta el modelo vista")
-                val currentFoods = ArrayList(listState.value.alimentos)
+                val currentFoods = ArrayList(listState.value.allAlimentos)
                 deleteFood.deleteFood(food)
                 currentFoods.remove(food)
-                listState.value = listState.value.copy(alimentos = currentFoods)
+                listState.value = listState.value.copy(allAlimentos = currentFoods)
             }
             dataState.message?.let { message ->
                 //handleError(message)
@@ -94,7 +96,7 @@ constructor(
     private fun removeFoodsCache() {
         deleteFoods.deletFoods().onEach { dataState ->
             dataState.data?.let {
-                listState.value = listState.value.copy(alimentos = listOf())
+                listState.value = listState.value.copy(allAlimentos = listOf())
             }
             dataState.message?.let { message ->
                 //handleError(message)
@@ -105,7 +107,7 @@ constructor(
     private fun obtainFoodsCache() {
         getFoods.getFoods().onEach { dataState ->
             dataState.data?.let { foods ->
-                listState.value = listState.value.copy(alimentos = foods)
+                listState.value = listState.value.copy(allAlimentos = foods)
             }
             dataState.message?.let { message ->
                 //handleError(message)
@@ -131,33 +133,41 @@ constructor(
     private fun rePrintFoods() {
         getFoods.getFoods().onEach { dataState ->
             dataState.data?.let { currentAlimentos ->
-                listState.value = listState.value.copy(alimentos = currentAlimentos)
+                listState.value = listState.value.copy(allAlimentos = currentAlimentos)
             }
         }.launchIn(viewModelScope)
     }
 
-    private fun updateCantidadAlimento(cantidad: String, food: Food){
-        //Actualizo el estado del viewModel confoeme llegan daaStates asíncronos.
-        changeCantidadFood.updateCantidad(
-            cantidad = cantidad,
-            food = food
-        ).onEach { dataState ->
-            dataState.data?.let { updatedFood ->
-                updateFood(updatedFood,food)
+    private fun updateAlimento(cantidad: String? = null, food: Food, active: Boolean = true){
+        if(cantidad != null){
+            //Actualizo el estado del viewModel confoeme llegan daaStates asíncronos.
+            changeCantidadFood.updateCantidad(
+                cantidad = cantidad,
+                food = food
+            ).onEach { dataState ->
+                dataState.data?.let { updatedFood ->
+                    updateFood(updatedFood,food)
+                }
+                dataState.message?.let { message ->
+                    //handleError(message)
+                }
+            }.launchIn(viewModelScope)
+        } else {
+            onCLickFoodDespensa.onCLickFoodDespensa(food = food, active = active).onEach { dataState ->
+                dataState.data?.let { updatedFood ->
+                    updateFood(updatedFood,food)
+                }
             }
-            dataState.message?.let { message ->
-                //handleError(message)
-            }
-        }.launchIn(viewModelScope)
+        }
     }
 
    private fun refreshFoods(currentFoods: List<Food>){
-       listState.value = listState.value.copy(alimentos = listOf())
-       listState.value = listState.value.copy(alimentos = currentFoods)
+       listState.value = listState.value.copy(allAlimentos = listOf())
+       listState.value = listState.value.copy(allAlimentos = currentFoods)
    }
 
     private fun updateFood(updatedFood: Food, food: Food) {
-        val currentFoods = ArrayList(listState.value.alimentos)
+        val currentFoods = ArrayList(listState.value.allAlimentos)
         val currentIndex = currentFoods.indexOf(food)
         currentFoods.set(currentIndex,updatedFood)
         //Reseteo el estado de lista de limetnos actual.
@@ -174,7 +184,8 @@ constructor(
         return Food(
             nombre = nombre,
             tipoUnidad = tipo,
-            cantidad = cantidad.toInt()
+            cantidad = cantidad.toInt(),
+            active = true
         )
     }
 }

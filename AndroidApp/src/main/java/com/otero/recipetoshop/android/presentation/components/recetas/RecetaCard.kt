@@ -31,6 +31,7 @@ import com.otero.recipetoshop.domain.model.recetas.Receta
 @ExperimentalComposeUiApi
 @Composable
 fun RecetaCard (
+    modifier: Modifier = Modifier,
     receta: Receta,
     onCantidadChange: (String) -> Unit,
     elevation: Dp,
@@ -38,7 +39,7 @@ fun RecetaCard (
     val keyboardController = LocalSoftwareKeyboardController.current
     val stateReceta = remember { mutableStateOf(receta) }
     Card(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .wrapContentHeight()
             .padding(top = 2.dp, bottom = 2.dp)
@@ -47,13 +48,13 @@ fun RecetaCard (
         shape = appShapes.medium
     ) {
         Row(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxSize()
                 .padding(16.dp)
             ,
         ){
             Row(
-                modifier = Modifier.weight(2f),
+                modifier = modifier.weight(2f),
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {

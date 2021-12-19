@@ -1,8 +1,11 @@
+import java.lang.Boolean;
+
 CREATE TABLE  despensa_Entity(
     id_despensa INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     nombre TEXT NOT NULL,
     tipo TEXT NOT NULL,
-    cantidad INTEGER NOT NULL
+    cantidad INTEGER NOT NULL,
+    active INTEGER AS Boolean NOT NULL
 );
 
 selectAllFoods:
@@ -14,8 +17,9 @@ INSERT OR REPLACE
 INTO despensa_Entity (
     nombre,
     tipo,
-    cantidad
-) VALUES (?, ?, ?);
+    cantidad,
+    active
+) VALUES (?, ?, ?, ?);
 
 searchFoods:
 SELECT * FROM despensa_Entity
@@ -24,6 +28,11 @@ ORDER BY nombre DESC;
 
 getAllFoods:
 SELECT * FROM despensa_Entity
+ORDER BY nombre DESC;
+
+getFoodByActive:
+SELECT * FROM despensa_Entity
+WHERE active = :active
 ORDER BY nombre DESC;
 
 getFoodById:
@@ -81,6 +90,8 @@ CREATE TABLE  receta_Entity(
     id_receta INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     nombre TEXT NOT NULL,
     cantidad INTEGER NOT NULL,
+    user INTEGER AS Boolean NOT NULL,
+    active INTEGER AS Boolean NOT NULL,
     FOREIGN KEY (id_listarecetas) REFERENCES listarecetas_Entity(nombre)
     ON DELETE CASCADE
 );
@@ -91,11 +102,25 @@ INSERT OR REPLACE
 INTO receta_Entity (
     id_listarecetas,
     nombre,
-    cantidad
-) VALUES ( ?, ?, ?);
+    cantidad,
+    user,
+    active
+) VALUES ( ?, ?, ?, ?, ?);
 
 getAllRecetasInListasRecetas:
 SELECT * FROM receta_Entity
+ORDER BY nombre DESC;
+
+getRecetasByUserInListaRecetas:
+SELECT * FROM receta_Entity
+WHERE user = :user
+AND id_listarecetas = :id_listarecetas
+ORDER BY nombre DESC;
+
+getRecetasByActiveInListaRecetas:
+SELECT * FROM receta_Entity
+WHERE active = :active
+AND id_listarecetas = :id_listarecetas
 ORDER BY nombre DESC;
 
 getRecetasByListaRecetasInListaRecetas:
@@ -129,6 +154,7 @@ CREATE TABLE  alimentos_Entity(
     nombre TEXT NOT NULL,
     tipo TEXT NOT NULL,
     cantidad INTEGER NOT NULL,
+    active INTEGER AS Boolean NOT NULL,
     FOREIGN KEY (id_listaReceta) REFERENCES listarecetas_Entity(id_listarceras)
     ON DELETE CASCADE
 );
@@ -139,11 +165,18 @@ INTO alimentos_Entity (
     id_listaReceta,
     nombre,
     tipo,
-    cantidad
-) VALUES (?, ?, ?,?);
+    cantidad,
+    active
+) VALUES (?, ?, ?,?, ?);
 
 getAllAlimentosInListaRecetas:
 SELECT * FROM alimentos_Entity
+ORDER BY nombre DESC;
+
+getAlimentosByActiveInListaRecetas:
+SELECT * FROM alimentos_Entity
+WHERE active = :active
+AND id_listaReceta = :id_listaReceta
 ORDER BY nombre DESC;
 
 getAlimentosByListaRecetaInListaReceta:
@@ -178,6 +211,7 @@ CREATE TABLE  ingredients_Entity(
     nombre TEXT NOT NULL,
     tipo TEXT NOT NULL,
     cantidad INTEGER NOT NULL,
+    active INTEGER AS Boolean NOT NULL,
     FOREIGN KEY (id_receta) REFERENCES receta_Entity(id_receta)
     ON DELETE CASCADE
 );
@@ -189,8 +223,9 @@ INTO ingredients_Entity (
     id_receta,
     nombre,
     tipo,
-    cantidad
-) VALUES (?, ?, ?,?,?);
+    cantidad,
+    active
+) VALUES (?, ?, ?,?,?, ?);
 
 getAllIngredientesInListasRecetas:
 SELECT * FROM ingredients_Entity
@@ -199,6 +234,12 @@ ORDER BY nombre DESC;
 getIngredientesByRecetaInReceta:
 SELECT * FROM ingredients_Entity
 WHERE id_receta = :id_receta
+ORDER BY nombre DESC;
+
+getIngredientsByActiveInReceta:
+SELECT * FROM ingredients_Entity
+WHERE active = :active
+AND id_receta = :id_receta
 ORDER BY nombre DESC;
 
 getIngredienteByIdInReceta:

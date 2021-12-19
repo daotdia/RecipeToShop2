@@ -21,7 +21,8 @@ fun Despensa_Entity.toFood(): Food {
         id_food = id_despensa.toInt(),
         nombre = nombre,
         tipoUnidad = parserTipoUnidad(tipo),
-        cantidad = cantidad.toInt()
+        cantidad = cantidad.toInt(),
+        active = active
     )
 }
 

@@ -36,6 +36,7 @@ import com.otero.recipetoshop.events.despensa.FoodListEvents
 @ExperimentalComposeUiApi
 @Composable
 fun FoodCard(
+    modifier: Modifier = Modifier,
     food: Food,
     onCantidadChange: (String) -> Unit,
     elevation: Dp,
@@ -43,10 +44,9 @@ fun FoodCard(
     val keyboardController = LocalSoftwareKeyboardController.current
     val stateFood = remember { mutableStateOf(food)}
     Card(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .wrapContentHeight()
-            .padding(top = 2.dp, bottom = 2.dp)
         ,
         elevation = elevation,
         shape = appShapes.medium

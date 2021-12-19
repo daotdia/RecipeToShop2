@@ -11,6 +11,8 @@ interface DespensaCache {
 
     fun getAllFoodsDespensa(): List<Food>?
 
+    fun getFoodByActive(active: Boolean): List<Food>?
+
     fun getFoodDespensaById(id_food: Int): Food?
 
     fun removeAllFoodsDespensa(): Unit

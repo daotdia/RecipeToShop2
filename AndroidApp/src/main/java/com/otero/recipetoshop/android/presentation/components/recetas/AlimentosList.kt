@@ -24,11 +24,9 @@ import androidx.compose.ui.unit.dp
 import com.otero.recipetoshop.android.presentation.components.despensa.FoodCard
 import com.otero.recipetoshop.android.presentation.components.util.MenuItemBackLayer
 import com.otero.recipetoshop.android.presentation.components.util.NestedDownMenu
-import com.otero.recipetoshop.android.presentation.theme.primaryColor
-import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
-import com.otero.recipetoshop.android.presentation.theme.secondaryColor
-import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
+import com.otero.recipetoshop.android.presentation.theme.*
 import com.otero.recipetoshop.domain.model.despensa.Food
+import com.otero.recipetoshop.domain.util.Constants
 import com.otero.recipetoshop.events.recetas.RecetaListEvents
 import com.otero.recipetoshop.presentattion.screens.recetas.RecetasListState
 import kotlinx.coroutines.CoroutineScope
@@ -109,12 +107,18 @@ fun AlimentosList (
                 .fillMaxWidth()
                 .padding(start = 4.dp, top = 12.dp, bottom = 4.dp, end = 4.dp),
         ) {
-            items(stateListaRecetas.value.alimentos, { listItem: Food -> listItem.nombre }) { item ->
+            items(stateListaRecetas.value.allAlimentos, { listItem: Food -> listItem.id_food!! }) { item ->
                 var delete by remember { mutableStateOf(false) }
+                var active by remember { mutableStateOf(true) }
+                if (!item.active) {
+                    active = false
+                } else{
+                    active = true
+                }
                 val dismissStateAlimento = rememberDismissState(
                     initialValue = DismissValue.Default,
                     confirmStateChange = {
-                        if (it == DismissValue.DismissedToStart) delete = !delete
+                        if (it == DismissValue.DismissedToStart || it == DismissValue.DismissedToEnd) delete = !delete
                         it != DismissValue.DismissedToStart
                     }
                 )
@@ -129,8 +133,8 @@ fun AlimentosList (
                         val direction = dismissStateAlimento.dismissDirection ?: return@SwipeToDismiss
                         val color by animateColorAsState(
                             when (dismissStateAlimento.targetValue) {
-                                DismissValue.Default -> Color.LightGray
-                                DismissValue.DismissedToEnd -> Color.Green
+                                DismissValue.Default -> secondaryDarkColor
+                                DismissValue.DismissedToEnd -> Color.Red
                                 DismissValue.DismissedToStart -> Color.Red
                             }
                         )
@@ -139,7 +143,7 @@ fun AlimentosList (
                             DismissDirection.EndToStart -> Alignment.CenterEnd
                         }
                         val icon = when (direction) {
-                            DismissDirection.StartToEnd -> Icons.Default.Done
+                            DismissDirection.StartToEnd -> Icons.Default.Delete
                             DismissDirection.EndToStart -> Icons.Default.Delete
                         }
                         val scale by animateFloatAsState(
@@ -164,18 +168,81 @@ fun AlimentosList (
                         if (delete) {
                             onTriggeEvent(RecetaListEvents.onDeleteAlimento(item))
                         }
-                        FoodCard(
-                            food = item,
-                            onCantidadChange = {
-                                onTriggeEvent(
-                                    RecetaListEvents.onCantidadAlimentoChange(
-                                        cantidad = it.toInt(),
-                                        alimento = item
+                        if(active){
+                            FoodCard(
+                                modifier = Modifier
+                                    .clickable(onClick = {
+                                    onTriggeEvent(RecetaListEvents.onAlimentoClick(alimento = item, active = false))
+                                }),
+                                food = item,
+                                onCantidadChange = {
+                                    onTriggeEvent(
+                                        RecetaListEvents.onCantidadAlimentoChange(
+                                            cantidad = it.toInt(),
+                                            alimento = item
+                                        )
                                     )
-                                )
-                            },
-                            elevation = 4.dp
-                        )
+                                },
+                                elevation = 4.dp
+                            )
+                        } else {
+                            Card(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(Constants.CARDSIZE.dp)
+                                    .padding(top = 1.dp, bottom = 1.dp)
+                                    .clickable(onClick = {
+                                        onTriggeEvent(RecetaListEvents.onAlimentoClick(alimento = item, active = true))
+                                    }),
+                                elevation = 0.dp,
+                                shape = appShapes.small,
+                                backgroundColor = secondaryLightColor
+                            ) {
+                                Column(
+                                    modifier = Modifier
+                                        .fillMaxSize()
+                                        .clickable(onClick = {
+                                            onTriggeEvent(
+                                                RecetaListEvents.onAlimentoClick(
+                                                    alimento = item,
+                                                    active = true
+                                                )
+                                            )
+                                        }),
+                                    verticalArrangement = Arrangement.Center,
+                                    horizontalAlignment = Alignment.CenterHorizontally
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .clickable(onClick = {
+                                                onTriggeEvent(
+                                                    RecetaListEvents.onAlimentoClick(
+                                                        alimento = item,
+                                                        active = true
+                                                    )
+                                                )
+                                            }),
+                                        contentAlignment = Alignment.Center
+                                    ) {
+                                        Text(
+                                            text = item.nombre,
+                                            style = TextStyle(
+                                                color = primaryDarkColor,
+                                                fontSize = MaterialTheme.typography.h6.fontSize,
+                                                fontStyle = MaterialTheme.typography.h6.fontStyle,
+                                                fontFamily = MaterialTheme.typography.h6.fontFamily
+                                            )
+                                        )
+                                    }
+                                    Divider(
+                                        modifier = Modifier
+                                            .padding(top = 18.dp),
+                                        color = primaryDarkColor,
+                                        thickness = 1.dp
+                                    )
+                                }
+                            }
+                        }
                     }
                 )
             }

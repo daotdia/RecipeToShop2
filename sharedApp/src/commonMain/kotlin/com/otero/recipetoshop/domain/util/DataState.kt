@@ -5,7 +5,8 @@ import com.otero.recipetoshop.domain.model.GenericMessageInfo
 class DataState<T>(
     val message: GenericMessageInfo.Builder? = null,
     val data: T? = null,
-    val isLoading: Boolean = false
+    val isLoading: Boolean = false,
+    val active: Boolean = true
 ) {
     companion object{
         fun<T> error(
@@ -19,10 +20,12 @@ class DataState<T>(
         fun<T> data(
             message: GenericMessageInfo.Builder? = null,
             data: T? = null,
+            active: Boolean = true
         ): DataState<T>{
             return DataState(
                 message = message,
-                data = data
+                data = data,
+                active = active
             )
         }
 

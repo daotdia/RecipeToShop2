@@ -8,7 +8,7 @@ sealed class FoodListEvents {
 
     data class onAddFood(val nombre: String, val tipo: String, val cantidad: String): FoodListEvents()
 
-    data class onNombreAdd(val nombre: String): FoodListEvents()
+    data class onClickFood(val alimento: Food, val active: Boolean): FoodListEvents()
 
     data class onTipoAdd(val tipo: String): FoodListEvents()
 

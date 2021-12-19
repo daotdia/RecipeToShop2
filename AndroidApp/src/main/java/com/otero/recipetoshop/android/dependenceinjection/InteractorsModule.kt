@@ -1,7 +1,8 @@
 package com.otero.recipetoshop.android.dependenceinjection
 
 import com.otero.recipetoshop.Interactors.despensa.*
-import com.otero.recipetoshop.Interactors.recetas.*
+import com.otero.recipetoshop.Interactors.recetas.listaldelistasrecetas.*
+import com.otero.recipetoshop.Interactors.recetas.listarecetas.*
 import com.otero.recipetoshop.datasource.cachedespensa.DespensaCache
 import com.otero.recipetoshop.datasource.cacherecetas.RecetaCache
 import dagger.Module
@@ -34,6 +35,13 @@ object InteractorsModule {
 //        return GetRecipe(recipeCache = recipeCache)
 //    }
 
+    @Singleton
+    @Provides
+    fun provideOnClickFoodDespensa(
+        foodCache: DespensaCache
+    ): OnCLickFoodDespensa{
+        return OnCLickFoodDespensa(foodCache = foodCache)
+    }
     @Singleton
     @Provides
     fun provideChangeCantidadFood(
@@ -78,7 +86,7 @@ object InteractorsModule {
     @Provides
     fun providesAddNewListaReceta(
         recetaCache: RecetaCache
-    ): AddNewListaRecetas{
+    ): AddNewListaRecetas {
         return AddNewListaRecetas(recetaCache = recetaCache)
     }
 
@@ -86,7 +94,7 @@ object InteractorsModule {
     @Provides
     fun providesOnEnterListaDeRecetas(
         recetaCache: RecetaCache
-    ): OnEnterListaDeRecetas{
+    ): OnEnterListaDeRecetas {
         return OnEnterListaDeRecetas(recetaCache = recetaCache)
     }
 
@@ -94,23 +102,63 @@ object InteractorsModule {
     @Provides
     fun providesPrintListaDeListasRecetas(
         recetaCache: RecetaCache
-    ): PrintListaDeListasRecetas{
+    ): PrintListaDeListasRecetas {
         return PrintListaDeListasRecetas(recetaCache = recetaCache)
     }
 
     @Singleton
     @Provides
-    fun providesAddElementoListaRecetas(
+    fun providesAddRecetaListaRecetas(
         recetaCache: RecetaCache
-    ): AddElementoListaRecetas{
-        return AddElementoListaRecetas(recetaCache = recetaCache)
+    ): AddRecetaListaRecetas {
+        return AddRecetaListaRecetas(recetaCache = recetaCache)
     }
 
     @Singleton
     @Provides
     fun providesGetListaReceta(
         recetaCache: RecetaCache
-    ): GetListaRecetas{
+    ): GetListaRecetas {
         return GetListaRecetas(recetaCache = recetaCache)
+    }
+
+    @Singleton
+    @Provides
+    fun provideAddAlimentoListaRecetas(
+        recetaCache: RecetaCache
+    ): AddAlimentoListaRecetas{
+        return AddAlimentoListaRecetas(recetaCache = recetaCache)
+    }
+
+    @Singleton
+    @Provides
+    fun providesDeleteAlimentoListaRecetas(
+        recetaCache: RecetaCache
+    ): DeleteAlimentoListaRecetas{
+        return DeleteAlimentoListaRecetas(recetaCache = recetaCache)
+    }
+
+    @Singleton
+    @Provides
+    fun providesDeleteRecetaListaRecetas(
+        recetaCache: RecetaCache
+    ): DeleteRecetaListaRecetas{
+        return DeleteRecetaListaRecetas(recetaCache = recetaCache)
+    }
+
+    @Singleton
+    @Provides
+    fun providesUpdateReceta(
+        recetaCache: RecetaCache
+    ): UpdateReceta{
+        return UpdateReceta(recetaCache = recetaCache)
+    }
+
+    @Singleton
+    @Provides
+    fun providesUpdateAlimentoListaRecetas(
+        recetaCache: RecetaCache
+    ): UpdateAlimentoListaRecetas{
+        return UpdateAlimentoListaRecetas(recetaCache = recetaCache)
     }
 }

@@ -28,6 +28,8 @@ fun Receta_Entity.toReceta(): Receta {
         id_Receta = id_receta.toInt(),
         nombre = nombre,
         cantidad = cantidad.toInt(),
+        user = user,
+        active = active
     )
 }
 
@@ -44,6 +46,7 @@ fun Alimentos_Entity.toFood(): Food{
         nombre = nombre,
         cantidad = cantidad.toInt(),
         tipoUnidad = TipoUnidad.valueOf(tipo),
+        active = active
     )
 }
 
@@ -59,7 +62,8 @@ fun Ingredients_Entity.toFood(): Food{
         id_food = id_ingrediente.toInt(),
         nombre = nombre,
         cantidad = cantidad.toInt(),
-        tipoUnidad = TipoUnidad.valueOf(tipo)
+        tipoUnidad = TipoUnidad.valueOf(tipo),
+        active = active
     )
 }
 

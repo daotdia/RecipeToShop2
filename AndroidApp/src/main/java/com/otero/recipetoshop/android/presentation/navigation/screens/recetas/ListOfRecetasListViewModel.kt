@@ -2,17 +2,13 @@ package com.otero.recipetoshop.android.presentation.navigation.screens.recetas
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.otero.recipetoshop.Interactors.recetas.*
-import com.otero.recipetoshop.domain.model.despensa.Food
+import com.otero.recipetoshop.Interactors.recetas.listaldelistasrecetas.AddNewListaRecetas
+import com.otero.recipetoshop.Interactors.recetas.listaldelistasrecetas.PrintListaDeListasRecetas
 import com.otero.recipetoshop.domain.model.recetas.ListaRecetas
-import com.otero.recipetoshop.domain.model.recetas.Receta
-import com.otero.recipetoshop.domain.util.TipoUnidad
 import com.otero.recipetoshop.events.recetas.ListOfRecetasListEvents
 import com.otero.recipetoshop.presentattion.screens.recetas.ListOfRecetasListState
-import com.otero.recipetoshop.presentattion.screens.recetas.RecetasListState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -25,7 +21,7 @@ constructor(
     private val addNewListaRecetas: AddNewListaRecetas,
     private  val printListaDeListasRecetas: PrintListaDeListasRecetas,
 
-): ViewModel(){
+    ): ViewModel(){
     val listadelistarecetasstate: MutableState<ListOfRecetasListState> = mutableStateOf(ListOfRecetasListState())
 
     init {

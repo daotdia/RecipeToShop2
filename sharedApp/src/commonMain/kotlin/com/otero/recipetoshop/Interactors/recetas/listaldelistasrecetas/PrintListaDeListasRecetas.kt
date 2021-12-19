@@ -1,4 +1,4 @@
-package com.otero.recipetoshop.Interactors.recetas
+package com.otero.recipetoshop.Interactors.recetas.listaldelistasrecetas
 
 import com.otero.recipetoshop.datasource.cacherecetas.RecetaCache
 import com.otero.recipetoshop.domain.model.recetas.ListaRecetas

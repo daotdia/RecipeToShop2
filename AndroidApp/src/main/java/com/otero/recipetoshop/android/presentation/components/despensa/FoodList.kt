@@ -96,11 +96,11 @@ fun FoodList (
             .offset(y = 48.dp)
             .padding(1.dp),
     ) {
-        items(listState.value.alimentos, {listItem: Food -> listItem.id_food!!}) { item ->
+        items(listState.value.allAlimentos, {listItem: Food -> listItem.id_food!!}) { item ->
             var delete by remember { mutableStateOf(false) }
             val dismissState = rememberDismissState(
                 confirmStateChange = {
-                    if (it == DismissValue.DismissedToStart) delete = !delete
+                    if (it == DismissValue.DismissedToStart || it == DismissValue.DismissedToEnd) delete = !delete
                     it != DismissValue.DismissedToStart
                 }
             )
@@ -116,7 +116,7 @@ fun FoodList (
                     val color by animateColorAsState(
                         when (dismissState.targetValue) {
                             DismissValue.Default -> Color.LightGray
-                            DismissValue.DismissedToEnd -> Color.Green
+                            DismissValue.DismissedToEnd -> Color.Red
                             DismissValue.DismissedToStart -> Color.Red
                         }
                     )
@@ -125,7 +125,7 @@ fun FoodList (
                         DismissDirection.EndToStart -> Alignment.CenterEnd
                     }
                     val icon = when (direction) {
-                        DismissDirection.StartToEnd -> Icons.Default.Done
+                        DismissDirection.StartToEnd -> Icons.Default.Delete
                         DismissDirection.EndToStart -> Icons.Default.Delete
                     }
                     val scale by animateFloatAsState(

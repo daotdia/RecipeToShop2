@@ -9,7 +9,7 @@ interface RecetaCache {
     //ListaRecetas
     fun insertListaRecetas(listaReceta: ListaRecetas): Int
 
-    fun insertListasRecetas(listasRecetas: List<ListaRecetas>): List<Int>
+    fun insertListasRecetas(listasRecetas: List<ListaRecetas>): List<Int>?
 
     fun getAllListaRecetas(): List<ListaRecetas>?
 
@@ -26,7 +26,11 @@ interface RecetaCache {
 
     fun insertRecetasToListaRecetas(recetas: List<Receta>): Unit
 
-    fun getAllRecetasInListasReceta(): List<Receta>
+    fun getAllRecetasInListasReceta(): List<Receta>?
+
+    fun getRecetasByUserInListaRecetas(user: Boolean, id_listaReceta: Int): List<Receta>?
+
+    fun getRecetasByActiveInListaRecetas(active: Boolean, id_listaReceta: Int): List<Receta>?
 
     fun getRecetasByListaRecetasInListaRecetas(id_listaReceta: Int): List<Receta>?
 
@@ -45,7 +49,9 @@ interface RecetaCache {
 
     fun getAlimentosByListaRecetas(id_listaReceta: Int): List<Food>?
 
-    fun getAllAlimentosInListasRecetas(): List<Food>
+    fun getAlimentosByActiveInListaRecetas(active: Boolean, id_listaReceta: Int): List<Food>?
+
+    fun getAllAlimentosInListasRecetas(): List<Food>?
 
     fun getAlimentoByIdInListaRecetas(id_alimento: Int): Food?
 
@@ -60,7 +66,9 @@ interface RecetaCache {
 
     fun insertIngredientesToReceta(ingredientes: List<Food>): Unit
 
-    fun getAllIngredientesInListasRecetas(): List<Food>
+    fun getAllIngredientesInListasRecetas(): List<Food>?
+
+    fun getIngredientsByActiveInRecta(active: Boolean, id_receta: Int): List<Food>?
 
     fun getIngredientesByReceta(id_receta: Int): List<Food>?
 

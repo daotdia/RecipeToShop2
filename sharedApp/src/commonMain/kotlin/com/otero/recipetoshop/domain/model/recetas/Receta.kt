@@ -7,5 +7,7 @@ data class Receta(
     val id_listaRecetas: Int,
     val id_Receta: Int? = null,
     val nombre: String,
-    val cantidad: Int
+    val cantidad: Int,
+    var user: Boolean,
+    var active: Boolean,
 )

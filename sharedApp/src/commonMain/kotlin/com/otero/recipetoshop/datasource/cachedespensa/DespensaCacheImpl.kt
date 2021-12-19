@@ -9,10 +9,14 @@ class DespensaCacheImpl(
     private val queries: FoodDBQueries = foodDataBase.foodDBQueries
 
     override fun insertFoodDespensa(food: Food) {
+        if(food.id_food != null){
+            queries.removeFoodById(food.id_food.toLong())
+        }
         queries.insertFood(
             nombre = food.nombre,
             tipo = food.tipoUnidad.name,
-            cantidad = food.cantidad.toLong()
+            cantidad = food.cantidad.toLong(),
+            active = food.active
         )
     }
 
@@ -30,6 +34,12 @@ class DespensaCacheImpl(
 
     override fun getAllFoodsDespensa(): List<Food> {
         return queries.getAllFoods()
+            .executeAsList()
+            .toFoodList()
+    }
+
+    override fun getFoodByActive(active: Boolean): List<Food>? {
+        return queries.getFoodByActive(active = active)
             .executeAsList()
             .toFoodList()
     }

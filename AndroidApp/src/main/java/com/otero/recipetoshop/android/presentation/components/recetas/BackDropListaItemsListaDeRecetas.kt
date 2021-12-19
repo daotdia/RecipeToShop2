@@ -6,7 +6,6 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Done
-import androidx.compose.material.icons.filled.Save
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -17,7 +16,6 @@ import com.otero.recipetoshop.android.presentation.components.despensa.NewFoodPo
 import com.otero.recipetoshop.android.presentation.components.util.BackLayerBackDrop
 import com.otero.recipetoshop.android.presentation.components.util.MenuItemBackLayer
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
-import com.otero.recipetoshop.android.presentation.theme.secondaryDarkColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
 import com.otero.recipetoshop.domain.util.TipoUnidad
 import com.otero.recipetoshop.events.recetas.RecetaListEvents
@@ -132,7 +130,7 @@ fun BackDropListaItemsListaDeRecetas(
                     NewRecetaPopUp(
                         onAddReceta = { nombre, cantidad ->
                             onTriggeEventReceta(
-                                RecetaListEvents.onAddReceta(
+                                RecetaListEvents.onAddUserReceta(
                                     nombre = nombre,
                                     cantidad = cantidad.toInt()
                                 )

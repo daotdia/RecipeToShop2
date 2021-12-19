@@ -68,10 +68,15 @@ class RecetaCacheImpl(
 
     //Recetas
     override fun insertRecetaToListaRecetas(receta: Receta) {
+        if(receta.id_Receta != null){
+            queries.removeRecetaByIdInListaReceta(receta.id_Receta.toLong())
+        }
         queries.insertRecetaToListaRecetas(
             id_listarecetas = receta.id_listaRecetas.toLong(),
             nombre = receta.nombre,
             cantidad = receta.cantidad.toLong(),
+            user = receta.user,
+            active = receta.active
         )
     }
 
@@ -84,6 +89,20 @@ class RecetaCacheImpl(
     override fun getAllRecetasInListasReceta(): List<Receta> {
         return queries
             .getAllRecetasInListasRecetas()
+            .executeAsList()
+            .toListaRecetas()
+    }
+
+    override fun getRecetasByUserInListaRecetas(user: Boolean, id_listaReceta: Int): List<Receta> {
+        return queries
+            .getRecetasByUserInListaRecetas(user = user, id_listarecetas = id_listaReceta.toLong())
+            .executeAsList()
+            .toListaRecetas()
+    }
+
+    override fun getRecetasByActiveInListaRecetas(active: Boolean, id_listaReceta: Int): List<Receta> {
+        return queries
+            .getRecetasByActiveInListaRecetas(active = active, id_listarecetas = id_listaReceta.toLong())
             .executeAsList()
             .toListaRecetas()
     }
@@ -135,11 +154,15 @@ class RecetaCacheImpl(
 
     //Alimentos
     override fun insertAlimentoToListaRecetas(alimento: Food) {
+        if(alimento.id_food != null){
+            queries.removeAlimentoByIdInListaRecetas(alimento.id_food.toLong())
+        }
         queries.insertAlimentoToListaRecetas(
             id_listaReceta = alimento.id_listaRecetas!!.toLong(),
             nombre = alimento.nombre,
             cantidad = alimento.cantidad.toLong(),
-            tipo = alimento.tipoUnidad.name
+            tipo = alimento.tipoUnidad.name,
+            active = alimento.active
         )
     }
 
@@ -159,6 +182,13 @@ class RecetaCacheImpl(
             println(e.message + "    ////  No se ha podido obtenerla lista de recetas con id: ${id_listaReceta}")
             null
         }
+    }
+
+    override fun getAlimentosByActiveInListaRecetas(active: Boolean, id_listaReceta: Int): List<Food> {
+        return queries
+            .getAlimentosByActiveInListaRecetas(active =active, id_listaReceta = id_listaReceta.toLong())
+            .executeAsList()
+            .toListaFood()
     }
 
     override fun getAllAlimentosInListasRecetas(): List<Food> {
@@ -208,7 +238,8 @@ class RecetaCacheImpl(
             id_listaRecetas = ingrediente.id_listaRecetas!!.toLong(),
             nombre = ingrediente.nombre,
             cantidad = ingrediente.cantidad.toLong(),
-            tipo = ingrediente.tipoUnidad.name
+            tipo = ingrediente.tipoUnidad.name,
+            active = ingrediente.active
         )
     }
 
@@ -236,6 +267,13 @@ class RecetaCacheImpl(
                 .executeAsList()
                 .toListFood()
 
+    }
+
+    override fun getIngredientsByActiveInRecta(active: Boolean, id_receta: Int): List<Food> {
+        return queries
+            .getIngredientsByActiveInReceta(active = active, id_receta = id_receta.toLong())
+            .executeAsList()
+            .toListFood()
     }
 
     override fun getIngredienteByIdInReceta(id_ingrediente: Int): Food? {
