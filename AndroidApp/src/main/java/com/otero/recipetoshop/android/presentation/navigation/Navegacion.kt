@@ -11,13 +11,16 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.HiltViewModelFactory
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.navArgument
 import com.otero.recipetoshop.android.presentation.components.despensa.FoodList
 import com.otero.recipetoshop.android.presentation.components.recetas.ListaDeListaRectas
 import com.otero.recipetoshop.android.presentation.components.recetas.BackDropListaItemsListaDeRecetas
 import com.otero.recipetoshop.android.presentation.navigation.screens.despensa.FoodListViewModel
-import com.otero.recipetoshop.android.presentation.navigation.screens.recetas.RecetasListViewModel
+import com.otero.recipetoshop.android.presentation.navigation.screens.recetas.ListOfRecetasListViewModel
+import com.otero.recipetoshop.android.presentation.navigation.screens.recetas.RecetaListViewModel
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
 
 @ExperimentalComposeUiApi
@@ -77,26 +80,29 @@ fun Navegacion(
             route = RutasNavegacion.ListaDeListaRecetas.route
         ){navBackStackEntry ->
             val factory = HiltViewModelFactory(LocalContext.current, navBackStackEntry)
-            val recetasViewModel: RecetasListViewModel = viewModel("RecetasListViewModel", factory )
+            val listOfRecetasViewModel: ListOfRecetasListViewModel = viewModel("ListOfRecetasListViewModel", factory )
             Surface(color = secondaryLightColor){
                 ListaDeListaRectas(
                     navController = navController,
-                    recetasState = recetasViewModel.listadelistarecetasstate,
-                    onTriggeEvent = recetasViewModel::onTriggerEvent
+                    recetasState = listOfRecetasViewModel.listadelistarecetasstate,
+                    onTriggeEvent = listOfRecetasViewModel::onTriggerEvent,
                 )
             }
         }
 
         //Pantalla de lista de recetas.
         composable(
-            route = RutasNavegacion.ListaRecetas.route
+            route = RutasNavegacion.ListaRecetas.route + "/{listarecetasid}",
+            arguments = listOf(navArgument("listarecetasid"){
+                type = NavType.IntType
+            })
         ){ navBackStackEntry ->
             val factory = HiltViewModelFactory(LocalContext.current, navBackStackEntry)
-            val recetasViewModel: RecetasListViewModel = viewModel("RecetasListViewModel", factory )
+            val recetaListViewModel: RecetaListViewModel = viewModel("RecetaListViewModel", factory )
 
             BackDropListaItemsListaDeRecetas(
-                stateListaRecetas = recetasViewModel.listaRecetasState,
-                onTriggeEventReceta = recetasViewModel::onTriggerEvent
+                stateListaRecetas = recetaListViewModel.listaRecetasState,
+                onTriggeEventReceta = recetaListViewModel::onTriggerEvent
             )
         }
 

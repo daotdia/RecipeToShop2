@@ -7,9 +7,9 @@ import kotlinx.serialization.descriptors.PrimitiveKind
 
 interface RecetaCache {
     //ListaRecetas
-    fun insertListaRecetas(listaReceta: ListaRecetas): Unit
+    fun insertListaRecetas(listaReceta: ListaRecetas): Int
 
-    fun insertListasRecetas(listasRecetas: List<ListaRecetas>): Unit
+    fun insertListasRecetas(listasRecetas: List<ListaRecetas>): List<Int>
 
     fun getAllListaRecetas(): List<ListaRecetas>?
 
@@ -18,6 +18,8 @@ interface RecetaCache {
     fun removeAllListaRecetas(): Unit
 
     fun removeListaRecetaById(id_listaReceta: Int): Unit
+
+    fun lastIdInserted(): Int
 
     //Recetas
     fun insertRecetaToListaRecetas(receta: Receta): Unit

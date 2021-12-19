@@ -8,7 +8,7 @@ plugins {
     id(Plugins.sqlDelight)
 }
 
-version = "1.0"
+version = "1.1"
 
 android {
     compileSdkVersion(Application.compileSdk)
@@ -46,8 +46,8 @@ kotlin {
         summary = "Some description for the Shared Module"
         homepage = "Link to the Shared Module homepage"
         ios.deploymentTarget = "14.1"
-        frameworkName = "sharedApp"
-        podfile = project.file("../iosFood2Fork/Podfile")
+        framework {baseName = "sharedApp"}
+        podfile = project.file("../IOSApp/Podfile")
     }
 
     sourceSets {

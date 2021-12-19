@@ -51,7 +51,6 @@ fun List<Alimentos_Entity>.toListaFood(): List<Food>{
     return map{it.toFood()}
 }
 
-
 //Parser Ingredientes
 fun Ingredients_Entity.toFood(): Food{
     return Food(
@@ -64,6 +63,6 @@ fun Ingredients_Entity.toFood(): Food{
     )
 }
 
-fun List<Ingredients_Entity>.toListaFood(): List<Food>{
+fun List<Ingredients_Entity>.toListFood(): List<Food>{
     return map { it.toFood() }
 }

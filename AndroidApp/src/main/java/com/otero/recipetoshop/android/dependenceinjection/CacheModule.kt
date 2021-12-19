@@ -2,6 +2,8 @@ package com.otero.recipetoshop.android.dependenceinjection
 
 import com.otero.recipetoshop.android.BaseApplication
 import com.otero.recipetoshop.datasource.cachedespensa.*
+import com.otero.recipetoshop.datasource.cacherecetas.RecetaCache
+import com.otero.recipetoshop.datasource.cacherecetas.RecetaCacheImpl
 import com.otero.recipetoshop.datasource.cacherecipe.*
 import dagger.Module
 import dagger.Provides
@@ -41,4 +43,9 @@ object CacheModule {
         return DespensaCacheImpl(foodDataBase = foodDataBase)
     }
 
+    @Singleton
+    @Provides
+    fun providesRecetaCache(recetaDataBase: FoodDataBase): RecetaCache{
+        return RecetaCacheImpl(recetaDataBase = recetaDataBase)
+    }
 }

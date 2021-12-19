@@ -21,7 +21,7 @@ class DeleteFood (
         //Si hay recetas guardadas en cache.
         if(foods != null){
             //Elimino el alimento de la lista.
-            foodCache.removeFoodDespensaById(food.id_food)
+            foodCache.removeFoodDespensaById(food.id_food!!)
             emit(DataState.data(message = null, data = Unit))
         } else{
             //En caso contrario emito un error.

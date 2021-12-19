@@ -33,7 +33,6 @@ import java.lang.Exception
 fun BottomBar(navController: NavHostController){
     BottomNavigation(
         backgroundColor = primaryDarkColor,
-
         ) {
         MenuBottomItems.BottomItems.forEach{ bottomItem ->
 

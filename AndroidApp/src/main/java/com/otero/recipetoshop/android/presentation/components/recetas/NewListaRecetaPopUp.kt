@@ -1,5 +1,6 @@
 package com.otero.recipetoshop.android.presentation.components.recetas
 
+import android.hardware.TriggerEvent
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -20,19 +21,23 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.otero.recipetoshop.android.presentation.components.util.GenericForm
+import com.otero.recipetoshop.android.presentation.navigation.RutasNavegacion
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
 import com.otero.recipetoshop.domain.model.NegativeAction
 import com.otero.recipetoshop.domain.model.PositiveAction
+import com.otero.recipetoshop.events.recetas.ListOfRecetasListEvents
 import com.otero.recipetoshop.presentattion.screens.recetas.RecetaState
 import com.otero.recipetoshop.presentattion.screens.recetas.RecetasListState
 
 @ExperimentalComposeUiApi
 @Composable
 fun NewListaRecetaPopUp(
-    onAddListaReceta: (String) -> Unit,
+    onTriggerEvent: (ListOfRecetasListEvents) -> Any,
     onNewListaReceta: MutableState<Boolean>,
+    navController: NavController
 ){
     val newListaRecetaState = remember { mutableStateOf(RecetasListState()) }
     val nombreError = remember { mutableStateOf(false) }
@@ -65,9 +70,13 @@ fun NewListaRecetaPopUp(
             positiveBtnTxt = "Añadir",
             onPositiveAction = {
                 onNewListaReceta.value = false
-                onAddListaReceta(
-                    newListaRecetaState.value.nombre,
+                val listarecetasid = onTriggerEvent(
+                    ListOfRecetasListEvents.onAddListaReceta(
+                        nombre = newListaRecetaState.value.nombre
+                    )
                 )
+                //Hay que navegar a la pantalla de creación de nueva lista de recetas.
+                navController.navigate(RutasNavegacion.ListaRecetas.route + "/$listarecetasid")
             },
         ),
         positiveEnabled = isAceptable,
@@ -94,7 +103,7 @@ fun NewListaRecetaPopUp(
                             .fillMaxWidth()
                             .padding(top = 4.dp, bottom = 8.dp),
                         textAlign = TextAlign.Center,
-                        text = "Pon nombre a tu nueva lista de recetas",
+                        text = "Pon nombre a tu nuevo recetario",
                         style = MaterialTheme.typography.subtitle1,
                         color = primaryDarkColor
                     )

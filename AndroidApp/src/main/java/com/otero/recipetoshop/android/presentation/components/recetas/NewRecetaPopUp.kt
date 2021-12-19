@@ -27,7 +27,6 @@ import com.otero.recipetoshop.domain.model.NegativeAction
 import com.otero.recipetoshop.domain.model.PositiveAction
 import com.otero.recipetoshop.domain.model.recetas.Receta
 import com.otero.recipetoshop.domain.util.TipoUnidad
-import com.otero.recipetoshop.events.recetas.RecetasListEvents
 import com.otero.recipetoshop.presentattion.screens.despensa.FoodState
 import com.otero.recipetoshop.presentattion.screens.recetas.RecetaState
 

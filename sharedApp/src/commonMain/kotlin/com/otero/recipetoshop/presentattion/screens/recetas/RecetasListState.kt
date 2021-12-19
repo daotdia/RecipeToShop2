@@ -7,7 +7,7 @@ import com.otero.recipetoshop.domain.model.recetas.Receta
 import com.otero.recipetoshop.domain.util.Queue
 
 data class RecetasListState (
-    val id_listaReceta: Int? = null,
+    val id_listaReceta_actual: Int? = null,
     val nombre: String = "",
     val alimentos: List<Food> = listOf(),
     val recetas: List<Receta> = listOf(),

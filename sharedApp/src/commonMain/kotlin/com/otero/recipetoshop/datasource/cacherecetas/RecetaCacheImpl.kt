@@ -13,16 +13,23 @@ class RecetaCacheImpl(
     //Lista Recetas
     private val queries: FoodDBQueries = recetaDataBase.foodDBQueries
 
-    override fun insertListaRecetas(listaReceta: ListaRecetas) {
-         queries.insertListaRecetas(
-            nombre = listaReceta.nombre
-        )
+    override fun insertListaRecetas(listaReceta: ListaRecetas): Int {
+        var id: Int = -1
+        recetaDataBase.transaction {
+            queries.insertListaRecetas(
+                nombre = listaReceta.nombre
+            )
+            id = lastIdInserted()
+        }
+        return id
     }
 
-    override fun insertListasRecetas(listasRecetas: List<ListaRecetas>) {
+    override fun insertListasRecetas(listasRecetas: List<ListaRecetas>): List<Int> {
+        val idList: ArrayList<Int> = ArrayList()
         for(listaRecetas in listasRecetas){
-            insertListaRecetas(listaRecetas)
+            idList.add(insertListaRecetas(listaRecetas))
         }
+        return idList
     }
 
     //Lista de lista de recetas con ingredientes nulos.
@@ -52,6 +59,10 @@ class RecetaCacheImpl(
         }catch (e: NullPointerException){
             println(e.message + "    ////  No se ha podido encontrar la lista de recetas con id: ${id_listaReceta}")
         }
+    }
+
+    override fun lastIdInserted(): Int {
+        return queries.lastInsertRowId().executeAsOne().toInt()
     }
 
 
@@ -212,7 +223,7 @@ class RecetaCacheImpl(
             queries
                 .getIngredientesByRecetaInReceta(id_receta = id_receta.toLong())
                 .executeAsList()
-                .toListaFood()
+                .toListFood()
         } catch (e: Exception){
             println(e.message + "    ////  No se ha podido obtenerla lista de recetas con id: ${id_receta}")
             null
@@ -223,7 +234,7 @@ class RecetaCacheImpl(
         return queries
                 .getAllIngredientesInListasRecetas()
                 .executeAsList()
-                .toListaFood()
+                .toListFood()
 
     }
 

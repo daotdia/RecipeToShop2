@@ -16,13 +16,11 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.otero.recipetoshop.android.presentation.components.despensa.FoodCard
 import com.otero.recipetoshop.android.presentation.components.util.NestedDownMenu
-import com.otero.recipetoshop.domain.model.despensa.Food
 import com.otero.recipetoshop.domain.model.recetas.Receta
-import com.otero.recipetoshop.events.despensa.FoodListEvents
-import com.otero.recipetoshop.events.recetas.RecetasListEvents
+import com.otero.recipetoshop.events.recetas.RecetaListEvents
 import com.otero.recipetoshop.presentattion.screens.recetas.RecetasListState
 
 @ExperimentalComposeUiApi
@@ -30,47 +28,36 @@ import com.otero.recipetoshop.presentattion.screens.recetas.RecetasListState
 @Composable
 fun RecetasList(
     stateListaRecetas: MutableState<RecetasListState>,
-    onTriggeEvent: (RecetasListEvents) -> Unit
+    onTriggeEvent: (RecetaListEvents) -> Unit,
+    color: Color = Color.Transparent,
+    offset: Dp = 48.dp
 ) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentHeight()
-            .padding(8.dp),
-        horizontalArrangement = Arrangement.End,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        NestedDownMenu(
-            options = listOf("Eliminar Despensa"),
-            onClickItem = { onTriggeEvent(RecetasListEvents.onDeleteRecetas(it)) }
-        )
-    }
-
     LazyColumn(
         modifier = Modifier
-            .offset(y = 48.dp)
-            .padding(1.dp),
+            .offset(y = offset)
+            .padding(start = 4.dp, bottom = 4.dp, end = 4.dp, top = 12.dp)
+            .background(color = color),
     ) {
         items(stateListaRecetas.value.recetas, { listItem: Receta -> listItem.id_Receta!! }) { item ->
             //Si no es un alimento, es decir su tipo es null; por tanto es una receta.
             var delete by remember { mutableStateOf(false) }
-            val dismissState = rememberDismissState(
+            val dismissStateReceta = rememberDismissState(
                 confirmStateChange = {
                     if (it == DismissValue.DismissedToStart) delete = !delete
                     it != DismissValue.DismissedToStart
                 }
             )
             SwipeToDismiss(
-                state = dismissState,
+                state = dismissStateReceta,
                 modifier = Modifier.padding(vertical = 4.dp),
                 directions = setOf(DismissDirection.StartToEnd, DismissDirection.EndToStart),
                 dismissThresholds = { direction ->
                     FractionalThreshold(if (direction == DismissDirection.StartToEnd) 0.25f else 0.5f)
                 },
                 background = {
-                    val direction = dismissState.dismissDirection ?: return@SwipeToDismiss
+                    val direction = dismissStateReceta.dismissDirection ?: return@SwipeToDismiss
                     val color by animateColorAsState(
-                        when (dismissState.targetValue) {
+                        when (dismissStateReceta.targetValue) {
                             DismissValue.Default -> Color.LightGray
                             DismissValue.DismissedToEnd -> Color.Green
                             DismissValue.DismissedToStart -> Color.Red
@@ -85,7 +72,7 @@ fun RecetasList(
                         DismissDirection.EndToStart -> Icons.Default.Delete
                     }
                     val scale by animateFloatAsState(
-                        if (dismissState.targetValue == DismissValue.Default) 0.75f else 1f
+                        if (dismissStateReceta.targetValue == DismissValue.Default) 0.75f else 1f
                     )
 
                     Box(
@@ -101,13 +88,13 @@ fun RecetasList(
                 },
                 dismissContent = {
                     if (delete) {
-                        onTriggeEvent(RecetasListEvents.onDeleteReceta(item))
+                        onTriggeEvent(RecetaListEvents.onDeleteReceta(item))
                     }
                     RecetaCard(
                         receta = item,
                         onCantidadChange = {
                             onTriggeEvent(
-                                RecetasListEvents.onCantidadRecetaChange(
+                                RecetaListEvents.onCantidadRecetaChange(
                                     cantidad = it.toInt(),
                                     receta = item
                                 )

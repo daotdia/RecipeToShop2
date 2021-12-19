@@ -24,9 +24,8 @@ import com.otero.recipetoshop.android.presentation.navigation.RutasNavegacion
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
 import com.otero.recipetoshop.domain.model.recetas.ListaRecetas
-import com.otero.recipetoshop.domain.model.recetas.Receta
-import com.otero.recipetoshop.events.recetas.RecetasListEvents
-import com.otero.recipetoshop.presentattion.screens.recetas.RecetasListState
+import com.otero.recipetoshop.events.recetas.ListOfRecetasListEvents
+import com.otero.recipetoshop.presentattion.screens.recetas.ListOfRecetasListState
 import de.charlex.compose.RevealDirection
 import de.charlex.compose.RevealSwipe
 
@@ -35,16 +34,17 @@ import de.charlex.compose.RevealSwipe
 @Composable
 fun ListaDeListaRectas(
     navController: NavController,
-    recetasState: MutableState<RecetasListState>,
-    onTriggeEvent: (RecetasListEvents) -> Unit
+    recetasState: MutableState<ListOfRecetasListState>,
+    onTriggeEvent: (ListOfRecetasListEvents) -> Any,
 ) {
+    val dialogElement = remember { mutableStateOf(false)}
+
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    //Hay que navegar a la pantalla de creación de nueva lista de recetas.
-                    navController.navigate(RutasNavegacion.ListaRecetas.route)
+                    dialogElement.value = true
                 },
                 backgroundColor = primaryDarkColor,
                 contentColor = secondaryLightColor,
@@ -53,6 +53,16 @@ fun ListaDeListaRectas(
             }
         }
     ) {
+        if(dialogElement.value){
+            NewListaRecetaPopUp(
+                onTriggerEvent = onTriggeEvent,
+//                onAddListaReceta = { nombre ->
+//                    onTriggeEvent(ListOfRecetasListEvents.onAddListaReceta(nombre = nombre))
+//                },
+                onNewListaReceta = dialogElement,
+                navController = navController
+            )
+        }
         val readOnly = remember { mutableStateOf(false) }
         //Crear la lista de items.
         LazyColumn(
@@ -61,7 +71,7 @@ fun ListaDeListaRectas(
                 .padding(1.dp),
         ) {
             items(
-                items = recetasState.value.listasRecetas,
+                items = recetasState.value.listaDeListasRecetas,
                 { listItem: ListaRecetas -> listItem.id_listaRecetas!! }
             )
             { item ->
@@ -85,10 +95,9 @@ fun ListaDeListaRectas(
                         nombre = remember { mutableStateOf(item.nombre) },
                         elevation = 4.dp,
                         onClick = {
-                            //Hay que obtener las recetas de la listaa de recetas a través del viewmodel.
-                            onTriggeEvent(RecetasListEvents.onEnterListaDeLisaDeRecetas(item.id_listaRecetas!!))
+                            val idListaRecetasActual: Int = item.id_listaRecetas!!
                             //Posteriormente se navega a la pantalal de lista de recetas clicada.
-                            navController.navigate(RutasNavegacion.ListaRecetas.route)
+                            navController.navigate(RutasNavegacion.ListaRecetas.route + "/$idListaRecetasActual")
                         }
                     )
                 }

@@ -14,7 +14,7 @@ class AddNewListaRecetas(
 ) {
     fun addListaRecetas(
         listareceta: ListaRecetas
-    ): Flow<DataState<Boolean>> = flow {
+    ): Flow<DataState<Int>> = flow {
         //Emito de manera predefinida que se está cargando la modificación.
         emit(DataState.loading())
 
@@ -28,14 +28,11 @@ class AddNewListaRecetas(
                 }
             }
         }
-        //Si no se ha encontrado
-        if (!igual) {
-            //Guardo en cache el alimento con la cantidad modificada
-            recetaCache.insertListaRecetas(listareceta)
-            // Emito el alimento ya seteado en cantidad
-            emit(DataState.data(message = null, data = true))
+        //Guardo en cache el alimento con la cantidad modificada
+        val id: Int = recetaCache.insertListaRecetas(listareceta)
+        if(id != -1) {
+            emit(DataState.data(message = null, data = id))
         } else {
-            emit(DataState.data(message = null, data = false))
             //En caso contrario emito un error.
 //                emit(DataState.error<Food>(
 //                    message = GenericMessageInfo.Builder()
