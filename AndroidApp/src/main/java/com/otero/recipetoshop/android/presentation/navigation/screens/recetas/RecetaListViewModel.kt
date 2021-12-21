@@ -4,6 +4,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.otero.recipetoshop.Interactors.recetas.busquedarecetas.BuscarRecetas
 import com.otero.recipetoshop.Interactors.recetas.listaldelistasrecetas.GetListaRecetas
 import com.otero.recipetoshop.Interactors.recetas.listarecetas.*
 import com.otero.recipetoshop.domain.model.despensa.Food
@@ -30,6 +31,7 @@ constructor(
     private val deleteRecetaListaRecetas: DeleteRecetaListaRecetas,
     private val updateReceta: UpdateReceta,
     private val updateAlimentoListaRecetas: UpdateAlimentoListaRecetas,
+    private val buscarRecetas: BuscarRecetas,
     private val getListaRecetas: GetListaRecetas
 ): ViewModel() {
     val listaRecetasState = mutableStateOf(RecetasListState())
@@ -70,10 +72,27 @@ constructor(
             is RecetaListEvents.onAlimentoClick -> {
                 updateAlimento(alimento = event.alimento, active = event.active)
             }
+            is RecetaListEvents.buscarRecetas -> {
+                buscarRecetasYummly(query = event.query)
+            }
             else -> {
                 throw Exception("ERROR")
             }
         }
+    }
+
+    private fun buscarRecetasYummly(query: String) {
+        println("Llego al ViewModel")
+        buscarRecetas.searchRecipes(
+            query = query,
+            maxSeconds = 7000,
+            maxItems = 100,
+            offset = 0
+        ).onEach { dataState ->
+            dataState.data?.let { recetasYummly ->
+                println("Estas es la primera receta incontrada con nombre: " + recetasYummly.first().content.details.nombre)
+            }
+        }.launchIn(viewModelScope)
     }
 
     private fun updateAlimento(alimento: Food, active: Boolean, cantidad: Int? = null) {

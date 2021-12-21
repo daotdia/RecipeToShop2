@@ -1,4 +1,4 @@
-package com.otero.recipetoshop.datasource.network.model.yummly
+package com.otero.recipetoshop.datasource.network.model.yummlyDTO
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class YummlyRecipeContentReviewsDTO(
     @SerialName("totalReviewCount")
-    val numReviews: Int,
+    val numReviews: Int?,
     @SerialName("averageRating")
-    val ratingReviews: Float,
+    val ratingReviews: Float?,
 )

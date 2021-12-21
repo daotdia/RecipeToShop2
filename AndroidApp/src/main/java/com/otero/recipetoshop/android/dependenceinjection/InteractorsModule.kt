@@ -1,10 +1,12 @@
 package com.otero.recipetoshop.android.dependenceinjection
 
 import com.otero.recipetoshop.Interactors.despensa.*
+import com.otero.recipetoshop.Interactors.recetas.busquedarecetas.BuscarRecetas
 import com.otero.recipetoshop.Interactors.recetas.listaldelistasrecetas.*
 import com.otero.recipetoshop.Interactors.recetas.listarecetas.*
 import com.otero.recipetoshop.datasource.cachedespensa.DespensaCache
 import com.otero.recipetoshop.datasource.cacherecetas.RecetaCache
+import com.otero.recipetoshop.datasource.network.RecipeService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -160,5 +162,14 @@ object InteractorsModule {
         recetaCache: RecetaCache
     ): UpdateAlimentoListaRecetas{
         return UpdateAlimentoListaRecetas(recetaCache = recetaCache)
+    }
+
+    @Singleton
+    @Provides
+    fun providesBuscarRecetas(
+        recetaCache: RecetaCache,
+        recipeService: RecipeService
+    ): BuscarRecetas{
+        return BuscarRecetas(recetaCache = recetaCache, recipeService = recipeService)
     }
 }

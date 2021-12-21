@@ -13,6 +13,7 @@ actual class KtorClientFactory {
                 serializer = KotlinxSerializer(
                     kotlinx.serialization.json.Json {
                         ignoreUnknownKeys = true //Si el servidor envia información extra, lo ignora.
+                        isLenient = true //Hace un poco de tipado flexible.
                     }
                 )
             }

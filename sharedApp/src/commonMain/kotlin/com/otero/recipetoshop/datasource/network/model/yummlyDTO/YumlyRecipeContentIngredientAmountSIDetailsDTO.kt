@@ -1,4 +1,4 @@
-package com.otero.recipetoshop.datasource.network.model.yummly
+package com.otero.recipetoshop.datasource.network.model.yummlyDTO
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -6,9 +6,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class YumlyRecipeContentIngredientAmountSIDetailsDTO(
     @SerialName("name")
-    val metricName: String,
+    val metricName: String?,
     @SerialName("kind")
-    val metricType: String,
+    val metricType: String?,
     @SerialName("decimal")
-    val isDecimal: Boolean
+    val isDecimal: Boolean?
 )

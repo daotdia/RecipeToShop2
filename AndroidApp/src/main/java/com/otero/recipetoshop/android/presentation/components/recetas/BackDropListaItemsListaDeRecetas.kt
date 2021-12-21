@@ -170,6 +170,7 @@ fun BackDropListaItemsListaDeRecetas(
                 contentColor = secondaryLightColor,
                 onClick = {
                     dialogSaveReceta.value = true
+                    onTriggeEventReceta(RecetaListEvents.buscarRecetas("chicken"))
                 },
                 modifier = Modifier
                     .offset(x = 22.dp, y = -76.dp)

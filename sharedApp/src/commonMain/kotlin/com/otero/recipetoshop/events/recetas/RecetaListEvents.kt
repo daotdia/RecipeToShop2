@@ -22,4 +22,6 @@ sealed class RecetaListEvents {
     data class onRecetaClick(val receta: Receta, val active: Boolean): RecetaListEvents()
 
     data class onAlimentoClick(val alimento: Food, val active: Boolean): RecetaListEvents()
+
+    data class buscarRecetas(val query: String): RecetaListEvents()
 }
