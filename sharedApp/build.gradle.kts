@@ -62,6 +62,7 @@ kotlin {
         val androidMain by getting {
             dependencies{
                 implementation(Ktor.android)
+                implementation(Ktor.OkHttp)
                 implementation(SQLDelight.androidDriver)
             }
         }

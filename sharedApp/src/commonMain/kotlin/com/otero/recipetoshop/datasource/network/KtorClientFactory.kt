@@ -1,9 +1,9 @@
 package com.otero.recipetoshop.datasource.network
 
 import com.otero.recipetoshop.domain.model.Recipe
-import com.otero.recipetoshop.datasource.network.model.RecipeDetailsDto
-import com.otero.recipetoshop.datasource.network.model.RecipeDto
-import com.otero.recipetoshop.datasource.network.model.RecipeSearchDto
+import com.otero.recipetoshop.datasource.network.model.Antiguo.RecipeDetailsDto
+import com.otero.recipetoshop.datasource.network.model.Antiguo.RecipeDto
+import com.otero.recipetoshop.datasource.network.model.Antiguo.RecipeSearchDto
 import io.ktor.client.*
 
 expect class KtorClientFactory() {

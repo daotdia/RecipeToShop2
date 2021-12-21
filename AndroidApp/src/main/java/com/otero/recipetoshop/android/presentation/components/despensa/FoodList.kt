@@ -131,7 +131,6 @@ fun FoodList (
                     val scale by animateFloatAsState(
                         if (dismissState.targetValue == DismissValue.Default) 0.75f else 1f
                     )
-
                     Box(
                         Modifier
                             .fillMaxSize()

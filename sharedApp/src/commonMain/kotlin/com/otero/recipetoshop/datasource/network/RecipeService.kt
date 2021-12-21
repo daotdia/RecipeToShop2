@@ -5,11 +5,9 @@ import com.otero.recipetoshop.domain.model.Recipe
 interface RecipeService {
 
     suspend fun search(
-        page: Int,
+        maxItems: Int,
+        offset: Int,
+        maxSeconds: Int,
         query: String,
     ): List<Recipe>
-
-    suspend fun get(
-        id: Int,
-    ): Recipe
 }

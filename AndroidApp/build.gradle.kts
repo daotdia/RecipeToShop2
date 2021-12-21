@@ -65,6 +65,7 @@ dependencies {
     implementation(Kotlinx.datetime)
 
     implementation(Ktor.android)
+    implementation(Ktor.OkHttp)
 
     debugImplementation(SquareUp.leakCanary)
 
