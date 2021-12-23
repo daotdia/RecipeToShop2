@@ -1,5 +1,8 @@
 package com.otero.recipetoshop.domain.model.recetas
 
+import com.otero.recipetoshop.domain.model.despensa.Food
+import com.otero.recipetoshop.domain.util.TipoUnidad
+
 data class YummlyRecipe(
     val recipeType: String?,
     val content: YumlyContentRecipe,
@@ -76,4 +79,36 @@ data class YummlyRecipe(
     data class YummlyRecipeMetaSearch(
         val metaSearchRecipeScore: Float?
     )
+    
+    fun YummlyIngredientsToFood(ojetoIngredientes: List<YummlyRecipe.YumlyContentRecipe.YumlyRecipeContentIngredients>): List<Food>{
+        val ingredientes: ArrayList<Food> = ArrayList()
+        for(ingredient in content.ingredientsObject){
+            ingredientes.add(Food(
+                nombre = if(ingredient.ingredientName != null) ingredient.ingredientName else "Ingrediente Sin Nombre",
+                cantidad = if(ingredient.ingredientAmountObject.medidaSI.metricAmount != null) ingredient.ingredientAmountObject.medidaSI.metricAmount.toInt() else 0,
+                //PENDIENTE HACER PARSE DE UNIDADES
+                tipoUnidad = TipoUnidad.GRAMOS,
+                active = true
+                ))
+        }
+        return ingredientes
+    }
+
+    fun YummlyRecipetoRecipeList(): Receta{
+        return Receta(
+            id_listaRecetas = -1,
+            nombre = if(content.details.nombre != null) content.details.nombre else "Receta Sin Nombre",
+            cantidad = -1,
+            user = false,
+            active = true,
+            imagenSource = if(content.details.detailsImageContenedor.isNotEmpty()) content.details.detailsImageContenedor.first().imageUrl else "Imagen No Disponible",
+            //NO OLVIDAR ACTUALIZAR ID INGREDIENTES CUANDO EL ID DE LA RECETA SE CONOZCA
+            ingredientes = if(content.ingredientsObject.isNotEmpty()) YummlyIngredientsToFood(content.ingredientsObject) else emptyList(),
+            rating = content.reviewsObject.ratingReviews
+        )
+    }
+}
+
+fun List<YummlyRecipe>.YummlyRecipestoRecipeList(): List<Receta>{
+    return map { it.YummlyRecipetoRecipeList() }
 }

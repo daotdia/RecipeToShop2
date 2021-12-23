@@ -27,7 +27,7 @@ fun RecipeCard (
             .clickable(onClick = onClick)
     ) {
         Column {
-            RecipeImage(url = recipe.image, contentDescription = recipe.title)
+            RecetaImagen(url = recipe.image, contentDescription = recipe.title)
             Row(
                 modifier = Modifier
                     .fillMaxWidth()

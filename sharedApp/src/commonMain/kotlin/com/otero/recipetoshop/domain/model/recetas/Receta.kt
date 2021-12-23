@@ -10,4 +10,7 @@ data class Receta(
     val cantidad: Int,
     var user: Boolean,
     var active: Boolean,
+    val imagenSource: String? = null,
+    val ingredientes: List<Food> = emptyList(),
+    val rating: Float? = null
 )

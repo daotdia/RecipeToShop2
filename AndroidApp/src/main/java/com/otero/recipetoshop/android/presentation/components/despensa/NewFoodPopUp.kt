@@ -1,14 +1,11 @@
 package com.otero.recipetoshop.android.presentation.components.despensa
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.InteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material.icons.filled.ArrowDropUp
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -18,24 +15,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.otero.recipetoshop.android.presentation.components.util.GenericForm
-import com.otero.recipetoshop.android.presentation.theme.analogousColorGreen
-import com.otero.recipetoshop.android.presentation.theme.primaryColor
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
 import com.otero.recipetoshop.domain.model.NegativeAction
 import com.otero.recipetoshop.domain.model.PositiveAction
-import com.otero.recipetoshop.domain.model.despensa.Food
 import com.otero.recipetoshop.domain.util.TipoUnidad
-import com.otero.recipetoshop.presentattion.screens.despensa.FoodListState
-import com.otero.recipetoshop.presentattion.screens.despensa.FoodState
+import com.otero.recipetoshop.presentationlogic.states.despensa.FoodState
 
 @ExperimentalComposeUiApi
 @Composable

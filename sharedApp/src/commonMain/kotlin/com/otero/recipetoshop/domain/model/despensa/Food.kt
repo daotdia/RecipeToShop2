@@ -7,7 +7,7 @@ data class Food(
     val id_receta: Int? = null,
     val id_food: Int? = null,
     val nombre: String,
-    var cantidad: Int,
+    var cantidad: Int = 0,
     val tipoUnidad: TipoUnidad,
     var active: Boolean
 )

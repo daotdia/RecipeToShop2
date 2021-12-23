@@ -1,32 +1,23 @@
 package com.otero.recipetoshop.android.presentation.components.arquitectura
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.Icon
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.otero.recipetoshop.android.R
-import com.otero.recipetoshop.android.presentation.components.Recipe_HIGHT
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
-import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
-import com.otero.recipetoshop.presentattion.menus.bottombar.MenuBottomItems
+import com.otero.recipetoshop.presentationlogic.util.menus.bottombar.MenuBottomItems
 import java.lang.Exception
 
 @Composable

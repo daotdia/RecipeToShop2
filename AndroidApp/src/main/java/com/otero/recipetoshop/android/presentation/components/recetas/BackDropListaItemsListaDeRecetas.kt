@@ -12,14 +12,16 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.otero.recipetoshop.android.presentation.components.despensa.NewFoodPopUp
 import com.otero.recipetoshop.android.presentation.components.util.BackLayerBackDrop
 import com.otero.recipetoshop.android.presentation.components.util.MenuItemBackLayer
+import com.otero.recipetoshop.android.presentation.navigation.RutasNavegacion
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
 import com.otero.recipetoshop.domain.util.TipoUnidad
 import com.otero.recipetoshop.events.recetas.RecetaListEvents
-import com.otero.recipetoshop.presentattion.screens.recetas.RecetasListState
+import com.otero.recipetoshop.presentationlogic.states.recetas.RecetasListState
 import kotlinx.coroutines.launch
 
 @ExperimentalComposeUiApi
@@ -28,6 +30,7 @@ import kotlinx.coroutines.launch
 fun BackDropListaItemsListaDeRecetas(
     stateListaRecetas: MutableState<RecetasListState>,
     onTriggeEventReceta: (RecetaListEvents) -> Unit,
+    navController: NavController
 ) {
     val backdropScaffoldState = rememberBackdropScaffoldState(initialValue = BackdropValue.Revealed)
     val rutaActual = remember { mutableStateOf("recetas") }
@@ -127,17 +130,7 @@ fun BackDropListaItemsListaDeRecetas(
         ) {
             if (dialogElement.value) {
                 if (rutaActual.value.equals("recetas")) {
-                    NewRecetaPopUp(
-                        onAddReceta = { nombre, cantidad ->
-                            onTriggeEventReceta(
-                                RecetaListEvents.onAddUserReceta(
-                                    nombre = nombre,
-                                    cantidad = cantidad.toInt()
-                                )
-                            )
-                        },
-                        onNewReceta = dialogElement
-                    )
+                    navController.navigate(RutasNavegacion.Busquedacreacionrecetas.route + "/${stateListaRecetas.value.id_listaReceta_actual}")
                 } else {
                     NewFoodPopUp(
                         onAddFood = { nombre, tipo, cantidad ->
@@ -170,7 +163,6 @@ fun BackDropListaItemsListaDeRecetas(
                 contentColor = secondaryLightColor,
                 onClick = {
                     dialogSaveReceta.value = true
-                    onTriggeEventReceta(RecetaListEvents.buscarRecetas("chicken"))
                 },
                 modifier = Modifier
                     .offset(x = 22.dp, y = -76.dp)

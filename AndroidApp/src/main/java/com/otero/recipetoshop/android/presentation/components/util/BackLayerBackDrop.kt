@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.otero.recipetoshop.android.presentation.components.recetas.RecetasList
 import com.otero.recipetoshop.android.presentation.theme.*
 import com.otero.recipetoshop.events.recetas.RecetaListEvents
-import com.otero.recipetoshop.presentattion.screens.recetas.RecetasListState
+import com.otero.recipetoshop.presentationlogic.states.recetas.RecetasListState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

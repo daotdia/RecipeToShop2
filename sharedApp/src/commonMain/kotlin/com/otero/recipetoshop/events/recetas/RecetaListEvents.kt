@@ -7,8 +7,6 @@ import com.otero.recipetoshop.domain.util.TipoUnidad
 sealed class RecetaListEvents {
     data class onAddAlimento(val nombre: String, val cantidad: Int, val tipoUnidad: TipoUnidad): RecetaListEvents()
 
-    data class onAddUserReceta(val nombre: String, val cantidad: Int): RecetaListEvents()
-
     data class onDeleteRecetas(val menuItem: String): RecetaListEvents()
 
     data class onDeleteReceta(val receta: Receta): RecetaListEvents()
@@ -23,5 +21,4 @@ sealed class RecetaListEvents {
 
     data class onAlimentoClick(val alimento: Food, val active: Boolean): RecetaListEvents()
 
-    data class buscarRecetas(val query: String): RecetaListEvents()
 }

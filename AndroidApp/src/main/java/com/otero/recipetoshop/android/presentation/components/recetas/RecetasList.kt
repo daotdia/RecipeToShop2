@@ -1,7 +1,5 @@
 package com.otero.recipetoshop.android.presentation.components.recetas
 
-import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -9,26 +7,21 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.otero.recipetoshop.android.presentation.components.util.NestedDownMenu
 import com.otero.recipetoshop.android.presentation.theme.*
 import com.otero.recipetoshop.domain.model.recetas.Receta
 import com.otero.recipetoshop.events.recetas.RecetaListEvents
-import com.otero.recipetoshop.presentattion.screens.recetas.RecetasListState
+import com.otero.recipetoshop.presentationlogic.states.recetas.RecetasListState
 import de.charlex.compose.RevealDirection
 import de.charlex.compose.RevealSwipe
-import kotlin.math.absoluteValue
 
 @ExperimentalComposeUiApi
 @ExperimentalMaterialApi
@@ -74,7 +67,7 @@ fun RecetasList(
                     hiddenContentEnd = {
                         Icon(
                             modifier = Modifier
-                                .padding(horizontal = 25.dp)
+                                .padding(horizontal = 8.dp)
                                 .clickable(onClick = {
                                     onTriggeEvent(RecetaListEvents.onDeleteReceta(item))
                                 }),
@@ -89,7 +82,7 @@ fun RecetasList(
                         modifier = Modifier
                         .clickable(onClick = {
                         onTriggeEvent(RecetaListEvents.onRecetaClick(receta = item, active = false))
-                    }),
+                        }),
                         receta = item,
                         onCantidadChange = {
                             onTriggeEvent(
@@ -99,7 +92,8 @@ fun RecetasList(
                                 )
                             )
                         },
-                        elevation = 4.dp
+                        elevation = 2.dp,
+                        size = 85.dp
                     )
                 }
                 //Si se llega al número de recetas activas; se adjunta divisor espaciado.

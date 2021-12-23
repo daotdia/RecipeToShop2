@@ -1,6 +1,6 @@
 package com.otero.recipetoshop.Interactors.despensa
 
-import com.otero.recipetoshop.datasource.cachedespensa.DespensaCache
+import com.otero.recipetoshop.datasource.cache.cachedespensa.DespensaCache
 import com.otero.recipetoshop.domain.model.GenericMessageInfo
 import com.otero.recipetoshop.domain.model.UIComponentType
 import com.otero.recipetoshop.domain.model.despensa.Food

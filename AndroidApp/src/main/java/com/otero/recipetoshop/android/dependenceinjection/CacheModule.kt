@@ -1,10 +1,10 @@
 package com.otero.recipetoshop.android.dependenceinjection
 
 import com.otero.recipetoshop.android.BaseApplication
-import com.otero.recipetoshop.datasource.cachedespensa.*
-import com.otero.recipetoshop.datasource.cacherecetas.RecetaCache
-import com.otero.recipetoshop.datasource.cacherecetas.RecetaCacheImpl
-import com.otero.recipetoshop.datasource.cacherecipe.*
+import com.otero.recipetoshop.datasource.cache.cachedespensa.*
+import com.otero.recipetoshop.datasource.cache.cacherecetas.RecetaCache
+import com.otero.recipetoshop.datasource.cache.cacherecetas.RecetaCacheImpl
+import com.otero.recipetoshop.datasource.cachedespensa.FoodDataBase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,7 +33,7 @@ object CacheModule {
 
     @Singleton
     @Provides
-    fun providesFoodDataBase(context: BaseApplication): FoodDataBase{
+    fun providesFoodDataBase(context: BaseApplication): FoodDataBase {
         return DespensaDataBaseFactory(driverFactory = FoodDriverFactory(context = context)).createDataBase()
     }
 

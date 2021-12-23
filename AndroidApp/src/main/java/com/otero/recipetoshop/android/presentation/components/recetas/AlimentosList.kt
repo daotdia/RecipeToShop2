@@ -11,7 +11,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Done
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -28,7 +27,7 @@ import com.otero.recipetoshop.android.presentation.theme.*
 import com.otero.recipetoshop.domain.model.despensa.Food
 import com.otero.recipetoshop.domain.util.Constants
 import com.otero.recipetoshop.events.recetas.RecetaListEvents
-import com.otero.recipetoshop.presentattion.screens.recetas.RecetasListState
+import com.otero.recipetoshop.presentationlogic.states.recetas.RecetasListState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

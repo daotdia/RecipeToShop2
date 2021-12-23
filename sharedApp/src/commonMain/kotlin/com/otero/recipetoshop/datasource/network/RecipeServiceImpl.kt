@@ -1,10 +1,10 @@
 package com.otero.recipetoshop.datasource.network
 
-import com.otero.recipetoshop.datasource.network.model.parsers.toRecipeList
 import com.otero.recipetoshop.datasource.network.model.parsers.toRecipesList
 import com.otero.recipetoshop.datasource.network.model.yummlyDTO.YummlySearchResponseDTO
-import com.otero.recipetoshop.domain.model.Recipe
+import com.otero.recipetoshop.domain.model.recetas.Receta
 import com.otero.recipetoshop.domain.model.recetas.YummlyRecipe
+import com.otero.recipetoshop.domain.model.recetas.YummlyRecipestoRecipeList
 import io.ktor.client.*
 import io.ktor.client.request.*
 
@@ -12,7 +12,7 @@ class RecipeServiceImpl(
     private val httpClient: HttpClient,
     private val baseUrl: String,
 ): RecipeService {
-    override suspend fun search(maxItems: Int, offset: Int, maxSeconds: Int, query: String): List<YummlyRecipe> {
+    override suspend fun search(maxItems: Int, offset: Int, maxSeconds: Int, query: String): List<Receta> {
         println("Realizo la búsqueda")
         return httpClient.get<YummlySearchResponseDTO>{
             headers{
@@ -20,7 +20,7 @@ class RecipeServiceImpl(
                 append("x-rapidapi-key", "f23925d5bbmsh95550bd56727c48p1eea81jsn364692bc7d7d")
             }
             url("https://yummly2.p.rapidapi.com/feeds/search?maxResult=${maxItems}&start${offset}=&q=${query}&maxTotalTimeInSeconds=${maxSeconds}")
-        }.feed.toRecipesList()
+        }.feed.toRecipesList().YummlyRecipestoRecipeList()
     }
 
     companion object{

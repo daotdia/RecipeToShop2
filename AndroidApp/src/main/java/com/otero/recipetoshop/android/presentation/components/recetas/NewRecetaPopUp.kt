@@ -1,12 +1,9 @@
 package com.otero.recipetoshop.android.presentation.components.recetas
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -25,16 +22,14 @@ import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
 import com.otero.recipetoshop.domain.model.NegativeAction
 import com.otero.recipetoshop.domain.model.PositiveAction
-import com.otero.recipetoshop.domain.model.recetas.Receta
-import com.otero.recipetoshop.domain.util.TipoUnidad
-import com.otero.recipetoshop.presentattion.screens.despensa.FoodState
-import com.otero.recipetoshop.presentattion.screens.recetas.RecetaState
+import com.otero.recipetoshop.presentationlogic.states.recetas.RecetaState
 
 @ExperimentalComposeUiApi
 @Composable
 fun NewRecetaPopUp(
     onAddReceta: (String,String) -> Unit,
     onNewReceta: MutableState<Boolean>,
+    recetaSeleccionada: MutableState<Boolean> = mutableStateOf(false)
 ){
     val newRecetaState = remember { mutableStateOf(RecetaState()) }
     val nombreError = remember { mutableStateOf(false) }
@@ -74,6 +69,7 @@ fun NewRecetaPopUp(
                     newRecetaState.value.nombre,
                     newRecetaState.value.cantidad
                 )
+                recetaSeleccionada.value = true
             },
         ),
         positiveEnabled = isAceptable,

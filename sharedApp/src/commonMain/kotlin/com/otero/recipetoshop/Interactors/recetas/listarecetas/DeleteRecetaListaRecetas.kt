@@ -1,7 +1,6 @@
 package com.otero.recipetoshop.Interactors.recetas.listarecetas
 
-import com.otero.recipetoshop.datasource.cacherecetas.RecetaCache
-import com.otero.recipetoshop.domain.model.despensa.Food
+import com.otero.recipetoshop.datasource.cache.cacherecetas.RecetaCache
 import com.otero.recipetoshop.domain.model.recetas.Receta
 import com.otero.recipetoshop.domain.util.DataState
 import kotlinx.coroutines.flow.Flow

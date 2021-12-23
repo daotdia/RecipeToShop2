@@ -1,6 +1,5 @@
 package com.otero.recipetoshop.android.presentation.components.despensa
 
-import android.graphics.Paint
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -9,7 +8,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Remove
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -29,8 +27,6 @@ import com.otero.recipetoshop.android.presentation.theme.Lora
 import com.otero.recipetoshop.android.presentation.theme.appShapes
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.domain.model.despensa.Food
-import com.otero.recipetoshop.domain.util.TipoUnidad
-import com.otero.recipetoshop.events.despensa.FoodListEvents
 
 
 @ExperimentalComposeUiApi

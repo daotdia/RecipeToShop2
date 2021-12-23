@@ -1,22 +1,15 @@
 package com.otero.recipetoshop.android.presentation.components.despensa
 
-import android.app.LauncherActivity
 import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.*
-import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Done
-import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -26,14 +19,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.otero.recipetoshop.events.despensa.FoodListEvents
 import com.otero.recipetoshop.android.presentation.components.util.NestedDownMenu
-import com.otero.recipetoshop.android.presentation.components.util.SimpleModifierSwipeToDelete
-import com.otero.recipetoshop.android.presentation.components.util.rememberDeleteState
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
 import com.otero.recipetoshop.domain.model.despensa.Food
-import com.otero.recipetoshop.presentattion.screens.despensa.FoodListState
-import de.charlex.compose.RevealDirection
-import de.charlex.compose.RevealSwipe
+import com.otero.recipetoshop.presentationlogic.states.despensa.FoodListState
 
 
 @ExperimentalMaterialApi

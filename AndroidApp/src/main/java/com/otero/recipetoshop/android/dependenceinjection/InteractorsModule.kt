@@ -4,8 +4,8 @@ import com.otero.recipetoshop.Interactors.despensa.*
 import com.otero.recipetoshop.Interactors.recetas.busquedarecetas.BuscarRecetas
 import com.otero.recipetoshop.Interactors.recetas.listaldelistasrecetas.*
 import com.otero.recipetoshop.Interactors.recetas.listarecetas.*
-import com.otero.recipetoshop.datasource.cachedespensa.DespensaCache
-import com.otero.recipetoshop.datasource.cacherecetas.RecetaCache
+import com.otero.recipetoshop.datasource.cache.cachedespensa.DespensaCache
+import com.otero.recipetoshop.datasource.cache.cacherecetas.RecetaCache
 import com.otero.recipetoshop.datasource.network.RecipeService
 import dagger.Module
 import dagger.Provides

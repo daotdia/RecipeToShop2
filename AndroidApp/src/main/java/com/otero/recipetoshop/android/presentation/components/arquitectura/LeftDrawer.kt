@@ -1,6 +1,5 @@
 package com.otero.recipetoshop.android.presentation.components.arquitectura
 
-import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -13,11 +12,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.otero.recipetoshop.android.R
-import com.otero.recipetoshop.android.presentation.navigation.Navegacion
 import com.otero.recipetoshop.android.presentation.theme.primaryColor
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
-import com.otero.recipetoshop.android.presentation.theme.primaryLightColor
-import com.otero.recipetoshop.presentattion.menus.leftbar.LeftBarItems
+import com.otero.recipetoshop.presentationlogic.util.menus.leftbar.LeftBarItems
 
 @Composable
 fun LeftDrawer(navController: NavController){

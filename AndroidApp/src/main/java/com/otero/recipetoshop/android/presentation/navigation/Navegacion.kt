@@ -18,9 +18,11 @@ import androidx.navigation.compose.navArgument
 import com.otero.recipetoshop.android.presentation.components.despensa.FoodList
 import com.otero.recipetoshop.android.presentation.components.recetas.ListaDeListaRectas
 import com.otero.recipetoshop.android.presentation.components.recetas.BackDropListaItemsListaDeRecetas
-import com.otero.recipetoshop.android.presentation.navigation.screens.despensa.FoodListViewModel
-import com.otero.recipetoshop.android.presentation.navigation.screens.recetas.ListOfRecetasListViewModel
-import com.otero.recipetoshop.android.presentation.navigation.screens.recetas.RecetaListViewModel
+import com.otero.recipetoshop.android.presentation.components.recetas.busquedacreacionrecetas.BusquedaCreacionRecetasScreen
+import com.otero.recipetoshop.android.presentation.controllers.despensa.FoodListViewModel
+import com.otero.recipetoshop.android.presentation.controllers.recetas.ListOfRecetasListViewModel
+import com.otero.recipetoshop.android.presentation.controllers.recetas.RecetaListViewModel
+import com.otero.recipetoshop.android.presentation.controllers.recetas.busquedaycreacion.PantallaCreacionBusquedaRecetasViewModel
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
 
 @ExperimentalComposeUiApi
@@ -102,7 +104,25 @@ fun Navegacion(
 
             BackDropListaItemsListaDeRecetas(
                 stateListaRecetas = recetaListViewModel.listaRecetasState,
-                onTriggeEventReceta = recetaListViewModel::onTriggerEvent
+                onTriggeEventReceta = recetaListViewModel::onTriggerEvent,
+                navController = navController
+            )
+        }
+
+        //Pantalla dde búsqueda/creación de recetas.
+        composable(
+            route = RutasNavegacion.Busquedacreacionrecetas.route + "/{listarecetasid}",
+            arguments = listOf(navArgument("listarecetasid"){
+                type = NavType.IntType
+            })
+        ){ navBackStackEntry ->
+            val factory = HiltViewModelFactory(LocalContext.current, navBackStackEntry)
+            val busquedaCreacionRecetasViewModel: PantallaCreacionBusquedaRecetasViewModel = viewModel("PantallaCreacionBusquedaRecetasViewModel", factory )
+
+            BusquedaCreacionRecetasScreen(
+                busquedaCreacionState = busquedaCreacionRecetasViewModel.creacionBusquedarecetas,
+                onTriggeEventReceta = busquedaCreacionRecetasViewModel::onTriggerEvent,
+                navController = navController
             )
         }
 

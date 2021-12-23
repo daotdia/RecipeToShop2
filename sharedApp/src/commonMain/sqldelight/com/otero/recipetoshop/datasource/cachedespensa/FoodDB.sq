@@ -92,6 +92,8 @@ CREATE TABLE  receta_Entity(
     cantidad INTEGER NOT NULL,
     user INTEGER AS Boolean NOT NULL,
     active INTEGER AS Boolean NOT NULL,
+    imageSource TEXT,
+    rating INTEGER,
     FOREIGN KEY (id_listarecetas) REFERENCES listarecetas_Entity(nombre)
     ON DELETE CASCADE
 );
@@ -104,8 +106,10 @@ INTO receta_Entity (
     nombre,
     cantidad,
     user,
-    active
-) VALUES ( ?, ?, ?, ?, ?);
+    active,
+    imageSource,
+    rating
+) VALUES ( ?, ?, ?, ?, ?, ?,?);
 
 getAllRecetasInListasRecetas:
 SELECT * FROM receta_Entity

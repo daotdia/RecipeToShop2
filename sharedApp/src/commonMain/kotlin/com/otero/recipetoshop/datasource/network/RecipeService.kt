@@ -1,5 +1,6 @@
 package com.otero.recipetoshop.datasource.network
 
+import com.otero.recipetoshop.domain.model.recetas.Receta
 import com.otero.recipetoshop.domain.model.recetas.YummlyRecipe
 
 interface RecipeService {
@@ -9,5 +10,5 @@ interface RecipeService {
         offset: Int,
         maxSeconds: Int,
         query: String,
-    ): List<YummlyRecipe>
+    ): List<Receta>
 }

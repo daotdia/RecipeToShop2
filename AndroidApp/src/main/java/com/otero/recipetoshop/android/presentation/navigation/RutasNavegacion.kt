@@ -12,6 +12,8 @@ sealed class RutasNavegacion (val route: String)
 
     object ListaRecetas: RutasNavegacion("listareceta")
 
+    object Busquedacreacionrecetas: RutasNavegacion("busquedarecetas")
+
     object ListaCompra: RutasNavegacion("listacompra")
 
     object Perfil: RutasNavegacion("perfil")

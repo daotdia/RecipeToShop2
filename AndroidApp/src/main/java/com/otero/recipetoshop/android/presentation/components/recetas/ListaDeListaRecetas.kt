@@ -25,7 +25,7 @@ import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
 import com.otero.recipetoshop.domain.model.recetas.ListaRecetas
 import com.otero.recipetoshop.events.recetas.ListOfRecetasListEvents
-import com.otero.recipetoshop.presentattion.screens.recetas.ListOfRecetasListState
+import com.otero.recipetoshop.presentationlogic.states.recetas.ListOfRecetasListState
 import de.charlex.compose.RevealDirection
 import de.charlex.compose.RevealSwipe
 

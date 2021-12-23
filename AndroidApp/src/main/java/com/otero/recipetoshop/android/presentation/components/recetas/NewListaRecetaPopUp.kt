@@ -1,6 +1,5 @@
 package com.otero.recipetoshop.android.presentation.components.recetas
 
-import android.hardware.TriggerEvent
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -29,8 +28,7 @@ import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
 import com.otero.recipetoshop.domain.model.NegativeAction
 import com.otero.recipetoshop.domain.model.PositiveAction
 import com.otero.recipetoshop.events.recetas.ListOfRecetasListEvents
-import com.otero.recipetoshop.presentattion.screens.recetas.RecetaState
-import com.otero.recipetoshop.presentattion.screens.recetas.RecetasListState
+import com.otero.recipetoshop.presentationlogic.states.recetas.RecetasListState
 
 @ExperimentalComposeUiApi
 @Composable

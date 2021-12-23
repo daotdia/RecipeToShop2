@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.otero.recipetoshop.android.presentation.components.RecipeImage
+import com.otero.recipetoshop.android.presentation.components.RecetaImagen
 import com.otero.recipetoshop.domain.model.Recipe
 
 @Composable
@@ -19,7 +19,7 @@ fun RecipeView(
         modifier = Modifier.fillMaxWidth()
     ){
         item{
-            RecipeImage(url = recipe.image, contentDescription = recipe.title)
+            RecetaImagen(url = recipe.image, contentDescription = recipe.title)
             Column(
                 modifier = Modifier
                     .fillMaxWidth()

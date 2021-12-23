@@ -1,7 +1,8 @@
 package com.otero.recipetoshop.Interactors.recetas.busquedarecetas
 
-import com.otero.recipetoshop.datasource.cacherecetas.RecetaCache
+import com.otero.recipetoshop.datasource.cache.cacherecetas.RecetaCache
 import com.otero.recipetoshop.datasource.network.RecipeService
+import com.otero.recipetoshop.domain.model.recetas.Receta
 import com.otero.recipetoshop.domain.model.recetas.YummlyRecipe
 import com.otero.recipetoshop.domain.util.DataState
 import kotlinx.coroutines.flow.Flow
@@ -16,7 +17,7 @@ class BuscarRecetas (
         maxItems: Int,
         offset: Int,
         maxSeconds: Int
-    ): Flow<DataState<List<YummlyRecipe>>> = flow{
+    ): Flow<DataState<List<Receta>>> = flow{
         emit(DataState.loading())
 
         println("Llego al interactor")
