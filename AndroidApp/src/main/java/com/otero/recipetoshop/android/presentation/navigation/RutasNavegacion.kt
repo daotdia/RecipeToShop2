@@ -8,11 +8,11 @@ sealed class RutasNavegacion (val route: String)
 
     object Despensa: RutasNavegacion("despensa")
 
-    object ListaDeListaRecetas: RutasNavegacion("listadelistarecetas")
+    object ListaCestasCompra: RutasNavegacion("listaCestasCompra")
 
-    object ListaRecetas: RutasNavegacion("listareceta")
+    object CestaCompra: RutasNavegacion("cestaCompra")
 
-    object Busquedacreacionrecetas: RutasNavegacion("busquedarecetas")
+    object BusquedaRecetas: RutasNavegacion("busquedarecetas")
 
     object ListaCompra: RutasNavegacion("listacompra")
 

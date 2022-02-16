@@ -1,79 +1,79 @@
 package com.otero.recipetoshop.datasource.cache.cacherecetas
 
-import com.otero.recipetoshop.domain.model.despensa.Food
-import com.otero.recipetoshop.domain.model.recetas.ListaRecetas
-import com.otero.recipetoshop.domain.model.recetas.Receta
+import com.otero.recipetoshop.domain.model.despensa.Alimento
+import com.otero.recipetoshop.domain.model.CestaCompra.CestaCompra
+import com.otero.recipetoshop.domain.model.CestaCompra.Receta
 
 interface RecetaCache {
-    //ListaRecetas
-    fun insertListaRecetas(listaReceta: ListaRecetas): Int
+    //CestaCompra
+    fun insertCestaCompra(cestaCompra: CestaCompra): Int
 
-    fun insertListasRecetas(listasRecetas: List<ListaRecetas>): List<Int>?
+    fun insertCestasCompra(cestasCompra: List<CestaCompra>): List<Int>?
 
-    fun getAllListaRecetas(): List<ListaRecetas>?
+    fun getAllCestasCompra(): List<CestaCompra>?
 
-    fun getListaRecetasById(id_listaReceta: Int): ListaRecetas?
+    fun getCestaCompraById(id_cestaCompra: Int): CestaCompra?
 
-    fun removeAllListaRecetas(): Unit
+    fun removeAllCestasCompra(): Unit
 
-    fun removeListaRecetaById(id_listaReceta: Int): Unit
+    fun removeCestaCompraById(id_cestaCompra: Int): Unit
 
     fun lastIdInserted(): Int
 
     //Recetas
-    fun insertRecetaToListaRecetas(receta: Receta): Int
+    fun insertRecetaToCestaCompra(receta: Receta): Int
 
-    fun insertRecetasToListaRecetas(recetas: List<Receta>): Unit
+    fun insertRecetasToCestaCompra(recetas: List<Receta>): Unit
 
-    fun getAllRecetasInListasReceta(): List<Receta>?
+    fun getAllRecetasInCestasCompra(): List<Receta>?
 
-    fun getRecetasByUserInListaRecetas(user: Boolean, id_listaReceta: Int): List<Receta>?
+    fun getRecetasByUserInCestaCompra(user: Boolean, id_cestaCompra: Int): List<Receta>?
 
-    fun getRecetasByActiveInListaRecetas(active: Boolean, id_listaReceta: Int): List<Receta>?
+    fun getRecetasByActiveInCestaCompra(active: Boolean, id_cestaCompra: Int): List<Receta>?
 
-    fun getRecetasByListaRecetasInListaRecetas(id_listaReceta: Int): List<Receta>?
+    fun getRecetasByCestaCompra(id_cestaCompra: Int): List<Receta>?
 
-    fun getRecetaByIdInListaReceta(id_receta: Int): Receta?
+    fun getRecetaByIdInCestaCompra(id_receta: Int): Receta?
 
-    fun removeAllRecetasInListasRecetas(): Unit
+    fun removeAllRecetasInCestasCompra(): Unit
 
-    fun removeRecetasByListaRecetas(id_receta: Int): Unit
+    fun removeRecetasByCestaCompra(id_cestaCompra: Int): Unit
 
-    fun removeRecetaByIdInListaRecetas(id_receta: Int): Unit
+    fun removeRecetaByIdInCestaCompra(id_receta: Int): Unit
 
     //Alimentos
-    fun insertAlimentoToListaRecetas(alimento: Food): Unit
+    fun insertAlimentoToCestaCompra(alimento: Alimento): Unit
 
-    fun insertAlimentosToListaRecetas(alimentos: List<Food>): Unit
+    fun insertAlimentosToCestaCompra(alimentos: List<Alimento>): Unit
 
-    fun getAlimentosByListaRecetas(id_listaReceta: Int): List<Food>?
+    fun getAlimentosByCestaCompra(id_cestaCompra: Int): List<Alimento>?
 
-    fun getAlimentosByActiveInListaRecetas(active: Boolean, id_listaReceta: Int): List<Food>?
+    fun getAlimentosByActiveInCestaCompra(active: Boolean, id_cestaCompra: Int): List<Alimento>?
 
-    fun getAllAlimentosInListasRecetas(): List<Food>?
+    fun getAllAlimentosInCestasCompra(): List<Alimento>?
 
-    fun getAlimentoByIdInListaRecetas(id_alimento: Int): Food?
+    fun getAlimentoByIdInCestaCompra(id_alimento: Int): Alimento?
 
-    fun removeAllAlimentosInListasReceta(): Unit
+    fun removeAllAlimentosInCestasCompra(): Unit
 
-    fun removeAlimentosByListaRecetasInListaRecetas(id_listaReceta: Int): Unit
+    fun removeAlimentosByCestaCompra(id_cestaCompra: Int): Unit
 
-    fun removeAlimentoByIdInListaRecetas(id_alimento: Int): Unit
+    fun removeAlimentoByIdInCestaCompra(id_alimento: Int): Unit
 
     //Ingredientes
-    fun insertIngredienteToReceta(ingrediente: Food): Unit
+    fun insertIngredienteToReceta(ingrediente: Alimento): Unit
 
-    fun insertIngredientesToReceta(ingredientes: List<Food>): Unit
+    fun insertIngredientesToReceta(ingredientes: List<Alimento>): Unit
 
-    fun getAllIngredientesInListasRecetas(): List<Food>?
+    fun getAllIngredientesInCestasCompra(): List<Alimento>?
 
-    fun getIngredientsByActiveInRecta(active: Boolean, id_receta: Int): List<Food>?
+    fun getIngredientsByActiveInRecta(active: Boolean, id_receta: Int): List<Alimento>?
 
-    fun getIngredientesByReceta(id_receta: Int): List<Food>?
+    fun getIngredientesByReceta(id_receta: Int): List<Alimento>?
 
-    fun getIngredienteByIdInReceta(id_ingrediente: Int): Food?
+    fun getIngredienteByIdInReceta(id_ingrediente: Int): Alimento?
 
-    fun removeAllIngredientesInListasRecetas(): Unit
+    fun removeAllIngredientesInCestasCompra(): Unit
 
     fun removeIngredientesByRecetaInReceta(id_receta: Int): Unit
 

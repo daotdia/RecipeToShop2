@@ -4,7 +4,7 @@ import com.otero.recipetoshop.android.BaseApplication
 import com.otero.recipetoshop.datasource.cache.cachedespensa.*
 import com.otero.recipetoshop.datasource.cache.cacherecetas.RecetaCache
 import com.otero.recipetoshop.datasource.cache.cacherecetas.RecetaCacheImpl
-import com.otero.recipetoshop.datasource.cachedespensa.FoodDataBase
+import com.otero.recipetoshop.datasource.cachedespensa.RecipeToShopDB
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,19 +33,19 @@ object CacheModule {
 
     @Singleton
     @Provides
-    fun providesFoodDataBase(context: BaseApplication): FoodDataBase {
-        return DespensaDataBaseFactory(driverFactory = FoodDriverFactory(context = context)).createDataBase()
+    fun providesFoodDataBase(context: BaseApplication): RecipeToShopDB {
+        return DespensaDataBaseFactory(driverFactory = AlimentosDriverFactory(context = context)).createDataBase()
     }
 
     @Singleton
     @Provides
-    fun providesFoodCache(foodDataBase: FoodDataBase): DespensaCache{
-        return DespensaCacheImpl(foodDataBase = foodDataBase)
+    fun providesFoodCache(despensaDataBase: RecipeToShopDB): DespensaCache{
+        return DespensaCacheImpl(cestaCompraDataBase = despensaDataBase)
     }
 
     @Singleton
     @Provides
-    fun providesRecetaCache(recetaDataBase: FoodDataBase): RecetaCache{
-        return RecetaCacheImpl(recetaDataBase = recetaDataBase)
+    fun providesRecetaCache(recetaDataBase: RecipeToShopDB): RecetaCache{
+        return RecetaCacheImpl(cestaCompraDataBase = recetaDataBase)
     }
 }

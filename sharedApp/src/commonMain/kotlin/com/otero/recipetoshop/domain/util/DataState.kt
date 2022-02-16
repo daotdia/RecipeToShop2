@@ -1,6 +1,7 @@
 package com.otero.recipetoshop.domain.util
 
 import com.otero.recipetoshop.domain.model.GenericMessageInfo
+import com.otero.recipetoshop.domain.model.despensa.Alimento
 
 class DataState<T>(
     val message: GenericMessageInfo.Builder? = null,

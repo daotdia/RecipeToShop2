@@ -1,30 +1,30 @@
 package com.otero.recipetoshop.datasource.cache.cacherecetas
 
 import com.otero.recipetoshop.datasource.cachedespensa.Alimentos_Entity
+import com.otero.recipetoshop.datasource.cachedespensa.CestaCompra_Entity
 import com.otero.recipetoshop.datasource.cachedespensa.Ingredients_Entity
-import com.otero.recipetoshop.datasource.cachedespensa.Listarecetas_Entity
 import com.otero.recipetoshop.datasource.cachedespensa.Receta_Entity
-import com.otero.recipetoshop.domain.model.despensa.Food
-import com.otero.recipetoshop.domain.model.recetas.ListaRecetas
-import com.otero.recipetoshop.domain.model.recetas.Receta
+import com.otero.recipetoshop.domain.model.despensa.Alimento
+import com.otero.recipetoshop.domain.model.CestaCompra.CestaCompra
+import com.otero.recipetoshop.domain.model.CestaCompra.Receta
 import com.otero.recipetoshop.domain.util.TipoUnidad
 
-//Parsers ListaRecetas.
-fun Listarecetas_Entity.toListaRecetas(): ListaRecetas{
-    return ListaRecetas(
-        id_listaRecetas = id_listarceras.toInt(),
+//Parsers CestaCompra.
+fun CestaCompra_Entity.toCestaCompra(): CestaCompra{
+    return CestaCompra(
+        id_cestaCompra = id_cestaCompra.toInt(),
         nombre = nombre,
     )
 }
 
-fun List<Listarecetas_Entity>.toListaDeListaRecetas(): List<ListaRecetas>{
-    return map{it.toListaRecetas()}
+fun List<CestaCompra_Entity>.toListaCestasCompra(): List<CestaCompra>{
+    return map{it.toCestaCompra()}
 }
 
 //Parsers Receta
 fun Receta_Entity.toReceta(): Receta {
     return Receta(
-        id_listaRecetas = id_listarecetas.toInt(),
+        id_cestaCompra = id_cestaCompra.toInt(),
         id_Receta = id_receta.toInt(),
         nombre = nombre,
         cantidad = cantidad.toInt(),
@@ -39,10 +39,10 @@ fun List<Receta_Entity>.toListaRecetas(): List<Receta>{
 
 
 //Parsers Alimentos
-fun Alimentos_Entity.toFood(): Food{
-    return Food(
-        id_listaRecetas = id_listaReceta.toInt(),
-        id_food = id_alimento.toInt(),
+fun Alimentos_Entity.toAlimento(): Alimento{
+    return Alimento(
+        id_cestaCompra = id_cestaCompra.toInt(),
+        id_alimento = id_alimento.toInt(),
         nombre = nombre,
         cantidad = cantidad.toInt(),
         tipoUnidad = TipoUnidad.valueOf(tipo),
@@ -50,16 +50,16 @@ fun Alimentos_Entity.toFood(): Food{
     )
 }
 
-fun List<Alimentos_Entity>.toListaFood(): List<Food>{
-    return map{it.toFood()}
+fun List<Alimentos_Entity>.toListaAlimentos(): List<Alimento>{
+    return map{it.toAlimento()}
 }
 
 //Parser Ingredientes
-fun Ingredients_Entity.toFood(): Food{
-    return Food(
-        id_listaRecetas = id_listaRecetas.toInt(),
+fun Ingredients_Entity.toIngrediente(): Alimento{
+    return Alimento(
+        id_cestaCompra = id_cestaCompra.toInt(),
         id_receta = id_receta.toInt(),
-        id_food = id_ingrediente.toInt(),
+        id_alimento = id_ingrediente.toInt(),
         nombre = nombre,
         cantidad = cantidad.toInt(),
         tipoUnidad = TipoUnidad.valueOf(tipo),
@@ -67,6 +67,6 @@ fun Ingredients_Entity.toFood(): Food{
     )
 }
 
-fun List<Ingredients_Entity>.toListFood(): List<Food>{
-    return map { it.toFood() }
+fun List<Ingredients_Entity>.toListaIngredientes(): List<Alimento>{
+    return map { it.toIngrediente() }
 }

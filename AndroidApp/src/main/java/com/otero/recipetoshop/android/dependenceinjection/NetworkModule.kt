@@ -1,9 +1,9 @@
 package com.otero.recipetoshop.android.dependenceinjection
 
 import com.otero.recipetoshop.datasource.network.KtorClientFactory
-import com.otero.recipetoshop.datasource.network.RecipeService
-import com.otero.recipetoshop.datasource.network.RecipeServiceImpl
-import com.otero.recipetoshop.datasource.network.RecipeServiceImpl.Companion.BASE_URL
+import com.otero.recipetoshop.datasource.network.RecetasServicio
+import com.otero.recipetoshop.datasource.network.RecetasServicioImpl
+import com.otero.recipetoshop.datasource.network.RecetasServicioImpl.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,8 +23,8 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRecipeService(httpClient: HttpClient): RecipeService{
-        return RecipeServiceImpl(
+    fun provideRecetasServicio(httpClient: HttpClient): RecetasServicio{
+        return RecetasServicioImpl(
             httpClient = httpClient,
             baseUrl = BASE_URL
         )

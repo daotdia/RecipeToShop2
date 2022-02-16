@@ -1,80 +1,80 @@
 package com.otero.recipetoshop.datasource.cache.cacherecetas
 
-import com.otero.recipetoshop.datasource.cachedespensa.FoodDBQueries
-import com.otero.recipetoshop.datasource.cachedespensa.FoodDataBase
-import com.otero.recipetoshop.domain.model.despensa.Food
-import com.otero.recipetoshop.domain.model.recetas.ListaRecetas
-import com.otero.recipetoshop.domain.model.recetas.Receta
+import com.otero.recipetoshop.datasource.cachedespensa.RecipeToShopDB
+import com.otero.recipetoshop.datasource.cachedespensa.RecipeToShopDBQueries
+import com.otero.recipetoshop.domain.model.despensa.Alimento
+import com.otero.recipetoshop.domain.model.CestaCompra.CestaCompra
+import com.otero.recipetoshop.domain.model.CestaCompra.Receta
 
 class RecetaCacheImpl(
-    private val recetaDataBase: FoodDataBase
+    private val cestaCompraDataBase: RecipeToShopDB
 ) :RecetaCache
 {
     //Lista Recetas
-    private val queries: FoodDBQueries = recetaDataBase.foodDBQueries
+    private val queries: RecipeToShopDBQueries = cestaCompraDataBase.recipeToShopDBQueries
 
-    override fun insertListaRecetas(listaReceta: ListaRecetas): Int {
+    override fun insertCestaCompra(cestaCompra: CestaCompra): Int {
         var id: Int = -1
-        recetaDataBase.transaction {
-            queries.insertListaRecetas(
-                nombre = listaReceta.nombre
+        cestaCompraDataBase.transaction {
+            queries.insertCestaCompra(
+                nombre = cestaCompra.nombre
             )
             id = lastIdInserted()
         }
         return id
     }
 
-    override fun insertListasRecetas(listasRecetas: List<ListaRecetas>): List<Int> {
+    override fun insertCestasCompra(cestasCompra: List<CestaCompra>): List<Int> {
         val idList: ArrayList<Int> = ArrayList()
-        for(listaRecetas in listasRecetas){
-            idList.add(insertListaRecetas(listaRecetas))
+        for(cestaCompra in cestasCompra){
+            idList.add(insertCestaCompra(cestaCompra))
         }
         return idList
     }
 
     //Lista de lista de recetas con ingredientes nulos.
-    override fun getAllListaRecetas(): List<ListaRecetas> {
-        return queries.getAllListaRecetas().executeAsList().toListaDeListaRecetas()
+    override fun getAllCestasCompra(): List<CestaCompra> {
+        return queries.getAllCestasCompra().executeAsList().toListaCestasCompra()
     }
 
     //Devuelve lista de receta con ingredientes nulos, hay que llamar otra vez con su nombre por si se quieren los ingredientes.
-    override fun getListaRecetasById(id_listaReceta: Int): ListaRecetas? {
+    override fun getCestaCompraById(id_cestaCompra: Int): CestaCompra? {
         return try {
             queries
-                .getListaRecetaById(id_listarceras = id_listaReceta.toLong())
+                .getCestaCompraById(id_cestaCompra = id_cestaCompra.toLong())
                 .executeAsOne()
-                .toListaRecetas()
+                .toCestaCompra()
         }catch (e: NullPointerException){
-            println(e.message + "    ////  No se ha podido obtenerla lista de recetas con id: ${id_listaReceta}")
+            println(e.message + "    ////  No se ha podido obtenerla lista de recetas con id: ${id_cestaCompra}")
             null
         }
     }
-    override fun removeAllListaRecetas() {
-        return queries.removeAllListaRecetas()
+    override fun removeAllCestasCompra() {
+        return queries.removeAllCestasCompra()
     }
 
-    override fun removeListaRecetaById(id_listaReceta: Int) {
+    override fun removeCestaCompraById(id_cestaCompra: Int) {
         return try {
-            queries.removeListaReceta(id_listarceras = id_listaReceta.toLong())
+            queries.removeCestaCompraById(id_cestaCompra = id_cestaCompra.toLong())
         }catch (e: NullPointerException){
-            println(e.message + "    ////  No se ha podido encontrar la lista de recetas con id: ${id_listaReceta}")
+            println(e.message + "    ////  No se ha podido encontrar la lista de recetas con id: ${id_cestaCompra}")
         }
     }
 
     override fun lastIdInserted(): Int {
-        return queries.lastInsertRowId().executeAsOne().toInt()
+        return queries.lastIdInserted().executeAsOne().toInt()
     }
 
 
     //Recetas
-    override fun insertRecetaToListaRecetas(receta: Receta): Int{
+    override fun insertRecetaToCestaCompra(receta: Receta): Int{
         var id: Int = -1
         if(receta.id_Receta != null){
-            queries.removeRecetaByIdInListaReceta(receta.id_Receta.toLong())
+            queries.removeRecetaByIdInCestaCompra(receta.id_Receta.toLong())
         }
-        recetaDataBase.transaction {
-            queries.insertRecetaToListaRecetas(
-                id_listarecetas = receta.id_listaRecetas.toLong(),
+        cestaCompraDataBase.transaction {
+            queries.insertRecetaToCestaCompra(
+                id_cestaCompra = receta.id_cestaCompra.toLong(),
                 nombre = receta.nombre,
                 cantidad = receta.cantidad.toLong(),
                 user = receta.user,
@@ -87,49 +87,49 @@ class RecetaCacheImpl(
         return id
     }
 
-    override fun insertRecetasToListaRecetas(recetas: List<Receta>) {
+    override fun insertRecetasToCestaCompra(recetas: List<Receta>) {
         for(receta in recetas){
-            insertRecetaToListaRecetas(receta)
+            insertRecetaToCestaCompra(receta)
         }
     }
 
-    override fun getAllRecetasInListasReceta(): List<Receta> {
+    override fun getAllRecetasInCestasCompra(): List<Receta> {
         return queries
-            .getAllRecetasInListasRecetas()
+            .getAllRecetasInCestasCompra()
             .executeAsList()
             .toListaRecetas()
     }
 
-    override fun getRecetasByUserInListaRecetas(user: Boolean, id_listaReceta: Int): List<Receta> {
+    override fun getRecetasByUserInCestaCompra(user: Boolean, id_cestaCompra: Int): List<Receta> {
         return queries
-            .getRecetasByUserInListaRecetas(user = user, id_listarecetas = id_listaReceta.toLong())
+            .getRecetasByUserInCestaCompra(user = user, id_cestaCompra = id_cestaCompra.toLong())
             .executeAsList()
             .toListaRecetas()
     }
 
-    override fun getRecetasByActiveInListaRecetas(active: Boolean, id_listaReceta: Int): List<Receta> {
+    override fun getRecetasByActiveInCestaCompra(active: Boolean, id_cestaCompra: Int): List<Receta> {
         return queries
-            .getRecetasByActiveInListaRecetas(active = active, id_listarecetas = id_listaReceta.toLong())
+            .getRecetasByActiveInCestaCompra(active = active, id_cestaCompra = id_cestaCompra.toLong())
             .executeAsList()
             .toListaRecetas()
     }
 
-    override fun getRecetasByListaRecetasInListaRecetas(id_listaReceta: Int): List<Receta>? {
+    override fun getRecetasByCestaCompra(id_cestaCompra: Int): List<Receta>? {
         return try{
              queries
-                .getRecetasByListaRecetasInListaRecetas(id_listarecetas = id_listaReceta.toLong())
+                .getRecetasByCestaCompra(id_cestaCompra = id_cestaCompra.toLong())
                 .executeAsList()
                 .toListaRecetas()
         }catch (e: Exception){
-            println(e.message + "    ////  No se ha podido obtenerla lista de recetas con id: ${id_listaReceta}")
+            println(e.message + "    ////  No se ha podido obtenerla lista de recetas con id: ${id_cestaCompra}")
             null
         }
     }
 
-    override fun getRecetaByIdInListaReceta(id_receta: Int): Receta? {
+    override fun getRecetaByIdInCestaCompra(id_receta: Int): Receta? {
         return try{
             queries
-                .getRecetaByIdInListaReceta(id_receta = id_receta.toLong())
+                .getRecetaByIdInCestaCompra(id_receta = id_receta.toLong())
                 .executeAsOne()
                 .toReceta()
         } catch (e: Exception){
@@ -138,21 +138,21 @@ class RecetaCacheImpl(
         }
     }
 
-    override fun removeAllRecetasInListasRecetas() {
-        queries.removeAllRecetasInListasRecetas()
+    override fun removeAllRecetasInCestasCompra() {
+        queries.removeAllRecetasInCestasCompra()
     }
 
-    override fun removeRecetasByListaRecetas(id_receta: Int) {
+    override fun removeRecetasByCestaCompra(id_cestaCompra: Int) {
         try{
-            queries.removeRecetaByListaRecetasInListaReceta(id_listaRecetas = id_receta.toLong())
+            queries.removeRecetasByCestaCompra(id_cestaCompra = id_cestaCompra.toLong())
         } catch (e:Exception){
-            println(e.message + "    ////  No se ha podido obtenerla lista de recetas con id: ${id_receta}")
+            println(e.message + "    ////  No se ha podido obtenerla lista de recetas con id: ${id_cestaCompra}")
         }
     }
 
-    override fun removeRecetaByIdInListaRecetas(id_receta: Int) {
+    override fun removeRecetaByIdInCestaCompra(id_receta: Int) {
         try{
-            queries.removeRecetaByIdInListaReceta(id_receta = id_receta.toLong())
+            queries.removeRecetaByIdInCestaCompra(id_receta = id_receta.toLong())
         } catch (e:Exception){
             println(e.message + "    ////  No se ha podido obtenerla lista de recetas con id: ${id_receta}")
         }
@@ -160,12 +160,12 @@ class RecetaCacheImpl(
 
 
     //Alimentos
-    override fun insertAlimentoToListaRecetas(alimento: Food) {
-        if(alimento.id_food != null){
-            queries.removeAlimentoByIdInListaRecetas(alimento.id_food.toLong())
+    override fun insertAlimentoToCestaCompra(alimento: Alimento) {
+        if(alimento.id_alimento != null){
+            queries.removeAlimentoByIdInCestaCompra(alimento.id_alimento.toLong())
         }
-        queries.insertAlimentoToListaRecetas(
-            id_listaReceta = alimento.id_listaRecetas!!.toLong(),
+        queries.insertAlimentoToCestaCompra(
+            id_cestaCompra = alimento.id_cestaCompra!!.toLong(),
             nombre = alimento.nombre,
             cantidad = alimento.cantidad.toLong(),
             tipo = alimento.tipoUnidad.name,
@@ -173,65 +173,65 @@ class RecetaCacheImpl(
         )
     }
 
-    override fun insertAlimentosToListaRecetas(alimentos: List<Food>) {
+    override fun insertAlimentosToCestaCompra(alimentos: List<Alimento>) {
         for(alimento in alimentos){
-            insertAlimentoToListaRecetas(alimento)
+            insertAlimentoToCestaCompra(alimento)
         }
     }
 
-    override fun getAlimentosByListaRecetas(id_listaReceta: Int): List<Food>? {
+    override fun getAlimentosByCestaCompra(id_cestaCompra: Int): List<Alimento>? {
         return try{
             queries
-                .getAlimentosByListaRecetaInListaReceta(id_listaReceta = id_listaReceta.toLong())
+                .getAlimentosByCestaCompra(id_cestaCompra = id_cestaCompra.toLong())
                 .executeAsList()
-                .toListaFood()
+                .toListaAlimentos()
         }catch (e: Exception){
-            println(e.message + "    ////  No se ha podido obtenerla lista de recetas con id: ${id_listaReceta}")
+            println(e.message + "    ////  No se ha podido obtenerla lista de recetas con id: ${id_cestaCompra}")
             null
         }
     }
 
-    override fun getAlimentosByActiveInListaRecetas(active: Boolean, id_listaReceta: Int): List<Food> {
+    override fun getAlimentosByActiveInCestaCompra(active: Boolean, id_cestaCompra: Int): List<Alimento> {
         return queries
-            .getAlimentosByActiveInListaRecetas(active =active, id_listaReceta = id_listaReceta.toLong())
+            .getAlimentosByActiveInCestaCompra(active =active, id_cestaCompra = id_cestaCompra.toLong())
             .executeAsList()
-            .toListaFood()
+            .toListaAlimentos()
     }
 
-    override fun getAllAlimentosInListasRecetas(): List<Food> {
+    override fun getAllAlimentosInCestasCompra(): List<Alimento> {
         return queries
-            .getAllAlimentosInListaRecetas()
+            .getAllAlimentosInCestasCompra()
             .executeAsList()
-            .toListaFood()
+            .toListaAlimentos()
     }
 
-    override fun getAlimentoByIdInListaRecetas(id_alimento: Int): Food? {
+    override fun getAlimentoByIdInCestaCompra(id_alimento: Int): Alimento? {
         return try {
             queries
-                .getAlimentosByIdInListaRecetas(id_alimento = id_alimento.toLong())
+                .getAlimentoByIdInCestaCompra(id_alimento = id_alimento.toLong())
                 .executeAsOne()
-                .toFood()
+                .toAlimento()
         } catch (e: Exception){
             println(e.message + "    ////  No se ha podido obtenerla lista de recetas con id: ${id_alimento}")
             null
         }
     }
 
-    override fun removeAllAlimentosInListasReceta() {
-        queries.removeAllAlimentosInListasRecetas()
+    override fun removeAllAlimentosInCestasCompra() {
+        queries.removeAllAlimentosInCestasCompra()
     }
 
-    override fun removeAlimentosByListaRecetasInListaRecetas(id_listaReceta: Int) {
+    override fun removeAlimentosByCestaCompra(id_cestaCompra: Int) {
         try{
-            queries.removeAlimentosByListaRecetasInListaRecetas(id_listaReceta = id_listaReceta.toLong())
+            queries.removeAlimentosByCestaCompra(id_cestaCompra = id_cestaCompra.toLong())
         } catch (e: Exception){
-            println(e.message + "    ////  No se ha podido obtenerla lista de recetas con id: ${id_listaReceta}")
+            println(e.message + "    ////  No se ha podido obtenerla lista de recetas con id: ${id_cestaCompra}")
         }
     }
 
-    override fun removeAlimentoByIdInListaRecetas(id_alimento: Int) {
+    override fun removeAlimentoByIdInCestaCompra(id_alimento: Int) {
         try{
-            queries.removeAlimentoByIdInListaRecetas(id_alimento = id_alimento.toLong())
+            queries.removeAlimentoByIdInCestaCompra(id_alimento = id_alimento.toLong())
         } catch (e: Exception){
             println(e.message + "    ////  No se ha podido obtenerla lista de recetas con id: ${id_alimento}")
         }
@@ -239,10 +239,10 @@ class RecetaCacheImpl(
 
 
     //Ingredientes
-    override fun insertIngredienteToReceta(ingrediente: Food) {
+    override fun insertIngredienteToReceta(ingrediente: Alimento) {
         queries.insertIngredienteToReceta(
             id_receta = ingrediente.id_receta!!.toLong(),
-            id_listaRecetas = ingrediente.id_listaRecetas!!.toLong(),
+            id_cestaCompra = ingrediente.id_cestaCompra!!.toLong(),
             nombre = ingrediente.nombre,
             cantidad = ingrediente.cantidad.toLong(),
             tipo = ingrediente.tipoUnidad.name,
@@ -250,53 +250,53 @@ class RecetaCacheImpl(
         )
     }
 
-    override fun insertIngredientesToReceta(ingredientes: List<Food>) {
+    override fun insertIngredientesToReceta(ingredientes: List<Alimento>) {
         for(ingrediente in ingredientes){
             insertIngredienteToReceta(ingrediente)
         }
     }
 
-    override fun getIngredientesByReceta(id_receta: Int): List<Food>? {
+    override fun getIngredientesByReceta(id_receta: Int): List<Alimento>? {
         return try{
             queries
-                .getIngredientesByRecetaInReceta(id_receta = id_receta.toLong())
+                .getIngredientesByReceta(id_receta = id_receta.toLong())
                 .executeAsList()
-                .toListFood()
+                .toListaIngredientes()
         } catch (e: Exception){
             println(e.message + "    ////  No se ha podido obtenerla lista de recetas con id: ${id_receta}")
             null
         }
     }
 
-    override fun getAllIngredientesInListasRecetas(): List<Food> {
+    override fun getAllIngredientesInCestasCompra(): List<Alimento> {
         return queries
-                .getAllIngredientesInListasRecetas()
+                .getAllIngredientesInCestasCompra()
                 .executeAsList()
-                .toListFood()
+                .toListaIngredientes()
 
     }
 
-    override fun getIngredientsByActiveInRecta(active: Boolean, id_receta: Int): List<Food> {
+    override fun getIngredientsByActiveInRecta(active: Boolean, id_receta: Int): List<Alimento> {
         return queries
             .getIngredientsByActiveInReceta(active = active, id_receta = id_receta.toLong())
             .executeAsList()
-            .toListFood()
+            .toListaIngredientes()
     }
 
-    override fun getIngredienteByIdInReceta(id_ingrediente: Int): Food? {
+    override fun getIngredienteByIdInReceta(id_ingrediente: Int): Alimento? {
         return try{
             queries
                 .getIngredienteByIdInReceta(id_alimento = id_ingrediente.toLong())
                 .executeAsOne()
-                .toFood()
+                .toIngrediente()
         }catch (e: Exception){
             println(e.message + "    ////  No se ha podido obtenerla lista de recetas con id: ${id_ingrediente}")
             null
         }
     }
 
-    override fun removeAllIngredientesInListasRecetas() {
-        queries.removeAllIngredientesInListasRecetas()
+    override fun removeAllIngredientesInCestasCompra() {
+        queries.removeAllIngredientesInCestasCompra()
     }
 
     override fun removeIngredientesByRecetaInReceta(id_receta: Int) {

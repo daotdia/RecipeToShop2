@@ -8,6 +8,8 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Surface
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.AddAPhoto
+import androidx.compose.material.icons.filled.PictureInPicture
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,15 +25,12 @@ import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 @Composable
 fun RecetaImagen (
     url: String,
-    contentDescription: String,
-    size: Dp = 250.dp
+    contentDescription: String
 ){
     val painter = rememberCoilPainter(request = url)
-    Box{
+    Box(Modifier.fillMaxSize()){
         Image(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(size),
+            modifier = Modifier.fillMaxSize(),
             painter = painter,
             contentDescription = contentDescription,
             contentScale = ContentScale.Crop
@@ -40,27 +39,21 @@ fun RecetaImagen (
     when(painter.loadState){
         is ImageLoadState.Error -> {
             //Que quieres que ocurra cuando la imagen no se llegue a cargar por algún error.
-            Surface( modifier = Modifier
-                .fillMaxWidth()
-                .height(size)
-                .background(color = Color.LightGray)
-                ,
+            Surface(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(color = Color.LightGray)
             ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(size),
-                    horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
+                Box(modifier = Modifier.fillMaxSize())
+                {
                     Icon(
-                        Icons.Filled.Add,
-                        contentDescription = "más",
+                        Icons.Filled.AddAPhoto,
                         modifier = Modifier
                             .size(46.dp)
                             .padding(2.dp)
-                        ,
-                        tint = Color.LightGray
+                            .align(Alignment.Center),
+                        tint = Color.LightGray,
+                        contentDescription = "más",
                     )
                 }
             }

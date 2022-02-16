@@ -1,0 +1,266 @@
+import java.lang.Boolean;
+
+CREATE TABLE  despensa_Entity(
+    id_despensa INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    nombre TEXT NOT NULL,
+    tipo TEXT NOT NULL,
+    cantidad INTEGER NOT NULL,
+    active INTEGER AS Boolean NOT NULL
+);
+
+selectAllAlimentosDespensa:
+SELECT *
+FROM despensa_Entity;
+
+insertAlimentoDespensa:
+INSERT OR REPLACE
+INTO despensa_Entity (
+    nombre,
+    tipo,
+    cantidad,
+    active
+) VALUES (?, ?, ?, ?);
+
+searchAlimentosDespensa:
+SELECT * FROM despensa_Entity
+WHERE nombre LIKE ('%' || :query || '%')
+ORDER BY nombre DESC;
+
+getAllAlimentosDespensa:
+SELECT * FROM despensa_Entity
+ORDER BY nombre DESC;
+
+getAlimentoDespensaByActive:
+SELECT * FROM despensa_Entity
+WHERE active = :active
+ORDER BY nombre DESC;
+
+getAlimentoDespensaById:
+SELECT * FROM despensa_Entity
+WHERE id_despensa= :id_despensa;
+
+removeAllAlimentosDespensa:
+DELETE FROM despensa_Entity;
+
+removeAlimentoDespensaById:
+DELETE FROM despensa_Entity
+WHERE id_despensa= :id_despensa;
+
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+CREATE TABLE cestaCompra_Entity(
+    id_cestaCompra INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    nombre TEXT NOT NULL UNIQUE
+);
+
+insertCestaCompra:
+INSERT OR REPLACE
+INTO cestaCompra_Entity (
+    nombre
+) VALUES (?);
+
+getAllCestasCompra:
+SELECT * FROM cestaCompra_Entity
+ORDER BY nombre DESC;
+
+
+getCestaCompraById:
+SELECT * FROM cestaCompra_Entity
+WHERE id_cestaCompra = :id_cestaCompra;
+
+removeAllCestasCompra:
+DELETE FROM cestaCompra_Entity;
+
+removeCestaCompraById:
+DELETE FROM cestaCompra_Entity
+WHERE id_cestaCompra = :id_cestaCompra;
+
+lastIdInserted:
+SELECT last_insert_rowid()
+;
+
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+CREATE TABLE  receta_Entity(
+    id_cestaCompra INTEGER NOT NULL,
+    id_receta INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    nombre TEXT NOT NULL,
+    cantidad INTEGER NOT NULL,
+    user INTEGER AS Boolean NOT NULL,
+    active INTEGER AS Boolean NOT NULL,
+    imageSource TEXT,
+    rating INTEGER,
+    FOREIGN KEY (id_cestaCompra) REFERENCES cestaCompra_Entity(nombre)
+    ON DELETE CASCADE
+);
+
+
+insertRecetaToCestaCompra:
+INSERT OR REPLACE
+INTO receta_Entity (
+    id_cestaCompra,
+    nombre,
+    cantidad,
+    user,
+    active,
+    imageSource,
+    rating
+) VALUES ( ?, ?, ?, ?, ?, ?,?);
+
+getAllRecetasInCestasCompra:
+SELECT * FROM receta_Entity
+ORDER BY nombre DESC;
+
+getRecetasByUserInCestaCompra:
+SELECT * FROM receta_Entity
+WHERE user = :user
+AND id_cestaCompra = :id_cestaCompra
+ORDER BY nombre DESC;
+
+getRecetasByActiveInCestaCompra:
+SELECT * FROM receta_Entity
+WHERE active = :active
+AND id_cestaCompra = :id_cestaCompra
+ORDER BY nombre DESC;
+
+getRecetasByCestaCompra:
+SELECT * FROM receta_Entity
+WHERE id_cestaCompra = :id_cestaCompra
+ORDER BY nombre DESC;
+
+getRecetaByIdInCestaCompra:
+SELECT * FROM receta_Entity
+WHERE id_receta= :id_receta
+ORDER BY nombre DESC;
+
+removeAllRecetasInCestasCompra:
+DELETE FROM receta_Entity;
+
+removeRecetasByCestaCompra:
+DELETE FROM receta_Entity
+WHERE id_cestaCompra= :id_cestaCompra;
+
+removeRecetaByIdInCestaCompra:
+DELETE FROM receta_Entity
+WHERE id_receta = :id_receta;
+
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+CREATE TABLE  alimentos_Entity(
+    id_alimento INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    id_cestaCompra INTEGER NOT NULL,
+    nombre TEXT NOT NULL,
+    tipo TEXT NOT NULL,
+    cantidad INTEGER NOT NULL,
+    active INTEGER AS Boolean NOT NULL,
+    FOREIGN KEY (id_cestaCompra) REFERENCES cestaCompra_Entity(id_cestaCompra)
+    ON DELETE CASCADE
+);
+
+insertAlimentoToCestaCompra:
+INSERT OR REPLACE
+INTO alimentos_Entity (
+    id_cestaCompra,
+    nombre,
+    tipo,
+    cantidad,
+    active
+) VALUES (?, ?, ?,?, ?);
+
+getAllAlimentosInCestasCompra:
+SELECT * FROM alimentos_Entity
+ORDER BY nombre DESC;
+
+getAlimentosByActiveInCestaCompra:
+SELECT * FROM alimentos_Entity
+WHERE active = :active
+AND id_cestaCompra = :id_cestaCompra
+ORDER BY nombre DESC;
+
+getAlimentosByCestaCompra:
+SELECT * FROM alimentos_Entity
+WHERE id_cestaCompra = :id_cestaCompra
+ORDER BY nombre DESC;
+
+getAlimentoByIdInCestaCompra:
+SELECT * FROM alimentos_Entity
+WHERE id_alimento= :id_alimento
+ORDER BY nombre DESC;
+
+removeAllAlimentosInCestasCompra:
+DELETE FROM alimentos_Entity;
+
+removeAlimentosByCestaCompra:
+DELETE FROM alimentos_Entity
+WHERE id_cestaCompra = :id_cestaCompra;
+
+removeAlimentoByIdInCestaCompra:
+DELETE FROM alimentos_Entity
+WHERE id_alimento = :id_alimento;
+
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+CREATE TABLE  ingredients_Entity(
+    id_ingrediente INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    id_receta INTEGER NOT NULL,
+    id_cestaCompra INTEGER  NOT NULL,
+    nombre TEXT NOT NULL,
+    tipo TEXT NOT NULL,
+    cantidad INTEGER NOT NULL,
+    active INTEGER AS Boolean NOT NULL,
+    FOREIGN KEY (id_receta) REFERENCES receta_Entity(id_receta)
+    ON DELETE CASCADE
+);
+
+insertIngredienteToReceta:
+INSERT OR REPLACE
+INTO ingredients_Entity (
+    id_cestaCompra,
+    id_receta,
+    nombre,
+    tipo,
+    cantidad,
+    active
+) VALUES (?, ?, ?,?,?, ?);
+
+getAllIngredientesInCestasCompra:
+SELECT * FROM ingredients_Entity
+ORDER BY nombre DESC;
+
+getIngredientesByReceta:
+SELECT * FROM ingredients_Entity
+WHERE id_receta = :id_receta
+ORDER BY nombre DESC;
+
+getIngredientsByActiveInReceta:
+SELECT * FROM ingredients_Entity
+WHERE active = :active
+AND id_receta = :id_receta
+ORDER BY nombre DESC;
+
+getIngredienteByIdInReceta:
+SELECT * FROM ingredients_Entity
+WHERE id_ingrediente = :id_alimento
+ORDER BY nombre DESC;
+
+removeAllIngredientesInCestasCompra:
+DELETE FROM ingredients_Entity;
+
+removeIngredientesByRecetaInReceta:
+DELETE FROM ingredients_Entity
+WHERE id_receta= :id_receta;
+
+removeIngredienteByIdInReceta:
+DELETE FROM ingredients_Entity
+WHERE id_ingrediente = :id_alimento;
+
+
+

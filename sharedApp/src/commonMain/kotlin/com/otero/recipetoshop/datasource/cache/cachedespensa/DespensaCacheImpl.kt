@@ -1,71 +1,71 @@
 package com.otero.recipetoshop.datasource.cache.cachedespensa
 
-import com.otero.recipetoshop.datasource.cachedespensa.FoodDBQueries
-import com.otero.recipetoshop.datasource.cachedespensa.FoodDataBase
-import com.otero.recipetoshop.domain.model.despensa.Food
+import com.otero.recipetoshop.datasource.cachedespensa.RecipeToShopDB
+import com.otero.recipetoshop.datasource.cachedespensa.RecipeToShopDBQueries
+import com.otero.recipetoshop.domain.model.despensa.Alimento
 
 
 class DespensaCacheImpl(
-    private val foodDataBase: FoodDataBase
+    private val cestaCompraDataBase: RecipeToShopDB
 ) :DespensaCache{
-    private val queries: FoodDBQueries = foodDataBase.foodDBQueries
+    private val queries: RecipeToShopDBQueries = cestaCompraDataBase.recipeToShopDBQueries
 
-    override fun insertFoodDespensa(food: Food) {
-        if(food.id_food != null){
-            queries.removeFoodById(food.id_food.toLong())
+    override fun insertarAlimentoDespensa(alimento: Alimento) {
+        if(alimento.id_alimento != null){
+            queries.removeAlimentoDespensaById(alimento.id_alimento.toLong())
         }
-        queries.insertFood(
-            nombre = food.nombre,
-            tipo = food.tipoUnidad.name,
-            cantidad = food.cantidad.toLong(),
-            active = food.active
+        queries.insertAlimentoDespensa(
+            nombre = alimento.nombre,
+            tipo = alimento.tipoUnidad.name,
+            cantidad = alimento.cantidad.toLong(),
+            active = alimento.active
         )
     }
 
-    override fun insertFoodsDespensa(foods: List<Food>) {
-        for(food in foods){
-            insertFoodDespensa(food)
+    override fun insertAlimentosDespensa(alimentos: List<Alimento>) {
+        for(alimento in alimentos){
+            insertarAlimentoDespensa(alimento)
         }
     }
 
-    override fun searchFoodDespensa(query: String): List<Food> {
-        return queries.searchFoods(
+    override fun searchAlimentosDespensa(query: String): List<Alimento> {
+        return queries.searchAlimentosDespensa(
             query = query,
-        ).executeAsList().toFoodList()
+        ).executeAsList().toListaAlimentos()
     }
 
-    override fun getAllFoodsDespensa(): List<Food> {
-        return queries.getAllFoods()
+    override fun getAllAlimentosDespensa(): List<Alimento> {
+        return queries.getAllAlimentosDespensa()
             .executeAsList()
-            .toFoodList()
+            .toListaAlimentos()
     }
 
-    override fun getFoodByActive(active: Boolean): List<Food>? {
-        return queries.getFoodByActive(active = active)
+    override fun getAlimentoDespensaByActive(active: Boolean): List<Alimento>? {
+        return queries.getAlimentoDespensaByActive(active = active)
             .executeAsList()
-            .toFoodList()
+            .toListaAlimentos()
     }
 
-    override fun getFoodDespensaById(id_food: Int): Food? {
+    override fun getAlimentoDespensaById(id_alimento: Int): Alimento? {
         return try {
-            queries.getFoodById(id_food.toLong())
+            queries.getAlimentoDespensaById(id_alimento.toLong())
                 .executeAsOne()
-                .toFood()
+                .toAlimento()
         }catch (e: NullPointerException){
-            println(e.message + "    ////  No se ha podido obtener el alimento con id: ${id_food}")
+            println(e.message + "    ////  No se ha podido obtener el alimento con id: ${id_alimento}")
             null
         }
     }
 
-    override fun removeAllFoodsDespensa() {
-        return queries.removeAllFoods()
+    override fun removeAllAlimentosDespensa() {
+        return queries.removeAllAlimentosDespensa()
     }
 
-    override fun removeFoodDespensaById(id_food: Int) {
+    override fun removeAlimentoDespensaById(id_alimento: Int) {
         return try {
-            queries.removeFoodById(id_despensa = id_food.toLong())
+            queries.removeAlimentoDespensaById(id_despensa = id_alimento.toLong())
         }catch (e: NullPointerException){
-            println(e.message + "    ////  No se ha podido obtener el alimento con id: ${id_food}")
+            println(e.message + "    ////  No se ha podido obtener el alimento con id: ${id_alimento}")
         }
     }
 }

@@ -1,7 +1,7 @@
 package com.otero.recipetoshop.Interactors.RecipeList
 
 //class SearchRecipes (
-//    private val recipeService: RecipeService,
+//    private val recipeService: RecetasServicio,
 //        ) {
 //    fun execute(
 //        page: Int,

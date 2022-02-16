@@ -26,19 +26,19 @@ import androidx.compose.ui.unit.sp
 import com.otero.recipetoshop.android.presentation.theme.Lora
 import com.otero.recipetoshop.android.presentation.theme.appShapes
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
-import com.otero.recipetoshop.domain.model.despensa.Food
+import com.otero.recipetoshop.domain.model.despensa.Alimento
 
 
 @ExperimentalComposeUiApi
 @Composable
 fun FoodCard(
     modifier: Modifier = Modifier,
-    food: Food,
+    alimento: Alimento,
     onCantidadChange: (String) -> Unit,
     elevation: Dp,
 ){
     val keyboardController = LocalSoftwareKeyboardController.current
-    val stateFood = remember { mutableStateOf(food)}
+    val stateFood = remember { mutableStateOf(alimento)}
     Card(
         modifier = modifier
             .fillMaxWidth()

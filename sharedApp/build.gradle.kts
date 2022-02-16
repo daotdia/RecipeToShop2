@@ -80,7 +80,7 @@ sqldelight{
 //        packageName = "com.otero.recipetoshop.datasource.cacherecipe"
 //        sourceFolders = listOf("sqldelight")
 //    }
-    database("FoodDataBase"){
+    database("RecipeToShopDB"){
         packageName = "com.otero.recipetoshop.datasource.cachedespensa"
         sourceFolders = listOf("sqldelight")
     }

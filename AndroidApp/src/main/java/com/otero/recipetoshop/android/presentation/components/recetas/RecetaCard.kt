@@ -11,7 +11,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.otero.recipetoshop.android.presentation.components.RecetaImagen
 import com.otero.recipetoshop.android.presentation.theme.appShapes
-import com.otero.recipetoshop.domain.model.recetas.Receta
+import com.otero.recipetoshop.domain.model.CestaCompra.Receta
 
 @ExperimentalComposeUiApi
 @Composable
@@ -36,7 +36,6 @@ fun RecetaCard (
             RecetaImagen(
                 url = if(receta.imagenSource != null) receta.imagenSource!! else "",
                 contentDescription = receta.nombre,
-                size =size
             )
             Row(
                 modifier = Modifier

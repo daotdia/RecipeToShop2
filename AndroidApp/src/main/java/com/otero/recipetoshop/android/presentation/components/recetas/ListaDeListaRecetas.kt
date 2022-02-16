@@ -23,19 +23,19 @@ import androidx.navigation.NavController
 import com.otero.recipetoshop.android.presentation.navigation.RutasNavegacion
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
-import com.otero.recipetoshop.domain.model.recetas.ListaRecetas
-import com.otero.recipetoshop.events.recetas.ListOfRecetasListEvents
-import com.otero.recipetoshop.presentationlogic.states.recetas.ListOfRecetasListState
+import com.otero.recipetoshop.domain.model.CestaCompra.CestaCompra
+import com.otero.recipetoshop.events.recetas.ListaCestasCompra
+import com.otero.recipetoshop.presentationlogic.states.recetas.ListaCestasCompraState
 import de.charlex.compose.RevealDirection
 import de.charlex.compose.RevealSwipe
 
 @ExperimentalComposeUiApi
 @ExperimentalMaterialApi
 @Composable
-fun ListaDeListaRectas(
+fun ListaCestasCompra(
     navController: NavController,
-    recetasState: MutableState<ListOfRecetasListState>,
-    onTriggeEvent: (ListOfRecetasListEvents) -> Any,
+    listaCestaCompraState: MutableState<ListaCestasCompraState>,
+    onTriggeEvent: (ListaCestasCompra) -> Any,
 ) {
     val dialogElement = remember { mutableStateOf(false)}
 
@@ -54,12 +54,12 @@ fun ListaDeListaRectas(
         }
     ) {
         if(dialogElement.value){
-            NewListaRecetaPopUp(
+            NewCestaCompraPopUp(
                 onTriggerEvent = onTriggeEvent,
 //                onAddListaReceta = { nombre ->
-//                    onTriggeEvent(ListOfRecetasListEvents.onAddListaReceta(nombre = nombre))
+//                    onTriggeEvent(ListaCestasCompra.onAddListaReceta(nombre = nombre))
 //                },
-                onNewListaReceta = dialogElement,
+                onNewCestaCompra = dialogElement,
                 navController = navController
             )
         }
@@ -71,8 +71,8 @@ fun ListaDeListaRectas(
                 .padding(1.dp),
         ) {
             items(
-                items = recetasState.value.listaDeListasRecetas,
-                { listItem: ListaRecetas -> listItem.id_listaRecetas!! }
+                items = listaCestaCompraState.value.listaCestasCompra,
+                { listItem: CestaCompra -> listItem.id_cestaCompra!! }
             )
             { item ->
                 RevealSwipe(
@@ -95,9 +95,9 @@ fun ListaDeListaRectas(
                         nombre = remember { mutableStateOf(item.nombre) },
                         elevation = 4.dp,
                         onClick = {
-                            val idListaRecetasActual: Int = item.id_listaRecetas!!
+                            val idCestaCompraActual: Int = item.id_cestaCompra!!
                             //Posteriormente se navega a la pantalal de lista de recetas clicada.
-                            navController.navigate(RutasNavegacion.ListaRecetas.route + "/$idListaRecetasActual")
+                            navController.navigate(RutasNavegacion.CestaCompra.route + "/$idCestaCompraActual")
                         }
                     )
                 }

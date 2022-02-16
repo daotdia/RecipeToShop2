@@ -1,21 +1,21 @@
 package com.otero.recipetoshop.datasource.cache.cachedespensa
 
-import com.otero.recipetoshop.domain.model.despensa.Food
+import com.otero.recipetoshop.domain.model.despensa.Alimento
 
 interface DespensaCache {
-    fun insertFoodDespensa(food: Food): Unit
+    fun insertarAlimentoDespensa(alimento: Alimento): Unit
 
-    fun insertFoodsDespensa(foods: List<Food>): Unit
+    fun insertAlimentosDespensa(alimentos: List<Alimento>): Unit
 
-    fun searchFoodDespensa(query: String): List<Food>?
+    fun searchAlimentosDespensa(query: String): List<Alimento>?
 
-    fun getAllFoodsDespensa(): List<Food>?
+    fun getAllAlimentosDespensa(): List<Alimento>?
 
-    fun getFoodByActive(active: Boolean): List<Food>?
+    fun getAlimentoDespensaByActive(active: Boolean): List<Alimento>?
 
-    fun getFoodDespensaById(id_food: Int): Food?
+    fun getAlimentoDespensaById(id_food: Int): Alimento?
 
-    fun removeAllFoodsDespensa(): Unit
+    fun removeAllAlimentosDespensa(): Unit
 
-    fun removeFoodDespensaById(id_food: Int): Unit
+    fun removeAlimentoDespensaById(id_food: Int): Unit
 }

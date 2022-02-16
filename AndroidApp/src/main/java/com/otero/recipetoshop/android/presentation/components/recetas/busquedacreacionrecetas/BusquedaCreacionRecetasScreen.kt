@@ -21,17 +21,15 @@ import com.otero.recipetoshop.android.presentation.components.util.SearchBarRece
 import com.otero.recipetoshop.android.presentation.navigation.RutasNavegacion
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
-import com.otero.recipetoshop.domain.model.recetas.Receta
-import com.otero.recipetoshop.events.recetas.BusquedaCreacionRecetasEvents
-import com.otero.recipetoshop.events.recetas.RecetaListEvents
-import com.otero.recipetoshop.presentationlogic.states.recetas.RecetasCreacionBusquedaState
+import com.otero.recipetoshop.events.recetas.BusquedaRecetasAPI
+import com.otero.recipetoshop.presentationlogic.states.recetas.BusquedaRecetasAPIState
 
 @ExperimentalComposeUiApi
 @ExperimentalMaterialApi
 @Composable
 fun  BusquedaCreacionRecetasScreen(
-    busquedaCreacionState: MutableState<RecetasCreacionBusquedaState>,
-    onTriggeEventReceta: (BusquedaCreacionRecetasEvents) -> Unit,
+    busquedaCreacionRecetasAPIState: MutableState<BusquedaRecetasAPIState>,
+    onTriggeEventReceta: (BusquedaRecetasAPI) -> Unit,
     navController: NavController
 ) {
     val newRecetaUser = remember { mutableStateOf(false)}
@@ -41,12 +39,12 @@ fun  BusquedaCreacionRecetasScreen(
             .fillMaxSize(),
         topBar = {
             SearchBarRecetas(
-                query = busquedaCreacionState.value.query,
+                query = busquedaCreacionRecetasAPIState.value.query,
                 onQueryChanged = {
-                    onTriggeEventReceta(BusquedaCreacionRecetasEvents.updateQuery(it))
+                    onTriggeEventReceta(BusquedaRecetasAPI.updateQuery(it))
                 },
                 onExecuteSearch = {
-                    onTriggeEventReceta(BusquedaCreacionRecetasEvents.buscarRecetas)
+                    onTriggeEventReceta(BusquedaRecetasAPI.buscarRecetas)
                 } )
         }
     ) {
@@ -54,7 +52,7 @@ fun  BusquedaCreacionRecetasScreen(
             modifier = Modifier
                 .fillMaxSize()
         ) {
-            if (busquedaCreacionState.value.lisaRecetasBuscadas.isNotEmpty()){
+            if (busquedaCreacionRecetasAPIState.value.lisaRecetasBuscadas.isNotEmpty()){
                 LazyColumn(
                     modifier = Modifier
                         .padding(start = 4.dp, bottom = 4.dp, end = 4.dp, top = 12.dp)
@@ -62,21 +60,21 @@ fun  BusquedaCreacionRecetasScreen(
                         .weight(5F)
                     ,
                 ) {
-                    items(busquedaCreacionState.value.lisaRecetasBuscadas){ item ->
+                    items(busquedaCreacionRecetasAPIState.value.lisaRecetasBuscadas){ item ->
                         RecetaCard(
                             receta = item,
                             elevation = 4.dp,
                             onCantidadChange = {},
                             onRecetaClick = {
                                 onTriggeEventReceta(
-                                    BusquedaCreacionRecetasEvents.onAddYummlyReceta(
+                                    BusquedaRecetasAPI.onAddYummlyReceta(
                                         item.copy(
                                             cantidad = 1,
-                                            id_listaRecetas = busquedaCreacionState.value.id_listaRecetas
+                                            id_cestaCompra = busquedaCreacionRecetasAPIState.value.id_cestaCompra
                                         )
                                     )
                                 )
-                                navController.navigate(RutasNavegacion.ListaRecetas.route + "/$busquedaCreacionState.value.id_listaRecetas")
+                                navController.navigate(RutasNavegacion.CestaCompra.route + "/${busquedaCreacionRecetasAPIState.value.id_cestaCompra}")
                             }
                         )
                     }
@@ -96,7 +94,7 @@ fun  BusquedaCreacionRecetasScreen(
                     NewRecetaPopUp(
                         onAddReceta = { nombre, cantidad ->
                             onTriggeEventReceta(
-                                BusquedaCreacionRecetasEvents.onAddUserReceta(
+                                BusquedaRecetasAPI.onAddUserReceta(
                                     nombre = nombre,
                                     cantidad = cantidad.toInt()
                                 )
@@ -107,7 +105,7 @@ fun  BusquedaCreacionRecetasScreen(
                     )
                 }
                 if(recetaSeleccionada.value){
-                    navController.navigate(RutasNavegacion.ListaRecetas.route + "/${busquedaCreacionState.value.id_listaRecetas}")
+                    navController.navigate(RutasNavegacion.CestaCompra.route + "/${busquedaCreacionRecetasAPIState.value.id_cestaCompra}")
                 }
                 Text(
                     modifier = Modifier

@@ -1,7 +1,7 @@
 package com.otero.recipetoshop.datasource.network.model.parsers
 
 import com.otero.recipetoshop.datasource.network.model.yummlyDTO.*
-import com.otero.recipetoshop.domain.model.recetas.YummlyRecipe
+import com.otero.recipetoshop.domain.model.CestaCompra.YummlyRecipe
 
 val mapParser: HashMap<String, Any> = hashMapOf()
 
