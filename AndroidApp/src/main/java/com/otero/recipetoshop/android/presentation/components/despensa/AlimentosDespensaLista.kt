@@ -30,7 +30,7 @@ import com.otero.recipetoshop.presentationlogic.states.despensa.ListaAlimentosSt
 @Composable
 fun AlimentosDespensaLista (
     listState: MutableState<ListaAlimentosState>,
-    onTriggeEvent: (DespensaEventos) -> Unit
+    onTriggeEvent: (DespensaEventos) -> Unit,
 ) {
     val onNewFood = remember { mutableStateOf(false)}
     //El contenido lo organizo en un scaffold para poner facilmente floatingbutton

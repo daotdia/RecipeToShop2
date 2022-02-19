@@ -1,9 +1,14 @@
 package com.otero.recipetoshop.android.dependenceinjection
 
+import com.otero.recipetoshop.Interactors.cestascompra.AddNewCestaCompra
+import com.otero.recipetoshop.Interactors.cestascompra.GetCestaCompra
+import com.otero.recipetoshop.Interactors.cestascompra.PrintListaCestasCompra
 import com.otero.recipetoshop.Interactors.despensa.*
-import com.otero.recipetoshop.Interactors.recetas.busquedarecetas.BuscarRecetasAPI
-import com.otero.recipetoshop.Interactors.recetas.listacestascompra.*
-import com.otero.recipetoshop.Interactors.recetas.cestacompra.*
+import com.otero.recipetoshop.Interactors.cestascompra.recetas.busquedarecetas.BuscarRecetasAPI
+import com.otero.recipetoshop.Interactors.cestascompra.cestacompra.*
+import com.otero.recipetoshop.Interactors.cestascompra.recetas.AddIngredienteReceta
+import com.otero.recipetoshop.Interactors.cestascompra.recetas.DeleteIngredienteReceta
+import com.otero.recipetoshop.Interactors.cestascompra.recetas.GetDatosReceta
 import com.otero.recipetoshop.datasource.cache.cachedespensa.DespensaCache
 import com.otero.recipetoshop.datasource.cache.cacherecetas.RecetaCache
 import com.otero.recipetoshop.datasource.network.RecetasServicio
@@ -171,5 +176,35 @@ object InteractorsModule {
         recetasServicio: RecetasServicio
     ): BuscarRecetasAPI{
         return BuscarRecetasAPI(recetaCache = recetaCache, recetasServicio = recetasServicio)
+    }
+
+    @Singleton
+    @Provides
+    fun provideAddIngredienteReceta(
+        recetaCache: RecetaCache
+    ): AddIngredienteReceta {
+        return AddIngredienteReceta(
+            recetaCache = recetaCache
+        )
+    }
+
+    @Singleton
+    @Provides
+    fun provideGetIngredientesReceta(
+        recetaCache: RecetaCache
+    ): GetDatosReceta{
+        return GetDatosReceta(
+            recetaCache = recetaCache
+        )
+    }
+
+    @Singleton
+    @Provides
+    fun provideDeleteIngredienteReceta(
+        recetaCache: RecetaCache
+    ): DeleteIngredienteReceta{
+        return DeleteIngredienteReceta(
+            recetaCache = recetaCache
+        )
     }
 }

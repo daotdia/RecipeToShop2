@@ -29,7 +29,8 @@ fun Receta_Entity.toReceta(): Receta {
         nombre = nombre,
         cantidad = cantidad.toInt(),
         user = user,
-        active = active
+        active = active,
+        imagenSource = imageSource
     )
 }
 

@@ -17,13 +17,15 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
 import com.otero.recipetoshop.android.presentation.components.despensa.AlimentosDespensaLista
-import com.otero.recipetoshop.android.presentation.components.recetas.ListaCestasCompra
-import com.otero.recipetoshop.android.presentation.components.recetas.ContenidoCesta
-import com.otero.recipetoshop.android.presentation.components.recetas.busquedacreacionrecetas.BusquedaCreacionRecetasScreen
+import com.otero.recipetoshop.android.presentation.components.cestacompra.ListaCestasCompra
+import com.otero.recipetoshop.android.presentation.components.cestacompra.ContenidoCestaCompra
+import com.otero.recipetoshop.android.presentation.components.cestacompra.ContenidoReceta
+import com.otero.recipetoshop.android.presentation.components.cestacompra.contenidocesta.recetas.busquedarecetas.BusquedaRecetasScreen
 import com.otero.recipetoshop.android.presentation.controllers.despensa.DespensaViewModel
-import com.otero.recipetoshop.android.presentation.controllers.recetas.ListaCestasCompraListViewModel
-import com.otero.recipetoshop.android.presentation.controllers.recetas.CestaCompraViewModel
-import com.otero.recipetoshop.android.presentation.controllers.recetas.busquedaycreacion.BusquedaRecetaAPIViewModel
+import com.otero.recipetoshop.android.presentation.controllers.cestacompra.ListaCestasCompraListViewModel
+import com.otero.recipetoshop.android.presentation.controllers.cestacompra.CestaCompraViewModel
+import com.otero.recipetoshop.android.presentation.controllers.cestacompra.recetas.BusquedaRecetaAPIViewModel
+import com.otero.recipetoshop.android.presentation.controllers.cestacompra.recetas.RecetaViewModel
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
 
 @ExperimentalFoundationApi
@@ -103,7 +105,7 @@ fun Navegacion(
         ){ navBackStackEntry ->
             val factory = HiltViewModelFactory(LocalContext.current, navBackStackEntry)
             val cestaCompraViewModel: CestaCompraViewModel = viewModel("CestaCompraViewModel", factory )
-            ContenidoCesta(
+            ContenidoCestaCompra(
                 stateCestaCompra = cestaCompraViewModel.cestaCompraState,
                 onTriggeEventCestaCompra = cestaCompraViewModel::onTriggerEvent,
                 navController = navController
@@ -120,9 +122,26 @@ fun Navegacion(
             val factory = HiltViewModelFactory(LocalContext.current, navBackStackEntry)
             val busquedaCreacionRecetaAPIViewModel: BusquedaRecetaAPIViewModel = viewModel("BusquedaRecetaAPIViewModel", factory )
 
-            BusquedaCreacionRecetasScreen(
+            BusquedaRecetasScreen(
                 busquedaCreacionRecetasAPIState = busquedaCreacionRecetaAPIViewModel.busquedaRecetasAPIState,
                 onTriggeEventReceta = busquedaCreacionRecetaAPIViewModel::onTriggerEvent,
+                navController = navController
+            )
+        }
+
+        //Pantalla del contenido de la receta.
+        composable(
+            route = RutasNavegacion.ContenidoReceta.route + "/{cestacompraid}" +"/{recetaid}",
+            arguments = listOf(
+                navArgument("cestacompraid"){ type = NavType.IntType },
+                navArgument("recetaid"){ type = NavType.IntType })
+        ){ navBackStackEntry ->
+            val factory = HiltViewModelFactory(LocalContext.current, navBackStackEntry)
+            val recetaViewModel: RecetaViewModel = viewModel("RecetaViewModel", factory )
+
+            ContenidoReceta(
+                recetaState = recetaViewModel.recetaState,
+                onTriggeEventReceta = recetaViewModel::onTriggerEvent,
                 navController = navController
             )
         }
