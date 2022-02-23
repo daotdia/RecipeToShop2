@@ -1,10 +1,14 @@
 package com.otero.recipetoshop.android.presentation.components.cestacompra
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
@@ -29,6 +33,7 @@ import com.otero.recipetoshop.presentationlogic.states.recetas.ListaCestasCompra
 import de.charlex.compose.RevealDirection
 import de.charlex.compose.RevealSwipe
 
+@ExperimentalFoundationApi
 @ExperimentalComposeUiApi
 @ExperimentalMaterialApi
 @Composable
@@ -65,15 +70,13 @@ fun ListaCestasCompra(
         }
         val readOnly = remember { mutableStateOf(false) }
         //Crear la lista de items.
-        LazyColumn(
+        LazyVerticalGrid(
             modifier = Modifier
                 .offset(y = 48.dp)
                 .padding(1.dp),
+            cells = GridCells.Fixed(2)
         ) {
-            items(
-                items = listaCestaCompraState.value.listaCestasCompra,
-                { listItem: CestaCompra -> listItem.id_cestaCompra!! }
-            )
+            items(items = listaCestaCompraState.value.listaCestasCompra)
             { item ->
                 RevealSwipe(
                     modifier = Modifier
@@ -91,8 +94,8 @@ fun ListaCestasCompra(
                         )
                     }
                 ) {
-                    ListaRecetaCard(
-                        nombre = remember { mutableStateOf(item.nombre) },
+                    ListaCestasCompraCard(
+                        cesta = item,
                         elevation = 4.dp,
                         onClick = {
                             val idCestaCompraActual: Int = item.id_cestaCompra!!

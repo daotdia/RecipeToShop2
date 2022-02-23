@@ -1,0 +1,8 @@
+En éste módulo se encuentran las clases necesarias para gestionar la inyección de instancias de
+los componentes de la app con los que sólo necesitamos una instancia (companion).
+
+Utilizando Hilt se puede agrupar dichas instancias en un mismo archivo; teniendo acceso a las mismas
+el resto de la app android.
+
+** Los ViewModels gracias a Hilt se pueden inyectar sin necesidad de explicitarlo en dicho archivo;
+sólo utilizando las anotaciones necesarias para las mismas.

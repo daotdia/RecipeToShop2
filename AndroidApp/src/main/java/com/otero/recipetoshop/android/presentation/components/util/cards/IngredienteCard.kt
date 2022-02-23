@@ -58,7 +58,9 @@ fun IngredienteCard (
             )
         )
     }
-    Column(Modifier.fillMaxSize()) {
+    Column(
+        Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally) {
         Column(
             Modifier.wrapContentSize(),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -137,7 +139,7 @@ fun IngredienteCard (
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = cantidad.toString() + "  " + tipoUnidad.name,
+                    text = cantidad.toString() + "  " + TipoUnidad.parseAbrev(tipoUnidad),
                     modifier = Modifier
                         .wrapContentSize()
                         .padding(4.dp),

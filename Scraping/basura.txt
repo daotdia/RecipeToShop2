@@ -1,0 +1,47 @@
+import socket
+from http.server import BaseHTTPRequestHandler, HTTPServer
+import json
+from carrefour.main_carrefour import main_Carrefour as cf
+import requests
+from requests.structures import CaseInsensitiveDict
+
+
+class Server(BaseHTTPRequestHandler):
+    def __init__(self):
+        self.HOST = "127.0.0.1"  # Standard loopback interface address (localhost)
+        self.PORT = 8080  # Port to listen on (non-privileged ports are > 1023)    
+        webServer = HTTPServer((self.HOST, self.PORT), Server)
+        print("Server started http://127.0.0.1:8080")
+        try:
+            webServer.serve_forever()
+        except KeyboardInterrupt:
+            pass
+            webServer.server_close()
+            print("Server stopped.")
+
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header("Content-type", "text/html")
+        self.end_headers()
+        self.wfile.write("<html><head>")
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.connect((self.HOST, self.PORT))
+            response = s.recv(4096)
+            with conn:
+                print(f"Connected by {addr}")
+                while True:
+                    #Me tiene que llegar en formato json.
+                    data = conn.recv(1024)
+                    if not data:
+                        break
+                    data_decoded: dict = json.loads(data.decode(), 'utf8')
+                    #El objeto JSON debe de tener un campo de selección de supermercado a solicitar.
+                    if data_decoded.get("super", "") is "Carrefour":
+                        #El objeto debe de tener un campo para la consulta a realizar.
+                        response = cf.execQuery(data_decoded.get("query", ""))
+                        #Transformo la lista en JSON.
+                        json_response = json.dumps(response)
+                        #Envío la respuesta al cliente.
+                        conn.sendall(json_response)
+                        
+                

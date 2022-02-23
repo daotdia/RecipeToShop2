@@ -5,4 +5,6 @@ object Ktor {
     const val android = "io.ktor:ktor-client-android:${ktorVersion}"
     const val OkHttp = "io.ktor:ktor-client-okhttp:${ktorVersion}"
     const val ios = "io.ktor:ktor-client-ios:${ktorVersion}"
+    const val socket = "io.ktor:ktor-network:${ktorVersion}"
+    const val network = "io.ktor:ktor-network:${ktorVersion}"
 }

@@ -57,6 +57,8 @@ kotlin {
                 implementation(Ktor.core)
                 implementation(Ktor.clientSerialization)
                 implementation(SQLDelight.runtime)
+                implementation(Ktor.socket)
+                implementation(Ktor.network)
             }
         }
         val androidMain by getting {

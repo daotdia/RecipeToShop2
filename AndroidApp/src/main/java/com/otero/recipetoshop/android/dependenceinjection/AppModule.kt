@@ -9,6 +9,11 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+/*
+    Este es el archivo raiz para gestionar la inyección de dependencias.
+    Necesarion para utilizar Hilt en la aplicación.
+ */
+
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {

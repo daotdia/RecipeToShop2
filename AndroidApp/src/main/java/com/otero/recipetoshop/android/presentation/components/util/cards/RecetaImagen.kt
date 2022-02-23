@@ -39,22 +39,24 @@ fun RecetaImagen (
     when(painter.loadState){
         is ImageLoadState.Error -> {
             //Que quieres que ocurra cuando la imagen no se llegue a cargar por algún error.
-            Surface(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(color = Color.LightGray)
-            ) {
-                Box(modifier = Modifier.fillMaxSize())
-                {
-                    Icon(
-                        Icons.Filled.AddAPhoto,
-                        modifier = Modifier
-                            .size(46.dp)
-                            .padding(2.dp)
-                            .align(Alignment.Center),
-                        tint = Color.LightGray,
-                        contentDescription = "más",
-                    )
+            if(url.equals("")){
+                Surface(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(color = Color.LightGray)
+                ) {
+                    Box(modifier = Modifier.fillMaxSize())
+                    {
+                        Icon(
+                            Icons.Filled.AddAPhoto,
+                            modifier = Modifier
+                                .size(46.dp)
+                                .padding(2.dp)
+                                .align(Alignment.Center),
+                            tint = Color.LightGray,
+                            contentDescription = "más",
+                        )
+                    }
                 }
             }
         }
