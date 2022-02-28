@@ -1,0 +1,3 @@
+Aquí están implementados los estados necesarios para la comunicación Controlador de Vista -> Vista.
+
+Son data clases.

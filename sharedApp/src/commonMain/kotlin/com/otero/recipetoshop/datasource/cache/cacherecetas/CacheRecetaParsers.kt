@@ -8,7 +8,9 @@ import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.domain.model.CestaCompra.CestaCompra
 import com.otero.recipetoshop.domain.model.CestaCompra.Receta
 import com.otero.recipetoshop.domain.util.TipoUnidad
-
+/*
+En este fichero hay distintas funciones auxiliares para parsear la respuesta de la caché.
+ */
 //Parsers CestaCompra.
 fun CestaCompra_Entity.toCestaCompra(): CestaCompra{
     return CestaCompra(

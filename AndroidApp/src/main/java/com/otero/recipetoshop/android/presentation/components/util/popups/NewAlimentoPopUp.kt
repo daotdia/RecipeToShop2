@@ -1,5 +1,7 @@
 package com.otero.recipetoshop.android.presentation.components.despensa
-
+/*
+Este es el componente encargado de generar el diálogo de nuevo alimento.
+ */
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions

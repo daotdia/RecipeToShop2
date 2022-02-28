@@ -23,7 +23,10 @@ import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
 import com.otero.recipetoshop.events.cestacompra.BusquedaRecetasAPIEventos
 import com.otero.recipetoshop.presentationlogic.states.recetas.BusquedaRecetasAPIState
-
+/*
+Este es el componente que se encarga de implementar la pantalla
+de búsqueda de recetas en YummlyRecipe.
+ */
 @ExperimentalComposeUiApi
 @ExperimentalMaterialApi
 @Composable
@@ -80,43 +83,6 @@ fun  BusquedaRecetasScreen(
                     }
                 }
             }
-//            Divider(color = primaryDarkColor, thickness = 2.dp)
-//            Row(
-//                modifier = Modifier
-//                    .clickable(onClick = {
-//                        newRecetaUser.value = true
-//                    })
-//                    .weight(1F),
-//                horizontalArrangement = Arrangement.Center,
-//                verticalAlignment = Alignment.CenterVertically
-//            ) {
-//                if(newRecetaUser.value){
-//                    NewRecetaPopUp(
-//                        onAddReceta = { nombre, cantidad ->
-//                            onTriggeEventReceta(
-//                                BusquedaRecetasAPIEventos.onAddUserReceta(
-//                                    nombre = nombre,
-//                                    cantidad = cantidad.toInt()
-//                                )
-//                            )
-//                        },
-//                        onNewReceta = newRecetaUser,
-//                        recetaSeleccionada = recetaSeleccionada
-//                    )
-//                }
-//                if(recetaSeleccionada.value){
-//                    navController.navigate(RutasNavegacion.CestaCompra.route + "/${busquedaCreacionRecetasAPIState.value.id_cestaCompra}")
-//                }
-//                Text(
-//                    modifier = Modifier
-//                        .clickable(onClick = {
-//                            newRecetaUser.value = true
-//                        }),
-//                    text = "Añadir Receta Usuario",
-//                    color = primaryDarkColor,
-//                    style = MaterialTheme.typography.h4
-//                )
-//            }
         }
     }
 }

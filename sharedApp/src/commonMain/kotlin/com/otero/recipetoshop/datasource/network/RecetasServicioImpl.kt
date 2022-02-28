@@ -6,13 +6,14 @@ import com.otero.recipetoshop.domain.model.CestaCompra.Receta
 import com.otero.recipetoshop.domain.model.CestaCompra.YummlyRecipestoRecipeList
 import io.ktor.client.*
 import io.ktor.client.request.*
-
+/*-
+La implementaciñon de la obtención de recetas externas Yummly en este caso.
+ */
 class RecetasServicioImpl(
     private val httpClient: HttpClient,
     private val baseUrl: String,
 ): RecetasServicio {
     override suspend fun search(maxItems: Int, offset: Int, maxSeconds: Int, query: String): List<Receta> {
-        println("Realizo la búsqueda")
         return httpClient.get<YummlySearchResponseDTO>{
             headers{
                 append("x-rapidapi-host", "yummly2.p.rapidapi.com")

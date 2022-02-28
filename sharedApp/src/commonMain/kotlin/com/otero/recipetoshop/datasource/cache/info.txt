@@ -1,0 +1,4 @@
+Aquí se encuentra las clases necesarias para implementar el servicio de caché de la app (en este caso he utilizado dos servicios de caché, aunque
+puede que al final decida utilizar sólo uno).
+
+******IMPORTANTE: la implementación de la base de datos y sus llamadas no se realiza aquí; éste sólo es el servicio.

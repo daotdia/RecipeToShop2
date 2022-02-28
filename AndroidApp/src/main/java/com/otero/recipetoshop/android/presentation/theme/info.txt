@@ -1,0 +1,2 @@
+Aquí están los recursos globales de estilo (NO DEFINITIVOS).
+Están los colores, los contornos, los temas y la tippogrfía de la APP.

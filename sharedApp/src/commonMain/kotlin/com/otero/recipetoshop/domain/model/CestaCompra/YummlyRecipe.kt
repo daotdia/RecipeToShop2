@@ -2,7 +2,9 @@ package com.otero.recipetoshop.domain.model.CestaCompra
 
 import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.domain.util.TipoUnidad
-
+/*
+Clase necesaria para parsear la receta (bastante compleja) que llega de Yummly.
+ */
 data class YummlyRecipe(
     val recipeType: String?,
     val content: YumlyContentRecipe,

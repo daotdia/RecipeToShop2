@@ -21,7 +21,9 @@ import com.otero.recipetoshop.android.presentation.components.util.LongPressCard
 import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.events.cestacompra.CestaCompraEventos
 import com.otero.recipetoshop.presentationlogic.states.recetas.CestaCompraState
-
+/*
+Este es el componente que implementa una lista de alimentos dentro de una cesta de la compra.
+ */
 @ExperimentalComposeUiApi
 @ExperimentalFoundationApi
 @Composable

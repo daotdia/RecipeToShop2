@@ -1,0 +1,13 @@
+Aquí están los controlados de vista, en Android ViewModels.
+Por utilizar Hilt sus dependencias están siempre listas para inyectar.
+
+****IMPORTANTE:
+
+La comunicación entre los controladores y las vistas se realzia de la siguiente manera:
+
+- Controlador -> Vista: mediante modificación de estados; Jetpack Compose se gestiona mediante estados,
+cuando un estado que esté incluido en un componente se modifica; el componente se actualiza
+de manera inteligente cambiando la inormación afectada por la modificación de dicho estado.
+
+- Vista -> Controlador: mediante eventos; cuando el usuario interactua con la vista ésta lanza un
+evento que el Controlador interpreta y transfiere la lógica de control a los casos de uso.

@@ -1,5 +1,8 @@
 package com.otero.recipetoshop.domain.model
-
+/*
+Utilizado anteriormente, pero hay componentes antiguos que todavían la utilizan aunque no los utiice en la APP.
+SERÁ ELIMINADA.
+ */
 data class Recipe(
     val id: Int,
     val title: String,

@@ -8,7 +8,10 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.otero.recipetoshop.android.presentation.theme.primaryLightColor
-
+/*
+Este componente es un componente que se puede utilziar para implementar un circulo
+dinámico de carga para llamadas que sufran retardo.
+ */
 @ExperimentalComposeUiApi
 @Composable
 fun CircularIndeterminateProgressBar(

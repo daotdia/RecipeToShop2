@@ -1,0 +1,2 @@
+En este apartado se encuentra la configuración de liberias externas
+necesarias para implementar la APP. Están dentro de SRC.

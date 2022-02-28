@@ -17,31 +17,13 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
-
+/*
+Aquí se encuentras las dependencias de los casos de uso; por supuesto necesitan
+que se les pase los servicios de cahce/red anteriormente instanciados.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object InteractorsModule {
-
-//    @Singleton
-//    @Provides
-//    fun provideSearchRecipes(
-//        recipeService: RecetasServicio,
-//        recipeCache: RecipeCache
-//    ): SearchRecipes{
-//        return SearchRecipes(
-//            recipeService = recipeService,
-//            recipeCache = recipeCache
-//        )
-//    }
-//
-//    @Singleton
-//    @Provides
-//    fun provideGetRecipe(
-//        recipeCache: RecipeCache
-//    ): GetRecipe {
-//        return GetRecipe(recipeCache = recipeCache)
-//    }
-
     @Singleton
     @Provides
     fun provideOnClickFoodDespensa(
@@ -56,7 +38,6 @@ object InteractorsModule {
     ): AlimentoCantidadChange{
         return AlimentoCantidadChange(despensaCache = despensaCache)
     }
-
     @Singleton
     @Provides
     fun provideInsertNewFoodItem(
@@ -64,7 +45,6 @@ object InteractorsModule {
     ): InsertNewAlimento{
         return InsertNewAlimento(despensaCache = despensaCache)
     }
-
     @Singleton
     @Provides
     fun provideGetFoods(
@@ -72,7 +52,6 @@ object InteractorsModule {
     ): GetAlimentos{
         return GetAlimentos(despensaCache = despensaCache)
     }
-
     @Singleton
     @Provides
     fun provideDeleteFoods(
@@ -80,7 +59,6 @@ object InteractorsModule {
     ): DeleteAlimentos{
         return DeleteAlimentos(despensaCache = despensaCache)
     }
-
     @Singleton
     @Provides
     fun provideDeleteFood(
@@ -88,7 +66,6 @@ object InteractorsModule {
     ): DeleteAlimento{
         return DeleteAlimento(despensaCache = despensaCache)
     }
-
     @Singleton
     @Provides
     fun providesAddNewListaReceta(
@@ -96,7 +73,6 @@ object InteractorsModule {
     ): AddNewCestaCompra {
         return AddNewCestaCompra(recetaCache = recetaCache)
     }
-
     @Singleton
     @Provides
     fun providesOnEnterListaDeRecetas(
@@ -104,7 +80,6 @@ object InteractorsModule {
     ): OnEnterCestaCompra {
         return OnEnterCestaCompra(recetaCache = recetaCache)
     }
-
     @Singleton
     @Provides
     fun providesPrintListaDeListasRecetas(
@@ -112,7 +87,6 @@ object InteractorsModule {
     ): PrintListaCestasCompra {
         return PrintListaCestasCompra(recetaCache = recetaCache)
     }
-
     @Singleton
     @Provides
     fun providesAddRecetaListaRecetas(
@@ -120,7 +94,6 @@ object InteractorsModule {
     ): AddRecetaCestaCompra {
         return AddRecetaCestaCompra(recetaCache = recetaCache)
     }
-
     @Singleton
     @Provides
     fun providesGetListaReceta(
@@ -128,7 +101,6 @@ object InteractorsModule {
     ): GetCestaCompra {
         return GetCestaCompra(recetaCache = recetaCache)
     }
-
     @Singleton
     @Provides
     fun provideAddAlimentoListaRecetas(
@@ -136,7 +108,6 @@ object InteractorsModule {
     ): AddAlimentoCestaCompra{
         return AddAlimentoCestaCompra(recetaCache = recetaCache)
     }
-
     @Singleton
     @Provides
     fun providesDeleteAlimentoListaRecetas(
@@ -144,7 +115,6 @@ object InteractorsModule {
     ): DeleteAlimentoCestaCompra{
         return DeleteAlimentoCestaCompra(recetaCache = recetaCache)
     }
-
     @Singleton
     @Provides
     fun providesDeleteRecetaListaRecetas(
@@ -152,7 +122,6 @@ object InteractorsModule {
     ): DeleteRecetaCestaCompra{
         return DeleteRecetaCestaCompra(recetaCache = recetaCache)
     }
-
     @Singleton
     @Provides
     fun providesUpdateReceta(
@@ -160,7 +129,6 @@ object InteractorsModule {
     ): UpdateRecetaCestaCompra{
         return UpdateRecetaCestaCompra(recetaCache = recetaCache)
     }
-
     @Singleton
     @Provides
     fun providesUpdateAlimentoListaRecetas(
@@ -168,7 +136,6 @@ object InteractorsModule {
     ): UpdateAlimentoCestaCompra{
         return UpdateAlimentoCestaCompra(recetaCache = recetaCache)
     }
-
     @Singleton
     @Provides
     fun providesBuscarRecetas(
@@ -177,7 +144,6 @@ object InteractorsModule {
     ): BuscarRecetasAPI{
         return BuscarRecetasAPI(recetaCache = recetaCache, recetasServicio = recetasServicio)
     }
-
     @Singleton
     @Provides
     fun provideAddIngredienteReceta(
@@ -187,7 +153,6 @@ object InteractorsModule {
             recetaCache = recetaCache
         )
     }
-
     @Singleton
     @Provides
     fun provideGetIngredientesReceta(
@@ -197,7 +162,6 @@ object InteractorsModule {
             recetaCache = recetaCache
         )
     }
-
     @Singleton
     @Provides
     fun provideDeleteIngredienteReceta(

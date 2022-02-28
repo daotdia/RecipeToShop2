@@ -10,20 +10,22 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.ktor.client.*
 import javax.inject.Singleton
-
+/*
+Este es el módulo donde se encuuentra la dependencia del servicio de Http.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-
     @Singleton
     @Provides
     fun provideHttpClient(): HttpClient {
         return KtorClientFactory().build()
     }
-
     @Singleton
     @Provides
-    fun provideRecetasServicio(httpClient: HttpClient): RecetasServicio{
+    fun provideRecetasServicio(
+        httpClient: HttpClient
+    ): RecetasServicio{
         return RecetasServicioImpl(
             httpClient = httpClient,
             baseUrl = BASE_URL

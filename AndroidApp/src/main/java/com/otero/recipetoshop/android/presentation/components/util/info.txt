@@ -1,0 +1,1 @@
+Aquói se encuentran distintos componentes que se reutilizan en la APP.

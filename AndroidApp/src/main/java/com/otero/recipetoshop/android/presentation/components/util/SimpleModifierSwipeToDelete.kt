@@ -18,7 +18,9 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
-
+/*
+Este componente puede ser utilizado para añadir un Modifier de eliminar con Swipe.
+ */
 @ExperimentalMaterialApi
 @Composable
 fun rememberDeleteState(

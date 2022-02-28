@@ -19,12 +19,19 @@ import com.otero.recipetoshop.android.R
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.presentationlogic.util.menus.bottombar.MenuBottomItems
 import java.lang.Exception
-
+/*
+Este es el componente UI de la barra de navegación inferior.
+ */
 @Composable
 fun BottomBar(navController: NavHostController){
     BottomNavigation(
         backgroundColor = primaryDarkColor,
         ) {
+        /*
+        Los botones dependen de la clase Util de MenuBottomItems,
+        es un tipo enum con la información necesaria para navegación y pintar
+        cada icono.
+         */
         MenuBottomItems.BottomItems.forEach{ bottomItem ->
 
             val painter: Painter = when(bottomItem.icon){

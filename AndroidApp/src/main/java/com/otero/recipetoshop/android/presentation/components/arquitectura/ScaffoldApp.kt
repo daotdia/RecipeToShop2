@@ -14,7 +14,10 @@ import com.otero.recipetoshop.android.presentation.theme.primaryColor
 import com.otero.recipetoshop.android.presentation.theme.primaryLightColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
 import kotlinx.coroutines.launch
-
+/*
+Este es la raíz de la UI de la app.
+Se encuentra la estructura golbal de tipo Scaffold.
+ */
 @ExperimentalFoundationApi
 @ExperimentalMaterialApi
 @ExperimentalComposeUiApi

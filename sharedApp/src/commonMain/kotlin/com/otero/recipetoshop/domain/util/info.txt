@@ -1,0 +1,2 @@
+Aquí hay clases auxiliares que pueden ser utilizadas en cualquier lugar de la lógica de aplicación.
+Algunas las utilizo y otras las he dejado de utilizar.

@@ -32,11 +32,11 @@ fun RecipeSearchDto.toRecipe(): Recipe{
     return Recipe(
         image = image,
         title = title,
-        ingredients = emptyList(), //Chapuza por API
-        id = 0, //Chapuza por API
+        ingredients = emptyList(), //Chapuza por API externa
+        id = 0, //Chapuza por API externa
         sourceURL = sourceUrl,
         publisher = publisher,
-        rating = Double.NaN // Chapuza por API
+        rating = Double.NaN // Chapuza por API externa
     )
 }
 

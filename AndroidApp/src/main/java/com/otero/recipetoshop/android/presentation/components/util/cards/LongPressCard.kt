@@ -28,7 +28,9 @@ import com.otero.recipetoshop.android.presentation.theme.appShapes
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.android.presentation.theme.primaryLightColor
 import com.otero.recipetoshop.domain.util.TipoUnidad
-
+/*
+Este es un componente cuya card funciona no con Swipe, sino con presión larga.
+ */
 @ExperimentalFoundationApi
 @ExperimentalComposeUiApi
 @Composable

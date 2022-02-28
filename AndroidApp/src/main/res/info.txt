@@ -1,0 +1,2 @@
+Aquí están los recursos gráficos y tipográficos necesaros externos
+que la App necesita internamente.

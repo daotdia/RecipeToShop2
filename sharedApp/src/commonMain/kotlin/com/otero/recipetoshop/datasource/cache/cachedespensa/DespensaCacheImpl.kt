@@ -4,7 +4,10 @@ import com.otero.recipetoshop.datasource.cachedespensa.RecipeToShopDB
 import com.otero.recipetoshop.datasource.cachedespensa.RecipeToShopDBQueries
 import com.otero.recipetoshop.domain.model.despensa.Alimento
 
-
+/*
+Esta es la implementación del servicio, utiliza la base de datos generada en otra sección. Debe de utilizar funciones de parseo para amoldar
+la respuesta de la base de datos al dominio interno.
+ */
 class DespensaCacheImpl(
     private val cestaCompraDataBase: RecipeToShopDB
 ) :DespensaCache{

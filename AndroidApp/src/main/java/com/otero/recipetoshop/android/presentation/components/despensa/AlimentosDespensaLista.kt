@@ -28,7 +28,9 @@ import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
 import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.presentationlogic.states.despensa.ListaAlimentosState
 
-
+/*
+Este es el componente que implementa la lista de alimentos disponibles en despensa.
+ */
 @ExperimentalFoundationApi
 @ExperimentalMaterialApi
 @ExperimentalComposeUiApi

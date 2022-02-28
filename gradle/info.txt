@@ -1,0 +1,2 @@
+En esta sección está a configuración interna de Gradle.
+De momento no la he tocado; NO TOCAR.

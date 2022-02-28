@@ -26,7 +26,9 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.otero.recipetoshop.android.presentation.theme.*
 import com.otero.recipetoshop.domain.util.TipoUnidad
-
+/*
+Este es el componente que implementa la Card de un ingrediente.
+ */
 @ExperimentalFoundationApi
 @Composable
 fun IngredienteCard (

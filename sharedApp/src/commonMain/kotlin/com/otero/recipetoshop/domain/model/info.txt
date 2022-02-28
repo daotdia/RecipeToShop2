@@ -1,0 +1,1 @@
+Aquí se encuentra las clases del núcleo de la aplicación con el modelo de dominio.

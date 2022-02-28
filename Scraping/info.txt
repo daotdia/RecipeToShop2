@@ -1,0 +1,6 @@
+Esta es una API externa para realziar Scraping, tal como está no funciona,
+me falta implementar la conexión con la App de Android.
+Se puede modficar la llamada de main para que haga la consulta del alimento
+o lista de alimentos que se considere.
+
+Utiliza Selenium y está implementada en Python.

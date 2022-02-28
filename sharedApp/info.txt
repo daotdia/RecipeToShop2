@@ -1,0 +1,7 @@
+En esta sección están la implementación compartida para la APP (IOS/Android).
+
+Aún así hay algunas cuestiones que deben de adaptarse antes de ser utilizadas por ambas plataformas (como los drivers); por ello hay tres apartados
+Lo puramente común, lo que hay que adaptar para Android, lo que hay que adaptar por IOS.
+
+Este tipo de separación viene de serie por KMM. Desconozco el porqué de la necesaida de separar los drivers de este modo; sólo se que
+es un requerimiento de Android y KMM.

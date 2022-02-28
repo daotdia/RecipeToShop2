@@ -1,0 +1,5 @@
+Aquí se encuentran todos los casos de uso. Creo que el nombre de cada uno es suficiente para comprender
+a quñe se refieren.
+
+*****IMPORTANTE:
+Para generar el DataState correspondiente mantienen la asincronidad que inicia el controlador de vista mediante un Stream tipo Flow.

@@ -1,0 +1,3 @@
+Aquí se encuentran clases útiles propias de la lógica de PRESENTACIÓN de la APP.
+
+Actualmente contiene la información sobre los menús de la APP.

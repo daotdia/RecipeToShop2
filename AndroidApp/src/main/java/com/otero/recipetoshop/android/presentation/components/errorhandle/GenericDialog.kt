@@ -14,7 +14,10 @@ import com.otero.recipetoshop.android.presentation.theme.complementaryColor
 import com.otero.recipetoshop.domain.model.NegativeAction
 import com.otero.recipetoshop.domain.model.PositiveAction
 import org.intellij.lang.annotations.JdkConstants
-
+/*
+Este es el componente encargado de generar los dialogos.
+Con potenciales acciones positivas y negativas.
+ */
 @Composable
 fun GenericDialog(
     modifier: Modifier = Modifier,

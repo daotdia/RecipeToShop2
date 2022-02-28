@@ -15,7 +15,9 @@ import androidx.compose.ui.unit.dp
 import com.otero.recipetoshop.android.presentation.components.RecetaImagen
 import com.otero.recipetoshop.android.presentation.theme.appShapes
 import com.otero.recipetoshop.domain.model.CestaCompra.CestaCompra
-
+/*
+Este es el componente que implementa la card de una Cesta de recetas y alimentos.
+ */
 @ExperimentalComposeUiApi
 @Composable
 fun ListaCestasCompraCard(

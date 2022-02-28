@@ -29,7 +29,9 @@ import com.otero.recipetoshop.domain.model.NegativeAction
 import com.otero.recipetoshop.domain.model.PositiveAction
 import com.otero.recipetoshop.events.cestacompra.ListaCestasCompraEventos
 import com.otero.recipetoshop.presentationlogic.states.recetas.CestaCompraState
-
+/*
+Este es el componente encargado de generar una nueva cesta de recetas y alimentos.
+ */
 @ExperimentalComposeUiApi
 @Composable
 fun NewCestaCompraPopUp(

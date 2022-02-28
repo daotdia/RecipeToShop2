@@ -22,7 +22,9 @@ import com.otero.recipetoshop.android.presentation.navigation.RutasNavegacion
 import com.otero.recipetoshop.domain.model.CestaCompra.Receta
 import com.otero.recipetoshop.events.cestacompra.CestaCompraEventos
 import com.otero.recipetoshop.presentationlogic.states.recetas.CestaCompraState
-
+/*
+Este es el componente que implementa una lista de recetas dentro de la lista de la compra.
+ */
 @ExperimentalFoundationApi
 @ExperimentalComposeUiApi
 @ExperimentalMaterialApi

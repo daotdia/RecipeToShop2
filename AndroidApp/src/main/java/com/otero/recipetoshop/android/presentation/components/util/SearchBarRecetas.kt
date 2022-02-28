@@ -18,7 +18,9 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
-
+/*
+Este componente se encarga de implementar una barra de búsqueda.
+ */
 @ExperimentalComposeUiApi
 @Composable
 fun SearchBarRecetas(

@@ -15,7 +15,10 @@ import com.otero.recipetoshop.android.R
 import com.otero.recipetoshop.android.presentation.theme.primaryColor
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.presentationlogic.util.menus.leftbar.LeftBarItems
-
+/*
+Este es el componente del menu lateral emergente.
+Tiene una configuración similar al del menú inferior.
+ */
 @Composable
 fun LeftDrawer(navController: NavController){
     Column(

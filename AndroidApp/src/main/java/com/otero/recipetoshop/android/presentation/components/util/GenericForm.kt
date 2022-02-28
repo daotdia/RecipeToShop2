@@ -17,7 +17,9 @@ import com.otero.recipetoshop.android.presentation.theme.secondaryColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
 import com.otero.recipetoshop.domain.model.NegativeAction
 import com.otero.recipetoshop.domain.model.PositiveAction
-
+/*
+Un dialofo genérico.
+ */
 @Composable
 fun GenericForm(
     modifier: Modifier = Modifier,

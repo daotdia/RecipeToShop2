@@ -32,7 +32,9 @@ import com.otero.recipetoshop.events.cestacompra.ListaCestasCompraEventos
 import com.otero.recipetoshop.presentationlogic.states.recetas.ListaCestasCompraState
 import de.charlex.compose.RevealDirection
 import de.charlex.compose.RevealSwipe
-
+/*
+Este componente implementa la lista de cestas de recetas y alimentos
+ */
 @ExperimentalFoundationApi
 @ExperimentalComposeUiApi
 @ExperimentalMaterialApi

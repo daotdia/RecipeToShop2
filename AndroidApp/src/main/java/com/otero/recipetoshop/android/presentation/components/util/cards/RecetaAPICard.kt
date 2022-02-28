@@ -12,7 +12,9 @@ import androidx.compose.ui.unit.dp
 import com.otero.recipetoshop.android.presentation.components.RecetaImagen
 import com.otero.recipetoshop.android.presentation.theme.appShapes
 import com.otero.recipetoshop.domain.model.CestaCompra.Receta
-
+/*
+Esta es la card de las recetas de API externa.
+ */
 @ExperimentalComposeUiApi
 @Composable
 fun RecetaAPICard (

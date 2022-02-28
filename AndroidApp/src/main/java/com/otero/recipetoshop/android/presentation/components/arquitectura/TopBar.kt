@@ -14,19 +14,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
-
-
+/*
+Este es el componente de la barra superior de la app.
+ */
 @Composable
 fun TopBar(onMenuClicked: () -> Unit) {
     TopAppBar(
         title = {
             Text(text = "RecipeToShop")
         },
-//        navigationIcon = {
-//            IconButton(onClick = {TODO("Pendiente de implementar ir hacia atrás")}) {
-//                Icon(Icons.Filled.ArrowBack, "atrás")
-//            }
-//        },
         backgroundColor = primaryDarkColor,
         contentColor = secondaryLightColor,
         elevation = 10.dp,

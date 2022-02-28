@@ -10,7 +10,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush.Companion.linearGradient
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
-
+/*
+Efecto de imagen que simula un smbreado dinámico mientras se cargan las cards.
+ */
 @Composable
 fun GradientDemo() {
     val colors = listOf(

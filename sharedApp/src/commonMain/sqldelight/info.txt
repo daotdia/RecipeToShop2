@@ -1,0 +1,1 @@
+Aquí estála implementación de la Base de datos y las consultas necesarias.

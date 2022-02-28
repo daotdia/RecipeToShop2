@@ -23,7 +23,9 @@ import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
 import com.otero.recipetoshop.domain.model.NegativeAction
 import com.otero.recipetoshop.domain.model.PositiveAction
 import com.otero.recipetoshop.presentationlogic.states.recetas.RecetaState
-
+/*
+Este es el componente que implementa la generación de una nueva receta.
+ */
 @ExperimentalComposeUiApi
 @Composable
 fun NewRecetaPopUp(

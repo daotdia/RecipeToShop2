@@ -1,0 +1,2 @@
+Aquí se encuentran los componentes necesarios para la gestión de errores
+y eventos interactiva con el usuario en modo de dialogo.

@@ -1,11 +1,10 @@
 package com.otero.recipetoshop.android.presentation.navigation
-
+/*
+En esta clase se encuentran las rutas de navegación de la APP.
+Siempre se pueden añadir más.
+ */
 sealed class RutasNavegacion (val route: String)
 {
-    object RecipeList: RutasNavegacion("recipeList")
-
-    object RecipeDetail: RutasNavegacion("recipeDetail")
-
     object Despensa: RutasNavegacion("despensa")
 
     object ListaCestasCompra: RutasNavegacion("listaCestasCompra")

@@ -6,7 +6,9 @@ import io.ktor.util.*
 import io.ktor.util.network.*
 import io.ktor.utils.io.*
 import kotlinx.coroutines.Dispatchers
-
+/*
+POR IMPLEMENTAR.
+ */
 class API_Scraping {
 
     @InternalAPI
@@ -18,7 +20,7 @@ class API_Scraping {
         val response = socket.openReadChannel()
         val request = socket.openWriteChannel(autoFlush = true)
 
-        val data_byte = response.()
+        //val data_byte = response.()
 
     }
 }

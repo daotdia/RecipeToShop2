@@ -15,7 +15,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import com.otero.recipetoshop.domain.util.TipoUnidad
-
+/*
+Componente necesario para los menus desplegables multiopción.
+ */
 @Composable
 fun NestedDownMenu(
     options: List<String>,

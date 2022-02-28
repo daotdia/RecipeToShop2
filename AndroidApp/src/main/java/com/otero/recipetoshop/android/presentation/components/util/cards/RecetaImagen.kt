@@ -21,7 +21,9 @@ import androidx.compose.ui.unit.dp
 import com.google.accompanist.coil.rememberCoilPainter
 import com.google.accompanist.imageloading.ImageLoadState
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
-
+/*
+Este componente es el encargado de pintar las imágenes de receta a partir de una url.
+ */
 @Composable
 fun RecetaImagen (
     url: String,

@@ -27,7 +27,9 @@ import com.otero.recipetoshop.android.presentation.controllers.cestacompra.Cesta
 import com.otero.recipetoshop.android.presentation.controllers.cestacompra.recetas.BusquedaRecetaAPIViewModel
 import com.otero.recipetoshop.android.presentation.controllers.cestacompra.recetas.RecetaViewModel
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
-
+/*
+Aquí se encuentra la lógicade navegación de toda la App.
+ */
 @ExperimentalFoundationApi
 @ExperimentalComposeUiApi
 @ExperimentalMaterialApi
@@ -36,41 +38,17 @@ fun Navegacion(
     navController: NavHostController,
     padding: PaddingValues
 ){
+    //Esta es la ruta inicial; por startdestination.
     NavHost(
         navController = navController,
         startDestination = RutasNavegacion.Despensa.route,
         modifier = Modifier.padding(paddingValues = padding)
     ){
-//        composable(
-//            route = RutasNavegacion.RecipeList.route
-//        ){ navBackStackEntry ->
-//            val factory = HiltViewModelFactory(LocalContext.current, navBackStackEntry)
-//            val viewModel: RecipeListViewModel = viewModel("RecipeListViewModel", factory )
-//            CestaCompra(
-//                state = viewModel.state.value,
-//                onTriggerEvent = viewModel::onTriggerEvent,
-//                onClickRecipeListItem = { recipeId ->
-//                    navController.navigate(RutasNavegacion.RecipeDetail.route + "/$recipeId")
-//                }
-//            )
-//        }
-//        composable(
-//            route = RutasNavegacion.RecipeDetail.route + "/{recipeId}",
-//            arguments = listOf(navArgument("recipeId"){
-//                type = NavType.IntType
-//            })
-//        ){  navBackStackEntry ->
-//            val factory = HiltViewModelFactory(LocalContext.current, navBackStackEntry)
-//            val viewModel: RecipeDetailViewModel = viewModel("RecipeDetailViewModel", factory )
-//            DescripcionReceta(
-//                recipe = viewModel.recipe.value,
-//            )
-//        }
-
         //Pantalla de despensa
         composable(
             route = RutasNavegacion.Despensa.route
-        ){navBackStackEntry ->
+        ){ navBackStackEntry ->
+            //Obtengo el ViewModel (gracias a gestion de dependencias de Hilt).
             val factory = HiltViewModelFactory(LocalContext.current, navBackStackEntry)
             val viewModel: DespensaViewModel = viewModel("DespensaViewModel", factory )
             Surface(color = secondaryLightColor){

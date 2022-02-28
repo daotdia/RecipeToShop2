@@ -1,0 +1,1 @@
+Aquí se encuentra los componentes propios de la pantalla de despensa de la APP.

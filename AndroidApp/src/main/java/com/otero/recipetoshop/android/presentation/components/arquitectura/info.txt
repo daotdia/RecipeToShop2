@@ -1,0 +1,2 @@
+Estos archivos corresponden a la arquitectura base de la UI.
+Son componentes Jetpack Compose.

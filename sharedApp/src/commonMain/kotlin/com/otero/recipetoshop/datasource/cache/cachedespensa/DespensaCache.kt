@@ -1,7 +1,9 @@
 package com.otero.recipetoshop.datasource.cache.cachedespensa
 
 import com.otero.recipetoshop.domain.model.despensa.Alimento
-
+/*
+Esta es la interfaz del servicio.
+ */
 interface DespensaCache {
     fun insertarAlimentoDespensa(alimento: Alimento): Unit
 
