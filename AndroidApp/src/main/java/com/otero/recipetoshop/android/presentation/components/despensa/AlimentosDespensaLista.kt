@@ -68,6 +68,19 @@ fun AlimentosDespensaLista (
                     )
                 },
                 onNewAlimento = onNewFood,
+                autocompleteResults = listState.value.resultadoAutoCompletado,
+                onAutoCompleteChange = { autocomplete ->
+                    onTriggeEvent(
+                        DespensaEventos.onAutoCompleteChange(
+                            nombre = autocomplete
+                        )
+                    )
+                },
+                onAutoCompleteClick = {
+                    onTriggeEvent(
+                        DespensaEventos.onClickAutoCompleteElement()
+                    )
+                }
             )
         }
     }

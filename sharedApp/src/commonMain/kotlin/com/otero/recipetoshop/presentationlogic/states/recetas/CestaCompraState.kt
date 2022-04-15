@@ -17,5 +17,6 @@ data class CestaCompraState (
     val allrecetas: List<Receta> = listOf(),
     val listaCestasCompra: List<CestaCompra> = listOf(),
     var onNewReceta: Boolean = false,
-    val queueError: Queue<GenericMessageInfo> = Queue(mutableListOf())
+    val queueError: Queue<GenericMessageInfo> = Queue(mutableListOf()),
+    val resultadosAutoCompleteAlimentos: List<String> = listOf()
 )

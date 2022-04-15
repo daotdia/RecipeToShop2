@@ -8,6 +8,8 @@ data class ListaAlimentosState(
     val allAlimentos: List<Alimento> = listOf(),
     val alimentosActivos: List<Alimento> = listOf(),
     val alimentosInactivos: List<Alimento> = listOf(),
-    val queueError: Queue<GenericMessageInfo> = Queue(mutableListOf())
+    val queueError: Queue<GenericMessageInfo> = Queue(mutableListOf()),
+    val resultadoAutoCompletado: List<String> = listOf(),
+    val queryAutoComplete: String = ""
 )
 

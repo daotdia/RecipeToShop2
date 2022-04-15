@@ -5,6 +5,11 @@ import com.otero.recipetoshop.domain.model.CestaCompra.Receta
 import com.otero.recipetoshop.domain.util.TipoUnidad
 
 sealed class CestaCompraEventos {
+
+    class onClickAutocompleteAlimento(): CestaCompraEventos()
+
+    data class onAutocompleteAlimentoChange(val query: String): CestaCompraEventos()
+
     data class onAddAlimento(val nombre: String, val cantidad: Int, val tipoUnidad: TipoUnidad): CestaCompraEventos()
 
     data class onDeleteRecetas(val menuItem: String): CestaCompraEventos()

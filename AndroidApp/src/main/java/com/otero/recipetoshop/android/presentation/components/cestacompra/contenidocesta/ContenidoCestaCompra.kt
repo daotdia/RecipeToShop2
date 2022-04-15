@@ -61,11 +61,24 @@ fun ContenidoCestaCompra (
                         )
                     )
                 },
-                onNewAlimento = newAlimentoDialog
+                onNewAlimento = newAlimentoDialog,
+                onAutoCompleteClick = {
+                    onTriggeEventCestaCompra(
+                        CestaCompraEventos.onClickAutocompleteAlimento()
+                    )
+                },
+                onAutoCompleteChange = { nombre ->
+                    onTriggeEventCestaCompra(
+                        CestaCompraEventos.onAutocompleteAlimentoChange(
+                            query = nombre
+                        )
+                    )
+                },
+                autocompleteResults = stateCestaCompra.value.resultadosAutoCompleteAlimentos
             )
         }
         Column(modifier = Modifier.fillMaxSize()) {
-            //Aquí se emplazan las recetas de la API.
+            //Aquí se emplazan las recetas Favoritas.
             Column(modifier = Modifier.weight(5f)) {
                 Row(
                     modifier = Modifier
@@ -74,7 +87,7 @@ fun ContenidoCestaCompra (
                 ) {
                     Text(
                         modifier = Modifier.padding(4.dp),
-                        text = "Recetas Buscadas",
+                        text = "Recetas Favoritas",
                         style = TextStyle(
                             color = primaryDarkColor,
                             fontSize = MaterialTheme.typography.h5.fontSize

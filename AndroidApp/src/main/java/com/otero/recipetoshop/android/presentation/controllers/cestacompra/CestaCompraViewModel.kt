@@ -4,6 +4,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.otero.recipetoshop.Interactors.Common.ActualizarAutoComplete
 import com.otero.recipetoshop.Interactors.cestascompra.GetCestaCompra
 import com.otero.recipetoshop.Interactors.cestascompra.cestacompra.*
 import com.otero.recipetoshop.domain.model.despensa.Alimento
@@ -28,7 +29,8 @@ constructor(
     private val deleteRecetaCestaCompra: DeleteRecetaCestaCompra,
     private val updateRecetaCestaCompra: UpdateRecetaCestaCompra,
     private val updateAlimentoCestaCompra: UpdateAlimentoCestaCompra,
-    private val getCestaCompra: GetCestaCompra
+    private val getCestaCompra: GetCestaCompra,
+    private val actualizarAutoComplete: ActualizarAutoComplete
 ): ViewModel() {
     val cestaCompraState = mutableStateOf(CestaCompraState())
     init {
@@ -50,6 +52,13 @@ constructor(
 
     fun onTriggerEvent(event: CestaCompraEventos){
         when(event){
+            is CestaCompraEventos.onClickAutocompleteAlimento -> {
+                cestaCompraState.value = cestaCompraState.value.copy(resultadosAutoCompleteAlimentos = emptyList())
+            }
+            is CestaCompraEventos.onAutocompleteAlimentoChange -> {
+                val response = actualizarAutoComplete.actualizarAutoComplete(event.query)
+                cestaCompraState.value = cestaCompraState.value.copy(resultadosAutoCompleteAlimentos = response)
+            }
             is CestaCompraEventos.onAddAlimento -> {
                 addAlimentoListaReceta(event.nombre, event.cantidad, event.tipoUnidad)
             }

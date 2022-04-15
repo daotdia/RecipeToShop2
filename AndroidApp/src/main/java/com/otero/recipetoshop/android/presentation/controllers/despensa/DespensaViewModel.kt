@@ -4,6 +4,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.otero.recipetoshop.Interactors.Common.ActualizarAutoComplete
 import com.otero.recipetoshop.Interactors.despensa.*
 import com.otero.recipetoshop.events.despensa.DespensaEventos
 import com.otero.recipetoshop.domain.model.despensa.Alimento
@@ -24,7 +25,8 @@ constructor(
     private val getAlimentos: GetAlimentos,
     private val deleteAlimentos: DeleteAlimentos,
     private val deleteAlimento: DeleteAlimento,
-    private val onCLickAlimento: OnCLickAlimento
+    private val onCLickAlimento: OnCLickAlimento,
+    private val actualizarAutoComplete: ActualizarAutoComplete
 ): ViewModel(){
     val despensaState: MutableState<ListaAlimentosState> = mutableStateOf(ListaAlimentosState())
 
@@ -34,6 +36,12 @@ constructor(
 
     fun onTriggerEvent(event: DespensaEventos){
         when(event){
+            is DespensaEventos.onClickAutoCompleteElement -> {
+                despensaState.value = despensaState.value.copy(resultadoAutoCompletado = emptyList())
+            }
+            is DespensaEventos.onAutoCompleteChange -> {
+                updateAutocomplete(event.nombre)
+            }
             is DespensaEventos.onCantidadChange -> {
                 updateAlimento(alimento = event.alimento, cantidad = event.cantidad, )
             }
@@ -67,6 +75,11 @@ constructor(
 //                )
             }
         }
+    }
+
+    private fun updateAutocomplete(nombre: String) {
+        val response = actualizarAutoComplete.actualizarAutoComplete(query = nombre)
+        despensaState.value = despensaState.value.copy(resultadoAutoCompletado = response)
     }
 
     private fun deleteAlimento(alimento: Alimento) {

@@ -1,5 +1,6 @@
 package com.otero.recipetoshop.android.dependenceinjection
 
+import com.otero.recipetoshop.Interactors.Common.ActualizarAutoComplete
 import com.otero.recipetoshop.Interactors.cestascompra.AddNewCestaCompra
 import com.otero.recipetoshop.Interactors.cestascompra.GetCestaCompra
 import com.otero.recipetoshop.Interactors.cestascompra.PrintListaCestasCompra
@@ -171,4 +172,8 @@ object InteractorsModule {
             recetaCache = recetaCache
         )
     }
+
+    @Singleton
+    @Provides
+    fun provideActualizarAutoCompletado(): ActualizarAutoComplete { return ActualizarAutoComplete() }
 }

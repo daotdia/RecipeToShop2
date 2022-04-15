@@ -8,5 +8,6 @@ data class FoodState(
     var nombre: String = "",
     var tipo: String = TipoUnidad.GRAMOS.name,
     var cantidad: String = "0",
-    val queueError: Queue<GenericMessageInfo> = Queue(mutableListOf())
+    val queueError: Queue<GenericMessageInfo> = Queue(mutableListOf()),
+    var queryAutoComplete: String = ""
 )
