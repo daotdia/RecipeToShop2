@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.otero.recipetoshop.android.presentation.components.alimentos.ListaAlimentosCestaCompra
 import com.otero.recipetoshop.android.presentation.components.despensa.NewAlimentoPopUp
+import com.otero.recipetoshop.android.presentation.navigation.RutasNavegacion
 import com.otero.recipetoshop.android.presentation.theme.*
 import com.otero.recipetoshop.domain.util.TipoUnidad
 import com.otero.recipetoshop.events.cestacompra.CestaCompraEventos
@@ -34,6 +35,7 @@ fun ContenidoCestaCompra (
     navController: NavController
 ) {
     val newAlimentoDialog = remember { mutableStateOf(false)}
+    val newRecetaDialog = remember { mutableStateOf(false)}
 
     Scaffold(
         floatingActionButton = {
@@ -77,9 +79,26 @@ fun ContenidoCestaCompra (
                 autocompleteResults = stateCestaCompra.value.resultadosAutoCompleteAlimentos
             )
         }
+
+        //En el caso de que se haya clicado nueva receta de usuario.
+        if(newRecetaDialog.value){
+            NewRecetaPopUp(
+                onAddReceta = { nombre, cantidad ->
+                    onTriggeEventCestaCompra(
+                        CestaCompraEventos.onAddReceta(
+                            nombre = nombre,
+                            cantidad = cantidad.toInt()
+                        )
+                    )
+                    navController.navigate(RutasNavegacion.ContenidoReceta.route + "/${stateCestaCompra.value.id_cestaCompra_actual}" + "/${stateCestaCompra.value.id_receta_actual}")
+                },
+                onNewReceta = newRecetaDialog
+            )
+        }
+
         Column(modifier = Modifier.fillMaxSize()) {
             //Aquí se emplazan las recetas Favoritas.
-            Column(modifier = Modifier.weight(5f)) {
+            Column(modifier = Modifier.weight(4f)) {
                 Row(
                     modifier = Modifier
                         .wrapContentSize(),
@@ -102,8 +121,9 @@ fun ContenidoCestaCompra (
                     ListaRecetasCestaCompra(
                         stateCestaCompra = stateCestaCompra,
                         onTriggeEvent = onTriggeEventCestaCompra,
-                        recetasOfUser = false,
-                        navController = navController
+                        recetasOfUser = true,
+                        navController = navController,
+                        recetasFavoritas = true
                     )
                 }
             }
@@ -132,7 +152,11 @@ fun ContenidoCestaCompra (
                         stateCestaCompra = stateCestaCompra,
                         onTriggeEvent = onTriggeEventCestaCompra,
                         recetasOfUser = true,
-                        navController = navController
+                        navController = navController,
+                        recetasFavoritas = false,
+                        onNuevaReceta = {
+                            newRecetaDialog.value = true
+                        }
                     )
                 }
             }

@@ -10,6 +10,7 @@ import com.otero.recipetoshop.Interactors.cestascompra.cestacompra.*
 import com.otero.recipetoshop.Interactors.cestascompra.recetas.AddIngredienteReceta
 import com.otero.recipetoshop.Interactors.cestascompra.recetas.DeleteIngredienteReceta
 import com.otero.recipetoshop.Interactors.cestascompra.recetas.GetDatosReceta
+import com.otero.recipetoshop.Interactors.cestascompra.recetas.GetRecetasFavoritas
 import com.otero.recipetoshop.datasource.cache.cachedespensa.DespensaCache
 import com.otero.recipetoshop.datasource.cache.cacherecetas.RecetaCache
 import com.otero.recipetoshop.datasource.network.RecetasServicio
@@ -169,6 +170,16 @@ object InteractorsModule {
         recetaCache: RecetaCache
     ): DeleteIngredienteReceta{
         return DeleteIngredienteReceta(
+            recetaCache = recetaCache
+        )
+    }
+
+    @Singleton
+    @Provides
+    fun provideGetRecetasFavoritas(
+        recetaCache: RecetaCache
+    ): GetRecetasFavoritas{
+        return GetRecetasFavoritas(
             recetaCache = recetaCache
         )
     }

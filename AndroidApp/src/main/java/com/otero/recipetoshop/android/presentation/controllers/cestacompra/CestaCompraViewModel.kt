@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.otero.recipetoshop.Interactors.Common.ActualizarAutoComplete
 import com.otero.recipetoshop.Interactors.cestascompra.GetCestaCompra
 import com.otero.recipetoshop.Interactors.cestascompra.cestacompra.*
+import com.otero.recipetoshop.Interactors.cestascompra.recetas.GetRecetasFavoritas
 import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.domain.model.CestaCompra.Receta
 import com.otero.recipetoshop.domain.util.TipoUnidad
@@ -30,7 +31,8 @@ constructor(
     private val updateRecetaCestaCompra: UpdateRecetaCestaCompra,
     private val updateAlimentoCestaCompra: UpdateAlimentoCestaCompra,
     private val getCestaCompra: GetCestaCompra,
-    private val actualizarAutoComplete: ActualizarAutoComplete
+    private val actualizarAutoComplete: ActualizarAutoComplete,
+    private val getRecetasFavoritas: GetRecetasFavoritas
 ): ViewModel() {
     val cestaCompraState = mutableStateOf(CestaCompraState())
     init {
@@ -48,10 +50,38 @@ constructor(
         } catch (e: Exception){
             println("No se ha podido obtener el identificador de la lista de recetas: " + e.message)
         }
+        //Obtengo las recetas favoritas
+        try{
+            getRecetasFavoritas.getRecetasFavoritas().onEach { dataState ->
+                dataState.data?.let { favoritas ->
+                    cestaCompraState.value = cestaCompraState.value.copy(recetasFavoritas = favoritas)
+                }
+            }.launchIn(viewModelScope)
+        }catch (e: Exception){
+
+        }
     }
 
     fun onTriggerEvent(event: CestaCompraEventos){
         when(event){
+            is CestaCompraEventos.onReducirCantidadReceta -> {
+                if (event.receta.cantidad > 0) {
+                    updateReceta(receta = event.receta, cantidad = event.receta.cantidad - 1)
+                }
+            }
+            is CestaCompraEventos.onAumentarCantidadReceta -> {
+                updateReceta(receta = event.receta, cantidad = event.receta.cantidad + 1)
+            }
+            is CestaCompraEventos.onAddReceta -> {
+                val newReceta = Receta(
+                    active = true,
+                    cantidad = event.cantidad,
+                    nombre = event.nombre,
+                    user = true,
+                    id_cestaCompra = cestaCompraState.value.id_cestaCompra_actual!!
+                )
+                addReceta(newReceta)
+            }
             is CestaCompraEventos.onClickAutocompleteAlimento -> {
                 cestaCompraState.value = cestaCompraState.value.copy(resultadosAutoCompleteAlimentos = emptyList())
             }
@@ -77,12 +107,24 @@ constructor(
             is CestaCompraEventos.onUpdateRecetaActive -> {
                 updateReceta(receta = event.receta, active = event.active)
             }
+            is CestaCompraEventos.onUpdateRecetaFavorita -> {
+                val receta = event.receta.copy(isFavorita = event.isFavorita)
+                updateReceta(receta)
+            }
             else -> {
                 throw Exception("ERROR")
             }
         }
     }
 
+    private fun addReceta(newReceta: Receta) {
+        updateRecetaCestaCompra.updateRecetaCestaCompra(receta = newReceta, active = newReceta.active, cantidad = newReceta.cantidad).onEach { dataState ->
+            dataState.data?.let { id ->
+                cestaCompraState.value = cestaCompraState.value.copy(id_receta_actual = id)
+                rePrintElementosDeListaRecetas(cestaCompraState.value.id_cestaCompra_actual!!)
+            }
+        }.launchIn(viewModelScope)
+    }
 
 
     private fun updateAlimento(alimento: Alimento, active: Boolean, cantidad: Int? = null) {
@@ -142,6 +184,15 @@ constructor(
         //Reseteo el estado actual de recetas y alimentos (tantos los activados omo los inactivados).
         cestaCompraState.value = cestaCompraState.value.copy(recetasActive = listOf())
         cestaCompraState.value = cestaCompraState.value.copy(recetasInactive = listOf())
+        cestaCompraState.value = cestaCompraState.value.copy(recetasFavoritas = listOf())
+
+        //Actualizo las recetas favoritas
+        getRecetasFavoritas.getRecetasFavoritas().onEach { dataState ->
+            dataState.data?.let { favoritas ->
+                cestaCompraState.value = cestaCompraState.value.copy(recetasFavoritas = favoritas)
+            }
+        }.launchIn(viewModelScope)
+
         //Obtener las recetas de la lista de recetas clicckada.
         onEnterCestaCompra.getRecetasCestaCompra(id_listaReceta = id_listaRecetas).onEach { dataState ->
             dataState.data?.let { recetas: Pair<List<Receta>?, List<Receta>?> ->
@@ -156,6 +207,25 @@ constructor(
             val recetas_actuales: ArrayList<Receta> = arrayListOf()
             recetas_actuales.addAll(cestaCompraState.value.recetasActive)
             recetas_actuales.addAll(cestaCompraState.value.recetasInactive)
+            //Necesito añadir sólo las recetas favoritas que no sean de la propia cesta de la compra.
+            val recetasFavoritas = cestaCompraState.value.recetasFavoritas
+            val recetasFavoritasExternas = recetasFavoritas.filter {
+                it.id_cestaCompra != cestaCompraState.value.id_cestaCompra_actual
+            }
+            val recetasFaboritasExternasPreparadas: ArrayList<Receta> = arrayListOf()
+            for (receta in recetasFavoritasExternas){
+                recetasFaboritasExternasPreparadas.add(receta.copy(active = false))
+            }
+            val recetasFaboritasExternasPreparadasDistintas: ArrayList<Receta> = arrayListOf()
+            for(receta in recetasFaboritasExternasPreparadas){
+                val recetas_aux = recetas_actuales.filter {
+                    it.nombre == receta.nombre
+                }
+                if (recetas_aux.isEmpty()){
+                    recetasFaboritasExternasPreparadasDistintas.add(receta)
+                }
+            }
+            recetas_actuales.addAll(recetasFaboritasExternasPreparadasDistintas)
             cestaCompraState.value = cestaCompraState.value.copy(allrecetas = recetas_actuales)
         }.launchIn(viewModelScope)
 

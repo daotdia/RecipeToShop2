@@ -32,8 +32,10 @@ Este es el componente que implementa una lista de recetas dentro de la lista de 
 fun ListaRecetasCestaCompra(
     stateCestaCompra: MutableState<CestaCompraState>,
     onTriggeEvent: (CestaCompraEventos) -> Unit,
-    recetasOfUser: Boolean,
-    navController: NavController
+    recetasOfUser: Boolean = true,
+    recetasFavoritas: Boolean,
+    navController: NavController,
+    onNuevaReceta: () -> Unit = {},
 ) {
     val cardHeight:Dp = 126.dp
     val cardWidth: Dp = 168.dp
@@ -42,38 +44,39 @@ fun ListaRecetasCestaCompra(
             .padding(start = 4.dp, bottom = 4.dp, end = 4.dp, top = 12.dp)
             ,
     ) {
-        //Primer artefacto de receta anclado para poder ir añadiendo nuevas recetas.
-        stickyHeader {
-            Box(
-                modifier = Modifier
-                    .height(cardHeight)
-                    .width(cardWidth.div(2.2f))
-                    .clickable(
-                        onClick = {
-                            navController.navigate(RutasNavegacion.BusquedaRecetas.route + "/${stateCestaCompra.value.id_cestaCompra_actual}")
-                        }
-                    )
-            ){
-                Card(
+        //Primer artefacto de receta anclado para poder ir añadiendo nuevas recetas, si es receta no favorita .
+        if(!recetasFavoritas) {
+            stickyHeader {
+                Box(
                     modifier = Modifier
-                        .height(cardHeight.div(1.8f))
-                        .width(cardWidth.div(2.4f))
-                        .align(Alignment.Center)
-                    ,
-                    backgroundColor = Color.White,
-                    shape = RoundedCornerShape(48.dp)
-                ) {
-                    Box(modifier = Modifier.fillMaxSize())
-                    {
-                        Icon(
-                            Icons.Filled.Add,
-                            modifier = Modifier
-                                .size(46.dp)
-                                .padding(2.dp)
-                                .align(Alignment.Center),
-                            tint = Color.LightGray,
-                            contentDescription = "más",
+                        .height(cardHeight)
+                        .width(cardWidth.div(2.2f))
+                        .clickable(
+                            onClick = {
+                                onNuevaReceta()
+                            }
                         )
+                ) {
+                    Card(
+                        modifier = Modifier
+                            .height(cardHeight.div(1.8f))
+                            .width(cardWidth.div(2.4f))
+                            .align(Alignment.Center),
+                        backgroundColor = Color.White,
+                        shape = RoundedCornerShape(48.dp)
+                    ) {
+                        Box(modifier = Modifier.fillMaxSize())
+                        {
+                            Icon(
+                                Icons.Filled.Add,
+                                modifier = Modifier
+                                    .size(46.dp)
+                                    .padding(2.dp)
+                                    .align(Alignment.Center),
+                                tint = Color.LightGray,
+                                contentDescription = "más",
+                            )
+                        }
                     }
                 }
             }
@@ -83,9 +86,8 @@ fun ListaRecetasCestaCompra(
             { listItem: Receta -> listItem.id_Receta!! }) { item ->
             var recetaIsActive by remember { mutableStateOf(true) }
             //Solo en el caso de que el tipo de receta corresponda con la temática de la lista.
-            if(recetasOfUser == item.user){
-                //Guardo el estado activo de la receta en variable auxiliar por comidad de uso.
-                    //Tener en cuenta que las recetas siempre vienen en orden de back; primero las activas y luego las inactivas
+            if(recetasFavoritas == item.isFavorita){
+                // Tener en cuenta que las recetas siempre vienen en orden de back; primero las activas y luego las inactivas
                 if (!item.active) {
                     recetaIsActive = false
                 } else{
@@ -99,14 +101,43 @@ fun ListaRecetasCestaCompra(
                 ) {
                     LongPressCard(
                         nombre = item.nombre,
-                        imagen = if (item.imagenSource == null) "null" else item.imagenSource!!,
+                        imagen = if (item.imagenSource == null) "" else item.imagenSource!!,
                         onClickReceta = {
                             if(!recetaIsActive){
-                                recetaIsActive = true
-                                onTriggeEvent(CestaCompraEventos.onUpdateRecetaActive(item,recetaIsActive))
+                                if(item.id_cestaCompra != stateCestaCompra.value.id_cestaCompra_actual) {
+                                    val newReceta = item.copy(
+                                        id_Receta = -1,
+                                        id_cestaCompra = stateCestaCompra.value.id_cestaCompra_actual!!
+                                    )
+                                    recetaIsActive = true
+                                    onTriggeEvent(
+                                        CestaCompraEventos.onUpdateRecetaActive(
+                                            newReceta,
+                                            recetaIsActive
+                                        )
+                                    )
+                                } else {
+                                    recetaIsActive = true
+                                    onTriggeEvent(
+                                        CestaCompraEventos.onUpdateRecetaActive(
+                                            item,
+                                            recetaIsActive
+                                        )
+                                    )
+                                }
                             } else{
-                                //Cuando se clique una receta activa sea la que sea se va a la pantalla de contenido de receta.
-                                navController.navigate(RutasNavegacion.ContenidoReceta.route + "/${item.id_cestaCompra}" + "/${item.id_Receta}")
+                                if(item.isFavorita){
+                                    recetaIsActive = false
+                                    onTriggeEvent(
+                                        CestaCompraEventos.onUpdateRecetaActive(
+                                            item,
+                                            recetaIsActive
+                                        )
+                                    )
+                                } else{
+                                    //Cuando se clique una receta activa no favorita se va a la pantalla de contenido de receta.
+                                    navController.navigate(RutasNavegacion.ContenidoReceta.route + "/${item.id_cestaCompra}" + "/${item.id_Receta}")
+                                }
                             }
                         },
                         onDelete = {
@@ -117,7 +148,32 @@ fun ListaRecetasCestaCompra(
                                 onTriggeEvent(CestaCompraEventos.onDeleteReceta(item))
                             }
                         },
-                        active = recetaIsActive
+                        active = recetaIsActive,
+                        isReceta = true,
+                        onFavoritaClick = {
+                                onTriggeEvent(
+                                    CestaCompraEventos.onUpdateRecetaFavorita(
+                                        receta = item,
+                                        isFavorita = !item.isFavorita
+                                    )
+                                )
+                        },
+                        favorita = item.isFavorita,
+                        onAumentarCantidadReceta = {
+                            onTriggeEvent(
+                                CestaCompraEventos.onAumentarCantidadReceta(
+                                    receta = item
+                                )
+                            )
+                        },
+                        onReducirCantidadReceta = {
+                            onTriggeEvent(
+                                CestaCompraEventos.onReducirCantidadReceta(
+                                    receta = item
+                                )
+                            )
+                        },
+                        cantidad = item.cantidad
                     )
                 }
             }

@@ -13,17 +13,24 @@ class UpdateRecetaCestaCompra (
         receta: Receta,
         active: Boolean,
         cantidad: Int? = null
-    ): Flow<DataState<Unit>> = flow  {
+    ): Flow<DataState<Int>> = flow  {
         emit(DataState.loading())
+
+        val recetasFavoritas = recetaCache.getAllRecetasFavoritas()
+        for (recetaFavorita in recetasFavoritas){
+            if(recetaFavorita.nombre.equals(receta.nombre) && recetaFavorita.id_Receta != receta.id_Receta){
+                recetaCache.insertRecetaToCestaCompra(recetaFavorita.copy(isFavorita = receta.isFavorita))
+            }
+        }
 
         if(cantidad != null){
             val nueva_receta = receta.copy(cantidad = cantidad)
-            recetaCache.insertRecetaToCestaCompra(nueva_receta)
-            emit(DataState.data(message = null, data = Unit))
+            val id = recetaCache.insertRecetaToCestaCompra(nueva_receta)
+            emit(DataState.data(message = null, data = id))
         } else {
             val nueva_receta = receta.copy(active = active)
-            recetaCache.insertRecetaToCestaCompra(nueva_receta)
-            emit(DataState.data(message = null, data = Unit))
+            val id = recetaCache.insertRecetaToCestaCompra(nueva_receta)
+            emit(DataState.data(message = null, data = id))
         }
     }
 }

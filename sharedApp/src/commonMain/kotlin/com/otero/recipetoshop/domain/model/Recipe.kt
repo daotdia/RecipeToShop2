@@ -10,5 +10,6 @@ data class Recipe(
     val image: String,
     val rating: Double,
     val sourceURL: String,
-    val ingredients: List<String> = listOf()
+    val ingredients: List<String> = listOf(),
+    val isfavorita: Boolean = false,
 )

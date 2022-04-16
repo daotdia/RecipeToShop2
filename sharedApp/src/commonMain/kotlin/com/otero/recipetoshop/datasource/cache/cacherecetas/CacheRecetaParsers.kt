@@ -32,7 +32,8 @@ fun Receta_Entity.toReceta(): Receta {
         cantidad = cantidad.toInt(),
         user = user,
         active = active,
-        imagenSource = imageSource
+        imagenSource = imageSource,
+        isFavorita = favorita
     )
 }
 

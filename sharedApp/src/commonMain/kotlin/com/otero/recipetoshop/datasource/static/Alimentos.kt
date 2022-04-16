@@ -107,7 +107,7 @@ Surimi
 Anchoa en lata aceite
 Atún al natural escurrido
 Atún en aceite escurrido
-Sardina en aceite escurrid
+Sardina en aceite escurrida
 Calamar
 Mejillón en escabeche
 Sepia
@@ -152,7 +152,6 @@ Huevo frito
 Yema huevo
 Clara de huevo
 Tortilla de patata
-Tortilla a la francesa
 Guisantes
 Alubia blanca cocida
 Alubia blanca cruda
@@ -173,7 +172,7 @@ Kiwi
 Mandarina
 Manzana
 Naranja
-Pera, sin piel
+Pera
 Piña
 Plátano
 Melocotón
@@ -260,6 +259,7 @@ Galletita salada
 Gusanitos de maíz
 Helado tipo almendrado
 Rosquilletas con pipas
+Helado
 Bebida isotónica
 Papas
 Huevo de chocolate
@@ -315,8 +315,7 @@ Huevo de codorniz
 Huevo de gallina
 Huevo de pavo
 Barra chocolate
-Barrita cereales maíz y trigo
-Barrita cereales trigo y chocolate
+Barrita cereales
 Mermelada de albaricoque
 Mermelada de ciruela
 Mermelada de grosella roja
@@ -525,12 +524,10 @@ Cereales desayuno trigo azucarado
 Cereales desayuno  trigo y arroz
 Cereales desayuno  trigo y frutas
 Cereales desayuno trigo y miel
-Cereales desayuno  trigo, avena, maiz y miel
-Cereales desayuno  trigo, avena, maíz, miel y nueces
 Cereales desayuno maíz azucarado
 Croissant de chocolate
 Donut
-Galleta  "digestiva"
+Galleta digestiva
 Sesos de ternera
 Galleta barquillo
 Guisante
@@ -560,7 +557,7 @@ Pasta integral
 Pasta rellena
 Pastel de manzana
 Zumo de pomelo
-Sesos, de cordero
+Sesos de cordero
 Zumo de mango
 Pudin de pasas
 Quinoa
@@ -574,10 +571,38 @@ Zumo de grosella negra
 Vodka
 Tequila
 Té
+Whisky
+Vino espumoso
+Cerveza doble
+Cerveza triple
+Cerveza sin alcohol
+Champin
+Mosto
+Ginebra
+Nuez de macadamia
+Bebida isotónica naranja
+Bebida isotónica limón
+Orujo
+Licor de hiervas
+Jagermeister
+Licor
+Absenta
 Vermut
 Ron
 Refresco naranja
 Refresco limón
+Refresco Coca
+Refresco naranja sin azúcar
+Refresco limón sin azúcar
+Refresco Coca sin azucar
+Refresco Coca sin cafeína sin azucar
+Refresco Coca sin cafeina
+Refresco Te
+Refresco tónica
+Crema de café
+Mistela
+Cava
+Champán
 Néctar de pomelo
 Néctar de piña
 Néctar de naranja
@@ -586,6 +611,13 @@ Néctar de maracuyá
 Néctar de albaricoque
 Coñac
 Cerveza oscura
+Cerveza rubia
+Cerveza importación
+Vino tinto
+Vino blanco
+Vino rosado
+Limoncello
+
 Soda
 Germen de trigo
 Harina de centeno
@@ -604,20 +636,20 @@ Yogur enriquecido natural
 Yogur enriquecido con frutas
 Yogur bebido natural azucarado
 Yogur desnatado con cereza y frambuesa
-Yogur, desnatado, con frutas del bosque
-Yogur, desnatado, con frutas
-Yogur, desnatado, con frutas tropicales
-Yogur, desnatado, con manzana
-Yogur, enriquecido, natural
-Yogur, desnatado, con melocotón y maracuyá
-Yogur, enriquecido, natural, azucarado
-Yogur, desnatado, con piña y pomelo
-Yogur, enriquecido, sabor, s/e
-Yogur, líquido, desnatado, natural
+Yogur con frutas del bosque
+Yogur con frutas
+Yogur con frutas tropicales
+Yogur con manzana
+Yogur natural
+Yogur con melocotón y maracuyá
+Yogur natural azucarado
+Yogurcon piña y pomelo
+Yogur enriquecido
+Yogur líquido desnatado
 Crema de almendras
-Yogur, desnatado, sabor vainilla
-Yogur, entero, con fresas
-Yogur líquido, con frutas s/e
+Yogur sabor vainilla
+Yogur con fresas
+Yogur líquido con frutas
 Fuet
 Calamar conserva
 Guayaba 

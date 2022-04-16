@@ -8,6 +8,7 @@ import com.otero.recipetoshop.domain.util.Queue
 
 data class CestaCompraState (
     val id_cestaCompra_actual: Int? = null,
+    val id_receta_actual: Int? = null,
     val nombre: String = "",
     val alimentosActive: List<Alimento> = listOf(),
     val alimentosInactive: List<Alimento> = listOf(),
@@ -18,5 +19,6 @@ data class CestaCompraState (
     val listaCestasCompra: List<CestaCompra> = listOf(),
     var onNewReceta: Boolean = false,
     val queueError: Queue<GenericMessageInfo> = Queue(mutableListOf()),
-    val resultadosAutoCompleteAlimentos: List<String> = listOf()
+    val resultadosAutoCompleteAlimentos: List<String> = listOf(),
+    val recetasFavoritas: List<Receta> = listOf()
 )

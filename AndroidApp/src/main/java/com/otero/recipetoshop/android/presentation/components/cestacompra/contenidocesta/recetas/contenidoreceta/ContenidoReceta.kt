@@ -56,12 +56,30 @@ fun ContenidoReceta(
                     tipoUnidad = TipoUnidad.valueOf(tipoUnidad)
                 ))
               },
-              onNewAlimento = newAlimentoDialog
+              onNewAlimento = newAlimentoDialog,
+              onAutoCompleteClick = {
+                  onTriggeEventReceta(
+                      RecetaEventos.onClickAutocompleteReceta()
+                  )
+              },
+              onAutoCompleteChange = { nombre ->
+                  onTriggeEventReceta(
+                      RecetaEventos.onAutocompleteRecetaChange(
+                          query = nombre
+                      )
+                  )
+              },
+              autocompleteResults = recetaState.value.resultadoAutoComplete
           )
         }
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             //Porción donde está la imagen de la receta si la hubiera.
-            Column(Modifier.weight(3f)) {
+            Column(Modifier
+                .weight(3f)
+            ) {
                 RecetaImagen(
                     url = recetaState.value.imagen,
                     contentDescription = recetaState.value.nombre

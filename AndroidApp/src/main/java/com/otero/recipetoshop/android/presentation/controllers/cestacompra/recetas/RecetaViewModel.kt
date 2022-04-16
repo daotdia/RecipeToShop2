@@ -4,6 +4,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.otero.recipetoshop.Interactors.Common.ActualizarAutoComplete
 import com.otero.recipetoshop.Interactors.cestascompra.recetas.AddIngredienteReceta
 import com.otero.recipetoshop.Interactors.cestascompra.recetas.DeleteIngredienteReceta
 import com.otero.recipetoshop.Interactors.cestascompra.recetas.GetDatosReceta
@@ -23,7 +24,8 @@ constructor(
     private val savedStateHandle: SavedStateHandle,
     private val addIngredienteReceta: AddIngredienteReceta,
     private val getDatosReceta: GetDatosReceta,
-    private val deleteIngredienteReceta: DeleteIngredienteReceta
+    private val deleteIngredienteReceta: DeleteIngredienteReceta,
+    private val actualizarAutoComplete: ActualizarAutoComplete
 ): ViewModel() {
     val recetaState = mutableStateOf(RecetaState())
 
@@ -54,6 +56,13 @@ constructor(
 
     fun onTriggerEvent(event: RecetaEventos){
         when(event){
+            is RecetaEventos.onAutocompleteRecetaChange -> {
+                val response = actualizarAutoComplete.actualizarAutoComplete(query = event.query)
+                recetaState.value = recetaState.value.copy(resultadoAutoComplete = response)
+            }
+            is RecetaEventos.onClickAutocompleteReceta -> {
+                recetaState.value = recetaState.value.copy(resultadoAutoComplete = emptyList())
+            }
             is RecetaEventos.onaAddIngrediente -> {
                 addAlimentoReceta(nombre = event.nombre, cantidad = event.cantidad, tipoUnidad = event.tipoUnidad)
             }

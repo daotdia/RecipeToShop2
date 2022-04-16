@@ -9,7 +9,8 @@ data class Receta(
     val cantidad: Int,
     var user: Boolean,
     var active: Boolean,
-    val imagenSource: String? = null,
+    val imagenSource: String? = "",
     val ingredientes: List<Alimento> = emptyList(),
-    val rating: Float? = null
+    val rating: Float? = null,
+    val isFavorita: Boolean = false
 )

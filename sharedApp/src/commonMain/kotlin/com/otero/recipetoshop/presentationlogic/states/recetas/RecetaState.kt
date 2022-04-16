@@ -11,5 +11,6 @@ data class RecetaState(
     val cantidad: String = "0",
     val imagen: String = "",
     val ingredientes: List<Alimento> = listOf(),
-    val queueError: Queue<GenericMessageInfo> = Queue(mutableListOf())
+    val queueError: Queue<GenericMessageInfo> = Queue(mutableListOf()),
+    val resultadoAutoComplete: List<String> = listOf()
 )

@@ -80,7 +80,8 @@ class RecetaCacheImpl(
                 user = receta.user,
                 active = receta.active,
                 imageSource = receta.imagenSource,
-                rating = if(receta.rating != null) receta.rating.toLong() else null
+                rating = if(receta.rating != null) receta.rating.toLong() else null,
+                favorita = receta.isFavorita
             )
             id = lastIdInserted()
         }
@@ -158,6 +159,16 @@ class RecetaCacheImpl(
         }
     }
 
+    override fun getAllRecetasFavoritas(): List<Receta> {
+        return try{
+            queries.getRecetasFavoritas(isfavorita = true)
+                .executeAsList()
+                .toListaRecetas()
+        } catch (e:Exception){
+            println(e.message + "    ////  No se ha podido obtenerla lista de recetas favoritas")
+            emptyList()
+        }
+    }
 
     //Alimentos
     override fun insertAlimentoToCestaCompra(alimento: Alimento) {

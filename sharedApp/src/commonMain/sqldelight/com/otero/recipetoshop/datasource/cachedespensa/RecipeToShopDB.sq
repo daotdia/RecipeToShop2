@@ -94,6 +94,7 @@ CREATE TABLE  receta_Entity(
     active INTEGER AS Boolean NOT NULL,
     imageSource TEXT,
     rating INTEGER,
+    favorita INTEGER AS Boolean NOT NULL,
     FOREIGN KEY (id_cestaCompra) REFERENCES cestaCompra_Entity(nombre)
     ON DELETE CASCADE
 );
@@ -108,8 +109,9 @@ INTO receta_Entity (
     user,
     active,
     imageSource,
-    rating
-) VALUES ( ?, ?, ?, ?, ?, ?,?);
+    rating,
+    favorita
+) VALUES ( ?, ?, ?, ?, ?, ?,?, ?);
 
 getAllRecetasInCestasCompra:
 SELECT * FROM receta_Entity
@@ -147,6 +149,11 @@ WHERE id_cestaCompra= :id_cestaCompra;
 removeRecetaByIdInCestaCompra:
 DELETE FROM receta_Entity
 WHERE id_receta = :id_receta;
+
+getRecetasFavoritas:
+SELECT * FROM receta_Entity
+WHERE favorita = :isfavorita
+ORDER BY nombre DESC;
 
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------

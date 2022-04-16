@@ -45,7 +45,7 @@ fun RecetaImagen (
                 Surface(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(color = Color.LightGray)
+                        .background(color = Color.White)
                 ) {
                     Box(modifier = Modifier.fillMaxSize())
                     {
@@ -64,6 +64,26 @@ fun RecetaImagen (
         }
         is ImageLoadState.Success -> {
             //Que quieras que ocurrra cuando la imagen justo se haya cargado.
+            if(url.equals("")){
+                Surface(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(color = Color.LightGray)
+                ) {
+                    Box(modifier = Modifier.fillMaxSize())
+                    {
+                        Icon(
+                            Icons.Filled.AddAPhoto,
+                            modifier = Modifier
+                                .size(46.dp)
+                                .padding(2.dp)
+                                .align(Alignment.Center),
+                            tint = Color.LightGray,
+                            contentDescription = "más",
+                        )
+                    }
+                }
+            }
         }
         is ImageLoadState.Loading -> {
 //            Box(

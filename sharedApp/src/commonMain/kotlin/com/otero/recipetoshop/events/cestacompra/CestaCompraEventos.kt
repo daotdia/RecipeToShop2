@@ -6,6 +6,10 @@ import com.otero.recipetoshop.domain.util.TipoUnidad
 
 sealed class CestaCompraEventos {
 
+    data class onReducirCantidadReceta(val receta: Receta): CestaCompraEventos()
+
+    data class onAumentarCantidadReceta(val receta: Receta): CestaCompraEventos()
+
     class onClickAutocompleteAlimento(): CestaCompraEventos()
 
     data class onAutocompleteAlimentoChange(val query: String): CestaCompraEventos()
@@ -27,4 +31,8 @@ sealed class CestaCompraEventos {
     data class onAlimentoClick(val alimento: Alimento, val active: Boolean): CestaCompraEventos()
 
     data class onUpdateRecetaActive(val receta: Receta, val active: Boolean): CestaCompraEventos()
+
+    data class onAddReceta(val nombre: String, val cantidad: Int): CestaCompraEventos()
+
+    data class onUpdateRecetaFavorita(val receta: Receta, val isFavorita: Boolean): CestaCompraEventos()
 }

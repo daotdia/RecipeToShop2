@@ -5,6 +5,8 @@ Siempre se pueden añadir más.
  */
 sealed class RutasNavegacion (val route: String)
 {
+    object RecetasUser: RutasNavegacion("recetasuser")
+
     object Despensa: RutasNavegacion("despensa")
 
     object ListaCestasCompra: RutasNavegacion("listaCestasCompra")

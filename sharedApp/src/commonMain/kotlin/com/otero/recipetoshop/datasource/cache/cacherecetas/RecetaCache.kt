@@ -41,6 +41,8 @@ interface RecetaCache {
 
     fun removeRecetaByIdInCestaCompra(id_receta: Int): Unit
 
+    fun getAllRecetasFavoritas(): List<Receta>
+
     //Alimentos
     fun insertAlimentoToCestaCompra(alimento: Alimento): Unit
 
