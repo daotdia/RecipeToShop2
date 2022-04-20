@@ -76,7 +76,7 @@ class Carrefour(webdriver.Firefox):
         )
         bottom_search.click()
     
-    def getData(self) -> list:
+    def getData(self, query) -> list:
         data: List[Alimento] = []
         result= []
         incompleto = False
@@ -94,12 +94,23 @@ class Carrefour(webdriver.Firefox):
                 if index > 5:
                     break
                 nombre: WebElement = articulo.find_element_by_tag_name('h1')#Hay que buscar el texto
+                print(nombre.text)
                 imagen: WebElement = articulo.find_element_by_tag_name('img')#Hay que obtener el atributo src
                 precio: WebElement = articulo.find_element_by_class_name('ebx-result-price__value')#Hay que buscar el texto
                 precio_peso: WebElement = articulo.find_element_by_class_name("ebx-result__quantity")#Hay que buscar el texto
                 #El buscar la oferta demora mucho tiempo.
                 #oferta: WebElement = articulo.find_element_by_class_name("ebx-result__banner")#Hay que buscar texto
                 oferta = None
+                if not incompleto:
+                    alimento = Alimento.build_alimento(
+                        query = query,
+                        nombre= nombre.text,
+                        imagen_src = imagen.get_attribute("src"),
+                        precio = precio.text,
+                        precio_peso = precio_peso.text,
+                        oferta = oferta.text if oferta is not None else ''
+                    )
+                    data.append(alimento)
         except StaleElementReferenceException:
             incompleto = True
             print('No encuentra un elemento')
@@ -109,18 +120,11 @@ class Carrefour(webdriver.Firefox):
         except TimeoutException:
             incompleto = True
             print('No encuentra un elemento')
-        if not incompleto:
-            alimento = Alimento.build_alimento(
-                nombre= nombre.text,
-                imagen_src = imagen.get_attribute("src"),
-                precio = precio.text,
-                precio_peso = precio_peso.text,
-                oferta = oferta.text if oferta is not None else ''
-            )
-            data.append(alimento)
+    
         for alimento in data:
-            result.append(alimento.alimento_list())
+            result.append(alimento.alimento_JSON())
         return result
+    
     def save_disk(self, database):
         cols = ['nombre', 'imagen', 'precio_peso', 'precio', 'oferta']
         dataFrame = pd.DataFrame(database,cols)
