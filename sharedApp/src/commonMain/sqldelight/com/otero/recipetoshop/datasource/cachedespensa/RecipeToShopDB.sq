@@ -253,6 +253,12 @@ WHERE active = :active
 AND id_receta = :id_receta
 ORDER BY nombre DESC;
 
+getIngredientesByActiveByIdCestaCompra:
+SELECT * FROM ingredients_Entity
+WHERE active = :active
+AND id_cestaCompra = :id_cestaCompra
+ORDER BY nombre DESC;
+
 getIngredienteByIdInReceta:
 SELECT * FROM ingredients_Entity
 WHERE id_ingrediente = :id_alimento
@@ -268,6 +274,8 @@ WHERE id_receta= :id_receta;
 removeIngredienteByIdInReceta:
 DELETE FROM ingredients_Entity
 WHERE id_ingrediente = :id_alimento;
+
+
 
 
 

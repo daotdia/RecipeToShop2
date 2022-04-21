@@ -294,6 +294,21 @@ class RecetaCacheImpl(
             .toListaIngredientes()
     }
 
+    override fun getIngredientesByActiveByIdCestaCompra(
+        active: Boolean,
+        id_cestaCompra: Int
+    ): List<Alimento>? {
+        return try{
+            queries
+                .getIngredientesByActiveByIdCestaCompra(active = active, id_cestaCompra = id_cestaCompra.toLong())
+                .executeAsList()
+                .toListaIngredientes()
+        }catch (e: Exception){
+            println(e.message + "    ////  No se ha podido obtener la cesta de la compra con id: ${id_cestaCompra}")
+            null
+        }
+    }
+
     override fun getIngredienteByIdInReceta(id_ingrediente: Int): Alimento? {
         return try{
             queries

@@ -71,6 +71,8 @@ interface RecetaCache {
 
     fun getIngredientsByActiveInRecta(active: Boolean, id_receta: Int): List<Alimento>?
 
+    fun getIngredientesByActiveByIdCestaCompra(active: Boolean, id_cestaCompra: Int): List<Alimento>?
+
     fun getIngredientesByReceta(id_receta: Int): List<Alimento>?
 
     fun getIngredienteByIdInReceta(id_ingrediente: Int): Alimento?
