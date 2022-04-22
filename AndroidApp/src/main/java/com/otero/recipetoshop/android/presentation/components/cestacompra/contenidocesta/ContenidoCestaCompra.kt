@@ -44,6 +44,7 @@ fun ContenidoCestaCompra (
                 contentColor = secondaryLightColor,
                 onClick = {
                     //Que hacen cuando se de el OK para calcular cesta de la compra.
+                    navController.navigate(RutasNavegacion.ListaCompra.route + "/${stateCestaCompra.value.id_cestaCompra_actual}")
                 },
                 content = {
                     Icon(Icons.Default.Summarize, null)

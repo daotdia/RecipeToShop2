@@ -35,4 +35,5 @@ sealed class CestaCompraEventos {
     data class onAddReceta(val nombre: String, val cantidad: Int): CestaCompraEventos()
 
     data class onUpdateRecetaFavorita(val receta: Receta, val isFavorita: Boolean): CestaCompraEventos()
+
 }

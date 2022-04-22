@@ -12,12 +12,14 @@ import kotlin.math.ceil
 
 class CalcularAlimentosToProductos {
     val productos: Productos = Productos(arrayListOf())
-    init {
+    fun iniciarCalculadora(): Unit {
+        println("He llegado a calculo de JSON")
         val json: JsonArray? = Productos_prueba.json.jsonObject.get("productos")?.jsonArray
         if (json != null) {
             for (tipo in json) {
                 val producto: ArrayList<Productos.Producto> = arrayListOf()
                 for (instancia in tipo.jsonArray) {
+                    println("Producto en json alcanzado: " + instancia.jsonObject.getValue("nombre").jsonPrimitive.content)
                     val elemento: Productos.Producto = Productos.Producto(
                         nombre = instancia.jsonObject.getValue("nombre").jsonPrimitive.content,
                         imagen_src = instancia.jsonObject.getValue("imagen_src").jsonPrimitive.content,
@@ -53,9 +55,13 @@ class CalcularAlimentosToProductos {
             var best: Float = MAX_VALUE
             var ganador: Productos.Producto? = null
             for(elemento in tipo){
-                if(elemento.precio_peso.toFloat() < best){
+                val precio_peso = elemento.precio_peso
+                    .replace(',', '.')
+                    .filter { it.isDigit() || it.equals('.') }
+                    .toFloat()
+                if(precio_peso< best){
                     ganador = elemento
-                    best = elemento.precio_peso.toFloat()
+                    best = precio_peso
                 }
             }
             result.add(ganador!!)
@@ -63,7 +69,7 @@ class CalcularAlimentosToProductos {
         return result
     }
 
-    fun calcularNecesidadesAlimentos(alimentos_despensa: List<Alimento>, alimentos_cesta: List<Alimento>): List<Alimento> {
+    fun calcularNecesidadesAlimentos(alimentos_despensa: ArrayList<Alimento>, alimentos_cesta: ArrayList<Alimento>): ArrayList<Alimento> {
         for(al_cesta in alimentos_cesta){
             for (al_desp in alimentos_despensa){
                 if(al_cesta.nombre.equals(al_desp.nombre)){
@@ -74,7 +80,7 @@ class CalcularAlimentosToProductos {
                 }
             }
         }
-        return alimentos_cesta.filter { it.active == true }
+        return ArrayList(alimentos_cesta.filter { it.active == true })
     }
 
     fun calcularCantidadesProductos(alimentos: ArrayList<Alimento>, productos: ArrayList<Productos.Producto>): ArrayList<Productos.Producto>{

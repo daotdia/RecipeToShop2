@@ -11,6 +11,7 @@ import com.otero.recipetoshop.Interactors.cestascompra.recetas.AddIngredienteRec
 import com.otero.recipetoshop.Interactors.cestascompra.recetas.DeleteIngredienteReceta
 import com.otero.recipetoshop.Interactors.cestascompra.recetas.GetDatosReceta
 import com.otero.recipetoshop.Interactors.cestascompra.recetas.GetRecetasFavoritas
+import com.otero.recipetoshop.Interactors.listacompra.CalcularProductos
 import com.otero.recipetoshop.datasource.cache.cachedespensa.DespensaCache
 import com.otero.recipetoshop.datasource.cache.cacherecetas.RecetaCache
 import com.otero.recipetoshop.datasource.network.RecetasServicio
@@ -187,4 +188,16 @@ object InteractorsModule {
     @Singleton
     @Provides
     fun provideActualizarAutoCompletado(): ActualizarAutoComplete { return ActualizarAutoComplete() }
+
+    @Singleton
+    @Provides
+    fun provideCalcularProductos(
+        recetaCache: RecetaCache,
+        despensaCache: DespensaCache
+    ): CalcularProductos{
+        return CalcularProductos(
+            recetaCache = recetaCache,
+            despensaCache = despensaCache
+        )
+    }
 }

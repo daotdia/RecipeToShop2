@@ -23,9 +23,10 @@ fun Productos.matchElementos(nombreAlimento: String): ArrayList<Productos.Produc
     for (tipo in this.productos){
         for(elemento in tipo){
             if(
-                elemento.query.equals(nombreAlimento) &&
+                elemento.query.lowercase().trim().equals(nombreAlimento.lowercase().trim()) &&
                 elemento.isComplete()
             ){
+                println("He encontrado un producto coiencidente con el alimento: " + nombreAlimento)
                 result.add(elemento)
             }
         }
@@ -46,8 +47,10 @@ fun Productos.Producto.calcularCantidad(): Map<String, Any>?{
     //Obtengo la primera aparición de un número seguido de todos los carácteres restantes.
     val pattern = Regex("[0-9]+[\\w\\s]*")
     val match = pattern.find(nombre)
-    if(match != null)
+    if(match != null) {
+        println("El pattern general encontrado es: " + match.value)
         return parseCantidad(match.value)
+    }
     else
         return null
 }
@@ -56,8 +59,8 @@ private fun parseCantidad(nombreUnidades: String):  Map<String, Any>? {
     val cantidad_producto: HashMap<String, Any>?
     var tipo_unidad: String? = null
     //Obtengo el tipo de unidad
-    val pattern_tipoUnidad = Regex("bolsas|bolsa|brik|briks|mg|g|dg|cg|kg|ml|cl|dl|l|ud", RegexOption.IGNORE_CASE)
-    val pattern_cantidad = Regex("[0-9]+".plus(pattern_tipoUnidad))
+    val pattern_tipoUnidad = Regex("bolsas|bolsa|briks|brik|mg|g|dg|cg|kg|ml|cl|dl|l|ud", RegexOption.IGNORE_CASE)
+    val pattern_cantidad = Regex("[0-9]+\\s*" + "(" + pattern_tipoUnidad + ")")
     val sequencia_unidad = pattern_tipoUnidad.findAll(nombreUnidades)
     val valor_multiplicador = pattern_cantidad.findAll(nombreUnidades)
     var nombre_unidad: String? = null
@@ -68,6 +71,7 @@ private fun parseCantidad(nombreUnidades: String):  Map<String, Any>? {
         nombre_unidad = sequencia_unidad.last().value
         //En el caso de que haya más de una ocurrencia, se obtiene el multiplicador de la primera.
         if(valor_multiplicador.toList().size > 1){
+            println("El valor del multiplicador es: " + valor_multiplicador.first().value)
             multiplicador_unidad = valor_multiplicador
                 .first()
                 .value

@@ -21,7 +21,7 @@ import javax.inject.Inject
 class RecetaViewModel
 @Inject
 constructor(
-    private val savedStateHandle: SavedStateHandle,
+    savedStateHandle: SavedStateHandle,
     private val addIngredienteReceta: AddIngredienteReceta,
     private val getDatosReceta: GetDatosReceta,
     private val deleteIngredienteReceta: DeleteIngredienteReceta,

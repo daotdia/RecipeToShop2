@@ -10347,3 +10347,8 @@ JavaScript error: https://cdn.cookielaw.org/scripttemplates/6.12.0/otTCF.js, lin
 JavaScript error: https://cdn.cookielaw.org/scripttemplates/6.12.0/otTCF.js, line 1: SyntaxError: An invalid or illegal string was specified
 JavaScript error: https://cdn.cookielaw.org/scripttemplates/6.12.0/otTCF.js, line 1: SyntaxError: An invalid or illegal string was specified
 JavaScript warning: https://pagead2.googlesyndication.com/bg/k-Lxrj_3cR5KhrMTVpzAVOH1CgwXrUvkekFpn42ZeoQ.js line 1 > eval line 3607 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://cdn.cookielaw.org/scripttemplates/6.12.0/otTCF.js, line 1: SyntaxError: An invalid or illegal string was specified
+JavaScript error: https://cdn.cookielaw.org/scripttemplates/6.12.0/otTCF.js, line 1: SyntaxError: An invalid or illegal string was specified
+1650665765117	Marionette	INFO	Stopped listening on port 36043
+1650665765829	Marionette	INFO	Stopped listening on port 46317
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.

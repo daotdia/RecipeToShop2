@@ -225,18 +225,6 @@ object Productos_prueba {
          }
       ]
    ]
-}
-data class Productos(
-    val productos: List<List<Producto>>
-) {
-    data class Producto(
-        val imagen_src: String,
-        val nombre: String,
-        val oferta: String,
-        val precio: String,
-        val precio_peso: String,
-        val query: String
-    )
 }""".trimIndent()
 
     val json: JsonElement = Json.parseToJsonElement(productos)

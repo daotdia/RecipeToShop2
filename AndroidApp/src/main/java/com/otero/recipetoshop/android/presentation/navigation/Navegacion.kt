@@ -21,11 +21,13 @@ import com.otero.recipetoshop.android.presentation.components.cestacompra.ListaC
 import com.otero.recipetoshop.android.presentation.components.cestacompra.ContenidoCestaCompra
 import com.otero.recipetoshop.android.presentation.components.cestacompra.ContenidoReceta
 import com.otero.recipetoshop.android.presentation.components.cestacompra.contenidocesta.recetas.busquedarecetas.BusquedaRecetasScreen
+import com.otero.recipetoshop.android.presentation.components.listacompra.ListaCompra
 import com.otero.recipetoshop.android.presentation.controllers.despensa.DespensaViewModel
 import com.otero.recipetoshop.android.presentation.controllers.cestacompra.ListaCestasCompraListViewModel
 import com.otero.recipetoshop.android.presentation.controllers.cestacompra.CestaCompraViewModel
 import com.otero.recipetoshop.android.presentation.controllers.cestacompra.recetas.BusquedaRecetaAPIViewModel
 import com.otero.recipetoshop.android.presentation.controllers.cestacompra.recetas.RecetaViewModel
+import com.otero.recipetoshop.android.presentation.controllers.listacompra.ListaCompraViewModel
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
 /*
 Aquí se encuentra la lógicade navegación de toda la App.
@@ -126,9 +128,19 @@ fun Navegacion(
 
         //Pantalla de Lista de la Compra.
         composable(
-            route = RutasNavegacion.ListaCompra.route
-        ){
-            Surface(color = secondaryLightColor){}
+            route = RutasNavegacion.ListaCompra.route + "/{cestacompraid}",
+            arguments = listOf(navArgument("cestacompraid"){
+                type = NavType.IntType
+            })
+        ){ navBackStackEntry ->
+            val factory = HiltViewModelFactory(LocalContext.current, navBackStackEntry)
+            val listaCompraViewModel: ListaCompraViewModel = viewModel("ListaCompraViewModel", factory )
+
+            ListaCompra(
+                navController = navController,
+                listaCompraState = listaCompraViewModel.listaCompraState,
+                onTriggeEvent = listaCompraViewModel::onTriggerEvent
+            )
         }
 
         //Pantalla de perfil
