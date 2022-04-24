@@ -37,7 +37,8 @@ fun IngredienteCard (
     tipoUnidad: TipoUnidad = TipoUnidad.GRAMOS,
     onClickAlimento: () -> Unit,
     onDelete: () -> Unit,
-    active: Boolean = true
+    active: Boolean = true,
+    longpressed: Boolean = true
 ) {
     val longPressed = remember { mutableStateOf(false) }
     val borderStroke = remember { mutableStateOf(BorderStroke(0.dp, Color.White.copy(alpha = 0f))) }
@@ -45,7 +46,7 @@ fun IngredienteCard (
     val cardHeight: Dp = 128.dp
     val cardWidth: Dp = 128.dp
 
-    if (longPressed.value) {
+    if (longPressed.value && longpressed) {
         borderStroke.value = borderStroke.value.copy(
             2.dp,
             Brush.linearGradient(
@@ -106,7 +107,7 @@ fun IngredienteCard (
                             color = Color.White,
                             textAlign = TextAlign.Center
                         )
-                        if (longPressed.value) {
+                        if (longPressed.value && longpressed) {
                             Column(
                                 modifier = Modifier
                                     .wrapContentSize()

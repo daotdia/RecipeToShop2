@@ -181,7 +181,7 @@ constructor(
 
     //Metodo para imprimir los elementos guardados en la lista de recetas en cache.
     private fun rePrintElementosDeListaRecetas(id_listaRecetas: Int) {
-        //Reseteo el estado actual de recetas y alimentos (tantos los activados omo los inactivados).
+        //Reseteo el estado actual de recetas y alimentos (tantos los activados como los inactivados).
         cestaCompraState.value = cestaCompraState.value.copy(recetasActive = listOf())
         cestaCompraState.value = cestaCompraState.value.copy(recetasInactive = listOf())
         cestaCompraState.value = cestaCompraState.value.copy(recetasFavoritas = listOf())

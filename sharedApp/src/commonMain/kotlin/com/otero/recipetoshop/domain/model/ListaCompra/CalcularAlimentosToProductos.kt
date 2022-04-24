@@ -24,12 +24,20 @@ class CalcularAlimentosToProductos {
                         nombre = instancia.jsonObject.getValue("nombre").jsonPrimitive.content,
                         imagen_src = instancia.jsonObject.getValue("imagen_src").jsonPrimitive.content,
                         oferta = instancia.jsonObject.getValue("oferta").jsonPrimitive.content,
-                        precio = instancia.jsonObject.getValue("precio").jsonPrimitive.content,
+                        precio_texto = instancia.jsonObject.getValue("precio").jsonPrimitive.content,
                         precio_peso = instancia.jsonObject.getValue("precio_peso").jsonPrimitive.content,
                         query = instancia.jsonObject.getValue("query").jsonPrimitive.content,
                         cantidad = 0,
-                        tipoUnidad = null,
-                        peso = 0f
+                        tipoUnidad = TipoUnidad.GRAMOS,
+                        peso = 0f,
+                        precio_numero = if(!instancia.jsonObject.getValue("precio").jsonPrimitive.content.isEmpty()){
+                            instancia.jsonObject.getValue("precio").jsonPrimitive.content
+                                .replace(',', '.')
+                                .filter { it.isDigit() || it.equals('.') }
+                                .toFloat()
+                        } else {
+                            0f
+                        }
                     )
                     producto.add(elemento)
                 }
@@ -95,8 +103,10 @@ class CalcularAlimentosToProductos {
         //Después determino la cantidad de unidades de producto necesarias
         for(alimento in alimentos){
             for(producto in productos){
-                if(producto.query.equals(alimento.nombre)){
+                if(producto.query.trim().lowercase().equals(alimento.nombre.trim().lowercase())){
+                    println("He matcheado el producto con el alimento correctamente en calculo de cantidades: " + producto.query)
                     producto.cantidad = CalcularDiferenciaCantidad(alimento.cantidad,alimento.tipoUnidad,producto.peso,producto.tipoUnidad)
+                    println("La cantidad calculada es: " + producto.cantidad + "para un peso de alimento " + alimento.cantidad + " y de producto unitario " + producto.peso)
                 }
             }
         }

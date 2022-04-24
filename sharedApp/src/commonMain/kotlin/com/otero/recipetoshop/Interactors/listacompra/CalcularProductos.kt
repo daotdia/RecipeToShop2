@@ -15,15 +15,16 @@ class CalcularProductos(
 ) {
     fun calcularProductos(
         id_cestaCompra: Int
-    ): Flow<DataState<ArrayList<Productos.Producto>>> = flow {
+    ): Flow<DataState<Pair<ArrayList<Alimento>, ArrayList<Productos.Producto>>>> = flow {
         emit(DataState.loading())
 
         //Obtengo todos los alimentos activos de la cesta de la compra actual
         val alimentos_cesta = recetaCache.getAlimentosByActiveInCestaCompra(active = true, id_cestaCompra = id_cestaCompra)
         val ingredientes_cesta = recetaCache.getIngredientesByActiveByIdCestaCompra(active = true, id_cestaCompra = id_cestaCompra)
         var all_alimentos_cesta: ArrayList<Alimento> = arrayListOf()
+        var mejores_productos_unidades: ArrayList<Productos.Producto> = arrayListOf()
         if (alimentos_cesta == null && ingredientes_cesta == null){
-            emit(DataState.data(data = arrayListOf(), message = null))
+            emit(DataState.data(data = Pair(arrayListOf(), arrayListOf()), message = null))
         } else{
             if(alimentos_cesta == null && ingredientes_cesta != null)
                 all_alimentos_cesta.addAll(ingredientes_cesta)
@@ -57,12 +58,44 @@ class CalcularProductos(
             }
             //Encuentro los productos
             val productos_brutos = caluladoraProductos.encontrarProductos(all_alimentos_cesta)
+            var otravez = true
             //Selecciono los mejores productos
             val mejores_productos = caluladoraProductos.seleccionarMejorProducto(productos_brutos)
             //Calculo la cantidad de productos.
-            val mejores_productos_unidades = caluladoraProductos.calcularCantidadesProductos(alimentos = ArrayList(all_alimentos_cesta), productos = ArrayList(mejores_productos))
+            mejores_productos_unidades = caluladoraProductos.calcularCantidadesProductos(alimentos = ArrayList(all_alimentos_cesta), productos = ArrayList(mejores_productos))
+            for(producto in mejores_productos_unidades){
+                println("La cantidad del producto es: " + producto.cantidad)
+                println("El peso del producto es: " + producto.peso)
+            }
+//            while(otravez){
+//                otravez = false
+//                //Selecciono los mejores productos
+//                val mejores_productos = caluladoraProductos.seleccionarMejorProducto(productos_brutos)
+//                //Calculo la cantidad de productos.
+//                mejores_productos_unidades = caluladoraProductos.calcularCantidadesProductos(alimentos = ArrayList(all_alimentos_cesta), productos = ArrayList(mejores_productos))
+//
+//                //Determino si hay algun producto con el que no se ha podido calcular bien su cantidad, lo elimino y repito hasta que encuentre una opción válida.
+//                val lista_alternativas: ArrayList<Productos.Producto> = arrayListOf()
+//                for(producto in mejores_productos_unidades){
+//                    if(producto.cantidad <= 0){
+//                        //Si encuentro un producto con cantidad negativa lo elimino de la lista de prodctos brutos
+//                        for(tipo in productos_brutos){
+//                            tipo.filter { !it.nombre.equals(producto.nombre) }
+//                        }
+//                        //Busco el grupo de productos de su tipo y lo añado a las alternativas para saber si quedan.
+//                        for(tipo in productos_brutos){
+//                            lista_alternativas.addAll(tipo.filter { it.query.trim().lowercase().equals(producto.query.trim().lowercase()) })
+//                            println("La lista de alternativas añade entre otros: " + producto.nombre)
+//                        }
+//                        //En el caso de que encuentre alguna alternativa sigue la busqueda, en caso contrario la termina.
+//                        if (!lista_alternativas.isEmpty()){
+//                             otravez = true
+//                        }
+//                    }
+//                }
+//            }
 
-            emit(DataState.data(data = mejores_productos_unidades, message = null))
+            emit(DataState.data(data = Pair(all_alimentos_cesta, mejores_productos_unidades), message = null))
         }
     }
 }

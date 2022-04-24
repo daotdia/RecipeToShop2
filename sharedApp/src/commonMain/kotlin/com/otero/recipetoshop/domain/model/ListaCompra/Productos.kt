@@ -9,12 +9,13 @@ data class Productos(
         val imagen_src: String,
         val nombre: String,
         val oferta: String,
-        val precio: String,
+        val precio_texto: String,
         val precio_peso: String,
         val query: String,
         var cantidad: Int,
         var peso: Float,
-        var tipoUnidad: TipoUnidad?
+        var tipoUnidad: TipoUnidad?,
+        val precio_numero: Float
     )
 }
 
@@ -36,7 +37,7 @@ fun Productos.matchElementos(nombreAlimento: String): ArrayList<Productos.Produc
 
 fun Productos.Producto.isComplete(): Boolean {
     return this.precio_peso.isNotBlank() &&
-            this.precio.isNotBlank() &&
+            this.precio_texto.isNotBlank() &&
             this.nombre.isNotBlank() &&
             this.imagen_src.isNotBlank() &&
             this.query.isNotBlank()
@@ -91,6 +92,7 @@ private fun parseCantidad(nombreUnidades: String):  Map<String, Any>? {
     if(nombre_unidad == null || cantidad_unidad_bruta == null){
         return null
     } else {
+        println("La cantidad por unidad es: " + cantidad_unidad_bruta)
         return parseUnidad(nombre_unidad, cantidad_unidad_bruta)
     }
 }

@@ -9,6 +9,8 @@ import com.otero.recipetoshop.presentationlogic.states.listacompra.ListaCompraSt
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import androidx.lifecycle.viewModelScope
+import com.otero.recipetoshop.domain.model.ListaCompra.Productos
+import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.events.listacompra.ListaCompraEvents
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -20,7 +22,7 @@ class ListaCompraViewModel
 @Inject
 constructor(
     savedStateHandle: SavedStateHandle,
-    private val calcularProductos: CalcularProductos
+    private val calcularProductos: CalcularProductos,
 ):ViewModel(){
     val listaCompraState: MutableState<ListaCompraState> = mutableStateOf(ListaCompraState())
     init {
@@ -52,10 +54,52 @@ constructor(
         calcularProductos.calcularProductos(
             id_cestaCompra = listaCompraState.value.id_cestaCompra
         ).onEach { dataState ->
-            dataState.data?.let { productos ->
-                //Actualizo el estado con los productos ya calculados
-                listaCompraState.value = listaCompraState.value.copy(listaProductos = productos)
+            dataState.data?.let { alimentos_productos ->
+                //Actualizo el precio total y el peso total
+                actualizarLista(productos = alimentos_productos.second)
+                //Actualizo los alimentos no encontrados.
+                actualizarAlimentosNoEncontrados(alimentosNecesarios = alimentos_productos.first)
             }
         }.launchIn(viewModelScope)
+    }
+
+    private fun actualizarLista(productos: List<Productos.Producto>) {
+        //Actualizo los productos.
+        listaCompraState.value = listaCompraState.value.copy(listaProductos = productos)
+        //Actualizo el precio total y atualizo el peso total de los productos (considero que los ml pesan igual que los Kg).
+        var precio_total = 0f
+        var peso_total = 0f
+        for(producto in productos){
+            precio_total += producto.precio_numero * producto.cantidad
+            //En el caso del peso desecho los productos que sean unidades o sea null, por lo que siempre es una estimación optimista.
+            if((producto.tipoUnidad != null && !producto.tipoUnidad!!.name.equals("UNIDADES"))){
+                peso_total += producto.peso*producto.cantidad
+            }
+        }
+        //Los actualizo.
+        listaCompraState.value = listaCompraState.value.copy(
+            precio_total = precio_total,
+            peso_total = peso_total
+        )
+    }
+
+    //Metodo para actualizar los alimentos que no han sido encontrados o que ha habido problemas en calcular las cantidades.
+    private fun actualizarAlimentosNoEncontrados(alimentosNecesarios: ArrayList<Alimento>) {
+        val alimentosNoEncontrados: ArrayList<Alimento> = arrayListOf()
+        for(alimento in alimentosNecesarios){
+            var match: Boolean = false
+            for(producto in listaCompraState.value.listaProductos){
+                //Si encuentra al menos un producto de su tipo; sí ha sido encontrado.
+                if(producto.query.trim().lowercase().equals(alimento.nombre.trim().lowercase())){
+                    match = true
+                }
+            }
+            //Si no se ha encontrado ningún producto con dicho alimento, este se añade a los alimentos np encontrados a la lista de la compra.
+            if(!match){
+                alimentosNoEncontrados.add(alimento)
+            }
+        }
+        //Actualizo la lista de alimentos no encontrados en el state de la lista de la compra.
+        listaCompraState.value = listaCompraState.value.copy(alimentos_no_encontrados = alimentosNoEncontrados)
     }
 }
