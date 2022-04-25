@@ -1,12 +1,10 @@
 package com.otero.recipetoshop.datasource.cache.cacherecetas
 
-import com.otero.recipetoshop.datasource.cachedespensa.Alimentos_Entity
-import com.otero.recipetoshop.datasource.cachedespensa.CestaCompra_Entity
-import com.otero.recipetoshop.datasource.cachedespensa.Ingredients_Entity
-import com.otero.recipetoshop.datasource.cachedespensa.Receta_Entity
+import com.otero.recipetoshop.datasource.cachedespensa.*
 import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.domain.model.CestaCompra.CestaCompra
 import com.otero.recipetoshop.domain.model.CestaCompra.Receta
+import com.otero.recipetoshop.domain.model.ListaCompra.Productos
 import com.otero.recipetoshop.domain.util.TipoUnidad
 /*
 En este fichero hay distintas funciones auxiliares para parsear la respuesta de la caché.
@@ -73,4 +71,27 @@ fun Ingredients_Entity.toIngrediente(): Alimento{
 
 fun List<Ingredients_Entity>.toListaIngredientes(): List<Alimento>{
     return map { it.toIngrediente() }
+}
+
+fun Producto_Entity.toProducto(): Productos.Producto{
+    return Productos.Producto(
+        imagen_src = imagen_src,
+        nombre = nombre,
+        oferta = oferta,
+        precio_texto = precio_texto,
+        precio_peso = precio_peso,
+        query = query,
+        cantidad = cantidad.toInt(),
+        peso = peso.toFloat(),
+        tipoUnidad = TipoUnidad.valueOf(tipoUnidad),
+        precio_numero = precio_numero.toFloat()
+    )
+}
+
+fun List<Producto_Entity>.toProductos(): Productos{
+    val listaProductos = map { it.toProducto() }
+    return Productos(
+        id_cestaCompra = first().id_cestaCompra.toInt(),
+        productos_cache = listaProductos
+    )
 }

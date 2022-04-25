@@ -4,6 +4,6 @@ object MenuBottomItems{
     val BottomItems = listOf(
         BottomItem("Despensa", "Despensa", "despensa"),
         BottomItem("Recetas", "Recetas", "listaCestasCompra"),
-        BottomItem("ListaCompra", "ListaCompra", "listacompra")
+        BottomItem("ListaCompra", "ListaCompra", "listacompra/-1")
     )
 }

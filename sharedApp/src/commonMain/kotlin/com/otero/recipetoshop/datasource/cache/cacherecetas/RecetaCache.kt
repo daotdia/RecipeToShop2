@@ -3,6 +3,7 @@ package com.otero.recipetoshop.datasource.cache.cacherecetas
 import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.domain.model.CestaCompra.CestaCompra
 import com.otero.recipetoshop.domain.model.CestaCompra.Receta
+import com.otero.recipetoshop.domain.model.ListaCompra.Productos
 
 interface RecetaCache {
     //CestaCompra
@@ -82,4 +83,10 @@ interface RecetaCache {
     fun removeIngredientesByRecetaInReceta(id_receta: Int): Unit
 
     fun removeIngredienteByIdInReceta(id_ingrediente: Int): Unit
+
+    fun insertProducto(id_cestaCompra: Int, producto: Productos.Producto): Boolean
+
+    fun getProductos(): Productos
+
+    fun deleteProductos(): Boolean
 }

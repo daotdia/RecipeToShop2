@@ -41,15 +41,32 @@ constructor(
             println("No se ha podido obtener el identificador de la lista de recetas: " + e.message)
         }
 
-        //Actualizo la lista de la compra con los productos calculados.
-        calcularProductos(id_cestaCompra = listaCompraState.value.id_cestaCompra)
+        //Si hemos llegado directos del menú de navegación, entonces compruebo si hay lista calculada, sino folio en blanco de momento.
+        if(listaCompraState.value.id_cestaCompra == -1){
+            val productos: Productos = getProductos()
+            if(!productos.productos.isNullOrEmpty()){
+                //Obtengo el id de la cesta de la compra de los productos del primer producto.
+                listaCompraState.value = listaCompraState.value.copy(id_cestaCompra = productos.id_cestaCompra)
+                //Actualizo la lista de la compra con los productos en cache.
+                actualizarLista(productos = productos.productos_cache)
+                //Actualizo los productos no encontrados a partir del id de la cesta de la compra
+                TODO("Tras guardar los alimentos no encontrados junto a los productos de la lisa, obtnerlos aquí")
+            }
+        } else {
+            //Actualizo la lista de la compra con los productos calculados.
+            calcularProductos()
+        }
+    }
+
+    private fun getProductos(): Productos {
+        TODO("Obtener los productos guardados haciendo un interactor más")
     }
 
     fun onTriggerEvent(event: ListaCompraEvents){
 
     }
 
-    private fun calcularProductos(id_cestaCompra: Int) {
+    private fun calcularProductos() {
         //Calculo los productos.
         calcularProductos.calcularProductos(
             id_cestaCompra = listaCompraState.value.id_cestaCompra

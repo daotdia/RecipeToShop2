@@ -275,7 +275,47 @@ removeIngredienteByIdInReceta:
 DELETE FROM ingredients_Entity
 WHERE id_ingrediente = :id_alimento;
 
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 
 
+CREATE TABLE  producto_Entity(
+    id_producto INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    id_cestaCompra INTEGER NOT NULL,
+    nombre TEXT NOT NULL,
+    tipoUnidad TEXT NOT NULL,
+    oferta TEXT NOT NULL,
+    precio_texto TEXT NOT NULL,
+    precio_peso TEXT NOT NULL,
+    query TEXT NOT NULL,
+    peso INTEGER AS Long NOT NULL,
+    precio_numero INTEGER AS Long NOT NULL,
+    imagen_src TEXT NOT NULL,
+    cantidad INTEGER NOT NULL
+);
+
+insertProducto:
+INSERT OR REPLACE
+INTO producto_Entity(
+    id_cestaCompra,
+    nombre,
+    tipoUnidad,
+    oferta,
+    precio_numero,
+    precio_peso,
+    precio_texto,
+    query,
+    peso,
+    cantidad,
+    imagen_src
+) VALUES(?,?,?,?,?,?,?,?,?,?,?);
+
+getProductos:
+SELECT * FROM producto_Entity
+ORDER BY nombre DESC;
+
+deleteProductos:
+DELETE FROM producto_Entity;
 
 

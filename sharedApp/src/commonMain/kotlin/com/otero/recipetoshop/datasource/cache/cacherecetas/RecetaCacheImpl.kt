@@ -5,6 +5,7 @@ import com.otero.recipetoshop.datasource.cachedespensa.RecipeToShopDBQueries
 import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.domain.model.CestaCompra.CestaCompra
 import com.otero.recipetoshop.domain.model.CestaCompra.Receta
+import com.otero.recipetoshop.domain.model.ListaCompra.Productos
 
 class RecetaCacheImpl(
     private val cestaCompraDataBase: RecipeToShopDB
@@ -339,6 +340,52 @@ class RecetaCacheImpl(
         } catch (e: Exception){
             println(e.message + "    ////  No se ha podido obtenerla lista de recetas con id: ${id_ingrediente}")
 
+        }
+    }
+
+    override fun insertProducto(id_cestaCompra: Int, producto: Productos.Producto): Boolean {
+       try {
+           queries.insertProducto(
+               id_cestaCompra = id_cestaCompra.toLong(),
+               nombre = producto.nombre,
+               imagen_src = producto.imagen_src,
+               cantidad = producto.cantidad.toLong(),
+               peso = producto.peso.toLong(),
+               precio_numero = producto.precio_numero.toLong(),
+               precio_peso = producto.precio_peso,
+               precio_texto = producto.precio_texto,
+               oferta = producto.oferta,
+               tipoUnidad = producto.tipoUnidad!!.name,
+               query = producto.query
+           )
+           return true
+       }catch (e: Exception){
+           println("Probalmeas al insertar producto: " + producto.nombre)
+           return false
+       }
+    }
+
+    override fun getProductos(): Productos {
+        return try {
+            queries
+                .getProductos()
+                .executeAsList()
+                .toProductos()
+        }catch (e: Exception){
+            println("Problemas al obtener los productos de cache: " + e.message)
+            Productos(
+                productos = arrayListOf()
+            )
+        }
+    }
+
+    override fun deleteProductos(): Boolean {
+        try{
+            queries.deleteProductos()
+            return true
+        }catch (e:Exception){
+            println("Problemas al eliminar los productos: " + e.message)
+            return false
         }
     }
 }

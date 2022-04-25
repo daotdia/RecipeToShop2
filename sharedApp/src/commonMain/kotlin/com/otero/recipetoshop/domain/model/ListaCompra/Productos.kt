@@ -3,7 +3,9 @@ package com.otero.recipetoshop.domain.model.ListaCompra
 import com.otero.recipetoshop.domain.util.TipoUnidad
 
 data class Productos(
-    val productos: ArrayList<List<Producto>>
+    val id_cestaCompra: Int = -1,
+    val productos: ArrayList<List<Producto>> = arrayListOf(),
+    val productos_cache: List<Producto> = listOf()
 ) {
     data class Producto(
         val imagen_src: String,
