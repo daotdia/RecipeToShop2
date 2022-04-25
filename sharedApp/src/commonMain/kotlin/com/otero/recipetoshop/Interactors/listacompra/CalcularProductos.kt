@@ -66,6 +66,7 @@ class CalcularProductos(
             for(producto in mejores_productos_unidades){
                 println("La cantidad del producto es: " + producto.cantidad)
                 println("El peso del producto es: " + producto.peso)
+                println("El precio del producto numeral es: " + producto.precio_numero)
             }
 //            while(otravez){
 //                otravez = false

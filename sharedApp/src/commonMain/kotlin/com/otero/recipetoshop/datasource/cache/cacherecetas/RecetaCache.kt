@@ -86,7 +86,9 @@ interface RecetaCache {
 
     fun insertProducto(id_cestaCompra: Int, producto: Productos.Producto): Boolean
 
-    fun getProductos(): Productos
+    fun getProductosEncontrados(): Productos
+
+    fun getProductosNoEncontrados(): List<Productos.Producto>
 
     fun deleteProductos(): Boolean
 }

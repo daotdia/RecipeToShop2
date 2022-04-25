@@ -1,5 +1,6 @@
 package com.otero.recipetoshop.domain.model.ListaCompra
 
+import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.domain.util.TipoUnidad
 
 data class Productos(
@@ -17,7 +18,8 @@ data class Productos(
         var cantidad: Int,
         var peso: Float,
         var tipoUnidad: TipoUnidad?,
-        val precio_numero: Float
+        val precio_numero: Float,
+        val noEncontrado: Boolean = false
     )
 }
 
@@ -140,4 +142,20 @@ private fun parseUnidad(nombreUnidad: String, cantidad_bruta: Float): HashMap<St
         return result
     else
         return null
+}
+
+fun Productos.Producto.toAlimento(): Alimento{
+    return Alimento(
+        id_cestaCompra = -1,
+        id_receta = -1,
+        id_alimento = -1,
+        nombre = nombre,
+        cantidad = peso.toInt(),
+        tipoUnidad = tipoUnidad!!,
+        active = true
+    )
+}
+
+fun List<Productos.Producto>.toAlimentos(): List<Alimento>{
+    return map { it.toAlimento() }
 }

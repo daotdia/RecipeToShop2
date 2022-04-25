@@ -11,7 +11,7 @@ import kotlin.Float.Companion.MAX_VALUE
 import kotlin.math.ceil
 
 class CalcularAlimentosToProductos {
-    val productos: Productos = Productos(arrayListOf())
+    val productos: Productos = Productos()
     fun iniciarCalculadora(): Unit {
         println("He llegado a calculo de JSON")
         val json: JsonArray? = Productos_prueba.json.jsonObject.get("productos")?.jsonArray

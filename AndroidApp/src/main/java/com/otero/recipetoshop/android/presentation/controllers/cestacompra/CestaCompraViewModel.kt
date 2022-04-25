@@ -8,6 +8,7 @@ import com.otero.recipetoshop.Interactors.Common.ActualizarAutoComplete
 import com.otero.recipetoshop.Interactors.cestascompra.GetCestaCompra
 import com.otero.recipetoshop.Interactors.cestascompra.cestacompra.*
 import com.otero.recipetoshop.Interactors.cestascompra.recetas.GetRecetasFavoritas
+import com.otero.recipetoshop.Interactors.listacompra.DeleteProductos
 import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.domain.model.CestaCompra.Receta
 import com.otero.recipetoshop.domain.util.TipoUnidad
@@ -32,7 +33,7 @@ constructor(
     private val updateAlimentoCestaCompra: UpdateAlimentoCestaCompra,
     private val getCestaCompra: GetCestaCompra,
     private val actualizarAutoComplete: ActualizarAutoComplete,
-    private val getRecetasFavoritas: GetRecetasFavoritas
+    private val getRecetasFavoritas: GetRecetasFavoritas,
 ): ViewModel() {
     val cestaCompraState = mutableStateOf(CestaCompraState())
     init {

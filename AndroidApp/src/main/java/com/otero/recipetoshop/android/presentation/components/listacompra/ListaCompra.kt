@@ -106,16 +106,16 @@ fun ListaCompra(
                                             backgroundCardContentColor = secondaryLightColor,
                                             hiddenContentEnd = {
                                                 Icon(
-                                                    modifier = Modifier.padding(horizontal = 25.dp),
+                                                    modifier = Modifier.padding(horizontal = 14.dp).size(22.dp),
                                                     imageVector = Icons.Outlined.Delete,
                                                     contentDescription = null
                                                 )
                                             },
                                             backgroundCardElevation = 4.dp,
-                                            maxRevealDp = 38.dp,
+                                            maxRevealDp = 34.dp,
                                             hiddenContentStart = {
                                                 Icon(
-                                                    modifier = Modifier.padding(horizontal = 25.dp),
+                                                    modifier = Modifier.padding(horizontal = 14.dp).size(22.dp),
                                                     imageVector = Icons.Outlined.Edit,
                                                     contentDescription = null,
                                                     tint = Color.White

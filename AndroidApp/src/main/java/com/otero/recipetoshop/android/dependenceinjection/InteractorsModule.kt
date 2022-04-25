@@ -11,7 +11,7 @@ import com.otero.recipetoshop.Interactors.cestascompra.recetas.AddIngredienteRec
 import com.otero.recipetoshop.Interactors.cestascompra.recetas.DeleteIngredienteReceta
 import com.otero.recipetoshop.Interactors.cestascompra.recetas.GetDatosReceta
 import com.otero.recipetoshop.Interactors.cestascompra.recetas.GetRecetasFavoritas
-import com.otero.recipetoshop.Interactors.listacompra.CalcularProductos
+import com.otero.recipetoshop.Interactors.listacompra.*
 import com.otero.recipetoshop.datasource.cache.cachedespensa.DespensaCache
 import com.otero.recipetoshop.datasource.cache.cacherecetas.RecetaCache
 import com.otero.recipetoshop.datasource.network.RecetasServicio
@@ -198,6 +198,46 @@ object InteractorsModule {
         return CalcularProductos(
             recetaCache = recetaCache,
             despensaCache = despensaCache
+        )
+    }
+
+    @Singleton
+    @Provides
+    fun provideGetProductos(
+        recetaCache: RecetaCache
+    ): ObtenerProductos{
+        return ObtenerProductos(
+            recetaCache = recetaCache
+        )
+    }
+
+    @Singleton
+    @Provides
+    fun provideDeleteProductos(
+        recetaCache: RecetaCache
+    ): DeleteProductos{
+        return DeleteProductos(
+            recetaCache = recetaCache
+        )
+    }
+
+    @Singleton
+    @Provides
+    fun provideGetAlimentosNoEncontradosCache(
+        recetaCache: RecetaCache
+    ): GetAlimentosNoEncontradosCache{
+        return GetAlimentosNoEncontradosCache(
+            recetaCache = recetaCache
+        )
+    }
+
+    @Singleton
+    @Provides
+    fun provideSaveProductos(
+        recetaCache: RecetaCache
+    ): SaveListaCompra{
+        return SaveListaCompra(
+            recetaCache = recetaCache
         )
     }
 }

@@ -1,4 +1,5 @@
 import java.lang.Boolean;
+import java.lang.Float;
 
 CREATE TABLE  despensa_Entity(
     id_despensa INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -289,10 +290,11 @@ CREATE TABLE  producto_Entity(
     precio_texto TEXT NOT NULL,
     precio_peso TEXT NOT NULL,
     query TEXT NOT NULL,
-    peso INTEGER AS Long NOT NULL,
-    precio_numero INTEGER AS Long NOT NULL,
+    peso REAL AS Float NOT NULL,
+    precio_numero REAL AS Float NOT NULL,
     imagen_src TEXT NOT NULL,
-    cantidad INTEGER NOT NULL
+    cantidad INTEGER NOT NULL,
+    noEnocntrado INTEGER AS Boolean NOT NULL
 );
 
 insertProducto:
@@ -308,11 +310,17 @@ INTO producto_Entity(
     query,
     peso,
     cantidad,
-    imagen_src
-) VALUES(?,?,?,?,?,?,?,?,?,?,?);
+    imagen_src,
+    noEnocntrado
+) VALUES(?,?,?,?,?,?,?,?,?,?,?, ?);
 
-getProductos:
+getAllProductos:
 SELECT * FROM producto_Entity
+ORDER BY nombre DESC;
+
+getProductosSegunEncontrado:
+SELECT * FROM producto_Entity
+WHERE noEnocntrado = :noencontrado
 ORDER BY nombre DESC;
 
 deleteProductos:

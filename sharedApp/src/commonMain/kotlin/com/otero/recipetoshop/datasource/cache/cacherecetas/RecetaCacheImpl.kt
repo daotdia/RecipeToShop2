@@ -350,14 +350,16 @@ class RecetaCacheImpl(
                nombre = producto.nombre,
                imagen_src = producto.imagen_src,
                cantidad = producto.cantidad.toLong(),
-               peso = producto.peso.toLong(),
-               precio_numero = producto.precio_numero.toLong(),
+               peso = producto.peso,
+               precio_numero = producto.precio_numero,
                precio_peso = producto.precio_peso,
                precio_texto = producto.precio_texto,
                oferta = producto.oferta,
                tipoUnidad = producto.tipoUnidad!!.name,
-               query = producto.query
+               query = producto.query,
+               noEnocntrado = producto.noEncontrado
            )
+           println("El precio numeral en cache es: " + producto.precio_numero)
            return true
        }catch (e: Exception){
            println("Probalmeas al insertar producto: " + producto.nombre)
@@ -365,17 +367,30 @@ class RecetaCacheImpl(
        }
     }
 
-    override fun getProductos(): Productos {
+    override fun getProductosEncontrados(): Productos {
         return try {
             queries
-                .getProductos()
+                .getProductosSegunEncontrado(noencontrado = true)
                 .executeAsList()
                 .toProductos()
         }catch (e: Exception){
-            println("Problemas al obtener los productos de cache: " + e.message)
+            println("Problemas al obtener los productos encontrados de cache: " + e.message)
             Productos(
                 productos = arrayListOf()
             )
+        }
+    }
+
+    override fun getProductosNoEncontrados(): List<Productos.Producto> {
+        try {
+            val productos = queries
+                .getProductosSegunEncontrado(noencontrado = false)
+                .executeAsList()
+                .toProductos()
+            return productos.productos_cache
+        }catch (e: Exception){
+            println("Problemas al obtener los productos no enocntrados de cache: " + e.message)
+            return emptyList()
         }
     }
 

@@ -1,5 +1,6 @@
 package com.otero.recipetoshop.domain.model.despensa
 
+import com.otero.recipetoshop.domain.model.ListaCompra.Productos
 import com.otero.recipetoshop.domain.util.TipoUnidad
 
 data class Alimento(
@@ -11,3 +12,22 @@ data class Alimento(
     val tipoUnidad: TipoUnidad,
     var active: Boolean
 )
+
+fun Alimento.toProducto(): Productos.Producto{
+    return Productos.Producto(
+        nombre = nombre,
+        peso = cantidad.toFloat(),
+        oferta = "",
+        imagen_src = "",
+        precio_texto = "",
+        cantidad = cantidad,
+        precio_numero = 0f,
+        precio_peso = "",
+        query = nombre.lowercase().trim(),
+        tipoUnidad = tipoUnidad
+    )
+}
+
+fun List<Alimento>.toProductos(): List<Productos.Producto>{
+    return map { it.toProducto() }
+}
