@@ -16,9 +16,9 @@ como es lógico lo primero que hace es llamar al componente de arquitectura de l
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    @ExperimentalFoundationApi
-    @ExperimentalMaterialApi
-    @ExperimentalComposeUiApi
+    @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterialApi::class,
+        ExperimentalComposeUiApi::class
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val ktorClient = KtorClientFactory().build()
