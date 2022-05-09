@@ -3,7 +3,9 @@ package com.otero.recipetoshop.Interactors.cestascompra.recetas.busquedarecetas
 import com.otero.recipetoshop.datasource.cache.cacherecetas.RecetaCache
 import com.otero.recipetoshop.datasource.network.RecetasServicio
 import com.otero.recipetoshop.domain.model.CestaCompra.Receta
+import com.otero.recipetoshop.domain.util.CommonFLow
 import com.otero.recipetoshop.domain.util.DataState
+import com.otero.recipetoshop.domain.util.asCommonFlow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -16,7 +18,7 @@ class BuscarRecetasAPI (
         maxItems: Int,
         offset: Int,
         maxSeconds: Int
-    ): Flow<DataState<List<Receta>>> = flow{
+    ): CommonFLow<DataState<List<Receta>>> = flow{
         emit(DataState.loading())
 
         println("Llego al interactor")
@@ -34,5 +36,5 @@ class BuscarRecetasAPI (
             println("Error a la hora de conectar con API: " + e.message)
         }
 
-    }
+    }.asCommonFlow()
 }

@@ -3,7 +3,9 @@ package com.otero.recipetoshop.Interactors.cestascompra.recetas
 import com.otero.recipetoshop.datasource.cache.cacherecetas.RecetaCache
 import com.otero.recipetoshop.domain.model.CestaCompra.Receta
 import com.otero.recipetoshop.domain.model.despensa.Alimento
+import com.otero.recipetoshop.domain.util.CommonFLow
 import com.otero.recipetoshop.domain.util.DataState
+import com.otero.recipetoshop.domain.util.asCommonFlow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -12,7 +14,7 @@ class GetDatosReceta(
 ){
     fun getDatosReceta(
         id_receta: Int
-    ) : Flow<DataState<Receta>> = flow {
+    ) : CommonFLow<DataState<Receta>> = flow {
         emit(DataState.loading())
 
         val receta = recetaCache.getRecetaByIdInCestaCompra(id_receta = id_receta)
@@ -23,5 +25,5 @@ class GetDatosReceta(
         }
 
         emit(DataState.data(data = receta!!.copy(ingredientes = ingredientes), message = null))
-    }
+    }.asCommonFlow()
 }

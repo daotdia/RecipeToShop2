@@ -5,7 +5,9 @@ import com.otero.recipetoshop.datasource.cache.cacherecetas.RecetaCache
 import com.otero.recipetoshop.domain.model.ListaCompra.CalcularAlimentosToProductos
 import com.otero.recipetoshop.domain.model.ListaCompra.Productos
 import com.otero.recipetoshop.domain.model.despensa.Alimento
+import com.otero.recipetoshop.domain.util.CommonFLow
 import com.otero.recipetoshop.domain.util.DataState
+import com.otero.recipetoshop.domain.util.asCommonFlow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -15,7 +17,7 @@ class CalcularProductos(
 ) {
     fun calcularProductos(
         id_cestaCompra: Int
-    ): Flow<DataState<Pair<ArrayList<Alimento>, ArrayList<Productos.Producto>>>> = flow {
+    ): CommonFLow<DataState<Pair<ArrayList<Alimento>, ArrayList<Productos.Producto>>>> = flow {
         emit(DataState.loading())
 
         //Obtengo todos los alimentos activos de la cesta de la compra actual
@@ -98,5 +100,5 @@ class CalcularProductos(
 
             emit(DataState.data(data = Pair(all_alimentos_cesta, mejores_productos_unidades), message = null))
         }
-    }
+    }.asCommonFlow()
 }

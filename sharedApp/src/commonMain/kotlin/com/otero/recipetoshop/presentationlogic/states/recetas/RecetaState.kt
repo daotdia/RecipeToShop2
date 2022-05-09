@@ -13,4 +13,15 @@ data class RecetaState(
     val ingredientes: List<Alimento> = listOf(),
     val queueError: Queue<GenericMessageInfo> = Queue(mutableListOf()),
     val resultadoAutoComplete: List<String> = listOf()
-)
+){
+    constructor(): this(
+        cestaCompra_id = -1,
+        receta_id = -1,
+        nombre = "",
+        cantidad = "0",
+        imagen = "",
+        ingredientes = listOf(),
+        queueError = Queue(mutableListOf()),
+        resultadoAutoComplete = listOf()
+    )
+}

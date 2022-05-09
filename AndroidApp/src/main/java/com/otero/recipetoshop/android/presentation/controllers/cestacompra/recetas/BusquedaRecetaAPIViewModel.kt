@@ -66,8 +66,7 @@ constructor(
             dataState.data?.let { id_receta ->
                 println("Añadida receta Yummly con nombre; " + receta.nombre)
                 addRecetaCestaCompra.addIngredientesReceta(receta = receta, id_receta = id_receta) .onEach { dataState ->
-                    dataState.data?.let { exito ->
-                        if(exito) println("Añadidos los ingredientes de receta Yummly con nombre: " + receta.nombre)
+                    dataState.data?.let {
                     }
                 }.launchIn(viewModelScope)
             }

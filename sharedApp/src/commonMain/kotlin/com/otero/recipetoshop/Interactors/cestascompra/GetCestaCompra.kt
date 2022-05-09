@@ -2,7 +2,9 @@ package com.otero.recipetoshop.Interactors.cestascompra
 
 import com.otero.recipetoshop.datasource.cache.cacherecetas.RecetaCache
 import com.otero.recipetoshop.domain.model.CestaCompra.CestaCompra
+import com.otero.recipetoshop.domain.util.CommonFLow
 import com.otero.recipetoshop.domain.util.DataState
+import com.otero.recipetoshop.domain.util.asCommonFlow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -11,7 +13,7 @@ class GetCestaCompra(
 ) {
     fun getCestaCompra(
        nombre: String
-    ): Flow<DataState<CestaCompra>> = flow {
+    ): CommonFLow<DataState<CestaCompra>> = flow {
         //Emito de manera predefinida que se está cargando la modificación.
         emit(DataState.loading())
 
@@ -29,5 +31,5 @@ class GetCestaCompra(
         } else {
             println("Lista no encontrada")
         }
-    }
+    }.asCommonFlow()
 }

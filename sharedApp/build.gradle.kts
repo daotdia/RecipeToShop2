@@ -1,5 +1,7 @@
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
+val kotlin_version: String by extra
+
 plugins {
     kotlin(KotlinPlugins.multiplatform)
     kotlin(KotlinPlugins.cocoapods)
