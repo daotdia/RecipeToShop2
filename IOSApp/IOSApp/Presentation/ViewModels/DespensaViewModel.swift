@@ -27,16 +27,18 @@ class DespensaViewModel: ObservableObject{
     func onTriggerEvent(stateEvent: DespensaEventos){
         switch stateEvent {
         case is DespensaEventos.onAddAlimento:
-            //ES UN EJEMPLO HACERLO BIEN TODO
-            addAlimento(nombre: "pepe", cantidad: 1, tipoUnidad: TipoUnidad.gramos)
+            addAlimento(
+                nombre: (stateEvent as! DespensaEventos.onAddAlimento).nombre,
+                cantidad: Int((stateEvent as! DespensaEventos.onAddAlimento).cantidad)!,
+                tipoUnidad:  (stateEvent as! DespensaEventos.onAddAlimento).tipo
+            )
         default:
-            //TODO
-            addAlimento(nombre: "", cantidad: 0, tipoUnidad: TipoUnidad.gramos)
+            print("Evento inesperado en la despensa: " + stateEvent.description)
         }
     }
     
     //Función para añadir un nuevo alimento a la despensa.
-    private func addAlimento(nombre: String, cantidad: Int, tipoUnidad: TipoUnidad){
+    private func addAlimento(nombre: String, cantidad: Int, tipoUnidad: String){
         //Creo el alimento nuevo.
         let alimento: Alimento = createAlimento(
             nombre: nombre,
@@ -58,15 +60,26 @@ class DespensaViewModel: ObservableObject{
     }
     
     //Funcion para crear un alimento dados su nombre, cantidad y tipo de unidad.
-    private func createAlimento(nombre: String, cantidad: Int, tipoUnidad: TipoUnidad) -> Alimento
+    private func createAlimento(nombre: String, cantidad: Int, tipoUnidad: String) -> Alimento
     {
+        //Tengo que hacer un iterador porque hay problemas con las listas de Kotlin.
+        let tipos = TipoUnidad.values()
+        let iterator = tipos.iterator()
+        var tipoFinal: TipoUnidad = TipoUnidad.gramos
+        while(iterator.hasNext()){
+            let tipoAux = iterator.next_() as! TipoUnidad
+            if(tipoAux.name == tipoUnidad){
+                tipoFinal = tipoAux
+            }
+        }
+        //Devuelvo el alimento.
         return Alimento(
             id_cestaCompra: nil,
             id_receta: nil,
             id_alimento: nil,
             nombre: nombre,
             cantidad: Int32(cantidad),
-            tipoUnidad: tipoUnidad,
+            tipoUnidad: tipoFinal,
             active: true
         )
     }

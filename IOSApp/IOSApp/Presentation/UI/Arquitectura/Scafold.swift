@@ -12,8 +12,11 @@ struct Scafold: View {
         self.caseUses = caseUses
     }
     
+    //Aquí dentro es donde se pinta el contenido de la vista.
 	var body: some View {
-		Despensa(caseUses: caseUses)
+        HStack{
+            
+        }
 	}
 }
 

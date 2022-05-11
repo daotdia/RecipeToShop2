@@ -15,9 +15,10 @@ struct iOSApp: App {
     
 	var body: some Scene {
 		WindowGroup {
-			Scafold(
-                caseUses: caseUses
-            )
+            //Es aquí donde está toda la lógica de navegación y los menus de toda la aplicación.
+            NavigationView{
+                Despensa(caseUses: caseUses)
+            }
 		}
 	}
 }

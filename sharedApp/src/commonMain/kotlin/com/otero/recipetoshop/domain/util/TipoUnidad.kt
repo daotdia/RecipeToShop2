@@ -15,6 +15,15 @@ enum class TipoUnidad{
                 return "Gr."
             }
         }
+
+        fun parseTipoUnidad(nombre: String): TipoUnidad {
+            TipoUnidad.values().forEach { it ->
+                if(nombre.equals(it.name)){
+                    return it
+                }
+            }
+            return TipoUnidad.GRAMOS
+        }
     }
 }
 

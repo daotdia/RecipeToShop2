@@ -12,6 +12,11 @@
 		7555FF83242A565900829871 /* Scafold.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* Scafold.swift */; };
 		EE94AD1B28298325009087A7 /* DespensaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE94AD1A28298325009087A7 /* DespensaViewModel.swift */; };
 		EE94AD2028298844009087A7 /* Despensa.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE94AD1F28298844009087A7 /* Despensa.swift */; };
+		EE94AD47282C39C0009087A7 /* DespensaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE94AD46282C39BF009087A7 /* DespensaCard.swift */; };
+		EE94AD4A282C4D9F009087A7 /* AbrevTipoUnidadParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE94AD49282C4D9F009087A7 /* AbrevTipoUnidadParser.swift */; };
+		EE94AD4D282C57C5009087A7 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE94AD4C282C57C5009087A7 /* FloatingButton.swift */; };
+		EE94AD4F282C6B1B009087A7 /* AutocompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE94AD4E282C6B1A009087A7 /* AutocompleteTextField.swift */; };
+		EE94AD51282C6B7C009087A7 /* AutocompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE94AD50282C6B7C009087A7 /* AutocompleteViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		C1E190484EDE338C7DD999A1 /* Pods_IOSApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOSApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE94AD1A28298325009087A7 /* DespensaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DespensaViewModel.swift; sourceTree = "<group>"; };
 		EE94AD1F28298844009087A7 /* Despensa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Despensa.swift; sourceTree = "<group>"; };
+		EE94AD46282C39BF009087A7 /* DespensaCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DespensaCard.swift; sourceTree = "<group>"; };
+		EE94AD49282C4D9F009087A7 /* AbrevTipoUnidadParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbrevTipoUnidadParser.swift; sourceTree = "<group>"; };
+		EE94AD4C282C57C5009087A7 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
+		EE94AD4E282C6B1A009087A7 /* AutocompleteTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteTextField.swift; sourceTree = "<group>"; };
+		EE94AD50282C6B7C009087A7 /* AutocompleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +69,7 @@
 		7555FF7D242A565900829871 /* IOSApp */ = {
 			isa = PBXGroup;
 			children = (
+				EE94AD48282C4D88009087A7 /* Utill */,
 				EE94AD17282982A6009087A7 /* Presentation */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
@@ -79,7 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				7555FF82242A565900829871 /* Scafold.swift */,
-				EE94AD1F28298844009087A7 /* Despensa.swift */,
 			);
 			path = Arquitectura;
 			sourceTree = "<group>";
@@ -88,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				EE94AD1A28298325009087A7 /* DespensaViewModel.swift */,
+				EE94AD50282C6B7C009087A7 /* AutocompleteViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -95,6 +106,7 @@
 		EE94AD1D28298819009087A7 /* Despensa */ = {
 			isa = PBXGroup;
 			children = (
+				EE94AD1F28298844009087A7 /* Despensa.swift */,
 			);
 			path = Despensa;
 			sourceTree = "<group>";
@@ -102,10 +114,37 @@
 		EE94AD1E28298827009087A7 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				EE94AD4B282C57AF009087A7 /* Util */,
+				EE94AD45282C39AC009087A7 /* Cards */,
 				EE94AD18282982B1009087A7 /* Arquitectura */,
 				EE94AD1D28298819009087A7 /* Despensa */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		EE94AD45282C39AC009087A7 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				EE94AD46282C39BF009087A7 /* DespensaCard.swift */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
+		EE94AD48282C4D88009087A7 /* Utill */ = {
+			isa = PBXGroup;
+			children = (
+				EE94AD49282C4D9F009087A7 /* AbrevTipoUnidadParser.swift */,
+			);
+			path = Utill;
+			sourceTree = "<group>";
+		};
+		EE94AD4B282C57AF009087A7 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				EE94AD4C282C57C5009087A7 /* FloatingButton.swift */,
+				EE94AD4E282C6B1A009087A7 /* AutocompleteTextField.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		F6BC6C2896D2B7CD4FA2716F /* Frameworks */ = {
@@ -219,9 +258,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE94AD4A282C4D9F009087A7 /* AbrevTipoUnidadParser.swift in Sources */,
+				EE94AD4F282C6B1B009087A7 /* AutocompleteTextField.swift in Sources */,
 				EE94AD2028298844009087A7 /* Despensa.swift in Sources */,
+				EE94AD4D282C57C5009087A7 /* FloatingButton.swift in Sources */,
+				EE94AD47282C39C0009087A7 /* DespensaCard.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				7555FF83242A565900829871 /* Scafold.swift in Sources */,
+				EE94AD51282C6B7C009087A7 /* AutocompleteViewModel.swift in Sources */,
 				EE94AD1B28298325009087A7 /* DespensaViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
