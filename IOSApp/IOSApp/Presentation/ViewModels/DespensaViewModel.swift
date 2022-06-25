@@ -11,29 +11,37 @@ import sharedApp
 class DespensaViewModel: ObservableObject{
     //Casos de uso necesarios.
     let useCases: UseCases
-    
-    //He tenido que modificar el estado en commonmain debido a que Swift no reconoce los valores predeterminados en las clases.
+    //He tenido que modificar el estado en commonmain debido a que Swift no reconoce los valores predeterminados en las clases
     @Published var state: ListaAlimentosState = ListaAlimentosState()
-    
+
     init(
         useCases: UseCases
     ){
+
         //Casos de uso necesarios, CAMBIAR POR SOLO LOS NECESARIOS.
         self.useCases = useCases
-        //Hacer lo que debe de hacer el viewmodel de despensa
-        
+    
+        //Reprint de los alimentos ya guardados en caché de la despensa.
+        reprintDespensa()
     }
+
+    //Estado del nombre dle elemento.
+    @State var nombre: String = ""
     
     func onTriggerEvent(stateEvent: DespensaEventos){
         switch stateEvent {
-        case is DespensaEventos.onAddAlimento:
-            addAlimento(
-                nombre: (stateEvent as! DespensaEventos.onAddAlimento).nombre,
-                cantidad: Int((stateEvent as! DespensaEventos.onAddAlimento).cantidad)!,
-                tipoUnidad:  (stateEvent as! DespensaEventos.onAddAlimento).tipo
-            )
-        default:
-            print("Evento inesperado en la despensa: " + stateEvent.description)
+            case is DespensaEventos.onAddAlimento:
+                addAlimento(
+                    nombre: (stateEvent as! DespensaEventos.onAddAlimento).nombre,
+                    cantidad: Int((stateEvent as! DespensaEventos.onAddAlimento).cantidad)!,
+                    tipoUnidad:  (stateEvent as! DespensaEventos.onAddAlimento).tipo
+                )
+            case is DespensaEventos.onAutoCompleteChange:
+                //Guardo el nombre seleccionado en el estado del viewmodel a la espera del resto de datos añadidos.
+                self.nombre = (stateEvent as! DespensaEventos.onAutoCompleteChange).nombre
+            default:
+                
+                print("Evento inesperado en la despensa: " + stateEvent.description)
         }
     }
     
@@ -62,16 +70,8 @@ class DespensaViewModel: ObservableObject{
     //Funcion para crear un alimento dados su nombre, cantidad y tipo de unidad.
     private func createAlimento(nombre: String, cantidad: Int, tipoUnidad: String) -> Alimento
     {
-        //Tengo que hacer un iterador porque hay problemas con las listas de Kotlin.
-        let tipos = TipoUnidad.values()
-        let iterator = tipos.iterator()
-        var tipoFinal: TipoUnidad = TipoUnidad.gramos
-        while(iterator.hasNext()){
-            let tipoAux = iterator.next_() as! TipoUnidad
-            if(tipoAux.name == tipoUnidad){
-                tipoFinal = tipoAux
-            }
-        }
+        //Obtengo el tipo de unidad según su nombre.
+        let unidades: TipoUnidad = ComprobarTipoUnidad(tipoUnidad: tipoUnidad).returnTipo()
         //Devuelvo el alimento.
         return Alimento(
             id_cestaCompra: nil,
@@ -79,7 +79,7 @@ class DespensaViewModel: ObservableObject{
             id_alimento: nil,
             nombre: nombre,
             cantidad: Int32(cantidad),
-            tipoUnidad: tipoFinal,
+            tipoUnidad: unidades,
             active: true
         )
     }
@@ -92,7 +92,7 @@ class DespensaViewModel: ObservableObject{
             coroutineScope: nil,
             callback: {datastate in
                 //En el caso de que no sea null actualizo la lista de alimentos.
-                if datastate != nil {
+                if datastate?.data != nil {
                     self.state = self.state.doCopy(
                         allAlimentos: datastate?.data as! [Alimento],
                         alimentosActivos: currentState.alimentosActivos,

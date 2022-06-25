@@ -30,4 +30,16 @@ class AutoCompleteViewModel: ObservableObject{
         self.state = self.state.doCopy(resultado: resultado)
         print("La lista es: " + self.state.resultado.joined(separator: ","))
     }
+    
+    func clearResultado(){
+        let resultado: [String] = []
+        self.state = self.state.doCopy(resultado: resultado)
+    }
+    
+    func comprobarExistencia(input: String) -> Bool{
+        if self.state.resultado.contains(input.lowercased()){
+            return true
+        }
+        return false
+    }
 }

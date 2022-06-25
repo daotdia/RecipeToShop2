@@ -10,8 +10,8 @@ import SwiftUI
 import sharedApp
 
 struct DespensaCard: View {
-    let width_card: CGFloat = 186
-    let height_card: CGFloat = 64
+    let width_card: CGFloat = 100
+    let height_card: CGFloat = 86
     
     private let alimento: Alimento
     
@@ -30,13 +30,15 @@ struct DespensaCard: View {
                 Text(alimento.nombre)
                     .foregroundColor(Color.white)
                     .padding()
+                    .lineLimit(1)
+                    .scaledToFill()
+                    .minimumScaleFactor(0.6)
             }
             .background(Color.green)
             .clipShape(Capsule())
-            .frame(width: width_card, height: height_card/4)
+            .frame(minWidth: width_card/5, maxWidth: width_card, minHeight: (height_card/5), maxHeight:(height_card*2)/5)
             
             Spacer()
-            
             //La cantidad y tipo de unidad del alimento.
             HStack(alignment: .center){
                 Text(
@@ -49,7 +51,7 @@ struct DespensaCard: View {
                     .padding()
             }
         }
-        .frame(width: width_card, height: height_card)
+        .frame(minWidth: width_card/5, maxWidth: width_card, minHeight: height_card, maxHeight: height_card*2)
         .padding(6)
     }
 }

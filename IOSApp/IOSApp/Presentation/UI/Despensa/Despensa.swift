@@ -28,17 +28,30 @@ struct Despensa: View {
     
     //Estado para controlar el dialogo de creación de alimento.
     @State var openDialog: Bool = false
-    //Estado para guardar el nombre del alimento seleccionado.
-    @State var nombreAlimento: String = ""
+    @State var openDeleteIcon: Bool = false
     
     var body: some View {
         ZStack{
             //Lista de alimentos de la despensa.
             if !viewModel.state.allAlimentos.isEmpty{
                 ScrollView{
+                    //Botón para eliminar toda la despensa.
+                    Button(action: {
+                        openDeleteIcon = true
+                        }
+                    ){
+                        Image(systemName: openDeleteIcon ? "trash.fill" : "ellipsis")
+                            .font(Font.system(size: 18, weight: .medium))
+                            .foregroundColor(openDeleteIcon ? Color.red: Color.black)
+                    }
+                    .frame(
+                        minWidth:0, maxWidth: .infinity, minHeight: 0, maxHeight: 6, alignment: .trailing
+                    )
+                    .padding(.trailing, 24)
+
                     //Es una lista vertical de tres columnas fijas
                     LazyVGrid(
-                        columns: [GridItem(.fixed(3))],
+                        columns: Array(repeating: .init(.adaptive(minimum: 100)), count: 3),
                         spacing: 8
                     ){
                         ForEach(
@@ -47,57 +60,32 @@ struct Despensa: View {
                             DespensaCard(alimento: alimento)
                         }
                     }
+                    .offset(y:24)
+                    .padding(6)
                 }
             }
             //El floating button.
             FloatingButton(openDialog: $openDialog)
                 .navigationTitle("Despensa")
             //Dialogo
-            if $openDialog.wrappedValue{
-                ZStack() {
-                    Color(white: 0.9)
-                    VStack {
-                        //Botones de aceptar y cancelar del dialogo
-                        Text("Nombre del alimento").font(.headline)
-                        //Nommbre del alimento.
-                        AutocompleteTextField(caseUses: caseUses)
-                            .ignoresSafeArea()
-                        Spacer()
-                        Divider()
-                        HStack {
-                            Spacer()
-                            Button(
-                                action: {
-                                    UIApplication.shared.windows[0].rootViewController?.dismiss(
-                                        animated: true, completion: {}
-                                    )
-                                    $openDialog.wrappedValue = false
-                                }
-                            ){ Text("Done") }
-                            Spacer()
-                            Divider()
-                            Spacer()
-                            Button(
-                                action: {
-                                    UIApplication.shared.windows[0].rootViewController?.dismiss(
-                                        animated: true, completion: {}
-                                    )
-                                    $openDialog.wrappedValue = false
-                                }
-                            ){ Text("Cancel") }
-                            Spacer()
-                    }
-                    .padding(0)
-                }
-                .frame(width: 300, height: 180,alignment: .center)
-                .cornerRadius(20)
-                .shadow(radius: 20)
-            }
-//            DespensaCard(alimento: Alimento(
+                if $openDialog.wrappedValue{
+                    NewAlimentoDialog(
+                        caseUses: self.caseUses,
+                        openDialog: $openDialog,
+                        addAlimento: { nombre, peso, tipoUnidad -> Void in
+                            viewModel.onTriggerEvent(
+                                stateEvent: DespensaEventos.onAddAlimento(
+                                    nombre: nombre,
+                                    tipo: tipoUnidad,
+                                    cantidad: peso
+                                )
+                            )
+                        }
+                    )
+                }//            DespensaCard(alimento: Alimento(
 //                id_cestaCompra: -1, id_receta: -1, id_alimento: -1, nombre: "Prueba", cantidad: 1 , tipoUnidad:TipoUnidad.gramos,
 //                    active: true
 //            ))
         }
     }
-}
 }
