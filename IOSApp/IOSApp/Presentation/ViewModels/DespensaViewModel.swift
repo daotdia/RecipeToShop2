@@ -42,6 +42,9 @@ class DespensaViewModel: ObservableObject{
             case is DespensaEventos.onSelectedNestedMenuItem:
                 //Elimino toda la despensa.
                 eliminarDespensa()
+            case is DespensaEventos.onAlimentoDelete:
+                //Elimino el alimento
+                eliminarAlimento(alimento: (stateEvent as! DespensaEventos.onAlimentoDelete).alimento)
             default:
                 
                 print("Evento inesperado en la despensa: " + stateEvent.description)
@@ -103,6 +106,19 @@ class DespensaViewModel: ObservableObject{
                         queueError: currentState.queueError,
                         resultadoAutoCompletado: currentState.resultadoAutoCompletado,
                         queryAutoComplete: currentState.queryAutoComplete)
+                }
+            }
+        )
+    }
+    
+    //Función para eliminar un alimento de la despensa,
+    private func eliminarAlimento(alimento: Alimento) ->Void {
+        useCases.deleteAlimento.deleteAlimento(alimento: alimento).collectFlow(
+            coroutineScope: nil,
+            callback: { datastate in
+                //En el caso de que el alimento se haya elimindo reprinto la despensa.
+                if datastate?.data != nil {
+                    self.reprintDespensa()
                 }
             }
         )

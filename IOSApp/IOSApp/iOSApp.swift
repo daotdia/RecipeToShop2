@@ -13,13 +13,21 @@ struct iOSApp: App {
         self.caseUses = UseCases(cacheModule: self.cacheModule)
     }
     
+    //Las flags necesarias para gestionar diaolgos e iconos dinámicos
+    @State var openDeleteIcon: Bool = false
+    @State var openDialogDelete: Bool = false
+    
 	var body: some Scene {
 		WindowGroup {
             //Es aquí donde está toda la lógica de navegación y los menus de toda la aplicación.
             NavigationView{
                 //La navegación se realiza mediante menú inferior.
                 TabView{
-                    Despensa(caseUses: caseUses)
+                    Despensa(
+                        caseUses: caseUses,
+                        openDeleteIcon: $openDeleteIcon,
+                        openDialogDelete: $openDialogDelete
+                    )
                         .tabItem(){
                             //TODO: Poner las imagenes correctas de los iconos de los menus.
                             Image(systemName: "heart.fill")
@@ -40,6 +48,11 @@ struct iOSApp: App {
                             Text("Compra")
                         }                }
             }
+            .onTapGesture(count: 2, perform: {
+                //Aquí reinicio todas las flags que deben de reiniciarse en el caso de que el usuario cambie de foco.
+                openDeleteIcon = false
+                openDialogDelete = false
+            })
         }
     }
 }

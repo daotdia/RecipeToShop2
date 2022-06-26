@@ -16,20 +16,26 @@ struct Despensa: View {
     //El viewModel al que observar.
     @ObservedObject var viewModel: DespensaViewModel
     
+    @Binding var openDeleteIcon: Bool
+    @Binding var openDialogDelete: Bool
+    
     //Obtengo los casos de uso e instancio el viwmodel con los mismos.
     init(
-        caseUses: UseCases
+        caseUses: UseCases,
+        openDeleteIcon: Binding<Bool>,
+        openDialogDelete: Binding<Bool>
     ){
         self.caseUses = caseUses
         self.viewModel = DespensaViewModel(
             useCases: self.caseUses
         )
+        
+        self._openDeleteIcon = openDeleteIcon
+        self._openDialogDelete = openDialogDelete
     }
     
     //Estado para controlar el dialogo de creación de alimento.
     @State var openDialog: Bool = false
-    @State var openDeleteIcon: Bool = false
-    @State var openDialogDelete: Bool = false
     
     var body: some View {
         ZStack{
@@ -40,6 +46,7 @@ struct Despensa: View {
                     Button(action: {
                         if openDeleteIcon == false{
                             openDeleteIcon = true
+                            print("he llegado a opendialog intentar abrir")
                         }
                         else{
                             print("He llegado a dialog general")
@@ -64,7 +71,14 @@ struct Despensa: View {
                         ForEach(
                             viewModel.state.allAlimentos, id: \.self.id_alimento
                         ){ alimento in
-                            DespensaCard(alimento: alimento)
+                            DespensaCard(
+                                alimento: alimento,
+                                deleteAlimento: { alimento in
+                                    viewModel.onTriggerEvent(
+                                        stateEvent: DespensaEventos.onAlimentoDelete(alimento: alimento)
+                                    )
+                                }
+                            )
                         }
                     }
                     .offset(y:24)
