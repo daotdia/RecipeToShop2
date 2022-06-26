@@ -29,6 +29,7 @@ struct Despensa: View {
     //Estado para controlar el dialogo de creación de alimento.
     @State var openDialog: Bool = false
     @State var openDeleteIcon: Bool = false
+    @State var openDialogDelete: Bool = false
     
     var body: some View {
         ZStack{
@@ -37,8 +38,14 @@ struct Despensa: View {
                 ScrollView{
                     //Botón para eliminar toda la despensa.
                     Button(action: {
-                        openDeleteIcon = true
+                        if openDeleteIcon == false{
+                            openDeleteIcon = true
                         }
+                        else{
+                            print("He llegado a dialog general")
+                            openDialogDelete = true
+                        }
+                    }
                     ){
                         Image(systemName: openDeleteIcon ? "trash.fill" : "ellipsis")
                             .font(Font.system(size: 18, weight: .medium))
@@ -67,7 +74,7 @@ struct Despensa: View {
             //El floating button.
             FloatingButton(openDialog: $openDialog)
                 .navigationTitle("Despensa")
-            //Dialogo
+            //Dialogo de nuevo alimento
                 if $openDialog.wrappedValue{
                     NewAlimentoDialog(
                         caseUses: self.caseUses,
@@ -82,7 +89,33 @@ struct Despensa: View {
                             )
                         }
                     )
-                }//            DespensaCard(alimento: Alimento(
+                }
+            //Dialogo generl de eliminar despensa
+            if $openDialogDelete.wrappedValue{
+                GeneralDialog(
+                    siFunc:{
+                        viewModel.onTriggerEvent(
+                        stateEvent: DespensaEventos.onSelectedNestedMenuItem(option: "deleteAll")
+                        )
+                        //Cierro el icon de delete.
+                        openDeleteIcon = false
+                    },
+                    noFunc: {
+                        //Cierro el Icono de delete.
+                        openDeleteIcon = false
+                    },
+                    text: "¿Estás seguro de querer eliminar toda la despensa?",
+                    siFlag: $openDialogDelete,
+                    noFlag: $openDialogDelete
+                )
+                .frame(height: 186, alignment: .top)
+                .padding([.leading,.trailing],24)
+                .cornerRadius(46)
+                .opacity(0.8)
+                .offset(y:-48)
+                
+            }
+            //            DespensaCard(alimento: Alimento(
 //                id_cestaCompra: -1, id_receta: -1, id_alimento: -1, nombre: "Prueba", cantidad: 1 , tipoUnidad:TipoUnidad.gramos,
 //                    active: true
 //            ))

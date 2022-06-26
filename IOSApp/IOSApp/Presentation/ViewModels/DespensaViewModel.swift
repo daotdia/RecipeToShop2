@@ -39,6 +39,9 @@ class DespensaViewModel: ObservableObject{
             case is DespensaEventos.onAutoCompleteChange:
                 //Guardo el nombre seleccionado en el estado del viewmodel a la espera del resto de datos añadidos.
                 self.nombre = (stateEvent as! DespensaEventos.onAutoCompleteChange).nombre
+            case is DespensaEventos.onSelectedNestedMenuItem:
+                //Elimino toda la despensa.
+                eliminarDespensa()
             default:
                 
                 print("Evento inesperado en la despensa: " + stateEvent.description)
@@ -100,6 +103,19 @@ class DespensaViewModel: ObservableObject{
                         queueError: currentState.queueError,
                         resultadoAutoCompletado: currentState.resultadoAutoCompletado,
                         queryAutoComplete: currentState.queryAutoComplete)
+                }
+            }
+        )
+    }
+    
+    //Función para elimkinar toda la despensa.
+    private func eliminarDespensa() ->Void {
+        useCases.deleteAlimentos.deleteAlimentos().collectFlow(
+            coroutineScope: nil,
+            callback: { datastate in
+                //En el casso de que haya éxito al eliminar la caché de despensa reprintpo la pantalla de despensa.
+                if datastate?.data != nil {
+                    self.reprintDespensa()
                 }
             }
         )

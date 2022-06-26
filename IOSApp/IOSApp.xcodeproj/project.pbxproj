@@ -17,6 +17,11 @@
 		EE42D1DC2865E5D80068E797 /* ErrorBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE42D1DB2865E5D80068E797 /* ErrorBorder.swift */; };
 		EE42D1DE28663B020068E797 /* ComprobarTipoUnidad.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE42D1DD28663B020068E797 /* ComprobarTipoUnidad.swift */; };
 		EE42D1E0286758600068E797 /* MyTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE42D1DF286758600068E797 /* MyTextFieldStyle.swift */; };
+		EE42D1E3286879C70068E797 /* GeneralDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE42D1E2286879C70068E797 /* GeneralDialog.swift */; };
+		EE42D1E6286885B20068E797 /* WeightedProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE42D1E5286885B20068E797 /* WeightedProxy.swift */; };
+		EE42D1E82868861F0068E797 /* Weighted.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE42D1E72868861F0068E797 /* Weighted.swift */; };
+		EE42D1EA2868866B0068E797 /* WeightedHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE42D1E92868866B0068E797 /* WeightedHStack.swift */; };
+		EE42D1EC286886900068E797 /* WeightedVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE42D1EB286886900068E797 /* WeightedVStack.swift */; };
 		EE94AD1B28298325009087A7 /* DespensaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE94AD1A28298325009087A7 /* DespensaViewModel.swift */; };
 		EE94AD2028298844009087A7 /* Despensa.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE94AD1F28298844009087A7 /* Despensa.swift */; };
 		EE94AD47282C39C0009087A7 /* DespensaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE94AD46282C39BF009087A7 /* DespensaCard.swift */; };
@@ -41,6 +46,12 @@
 		EE42D1DB2865E5D80068E797 /* ErrorBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorBorder.swift; sourceTree = "<group>"; };
 		EE42D1DD28663B020068E797 /* ComprobarTipoUnidad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComprobarTipoUnidad.swift; sourceTree = "<group>"; };
 		EE42D1DF286758600068E797 /* MyTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextFieldStyle.swift; sourceTree = "<group>"; };
+		EE42D1E2286879C70068E797 /* GeneralDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralDialog.swift; sourceTree = "<group>"; };
+		EE42D1E5286885B20068E797 /* WeightedProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightedProxy.swift; sourceTree = "<group>"; };
+		EE42D1E72868861F0068E797 /* Weighted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weighted.swift; sourceTree = "<group>"; };
+		EE42D1E92868866B0068E797 /* WeightedHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightedHStack.swift; sourceTree = "<group>"; };
+		EE42D1EB286886900068E797 /* WeightedVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightedVStack.swift; sourceTree = "<group>"; };
+		EE42D1ED286886EC0068E797 /* Información autoria.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Información autoria.md"; sourceTree = "<group>"; };
 		EE94AD1A28298325009087A7 /* DespensaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DespensaViewModel.swift; sourceTree = "<group>"; };
 		EE94AD1F28298844009087A7 /* Despensa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Despensa.swift; sourceTree = "<group>"; };
 		EE94AD46282C39BF009087A7 /* DespensaCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DespensaCard.swift; sourceTree = "<group>"; };
@@ -99,6 +110,27 @@
 				EE42D1D92865CB700068E797 /* DropDown.swift */,
 			);
 			path = MenuDesplegable;
+			sourceTree = "<group>";
+		};
+		EE42D1E1286879910068E797 /* Dialogs */ = {
+			isa = PBXGroup;
+			children = (
+				EE42D1D12865BFF90068E797 /* NewAlimentoDialog.swift */,
+				EE42D1E2286879C70068E797 /* GeneralDialog.swift */,
+			);
+			path = Dialogs;
+			sourceTree = "<group>";
+		};
+		EE42D1E4286885940068E797 /* WeightedViews */ = {
+			isa = PBXGroup;
+			children = (
+				EE42D1E5286885B20068E797 /* WeightedProxy.swift */,
+				EE42D1E72868861F0068E797 /* Weighted.swift */,
+				EE42D1E92868866B0068E797 /* WeightedHStack.swift */,
+				EE42D1EB286886900068E797 /* WeightedVStack.swift */,
+				EE42D1ED286886EC0068E797 /* Información autoria.md */,
+			);
+			path = WeightedViews;
 			sourceTree = "<group>";
 		};
 		EE94AD17282982A6009087A7 /* Presentation */ = {
@@ -166,10 +198,11 @@
 		EE94AD4B282C57AF009087A7 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				EE42D1E4286885940068E797 /* WeightedViews */,
+				EE42D1E1286879910068E797 /* Dialogs */,
 				EE42D1D52865CAB60068E797 /* MenuDesplegable */,
 				EE94AD4C282C57C5009087A7 /* FloatingButton.swift */,
 				EE94AD4E282C6B1A009087A7 /* AutocompleteTextField.swift */,
-				EE42D1D12865BFF90068E797 /* NewAlimentoDialog.swift */,
 				EE42D1DB2865E5D80068E797 /* ErrorBorder.swift */,
 				EE42D1DF286758600068E797 /* MyTextFieldStyle.swift */,
 			);
@@ -289,6 +322,7 @@
 			files = (
 				EE42D1D42865C9DF0068E797 /* DropDownSelector.swift in Sources */,
 				EE94AD4A282C4D9F009087A7 /* AbrevTipoUnidadParser.swift in Sources */,
+				EE42D1EA2868866B0068E797 /* WeightedHStack.swift in Sources */,
 				EE42D1D72865CAE50068E797 /* DropDownRow.swift in Sources */,
 				EE94AD4F282C6B1B009087A7 /* AutocompleteTextField.swift in Sources */,
 				EE42D1DC2865E5D80068E797 /* ErrorBorder.swift in Sources */,
@@ -296,13 +330,17 @@
 				EE94AD4D282C57C5009087A7 /* FloatingButton.swift in Sources */,
 				EE94AD47282C39C0009087A7 /* DespensaCard.swift in Sources */,
 				EE42D1DA2865CB700068E797 /* DropDown.swift in Sources */,
+				EE42D1E6286885B20068E797 /* WeightedProxy.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				EE42D1E0286758600068E797 /* MyTextFieldStyle.swift in Sources */,
 				7555FF83242A565900829871 /* Scafold.swift in Sources */,
 				EE42D1D22865BFF90068E797 /* NewAlimentoDialog.swift in Sources */,
+				EE42D1E3286879C70068E797 /* GeneralDialog.swift in Sources */,
 				EE94AD51282C6B7C009087A7 /* AutocompleteViewModel.swift in Sources */,
+				EE42D1EC286886900068E797 /* WeightedVStack.swift in Sources */,
 				EE42D1DE28663B020068E797 /* ComprobarTipoUnidad.swift in Sources */,
 				EE94AD1B28298325009087A7 /* DespensaViewModel.swift in Sources */,
+				EE42D1E82868861F0068E797 /* Weighted.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

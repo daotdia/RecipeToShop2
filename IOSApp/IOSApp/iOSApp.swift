@@ -17,8 +17,29 @@ struct iOSApp: App {
 		WindowGroup {
             //Es aquí donde está toda la lógica de navegación y los menus de toda la aplicación.
             NavigationView{
-                Despensa(caseUses: caseUses)
+                //La navegación se realiza mediante menú inferior.
+                TabView{
+                    Despensa(caseUses: caseUses)
+                        .tabItem(){
+                            //TODO: Poner las imagenes correctas de los iconos de los menus.
+                            Image(systemName: "heart.fill")
+                            Text("Despensa")
+                        }
+                    //TODO: Crear Screen de recetas
+                    Text("Recetas")
+                        .tabItem(){
+                            //TODO: Poner las imagenes correctas de los iconos de los menus.
+                            Image(systemName: "heart.fill")
+                            Text("Recetas")
+                        }
+                    //TODO: Crear screen de compra.
+                    Text("Compra")
+                        .tabItem(){
+                            //TODO: Poner las imagenes correctas de los iconos de los menus.
+                            Image(systemName: "heart.fill")
+                            Text("Compra")
+                        }                }
             }
-		}
-	}
+        }
+    }
 }
