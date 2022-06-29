@@ -87,23 +87,7 @@ struct Despensa: View {
             }
             //El floating button.
             FloatingButton(openDialog: $openDialog)
-                .navigationTitle("Despensa")
-            //Dialogo de nuevo alimento
-                if $openDialog.wrappedValue{
-                    NewAlimentoDialog(
-                        caseUses: self.caseUses,
-                        openDialog: $openDialog,
-                        addAlimento: { nombre, peso, tipoUnidad -> Void in
-                            viewModel.onTriggerEvent(
-                                stateEvent: DespensaEventos.onAddAlimento(
-                                    nombre: nombre,
-                                    tipo: tipoUnidad,
-                                    cantidad: peso
-                                )
-                            )
-                        }
-                    )
-                }
+    
             //Dialogo generl de eliminar despensa
             if $openDialogDelete.wrappedValue{
                 GeneralDialog(
@@ -118,9 +102,19 @@ struct Despensa: View {
                         //Cierro el Icono de delete.
                         openDeleteIcon = false
                     },
-                    text: "¿Estás seguro de querer eliminar toda la despensa?",
                     siFlag: $openDialogDelete,
-                    noFlag: $openDialogDelete
+                    noFlag: $openDialogDelete,
+                    dialogContent: {
+                        Text("¿Estás seguro de querer eliminar la despensa?")
+                            .font(.headline)
+                    },
+                    siButtonContent: {
+                        Text("Sí")
+                            .foregroundColor(.red)
+                    },
+                    noButtonContent: {
+                        Text("No")
+                    }
                 )
                 .frame(height: 186, alignment: .top)
                 .padding([.leading,.trailing],24)
@@ -129,10 +123,42 @@ struct Despensa: View {
                 .offset(y:-48)
                 
             }
+            
+            //Dialogo de nuevo alimento
+//            if $openDialog.wrappedValue{
+//                NewAlimentoDialog(
+//                    caseUses: self.caseUses,
+//                    openDialog: $openDialog,
+//                    addAlimento: { nombre, peso, tipoUnidad -> Void in
+//                        viewModel.onTriggerEvent(
+//                            stateEvent: DespensaEventos.onAddAlimento(
+//                                nombre: nombre,
+//                                tipo: tipoUnidad,
+//                                cantidad: peso
+//                            )
+//                        )
+//                    }
+//                )
+//            }
             //            DespensaCard(alimento: Alimento(
 //                id_cestaCompra: -1, id_receta: -1, id_alimento: -1, nombre: "Prueba", cantidad: 1 , tipoUnidad:TipoUnidad.gramos,
 //                    active: true
 //            ))
         }
+        .sheet(isPresented: $openDialog, content: {
+            NewAlimentoDialog(
+                caseUses: self.caseUses,
+                openDialog: $openDialog,
+                addAlimento: { nombre, peso, tipoUnidad -> Void in
+                    viewModel.onTriggerEvent(
+                        stateEvent: DespensaEventos.onAddAlimento(
+                            nombre: nombre,
+                            tipo: tipoUnidad,
+                            cantidad: peso
+                        )
+                    )
+                }
+            )
+        })
     }
 }

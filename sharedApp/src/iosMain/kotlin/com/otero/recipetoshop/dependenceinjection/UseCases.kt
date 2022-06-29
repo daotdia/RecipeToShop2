@@ -179,4 +179,16 @@ class UseCases(
             recetaCache = cacheModule.recetasCache
         )
     }
+
+    val updateRecetasLista: UpdateRecetasLista by lazy{
+        UpdateRecetasLista(
+            recetaCache = cacheModule.recetasCache
+        )
+    }
+
+    val deleteCestaCompra: DeleteCestaCompra by lazy {
+        DeleteCestaCompra(
+            recetaCache = cacheModule.recetasCache
+        )
+    }
 }

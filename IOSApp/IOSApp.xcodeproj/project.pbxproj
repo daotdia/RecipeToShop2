@@ -22,6 +22,8 @@
 		EE42D1E82868861F0068E797 /* Weighted.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE42D1E72868861F0068E797 /* Weighted.swift */; };
 		EE42D1EA2868866B0068E797 /* WeightedHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE42D1E92868866B0068E797 /* WeightedHStack.swift */; };
 		EE42D1EC286886900068E797 /* WeightedVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE42D1EB286886900068E797 /* WeightedVStack.swift */; };
+		EE42D1F5286B1FCA0068E797 /* ListaRecetasScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE42D1F4286B1FCA0068E797 /* ListaRecetasScreen.swift */; };
+		EE42D1F7286B211D0068E797 /* ListasRecetasViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE42D1F6286B211D0068E797 /* ListasRecetasViewModel.swift */; };
 		EE94AD1B28298325009087A7 /* DespensaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE94AD1A28298325009087A7 /* DespensaViewModel.swift */; };
 		EE94AD2028298844009087A7 /* Despensa.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE94AD1F28298844009087A7 /* Despensa.swift */; };
 		EE94AD47282C39C0009087A7 /* DespensaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE94AD46282C39BF009087A7 /* DespensaCard.swift */; };
@@ -29,6 +31,10 @@
 		EE94AD4D282C57C5009087A7 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE94AD4C282C57C5009087A7 /* FloatingButton.swift */; };
 		EE94AD4F282C6B1B009087A7 /* AutocompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE94AD4E282C6B1A009087A7 /* AutocompleteTextField.swift */; };
 		EE94AD51282C6B7C009087A7 /* AutocompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE94AD50282C6B7C009087A7 /* AutocompleteViewModel.swift */; };
+		EE9789C1286B843700C4549B /* ListaRecetas.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9789C0286B843700C4549B /* ListaRecetas.swift */; };
+		EE9789C3286BA96500C4549B /* ListaRecetasViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9789C2286BA96500C4549B /* ListaRecetasViewModel.swift */; };
+		EE9789C5286BACB600C4549B /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9789C4286BACB600C4549B /* SearchBar.swift */; };
+		EEBAF6F8286B663B004DF640 /* ListaRecetasCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBAF6F7286B663B004DF640 /* ListaRecetasCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +58,8 @@
 		EE42D1E92868866B0068E797 /* WeightedHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightedHStack.swift; sourceTree = "<group>"; };
 		EE42D1EB286886900068E797 /* WeightedVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightedVStack.swift; sourceTree = "<group>"; };
 		EE42D1ED286886EC0068E797 /* Información autoria.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Información autoria.md"; sourceTree = "<group>"; };
+		EE42D1F4286B1FCA0068E797 /* ListaRecetasScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaRecetasScreen.swift; sourceTree = "<group>"; };
+		EE42D1F6286B211D0068E797 /* ListasRecetasViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListasRecetasViewModel.swift; sourceTree = "<group>"; };
 		EE94AD1A28298325009087A7 /* DespensaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DespensaViewModel.swift; sourceTree = "<group>"; };
 		EE94AD1F28298844009087A7 /* Despensa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Despensa.swift; sourceTree = "<group>"; };
 		EE94AD46282C39BF009087A7 /* DespensaCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DespensaCard.swift; sourceTree = "<group>"; };
@@ -59,6 +67,10 @@
 		EE94AD4C282C57C5009087A7 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		EE94AD4E282C6B1A009087A7 /* AutocompleteTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteTextField.swift; sourceTree = "<group>"; };
 		EE94AD50282C6B7C009087A7 /* AutocompleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteViewModel.swift; sourceTree = "<group>"; };
+		EE9789C0286B843700C4549B /* ListaRecetas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaRecetas.swift; sourceTree = "<group>"; };
+		EE9789C2286BA96500C4549B /* ListaRecetasViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaRecetasViewModel.swift; sourceTree = "<group>"; };
+		EE9789C4286BACB600C4549B /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		EEBAF6F7286B663B004DF640 /* ListaRecetasCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaRecetasCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +145,15 @@
 			path = WeightedViews;
 			sourceTree = "<group>";
 		};
+		EE42D1F3286B1FAA0068E797 /* Recetas */ = {
+			isa = PBXGroup;
+			children = (
+				EE42D1F4286B1FCA0068E797 /* ListaRecetasScreen.swift */,
+				EE9789C0286B843700C4549B /* ListaRecetas.swift */,
+			);
+			path = Recetas;
+			sourceTree = "<group>";
+		};
 		EE94AD17282982A6009087A7 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +176,8 @@
 			children = (
 				EE94AD1A28298325009087A7 /* DespensaViewModel.swift */,
 				EE94AD50282C6B7C009087A7 /* AutocompleteViewModel.swift */,
+				EE42D1F6286B211D0068E797 /* ListasRecetasViewModel.swift */,
+				EE9789C2286BA96500C4549B /* ListaRecetasViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -182,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				EE94AD46282C39BF009087A7 /* DespensaCard.swift */,
+				EEBAF6F7286B663B004DF640 /* ListaRecetasCard.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -198,6 +222,7 @@
 		EE94AD4B282C57AF009087A7 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				EE42D1F3286B1FAA0068E797 /* Recetas */,
 				EE42D1E4286885940068E797 /* WeightedViews */,
 				EE42D1E1286879910068E797 /* Dialogs */,
 				EE42D1D52865CAB60068E797 /* MenuDesplegable */,
@@ -205,6 +230,7 @@
 				EE94AD4E282C6B1A009087A7 /* AutocompleteTextField.swift */,
 				EE42D1DB2865E5D80068E797 /* ErrorBorder.swift */,
 				EE42D1DF286758600068E797 /* MyTextFieldStyle.swift */,
+				EE9789C4286BACB600C4549B /* SearchBar.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -320,27 +346,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE9789C1286B843700C4549B /* ListaRecetas.swift in Sources */,
 				EE42D1D42865C9DF0068E797 /* DropDownSelector.swift in Sources */,
 				EE94AD4A282C4D9F009087A7 /* AbrevTipoUnidadParser.swift in Sources */,
 				EE42D1EA2868866B0068E797 /* WeightedHStack.swift in Sources */,
+				EE42D1F5286B1FCA0068E797 /* ListaRecetasScreen.swift in Sources */,
 				EE42D1D72865CAE50068E797 /* DropDownRow.swift in Sources */,
 				EE94AD4F282C6B1B009087A7 /* AutocompleteTextField.swift in Sources */,
 				EE42D1DC2865E5D80068E797 /* ErrorBorder.swift in Sources */,
 				EE94AD2028298844009087A7 /* Despensa.swift in Sources */,
 				EE94AD4D282C57C5009087A7 /* FloatingButton.swift in Sources */,
+				EE42D1F7286B211D0068E797 /* ListasRecetasViewModel.swift in Sources */,
 				EE94AD47282C39C0009087A7 /* DespensaCard.swift in Sources */,
 				EE42D1DA2865CB700068E797 /* DropDown.swift in Sources */,
 				EE42D1E6286885B20068E797 /* WeightedProxy.swift in Sources */,
+				EE9789C5286BACB600C4549B /* SearchBar.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				EE42D1E0286758600068E797 /* MyTextFieldStyle.swift in Sources */,
 				7555FF83242A565900829871 /* Scafold.swift in Sources */,
 				EE42D1D22865BFF90068E797 /* NewAlimentoDialog.swift in Sources */,
+				EE9789C3286BA96500C4549B /* ListaRecetasViewModel.swift in Sources */,
 				EE42D1E3286879C70068E797 /* GeneralDialog.swift in Sources */,
 				EE94AD51282C6B7C009087A7 /* AutocompleteViewModel.swift in Sources */,
 				EE42D1EC286886900068E797 /* WeightedVStack.swift in Sources */,
 				EE42D1DE28663B020068E797 /* ComprobarTipoUnidad.swift in Sources */,
 				EE94AD1B28298325009087A7 /* DespensaViewModel.swift in Sources */,
 				EE42D1E82868861F0068E797 /* Weighted.swift in Sources */,
+				EEBAF6F8286B663B004DF640 /* ListaRecetasCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

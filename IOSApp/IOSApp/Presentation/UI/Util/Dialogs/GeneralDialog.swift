@@ -8,40 +8,52 @@
 
 import SwiftUI
 
-struct GeneralDialog: View {
-    
-    private let text: String
+//Es un poderoso diálogo general, en el que se puede customizar los pesos de las vistas de contenido y botnes, el contenido del diálogo, el contenido de cada botón, las flags al apretar un botón u otro y las funciones a llamar en caso de que se aprete un botón u otro.
+struct GeneralDialog<Content:View, siContent:View, noContent:View> : View {
     
     private let siFunc: () -> Void
     private let noFunc: () -> Void
     
+    //private let weights: (contentWeight: CGFloat, buttonWeight: CGFloat)
+    
+    //El contenido del dialogo
+    @ViewBuilder var dialogContent: Content
+    @ViewBuilder var siButtonContent: siContent
+    @ViewBuilder var noButtonContent: noContent
+    
     @Binding var siFlag: Bool
     @Binding var noFlag: Bool
     
-    init(
+    @inlinable init(
+        //weights: (contentWeight: CGFloat, buttonWeight: CGFloat),
         siFunc: @escaping () -> Void,
         noFunc: @escaping () -> Void,
-        text: String,
         siFlag: Binding<Bool>,
-        noFlag: Binding<Bool>
+        noFlag: Binding<Bool>,
+        @ViewBuilder dialogContent: @escaping () -> Content,
+        @ViewBuilder siButtonContent: @escaping () -> siContent,
+        @ViewBuilder noButtonContent: @escaping () -> noContent
     ){
-        self.text = text
+        //self.weights = weights
+        
         self.siFunc = siFunc
         self.noFunc = noFunc
         
         self._siFlag = siFlag
         self._noFlag = noFlag
+        
+        self.dialogContent = dialogContent()
+        self.siButtonContent = siButtonContent()
+        self.noButtonContent = noButtonContent()
     }
     
     var body: some View {
-        
         Color(white: 0.95)
-        WeightedVStack(){ proxy in
-            Text(text)
-                .font(.headline)
+        VStack(){
+            dialogContent
                 .padding(4)
                 .frame(alignment:.center)
-                .weighted(5, proxy: proxy)
+                //.weighted(weights.contentWeight, proxy: proxy)
             Spacer()
             Divider()
             //Botones de sí o no.
@@ -54,8 +66,7 @@ struct GeneralDialog: View {
                     //Se invierte el flag booleano de sí.
                     siFlag = !siFlag
                 }){
-                    Text("Done")
-                        .foregroundColor(.red)
+                    siButtonContent
                 }
                 Spacer()
                 Divider()
@@ -67,14 +78,15 @@ struct GeneralDialog: View {
                     //Se invierte el flag booleano de no.
                     noFlag = !noFlag
                 }){
-                    Text("Cancel")
-                    
+                    noButtonContent
                 }
                 Spacer()
             }
-            .weighted(3, proxy: proxy)
+            //.weighted(weights.buttonWeight, proxy: proxy)
             .padding(4)
+            .frame(maxHeight: 46)
         }
+        .padding(6)
     }
 }
 
