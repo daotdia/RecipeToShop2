@@ -11,35 +11,41 @@ import SwiftUI
 struct FloatingButton: View {
     
     @Binding var openDialog: Bool
+    @State var simboloSys: String
+    
+    init(
+        openDialog: Binding<Bool>,
+        simbolsys: String
+    ){
+        self._openDialog = openDialog
+        self.simboloSys = simbolsys
+    }
     
     var body: some View {
-        VStack {
-            Spacer()
-            HStack {
-                Spacer()
-                Button(
-                    action: {
-                        //Ordena la apertura del dialogo
-                        $openDialog.wrappedValue = true
-                    },
-                    label: {
-                        Text("+")
-                            .font(.system(.largeTitle))
-                            .frame(width: 64, height: 58)
-                            .foregroundColor(Color.white)
-                            .padding(.bottom, 7)
-                        }
-                )
-                .background(Color.green)
-                .cornerRadius(38.5)
-                .padding()
-                .shadow(
-                    color: Color.black.opacity(0.3),
-                    radius: 3,
-                    x: 3,
-                    y: 3
-                )
-            }
+        ZStack(alignment: .bottomTrailing){
+            Color.clear
+            Button(
+                action: {
+                    //Ordena la apertura del dialogo
+                    $openDialog.wrappedValue = true
+                },
+                label: {
+                    Image(systemName: simboloSys)
+                        .font(.system(.title))
+                        .frame(width: 64, height: 64)
+                        .foregroundColor(Color.white)
+                    }
+            )
+            .background(Color.green)
+            .cornerRadius(38.5)
+            .padding()
+            .shadow(
+                color: Color.black.opacity(0.3),
+                radius: 3,
+                x: 3,
+                y: 3
+            )
         }
     }
 }
+

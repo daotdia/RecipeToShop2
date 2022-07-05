@@ -42,12 +42,12 @@ struct iOSApp: App {
                 
                 //Pantalla de lista de recetas.
                 NavigationView{
-                    ListaRecetasScreen(
+                    ListasRecetasScreen(
                         caseUses: self.caseUses,
                         openDialog:$openDialogListaRecetas,
                         tabSelection: $tabSelection
                     )
-                    .navigationTitle("Lista de recetas")
+                    .navigationTitle("Listas de recetas")
 
                 }
                 .tabItem(){

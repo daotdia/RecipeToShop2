@@ -3,6 +3,7 @@ package com.otero.recipetoshop.events.cestacompra
 import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.domain.model.CestaCompra.Receta
 import com.otero.recipetoshop.domain.util.TipoUnidad
+import com.otero.recipetoshop.presentationlogic.states.recetas.CestaCompraState
 
 sealed class CestaCompraEventos {
 
@@ -35,5 +36,9 @@ sealed class CestaCompraEventos {
     data class onAddReceta(val nombre: String, val cantidad: Int): CestaCompraEventos()
 
     data class onUpdateRecetaFavorita(val receta: Receta, val isFavorita: Boolean): CestaCompraEventos()
+
+    data class onSearchRecetas(val query: String): CestaCompraEventos()
+
+    data class onAddRecetaExistente(val receta: Receta): CestaCompraEventos()
 
 }

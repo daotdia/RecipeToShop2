@@ -30,21 +30,22 @@ struct SearchBar: View {
                     .textFieldStyle(.roundedBorder)
                     .padding(4)
                     .onChange(of: input) { newValue in
+                        //Actualizo la búsqueda
                         updateSearch($input.wrappedValue)
                     }
                     .textFieldStyle(MyTextFieldStyle())
-                ZStack(alignment: .trailing){
-                    Color.clear
-                    //Imagen que es un icono de lupa si no hay nada buscado o una X si ya hay algo buscado.
-                    Image(systemName: $input.wrappedValue.isEmpty ? "magnifyingglass" : "xmark.circle")
-                        .onTapGesture {
-                            //En el caso de que no esté vacía y se clica X, se vacía la búsqueda.
-                            if !$input.wrappedValue.isEmpty{
-                                $input.wrappedValue = ""
-                            }
-                        }
-                }
             }
+            .overlay(
+                //Imagen que es un icono de lupa si no hay nada buscado o una X si ya hay algo buscado.
+                Image(systemName: $input.wrappedValue.isEmpty ? "magnifyingglass" : "xmark.circle")
+                    .onTapGesture {
+                        //En el caso de que no esté vacía y se clica X, se vacía la búsqueda.
+                        if !$input.wrappedValue.isEmpty{
+                            $input.wrappedValue = ""
+                        }
+                    },
+                alignment: .trailing
+            )
         }
     }
 }

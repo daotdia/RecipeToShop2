@@ -86,7 +86,10 @@ struct Despensa: View {
                 }
             }
             //El floating button.
-            FloatingButton(openDialog: $openDialog)
+            FloatingButton(
+                openDialog: $openDialog,
+                simbolsys: "plus"
+            )
     
             //Dialogo generl de eliminar despensa
             if $openDialogDelete.wrappedValue{

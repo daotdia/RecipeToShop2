@@ -191,4 +191,10 @@ class UseCases(
             recetaCache = cacheModule.recetasCache
         )
     }
+
+    val searchRecetasCache: SearchRecetasCache by lazy {
+        SearchRecetasCache(
+            recetaCache = cacheModule.recetasCache
+        )
+    }
 }

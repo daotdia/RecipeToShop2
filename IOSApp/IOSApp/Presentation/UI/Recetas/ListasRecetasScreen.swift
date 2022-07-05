@@ -9,7 +9,7 @@
 import SwiftUI
 import sharedApp
 
-struct ListaRecetasScreen: View {
+struct ListasRecetasScreen: View {
     
     private let caseUses: UseCases
     
@@ -17,7 +17,7 @@ struct ListaRecetasScreen: View {
     @Binding var tabSelection: Int
     
     @ObservedObject var viewModel: ListasRecetasViewModel
-    
+        
     init(
         caseUses: UseCases,
         openDialog: Binding<Bool>,
@@ -31,8 +31,9 @@ struct ListaRecetasScreen: View {
     }
     
     @State var nombreNuevaListaRecetas: String = ""
-    @State var openListaRecetas: Bool = false
     @State var id_listaRecetasSeleccionada: Int = -1
+    @State var nombreValido: Bool = false
+    @State var addLista: Bool = false
     
     var body: some View {
         ZStack{
@@ -46,6 +47,7 @@ struct ListaRecetasScreen: View {
                         viewModel.state.listaCestasCompra, id: \.self.id_cestaCompra
                     ){ listaRecetas in
                         ListaRecetasCard(
+                            caseUses: caseUses,
                             nombre: listaRecetas.nombre,
                             id_listaRecetas: listaRecetas.id_cestaCompra as! Int,
                             eliminarCard: { id in
@@ -54,8 +56,7 @@ struct ListaRecetasScreen: View {
                                     )
                                 )
                             },
-                            openListaRecetasModal: $openListaRecetas,
-                            id_listaRecetasSeleccionada: $id_listaRecetasSeleccionada
+                            tabSelection: $tabSelection
                         )
                     }
                     .frame(minWidth: 164, minHeight: 164)
@@ -67,20 +68,29 @@ struct ListaRecetasScreen: View {
             }
             
             //Boton Floating oara añadir una nueva lista de recetas.
-            FloatingButton(openDialog: $openDialog)
+            FloatingButton(
+                openDialog: $openDialog,
+                simbolsys: "plus"
+            )
             
-            //Dialogo de nuevo alimento
+            //Dialogo de nueva lista de recetas
             if $openDialog.wrappedValue{
                 GeneralDialog(
                     siFunc: {
-                        //Funcion para añadir la lista de recetas utilizo el nombre guardado en esta view.
-                        viewModel.onTriggerEvent(stateEvent: ListaCestasCompraEventos.onAddListaRecetaEventos(
-                            nombre: $nombreNuevaListaRecetas.wrappedValue
-                        ))
-                        //Lanzo el modal con l alista de recetas.
-                        openListaRecetas = true
+                        if nombreValido {
+                            addLista = true
+                            
+                            //Funcion para añadir la lista de recetas utilizo el nombre guardado en esta view.
+                            viewModel.onTriggerEvent(stateEvent: ListaCestasCompraEventos.onAddListaRecetaEventos(
+                                nombre: $nombreNuevaListaRecetas.wrappedValue
+                            ))
+                        } else{
+                            addLista = true
+                        }
                     },
-                    noFunc: {},
+                    noFunc: {
+                        addLista = false
+                    },
                     siFlag: $openDialog,
                     noFlag: $openDialog,
                     dialogContent: {
@@ -92,9 +102,16 @@ struct ListaRecetasScreen: View {
                                 .multilineTextAlignment(.center)
                                 .onChange(of: nombreNuevaListaRecetas, perform: { newValue in
                                     self.nombreNuevaListaRecetas = newValue
+                                    if !self.nombreNuevaListaRecetas.isEmpty{
+                                        nombreValido = true
+                                    }
                                 })
                                 .padding([.top], 8)
                                 .textFieldStyle(MyTextFieldStyle())
+                            //En el caso de que esté vacío aparece el borde de error.
+                                .overlay(
+                                    !nombreValido ? ErrorBorder(error: $addLista) : nil
+                                )
                         }
                     },
                     siButtonContent: {
@@ -104,21 +121,13 @@ struct ListaRecetasScreen: View {
                         Text("Cancelar")
                     }
                 )
-                .frame(height: 186, alignment: .top)
+                .frame(height: 240, alignment: .top)
                 .padding([.leading,.trailing],24)
                 .cornerRadius(46)
                 .opacity(0.9)
                 .offset(y:-48)
             }
         }
-        .sheet(isPresented: $openListaRecetas, content: {
-            //TODO: Crear pantalla de lista de recetas.
-            ListaRecetas(
-                caseUses: self.caseUses,
-                tabSelection: $tabSelection,
-                id_listaRecetas: id_listaRecetasSeleccionada
-            )
-        })
     }
 }
 

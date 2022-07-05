@@ -81,17 +81,7 @@ class UpdateRecetasLista(
                 )
             }
 
-        } else{
-            //Añado listas vacias al mapa.
-            result.put("allRecetas", emptyList())
-            result.put("recetasListaActivas", emptyList())
-            result.put("recetasListaNoActivas", emptyList())
-            result.put("recetasOutActivas", emptyList())
-            result.put("recetasOutNoActivas", emptyList())
-            result.put("alimentosLista", emptyList())
-            result.put("alimentosListaActivos", emptyList())
-            result.put("alimentosListaNoActivos", emptyList())
-        }
+        } 
         //Emito el mapa con las recetas actualizadas.
         emit(DataState.data(data = result, message = null))
     }.asCommonFlow()

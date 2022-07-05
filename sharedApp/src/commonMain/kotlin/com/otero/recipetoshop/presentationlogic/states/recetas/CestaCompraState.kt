@@ -21,6 +21,7 @@ data class CestaCompraState (
     val queueError: Queue<GenericMessageInfo> = Queue(mutableListOf()),
     val resultadosAutoCompleteAlimentos: List<String> = listOf(),
     val recetasFavoritas: List<Receta> = listOf(),
+    val recetasBuscadas: List<Receta> = listOf()
 ){
     constructor(): this(
         id_cestaCompra_actual = null,
@@ -37,5 +38,6 @@ data class CestaCompraState (
         queueError = Queue(mutableListOf()),
         resultadosAutoCompleteAlimentos = listOf(),
         recetasFavoritas = listOf(),
+        recetasBuscadas = listOf()
     )
 }

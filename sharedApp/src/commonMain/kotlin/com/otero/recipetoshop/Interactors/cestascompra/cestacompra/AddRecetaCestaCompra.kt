@@ -20,11 +20,11 @@ class AddRecetaCestaCompra (
         var igual: Boolean = false
         val recetasCestaCompra = recetaCache.getRecetasByCestaCompra(id_cestaCompra = receta.id_cestaCompra)
         if (recetasCestaCompra != null) {
-            recetasCestaCompra.forEach { item ->
-                if(item.nombre.equals(receta.nombre)){
-                    igual = true
-                }
-            }
+            //recetasCestaCompra.forEach { item ->
+                //if(item.nombre.equals(receta.nombre)){
+                    //igual = true
+                //}
+            //
             if(!igual){
                 exito = recetaCache.insertRecetaToCestaCompra(receta)
             }
