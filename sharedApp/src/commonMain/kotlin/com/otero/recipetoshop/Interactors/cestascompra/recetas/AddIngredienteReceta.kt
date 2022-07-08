@@ -30,8 +30,9 @@ class AddIngredienteReceta(
             active = true
         )
 
+        recetaCache.insertIngredienteToReceta(ingrediente)
+
         emit(DataState.data(data = Unit, message = null))
 
-        recetaCache.insertIngredienteToReceta(ingrediente)
     }.asCommonFlow()
 }

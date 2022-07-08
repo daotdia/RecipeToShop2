@@ -10,15 +10,24 @@ import SwiftUI
 
 struct FloatingButton: View {
     
+  
     @Binding var openDialog: Bool
     @State var simboloSys: String
     
+    private let isCalcular: Bool
+    
+    @Binding var tabSelection: Int
+    
     init(
         openDialog: Binding<Bool>,
-        simbolsys: String
+        simbolsys: String,
+        isCalcular: Bool = false,
+        tabSelection: Binding<Int> = Binding.constant(-1)
     ){
         self._openDialog = openDialog
         self.simboloSys = simbolsys
+        self.isCalcular = isCalcular
+        self._tabSelection = tabSelection
     }
     
     var body: some View {
@@ -26,6 +35,12 @@ struct FloatingButton: View {
             Color.clear
             Button(
                 action: {
+                    if isCalcular  {
+                        if tabSelection != -1 {
+                            print("Llego a intentar cambiar de pantalla")
+                            tabSelection = 3
+                        }
+                    }
                     //Ordena la apertura del dialogo
                     $openDialog.wrappedValue = true
                 },
@@ -45,6 +60,7 @@ struct FloatingButton: View {
                 x: 3,
                 y: 3
             )
+            
         }
     }
 }

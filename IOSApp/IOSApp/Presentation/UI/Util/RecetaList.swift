@@ -17,6 +17,7 @@ struct RecetaList: View {
     private let activarReceta: (Receta, Bool) -> Void
     private let id_listaRecetas: Int
     private let addRecetaExistente: (Receta) -> Void
+    private let caseUses: UseCases
     
     @State var isBusqueda: Bool
     
@@ -30,7 +31,8 @@ struct RecetaList: View {
         activarReceta: @escaping (Receta, Bool) -> Void,
         eliminarReceta: @escaping (Receta) -> Void,
         addRecetaExistente: @escaping (Receta) -> Void,
-        id_listaRecetas: Int
+        id_listaRecetas: Int,
+        caseUses: UseCases
     ){
         self.viewModel = viewModel
         self.isBusqueda = isBusqueda
@@ -40,6 +42,7 @@ struct RecetaList: View {
         self.eliminarReceta = eliminarReceta
         self.id_listaRecetas = id_listaRecetas
         self.addRecetaExistente = addRecetaExistente
+        self.caseUses = caseUses
     }
     
     @State var nombreReceta: String = ""
@@ -94,7 +97,8 @@ struct RecetaList: View {
                                     addRecetaExistente: { receta in
                                         addRecetaExistente(receta)
                                     },
-                                    id_listaRecetas: id_listaRecetas
+                                    id_listaRecetas: id_listaRecetas,
+                                    caseUses: caseUses
                                 )
                             }
                             .frame(minWidth: 100, minHeight: 100)
@@ -130,7 +134,8 @@ struct RecetaList: View {
                                         print("He llegado hasta aquí")
                                         addRecetaExistente(receta)
                                     },
-                                    id_listaRecetas: id_listaRecetas
+                                    id_listaRecetas: id_listaRecetas,
+                                    caseUses: caseUses
                                 )
                             }
                             .frame(minWidth: 100, minHeight: 100)
@@ -164,7 +169,8 @@ struct RecetaList: View {
                                         print("He llegado hasta aquí")
                                         addRecetaExistente(receta)
                                     },
-                                    id_listaRecetas: id_listaRecetas
+                                    id_listaRecetas: id_listaRecetas,
+                                    caseUses: caseUses
                                 )
                             }
                             .frame(minWidth: 100, minHeight: 100)
@@ -211,6 +217,7 @@ struct RecetaList: View {
                                         nombreValido = true
                                     }
                                 })
+                                .frame(maxWidth: .infinity, maxHeight: 240)
                                 .padding([.top], 8)
                                 .textFieldStyle(MyTextFieldStyle())
                                 //En el caso de que esté vacío aparece el borde de error.

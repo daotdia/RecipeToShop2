@@ -15,17 +15,20 @@ struct ListasRecetasScreen: View {
     
     @Binding var openDialog: Bool
     @Binding var tabSelection: Int
+    @Binding var id_listaCompra: Int
     
     @ObservedObject var viewModel: ListasRecetasViewModel
         
     init(
         caseUses: UseCases,
         openDialog: Binding<Bool>,
-        tabSelection: Binding<Int>
+        tabSelection: Binding<Int>,
+        id_listaCompra: Binding<Int>
     ){
         self.caseUses = caseUses
         self._openDialog = openDialog
         self._tabSelection = tabSelection
+        self._id_listaCompra = id_listaCompra
         
         self.viewModel = ListasRecetasViewModel(caseUses: self.caseUses)
     }
@@ -46,6 +49,7 @@ struct ListasRecetasScreen: View {
                     ForEach(
                         viewModel.state.listaCestasCompra, id: \.self.id_cestaCompra
                     ){ listaRecetas in
+                                                
                         ListaRecetasCard(
                             caseUses: caseUses,
                             nombre: listaRecetas.nombre,
@@ -56,7 +60,8 @@ struct ListasRecetasScreen: View {
                                     )
                                 )
                             },
-                            tabSelection: $tabSelection
+                            tabSelection: $tabSelection,
+                            id_listaCompra: $id_listaCompra
                         )
                     }
                     .frame(minWidth: 164, minHeight: 164)
@@ -84,12 +89,17 @@ struct ListasRecetasScreen: View {
                             viewModel.onTriggerEvent(stateEvent: ListaCestasCompraEventos.onAddListaRecetaEventos(
                                 nombre: $nombreNuevaListaRecetas.wrappedValue
                             ))
+                            
+                            nombreNuevaListaRecetas = ""
+                            
                         } else{
                             addLista = true
                         }
+                        
                     },
                     noFunc: {
                         addLista = false
+                        nombreNuevaListaRecetas = ""
                     },
                     siFlag: $openDialog,
                     noFlag: $openDialog,

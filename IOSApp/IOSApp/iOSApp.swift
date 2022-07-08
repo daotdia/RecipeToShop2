@@ -19,11 +19,12 @@ struct iOSApp: App {
     @State var openDeleteIcon: Bool = false
     @State var openDialogDelete: Bool = false
     @State var openDialogListaRecetas: Bool = false
+    @State var id_listaCompra: Int = -1
     
 	var body: some Scene {
 		WindowGroup {
             //La navegación se realiza mediante menú inferior.
-            TabView{
+            TabView(selection: $tabSelection){
                 //Pantalla de despensa.
                 NavigationView {
                     Despensa(
@@ -45,7 +46,8 @@ struct iOSApp: App {
                     ListasRecetasScreen(
                         caseUses: self.caseUses,
                         openDialog:$openDialogListaRecetas,
-                        tabSelection: $tabSelection
+                        tabSelection: $tabSelection,
+                        id_listaCompra: $id_listaCompra
                     )
                     .navigationTitle("Listas de recetas")
 
@@ -60,8 +62,10 @@ struct iOSApp: App {
             
                 //TODO: Crear screen de compra.
                 NavigationView{
-                    Text("Compra")
-                        .navigationTitle("Lista de la compra")
+                   ListaCompra(
+                    caseUses: caseUses,
+                    id_listaCompra: $id_listaCompra
+                   )
                 }
                 .tabItem(){
                     //TODO: Poner las imagenes correctas de los iconos de los menus.

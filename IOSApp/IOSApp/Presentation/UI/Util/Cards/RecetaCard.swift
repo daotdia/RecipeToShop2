@@ -17,6 +17,7 @@ struct RecetaCard: View {
     private let addReceta: (Receta) -> Void
     private let addRecetaExistente: (Receta) -> Void
     private let id_listaRecetas: Int
+    private let caseUses: UseCases
     
     @Binding var isBusqueda: Bool
     
@@ -27,7 +28,8 @@ struct RecetaCard: View {
         activarReceta: @escaping (Receta, Bool) -> Void,
         addReceta: @escaping (Receta) -> Void,
         addRecetaExistente: @escaping (Receta) -> Void,
-        id_listaRecetas: Int
+        id_listaRecetas: Int,
+        caseUses: UseCases
     ){
         self.receta = receta
         self._isBusqueda = isBusqueda
@@ -36,6 +38,7 @@ struct RecetaCard: View {
         self.addReceta = addReceta
         self.id_listaRecetas = id_listaRecetas
         self.addRecetaExistente = addRecetaExistente
+        self.caseUses = caseUses
     }
     
     @State var openDeleteReceta: Bool = false
@@ -98,7 +101,7 @@ struct RecetaCard: View {
                             .onTapGesture {
                                 //Si la receta está activa se desactiva.
                                 if receta.active{
-                                    eliminarCard(receta)
+                                    activarReceta(receta, false)
                                 } else {
                                     //Si ya está desactivada se elimina
                                     eliminarCard(receta)
@@ -108,17 +111,21 @@ struct RecetaCard: View {
                 }
                 
                 //La navegación al contenido de la receta
-                ZStack{
-                    NavigationLink(
-                        destination: ContenidoReceta(
-                            receta: receta
-                        ),
-                        isActive: $onRecetaContent
-                    ){
-                            EmptyView()
-                        }
+                if onRecetaContent{
+                    ZStack{
+                        NavigationLink(
+                            destination: ContenidoReceta(
+                                receta: receta,
+                                caseUses: caseUses
+                            ),
+                            isActive: $onRecetaContent
+                        ){
+                                EmptyView()
+                            }
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                
             }
             .padding(0.1)
             .onTapGesture {
@@ -146,7 +153,7 @@ struct RecetaCard: View {
                 
             }
             .onLongPressGesture(perform: {
-                if !isBusqueda {
+                if !isBusqueda && (receta.id_cestaCompra == id_listaRecetas || !receta.active) {
                     openDeleteReceta = true
                 }
             })

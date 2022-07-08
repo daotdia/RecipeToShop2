@@ -37,8 +37,12 @@
 		EE9789C5286BACB600C4549B /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9789C4286BACB600C4549B /* SearchBar.swift */; };
 		EE9789C7286C6E0B00C4549B /* RecetaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9789C6286C6E0B00C4549B /* RecetaCard.swift */; };
 		EE9789C9286C741900C4549B /* RecetaList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9789C8286C741900C4549B /* RecetaList.swift */; };
+		EEB128AB28778D17000163FD /* ListaCompra.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB128AA28778D17000163FD /* ListaCompra.swift */; };
+		EEB128AD2877B173000163FD /* ListaCompraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB128AC2877B173000163FD /* ListaCompraViewModel.swift */; };
 		EEBAF6F8286B663B004DF640 /* ListaRecetasCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBAF6F7286B663B004DF640 /* ListaRecetasCard.swift */; };
 		EEFA12B42874C01D00E17057 /* ContenidoReceta.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFA12B32874C01D00E17057 /* ContenidoReceta.swift */; };
+		EEFA12B628750B0D00E17057 /* RecetaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFA12B528750B0D00E17057 /* RecetaViewModel.swift */; };
+		EEFA12B82875260B00E17057 /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFA12B72875260B00E17057 /* DataExtensions.swift */; };
 		EEFCD0A9286F0F7E00B36D19 /* NavegarListaRecetas.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFCD0A8286F0F7E00B36D19 /* NavegarListaRecetas.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,8 +82,12 @@
 		EE9789C4286BACB600C4549B /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		EE9789C6286C6E0B00C4549B /* RecetaCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecetaCard.swift; sourceTree = "<group>"; };
 		EE9789C8286C741900C4549B /* RecetaList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecetaList.swift; sourceTree = "<group>"; };
+		EEB128AA28778D17000163FD /* ListaCompra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaCompra.swift; sourceTree = "<group>"; };
+		EEB128AC2877B173000163FD /* ListaCompraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaCompraViewModel.swift; sourceTree = "<group>"; };
 		EEBAF6F7286B663B004DF640 /* ListaRecetasCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaRecetasCard.swift; sourceTree = "<group>"; };
 		EEFA12B32874C01D00E17057 /* ContenidoReceta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContenidoReceta.swift; sourceTree = "<group>"; };
+		EEFA12B528750B0D00E17057 /* RecetaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecetaViewModel.swift; sourceTree = "<group>"; };
+		EEFA12B72875260B00E17057 /* DataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
 		EEFCD0A8286F0F7E00B36D19 /* NavegarListaRecetas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavegarListaRecetas.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -190,6 +198,8 @@
 				EE94AD50282C6B7C009087A7 /* AutocompleteViewModel.swift */,
 				EE42D1F6286B211D0068E797 /* ListasRecetasViewModel.swift */,
 				EE9789C2286BA96500C4549B /* ListaRecetasViewModel.swift */,
+				EEFA12B528750B0D00E17057 /* RecetaViewModel.swift */,
+				EEB128AC2877B173000163FD /* ListaCompraViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -205,6 +215,7 @@
 		EE94AD1E28298827009087A7 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				EEB128A928778CFF000163FD /* CestaCompra */,
 				EE42D1F3286B1FAA0068E797 /* Recetas */,
 				EE94AD4B282C57AF009087A7 /* Util */,
 				EE94AD18282982B1009087A7 /* Arquitectura */,
@@ -228,6 +239,7 @@
 			children = (
 				EE94AD49282C4D9F009087A7 /* AbrevTipoUnidadParser.swift */,
 				EE42D1DD28663B020068E797 /* ComprobarTipoUnidad.swift */,
+				EEFA12B72875260B00E17057 /* DataExtensions.swift */,
 			);
 			path = Utill;
 			sourceTree = "<group>";
@@ -248,6 +260,14 @@
 				EE0A788128734FAA00040B05 /* AlimentosList.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		EEB128A928778CFF000163FD /* CestaCompra */ = {
+			isa = PBXGroup;
+			children = (
+				EEB128AA28778D17000163FD /* ListaCompra.swift */,
+			);
+			path = CestaCompra;
 			sourceTree = "<group>";
 		};
 		EEFCD0A7286F0F6000B36D19 /* EnvironmentValues */ = {
@@ -378,6 +398,7 @@
 				EE9789C7286C6E0B00C4549B /* RecetaCard.swift in Sources */,
 				EEFA12B42874C01D00E17057 /* ContenidoReceta.swift in Sources */,
 				EE42D1D72865CAE50068E797 /* DropDownRow.swift in Sources */,
+				EEFA12B628750B0D00E17057 /* RecetaViewModel.swift in Sources */,
 				EEFCD0A9286F0F7E00B36D19 /* NavegarListaRecetas.swift in Sources */,
 				EE94AD4F282C6B1B009087A7 /* AutocompleteTextField.swift in Sources */,
 				EE42D1DC2865E5D80068E797 /* ErrorBorder.swift in Sources */,
@@ -388,6 +409,7 @@
 				EE94AD47282C39C0009087A7 /* DespensaCard.swift in Sources */,
 				EE42D1DA2865CB700068E797 /* DropDown.swift in Sources */,
 				EE42D1E6286885B20068E797 /* WeightedProxy.swift in Sources */,
+				EEB128AD2877B173000163FD /* ListaCompraViewModel.swift in Sources */,
 				EE9789C5286BACB600C4549B /* SearchBar.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				EE42D1E0286758600068E797 /* MyTextFieldStyle.swift in Sources */,
@@ -395,8 +417,10 @@
 				EE42D1D22865BFF90068E797 /* NewAlimentoDialog.swift in Sources */,
 				EE9789C3286BA96500C4549B /* ListaRecetasViewModel.swift in Sources */,
 				EE42D1E3286879C70068E797 /* GeneralDialog.swift in Sources */,
+				EEFA12B82875260B00E17057 /* DataExtensions.swift in Sources */,
 				EE94AD51282C6B7C009087A7 /* AutocompleteViewModel.swift in Sources */,
 				EE42D1EC286886900068E797 /* WeightedVStack.swift in Sources */,
+				EEB128AB28778D17000163FD /* ListaCompra.swift in Sources */,
 				EE42D1DE28663B020068E797 /* ComprobarTipoUnidad.swift in Sources */,
 				EE94AD1B28298325009087A7 /* DespensaViewModel.swift in Sources */,
 				EE42D1E82868861F0068E797 /* Weighted.swift in Sources */,

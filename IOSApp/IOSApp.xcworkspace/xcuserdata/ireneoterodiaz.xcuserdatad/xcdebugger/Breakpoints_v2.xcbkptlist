@@ -14,10 +14,119 @@
             filePath = "IOSApp/Presentation/UI/Util/Cards/RecetaCard.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "body"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AE75073E-F4FF-463D-8BD7-0B990C7AD630"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IOSApp/Presentation/ViewModels/RecetaViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "reprintReceta()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "28CA4B5E-CE1F-44A5-B8C3-9DD3F2337BCC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IOSApp/Presentation/UI/CestaCompra/ListaCompra.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "ListaCompra"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "28CA4B5E-CE1F-44A5-B8C3-9DD3F2337BCC - 33a1887be507d986"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IOSApp.ListaCompra.id_listaCompra.getter : Swift.Int"
+                  moduleName = "IOSApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ireneoterodiaz/Documents/ProyectoDavid/RecipeToShop2/IOSApp/IOSApp/Presentation/UI/CestaCompra/ListaCompra.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "167">
+               </Location>
+               <Location
+                  uuid = "28CA4B5E-CE1F-44A5-B8C3-9DD3F2337BCC - e4001df60e670df2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IOSApp.ListaCompra.id_listaCompra.setter : Swift.Int"
+                  moduleName = "IOSApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ireneoterodiaz/Documents/ProyectoDavid/RecipeToShop2/IOSApp/IOSApp/Presentation/UI/CestaCompra/ListaCompra.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "154">
+               </Location>
+               <Location
+                  uuid = "28CA4B5E-CE1F-44A5-B8C3-9DD3F2337BCC - 606b8f7230b2fe85"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IOSApp.ListaCompra.id_listaCompra.modify : Swift.Int"
+                  moduleName = "IOSApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ireneoterodiaz/Documents/ProyectoDavid/RecipeToShop2/IOSApp/IOSApp/Presentation/UI/CestaCompra/ListaCompra.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "28CA4B5E-CE1F-44A5-B8C3-9DD3F2337BCC - 645d25b545ca0af2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IOSApp.ListaCompra.id_listaCompra.modify : Swift.Int with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "IOSApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ireneoterodiaz/Documents/ProyectoDavid/RecipeToShop2/IOSApp/IOSApp/Presentation/UI/CestaCompra/ListaCompra.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "51">
+               </Location>
+               <Location
+                  uuid = "28CA4B5E-CE1F-44A5-B8C3-9DD3F2337BCC - 75f01d42fe7791fa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IOSApp.ListaCompra.$id_listaCompra.getter : SwiftUI.Binding&lt;Swift.Int&gt;"
+                  moduleName = "IOSApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ireneoterodiaz/Documents/ProyectoDavid/RecipeToShop2/IOSApp/IOSApp/Presentation/UI/CestaCompra/ListaCompra.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "210">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

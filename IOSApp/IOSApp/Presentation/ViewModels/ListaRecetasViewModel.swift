@@ -8,6 +8,7 @@
 
 import Foundation
 import sharedApp
+import SwiftUI
 
 class ListaRecetasViewModel: ObservableObject{
     
@@ -73,7 +74,7 @@ class ListaRecetasViewModel: ObservableObject{
                 updateReceta(
                     receta: (event as! CestaCompraEventos.onUpdateRecetaActive).receta,
                     active: (event as! CestaCompraEventos.onUpdateRecetaActive).active,
-                    cantidad: (event as! CestaCompraEventos.onUpdateRecetaActive).receta.cantidad
+                    cantidad: nil
                 )
                 
             case is CestaCompraEventos.onDeleteReceta:
@@ -94,12 +95,28 @@ class ListaRecetasViewModel: ObservableObject{
     }
     
     private func addReceta(receta: Receta){
+        print("La receta a añadir tiene los ingredientes: ")
+        dump(receta.ingredientes)
+        
         self.caseUses.addRecetaCestaCompra.addRecetaCestaCompra(receta: receta).collectFlow(
             coroutineScope: nil,
             callback: { dataState in
                 if dataState?.data != nil {
-                    //CUando se inserte vuelvo a pintar las recetas.
+                    let id_receta = dataState?.data
                     self.rePrintListaRecetas()
+                    //Añado los ingredientes a la receta.
+                    self.caseUses.addRecetaCestaCompra.addIngredientesReceta(
+                        receta: receta,
+                        id_receta: id_receta as! Int32
+                    ).collectFlow(
+                        coroutineScope: nil,
+                        callback: { dataState in
+                            if dataState?.data != nil {
+                                //CUando se inserte vuelvo a pintar las recetas.
+                                self.rePrintListaRecetas()
+                            }
+                        }
+                    )
                 }
             }
         )
@@ -116,13 +133,45 @@ class ListaRecetasViewModel: ObservableObject{
         )
     }
     
-    private  func updateReceta(receta: Receta, active: Bool, cantidad: Int32) -> Void{
+    private  func updateReceta(receta: Receta, active: Bool, cantidad: Int32?) -> Void{
         print("Llego a intentar actualizar la receta: " + active.description)
+        print("Los ingredientes a copiar son: ")
+        dump(receta.ingredientes)
         self.caseUses.updateRecetaCestaCompra.updateRecetaCestaCompra(
             receta: receta,
             active: active,
-            cantidad: KotlinInt(integerLiteral: Int(cantidad))
+            //Tiene que ser null para que el caso de uso sepa que quiero actualizar active y no la cantidad
+            cantidad: cantidad as? KotlinInt
         ).collectFlow(
+            coroutineScope: nil,
+            callback: { dataState in
+                if dataState?.data != nil {
+                    //Consigo que la receta se actualice pero debido a la conversión de unidades de Kotlin considera que el id es distinto y crea una nueva, por lo que primero tengo que obtener los ingredientes de la antigua, añadirlos a la nueva y eliminar la antigua.
+                    let id_nuevo: Int32 = dataState?.data as! Int32
+                    
+                    self.addIngredientesReceta(
+                        receta: Receta(
+                            id_cestaCompra: receta.id_cestaCompra,
+                            id_Receta: KotlinInt(integerLiteral: Int(id_nuevo)),
+                            nombre: receta.nombre,
+                            cantidad: receta.cantidad,
+                            user: receta.user,
+                            active: receta.active,
+                            imagenSource: receta.imagenSource,
+                            ingredientes: receta.ingredientes,
+                            rating: receta.rating,
+                            isFavorita: receta.isFavorita
+                        ),
+                        id_nuevo: Int(id_nuevo)
+                    )
+                    self.deleteReceta(receta: receta)
+                }
+            }
+        )
+    }
+    
+    private func addIngredientesReceta(receta: Receta, id_nuevo: Int) -> Void {
+        caseUses.addRecetaCestaCompra.addIngredientesReceta(receta: receta, id_receta: Int32(id_nuevo)).collectFlow(
             coroutineScope: nil,
             callback: { dataState in
                 if dataState?.data != nil {
@@ -182,10 +231,10 @@ class ListaRecetasViewModel: ObservableObject{
                         })
                     }
                     
-                    //Elimino del resultado de búsqueda las recetas de nombre repetido respetando el orden.
-                    resultado_busqueda = resultado_busqueda.unique(map: {
-                        $0.nombre
-                    })
+                    //Obtengo solo las recetas que pertenezcan a esta lista de recetas..
+                    resultado_busqueda = resultado_busqueda.filter{ receta in
+                        receta.id_cestaCompra == self.id_listaRecetas
+                    }
                     
                     if(query == ""){
                         resultado_busqueda = []
@@ -227,21 +276,22 @@ class ListaRecetasViewModel: ObservableObject{
                     
                     let allRecetas: [Receta] = dataState?.data?["allRecetas"] as! [Receta]
                     let recetasListaNoActivas: [Receta] = dataState?.data?["recetasListaNoActivas"] as! [Receta]
-                    let recetasOutActivas: [Receta] = dataState?.data?["recetasOutActivas"] as! [Receta]
-                    let recetasOutNoActivas: [Receta] = dataState?.data?["recetasOutNoActivas"] as! [Receta]
+                    //let recetasOutActivas: [Receta] = dataState?.data?["recetasOutActivas"] as! [Receta]
+                    //let recetasOutNoActivas: [Receta] = dataState?.data?["recetasOutNoActivas"] as! [Receta]
                     let recetasActivas: [Receta] = dataState?.data?["recetasListaActivas"] as! [Receta]
                     let alimentos: [Alimento] = dataState?.data?["alimentosLista"] as! [Alimento]
-                    
-                    var recetasInactivas: [Receta] = recetasListaNoActivas + recetasOutActivas + recetasOutNoActivas
+            
+                    let recetasInactivas: [Receta] = recetasListaNoActivas
                     
                     //Elimino de las inactivas las recetas con nombres iguales o repetidas, respetando el orden.
-                    recetasInactivas = recetasInactivas.unique{
-                        $0.nombre
-                    }.filter{ receta in
-                        !recetasActivas.contains(where: { it in
-                            it.nombre == receta.nombre
-                        })
-                    }
+                    //recetasInactivas = recetasInactivas.unique{
+                    //    $0.nombre
+                    //}.filter{ receta in
+                    //    !recetasActivas.contains(where: { it in
+                    //        it.nombre == receta.nombre
+                    //    })
+                    //}
+                    
                     print("Todas las recetas son:")
                     dump(allRecetas)
                     
@@ -256,6 +306,7 @@ class ListaRecetasViewModel: ObservableObject{
                     
                     print("La id de la lista de recetas es: " + String(Int(truncating: self.state.id_cestaCompra_actual!)))
 
+                    
                     self.state = self.state.doCopy(
                         id_cestaCompra_actual: currentState.id_cestaCompra_actual,
                         id_receta_actual: currentState.id_receta_actual,

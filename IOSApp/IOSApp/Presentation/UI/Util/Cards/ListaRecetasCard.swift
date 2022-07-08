@@ -16,13 +16,15 @@ struct ListaRecetasCard: View {
     private let caseUses: UseCases
     
     @Binding var tabSelection: Int
+    @Binding var id_listaCompra: Int
         
     init(
         caseUses: UseCases,
         nombre: String,
         id_listaRecetas: Int,
         eliminarCard: @escaping (Int) -> Void,
-        tabSelection: Binding<Int>
+        tabSelection: Binding<Int>,
+        id_listaCompra: Binding<Int>
     ){
         self.caseUses = caseUses
         self.nombre = nombre
@@ -30,6 +32,7 @@ struct ListaRecetasCard: View {
         self.eliminarCard = eliminarCard
         
         self._tabSelection = tabSelection
+        self._id_listaCompra = id_listaCompra
     }
     
     @State var openDeleteListaRecetasCard: Bool = false
@@ -50,10 +53,16 @@ struct ListaRecetasCard: View {
                     destination: {
                         ListaRecetas(
                             caseUses: caseUses,
-                            id_listaRecetas: id_listaRecetas,
                             nombre: nombre,
-                            tabSelection: $tabSelection
+                            tabSelection: $tabSelection,
+                            id_listaRecetas: $id_listaCompra,
+                            id_listaRecetasStatic: id_listaRecetas
                         )
+                        .onAppear{
+                            //Modifico la lista de recetas activa
+                            print("He modificado la lista de recetas")
+                            id_listaCompra = id_listaRecetas
+                        }
                         .navigationTitle(nombre)
                     }
                 )
@@ -71,17 +80,17 @@ struct ListaRecetasCard: View {
                     }
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .padding()
-            .onTapGesture {
-                if openDeleteListaRecetasCard {
-                    //EN el caso de que se clique la lista pero aparezca el símbolo de eliminar, lo esconde
-                    openDeleteListaRecetasCard = false
-                }
-            }
-            .onLongPressGesture(perform: {
-                openDeleteListaRecetasCard = true
-            })
+            .padding(4)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .onTapGesture {
+            if openDeleteListaRecetasCard {
+                //EN el caso de que se clique la lista pero aparezca el símbolo de eliminar, lo esconde
+                openDeleteListaRecetasCard = false
+            }
+        }
+        .onLongPressGesture(perform: {
+            openDeleteListaRecetasCard = true
+        })
     }
 }

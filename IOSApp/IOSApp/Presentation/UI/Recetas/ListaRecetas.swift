@@ -12,27 +12,30 @@ import sharedApp
 struct ListaRecetas: View {
     
     private let caseUses: UseCases
-    private let id_listaRecetas: Int
     private let nombre: String
+    private let id_listaRecetasStatic: Int
         
     @ObservedObject var viewModel: ListaRecetasViewModel
     
     @Binding var tabSelection: Int
+    @Binding var id_listaRecetas: Int
     
     init(
         caseUses: UseCases,
-        id_listaRecetas: Int,
         nombre: String,
-        tabSelection: Binding<Int>
+        tabSelection: Binding<Int>,
+        id_listaRecetas: Binding<Int>,
+        id_listaRecetasStatic: Int
     ){
         self.caseUses = caseUses
-        self.id_listaRecetas = id_listaRecetas
         self._tabSelection = tabSelection
+        self._id_listaRecetas = id_listaRecetas
         self.nombre = nombre
+        self.id_listaRecetasStatic = id_listaRecetasStatic
         
         self.viewModel = ListaRecetasViewModel(
             caseUses: self.caseUses,
-            id_listaRecetas: self.id_listaRecetas,
+            id_listaRecetas: self.id_listaRecetasStatic,
             nombre: nombre
         )
     }
@@ -70,10 +73,12 @@ struct ListaRecetas: View {
                             viewModel.onTriggerEvent(event: CestaCompraEventos.onDeleteReceta(receta: receta))
                         },
                         addRecetaExistente: { receta in
+                            print("Tratando de añadir receta con ingredientes: ")
+                            dump(receta.ingredientes)
                             viewModel.onTriggerEvent(event: CestaCompraEventos.onAddRecetaExistente(
                                 receta: receta.doCopy(
-                                    id_cestaCompra: Int32(id_listaRecetas),
-                                    id_Receta: nil,
+                                    id_cestaCompra: Int32(id_listaRecetasStatic),
+                                    id_Receta: receta.id_Receta,
                                     nombre: receta.nombre,
                                     cantidad: receta.cantidad,
                                     user: receta.user,
@@ -85,7 +90,8 @@ struct ListaRecetas: View {
                                 )
                             ))
                         },
-                        id_listaRecetas: id_listaRecetas
+                        id_listaRecetas: id_listaRecetasStatic,
+                        caseUses: caseUses
                     )
                     .offset(y: -24)
                     
@@ -120,8 +126,8 @@ struct ListaRecetas: View {
                         addReceta:{ receta in
                             viewModel.onTriggerEvent(event: CestaCompraEventos.onAddRecetaExistente(
                                 receta: receta.doCopy(
-                                    id_cestaCompra: Int32(id_listaRecetas),
-                                    id_Receta: nil,
+                                    id_cestaCompra: Int32(id_listaRecetasStatic),
+                                    id_Receta: receta.id_Receta,
                                     nombre: receta.nombre,
                                     cantidad: 1,
                                     user: receta.user,
@@ -137,20 +143,21 @@ struct ListaRecetas: View {
                         activarReceta:{ receta, active in },
                         eliminarReceta: { receta in },
                         addRecetaExistente: {receta in},
-                        id_listaRecetas: id_listaRecetas
+                        id_listaRecetas: id_listaRecetasStatic,
+                        caseUses: caseUses
                     )
                 }
             }
+            ZStack(alignment: .bottomTrailing){
+                FloatingButton(
+                    openDialog: $calculateListaCompra,
+                    simbolsys: "cart",
+                    isCalcular: true,
+                    tabSelection: $tabSelection
+                )
+                .offset(y: -18)
+            }
         }
-        .overlay(
-            FloatingButton(
-                openDialog: $calculateListaCompra,
-                simbolsys: "cart"
-            )
-            .offset(y: -28)
-            ,
-            alignment: .bottomTrailing
-        )
     }
 }
 

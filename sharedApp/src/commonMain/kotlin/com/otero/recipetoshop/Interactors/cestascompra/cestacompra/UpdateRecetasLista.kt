@@ -1,5 +1,6 @@
 package com.otero.recipetoshop.Interactors.cestascompra.cestacompra
 
+import com.otero.recipetoshop.Interactors.cestascompra.recetas.GetDatosReceta
 import com.otero.recipetoshop.datasource.cache.cacherecetas.RecetaCache
 import com.otero.recipetoshop.domain.model.CestaCompra.Receta
 import com.otero.recipetoshop.domain.util.CommonFLow
@@ -20,10 +21,25 @@ class UpdateRecetasLista(
         val result: HashMap<String,List<Any>?> = hashMapOf()
 
         //Obtengo todas las recetas actuales guardadas en la caché de la aplicación de todas las listas.
-        val allRecetas = recetaCache.getAllRecetasInCestasCompra()
-        //Guardo las recetas en la key "allRecetas"
-        result.put("allRecetas", allRecetas)
+        val allRecetas = recetaCache.getAllRecetasInCestasCompra()?.toMutableList()
+        result.put("allRecetas", emptyList())
+
         if(allRecetas != null) {
+            //Obtengo los ingredientes de todas las recetas y se los añado.
+            val iterator = allRecetas.listIterator()
+            while(iterator.hasNext()) {
+                var receta: Receta = iterator.next()
+                val ingredientes = recetaCache.getIngredientesByReceta(receta.id_Receta!!)
+                if (ingredientes != null) {
+                    receta = receta.copy(ingredientes = ingredientes)
+                    iterator.set(receta)
+                }
+            }
+
+            val allRecetasIngredientes = allRecetas.toList()
+            //Guardo las recetas con los ingredientes en la key "allRecetas"
+            result.put("allRecetas", allRecetasIngredientes)
+
             //De todas las recetas extraigo las recetas cuyo id_cestacompra sea el actual y estén activas.
             val recetasListaActivas = allRecetas.filter { receta ->
                 receta.id_cestaCompra == id_listaRecetas
