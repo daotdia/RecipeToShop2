@@ -58,11 +58,6 @@ struct ListaRecetasCard: View {
                             id_listaRecetas: $id_listaCompra,
                             id_listaRecetasStatic: id_listaRecetas
                         )
-                        .onAppear{
-                            //Modifico la lista de recetas activa
-                            print("He modificado la lista de recetas")
-                            id_listaCompra = id_listaRecetas
-                        }
                         .navigationTitle(nombre)
                     }
                 )

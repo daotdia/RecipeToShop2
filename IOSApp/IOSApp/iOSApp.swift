@@ -62,10 +62,16 @@ struct iOSApp: App {
             
                 //TODO: Crear screen de compra.
                 NavigationView{
-                   ListaCompra(
-                    caseUses: caseUses,
-                    id_listaCompra: $id_listaCompra
-                   )
+                    if #available(iOS 15.0, *) {
+                        ListaCompra(
+                            caseUses: caseUses,
+                            id_listaCompra: $id_listaCompra
+                        )
+                        .navigationTitle("Lista de la compra")
+                    } else {
+                        // Fallback on earlier versions
+                        Text("Solo compatible con version IOS 15.0 o superior")
+                    }
                 }
                 .tabItem(){
                     //TODO: Poner las imagenes correctas de los iconos de los menus.

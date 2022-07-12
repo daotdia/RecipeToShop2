@@ -39,6 +39,8 @@
 		EE9789C9286C741900C4549B /* RecetaList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9789C8286C741900C4549B /* RecetaList.swift */; };
 		EEB128AB28778D17000163FD /* ListaCompra.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB128AA28778D17000163FD /* ListaCompra.swift */; };
 		EEB128AD2877B173000163FD /* ListaCompraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB128AC2877B173000163FD /* ListaCompraViewModel.swift */; };
+		EEB128AF287C8A25000163FD /* ProductoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB128AE287C8A25000163FD /* ProductoCard.swift */; };
+		EEB128B1287CA0D4000163FD /* ParserProductosAlimentos.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB128B0287CA0D4000163FD /* ParserProductosAlimentos.swift */; };
 		EEBAF6F8286B663B004DF640 /* ListaRecetasCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBAF6F7286B663B004DF640 /* ListaRecetasCard.swift */; };
 		EEFA12B42874C01D00E17057 /* ContenidoReceta.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFA12B32874C01D00E17057 /* ContenidoReceta.swift */; };
 		EEFA12B628750B0D00E17057 /* RecetaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFA12B528750B0D00E17057 /* RecetaViewModel.swift */; };
@@ -84,6 +86,8 @@
 		EE9789C8286C741900C4549B /* RecetaList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecetaList.swift; sourceTree = "<group>"; };
 		EEB128AA28778D17000163FD /* ListaCompra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaCompra.swift; sourceTree = "<group>"; };
 		EEB128AC2877B173000163FD /* ListaCompraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaCompraViewModel.swift; sourceTree = "<group>"; };
+		EEB128AE287C8A25000163FD /* ProductoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductoCard.swift; sourceTree = "<group>"; };
+		EEB128B0287CA0D4000163FD /* ParserProductosAlimentos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserProductosAlimentos.swift; sourceTree = "<group>"; };
 		EEBAF6F7286B663B004DF640 /* ListaRecetasCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaRecetasCard.swift; sourceTree = "<group>"; };
 		EEFA12B32874C01D00E17057 /* ContenidoReceta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContenidoReceta.swift; sourceTree = "<group>"; };
 		EEFA12B528750B0D00E17057 /* RecetaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecetaViewModel.swift; sourceTree = "<group>"; };
@@ -230,6 +234,7 @@
 				EE94AD46282C39BF009087A7 /* DespensaCard.swift */,
 				EEBAF6F7286B663B004DF640 /* ListaRecetasCard.swift */,
 				EE9789C6286C6E0B00C4549B /* RecetaCard.swift */,
+				EEB128AE287C8A25000163FD /* ProductoCard.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 				EE94AD49282C4D9F009087A7 /* AbrevTipoUnidadParser.swift */,
 				EE42D1DD28663B020068E797 /* ComprobarTipoUnidad.swift */,
 				EEFA12B72875260B00E17057 /* DataExtensions.swift */,
+				EEB128B0287CA0D4000163FD /* ParserProductosAlimentos.swift */,
 			);
 			path = Utill;
 			sourceTree = "<group>";
@@ -400,9 +406,11 @@
 				EE42D1D72865CAE50068E797 /* DropDownRow.swift in Sources */,
 				EEFA12B628750B0D00E17057 /* RecetaViewModel.swift in Sources */,
 				EEFCD0A9286F0F7E00B36D19 /* NavegarListaRecetas.swift in Sources */,
+				EEB128AF287C8A25000163FD /* ProductoCard.swift in Sources */,
 				EE94AD4F282C6B1B009087A7 /* AutocompleteTextField.swift in Sources */,
 				EE42D1DC2865E5D80068E797 /* ErrorBorder.swift in Sources */,
 				EE0A788228734FAA00040B05 /* AlimentosList.swift in Sources */,
+				EEB128B1287CA0D4000163FD /* ParserProductosAlimentos.swift in Sources */,
 				EE94AD2028298844009087A7 /* Despensa.swift in Sources */,
 				EE94AD4D282C57C5009087A7 /* FloatingButton.swift in Sources */,
 				EE42D1F7286B211D0068E797 /* ListasRecetasViewModel.swift in Sources */,

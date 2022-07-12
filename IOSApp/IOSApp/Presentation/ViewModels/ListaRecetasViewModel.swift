@@ -210,7 +210,7 @@ class ListaRecetasViewModel: ObservableObject{
                 if dataState?.data != nil {
                     //TODO: No elimina el alimento por culpa de backend.
                     print("Intento eliminar el alimento con id: " +
-                          String(Int(truncating: alimento.id_alimento!)))
+                    String(Int(truncating: alimento.id_alimento!)))
                     self.rePrintListaRecetas()
                 }
             }

@@ -158,6 +158,11 @@ struct ListaRecetas: View {
                 .offset(y: -18)
             }
         }
+        .onDisappear{
+            //Modifico la lista de recetas activa
+            print("He modificado la lista de recetas")
+            id_listaRecetas = id_listaRecetasStatic
+        }
     }
 }
 

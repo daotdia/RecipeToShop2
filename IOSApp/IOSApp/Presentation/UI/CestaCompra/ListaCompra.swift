@@ -33,42 +33,91 @@ struct ListaCompra: View {
     
     var body: some View {
         ZStack{
-            //La pila de la pantalla
-            ScrollView{
-                LazyVStack{
-                    //Recuadro de cada supermercado. TODO: Pendiente hacer para varios.
-                    ForEach(1..<1){ _ in
-                        //Imagen del supermercado
-                        AsyncImage(
-                            url: URL(
-                                string: "https://vams-loyalia-storage.s3.eu-west-1.amazonaws.com/images/deals/_720x495/carrefour.jpg"
-                            )
-                        ){ phase in
-                            switch phase {
-                                case .empty:
-                                    ProgressView()
-                                case .success(let image):
-                                    image.resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(maxWidth: 300, maxHeight: 180)
-                                case .failure:
-                                    Image(systemName: "photo")
-                                        .frame(width: 84, height: 84, alignment: .center)
-                                @unknown default:
-                                    EmptyView()
+            VStack{
+                //La pila de la pantalla
+                ScrollView{
+                    LazyVStack{
+                        //Recuadro de cada supermercado. TODO: Pendiente hacer para varios.
+                        ForEach(1..<2){ _ in
+                            //Imagen del supermercado
+                            AsyncImage(
+                                url: URL(
+                                    string: "https://vams-loyalia-storage.s3.eu-west-1.amazonaws.com/images/deals/_720x495/carrefour.jpg"
+                                )
+                            ){ phase in
+                                switch phase {
+                                    case .empty:
+                                        ProgressView()
+                                    case .success(let image):
+                                        image.resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(maxWidth: .infinity, maxHeight: 80)
+                                    case .failure:
+                                        Image(systemName: "photo")
+                                            .frame(width: 84, height: 84, alignment: .center)
+                                    @unknown default:
+                                        EmptyView()
+                                }
+                            }
+                            
+                            //Lista de productos del supermercado. TODO: falta por añadir los productos para cada supermercado.
+                            LazyVGrid(
+                                columns: Array(repeating: .init(.adaptive(minimum: 100)), count: 3),
+                                spacing: 8
+                            ){
+                                ForEach(self.viewModel.state.listaProductos, id: \.self.query){ producto in
+                                    ProductoCard(producto: producto)
+                                        .frame(maxWidth: 150, maxHeight: 150)
+                                }
                             }
                         }
-                        
-                        //Lista de productos del supermercado
-                        
+                        .padding()
                     }
-                    .shadow(color: Color.green, radius: 4)
-                    .cornerRadius(14)
                 }
-            }
-            VStack{
+                .frame(minHeight: 400)
+                //Aquí se encuentra el peso total y el precio total de la lista de la compra.
+                HStack{
+                    //Peso total de la compra.
+                    Text(
+                        viewModel.state.peso_total > 1000 ?
+                        String(
+                            String(Float(viewModel.state.peso_total/1000)) + " Kg"
+                        )
+                        :
+                        String(
+                            String(Float(viewModel.state.peso_total/1000)) + " Gr"
+                        )
+                    )
+                        .foregroundColor(Color.green)
+                    
+                    Spacer()
+                    
+                    //Precio total de la compra.
+                    Text(String(viewModel.state.precio_total) + " €")
+                        .foregroundColor(Color.green)
+                }
+                .padding([.leading, .trailing], 18)
                 
+                //Aquí se encuentran todos los alimentos no encontrados.
+                Text("Alimentos no encontrados")
+                    .foregroundColor(Color.green)
                 
+                //Lista con todos los alimentos no encontrados.
+                HStack{
+                    ScrollView{
+                        LazyHStack{
+                            ForEach(
+                                viewModel.state.alimentos_no_encontrados,
+                                id: \.self.id_alimento
+                            ){ alimento in
+                                //Cada alimento no encontrado.
+                                DespensaCard(
+                                    alimento: alimento, deleteAlimento: { alimento in }
+                                )
+                            }
+                        }
+                    }
+                }
             }
         }
     }
