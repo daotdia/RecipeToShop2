@@ -38,6 +38,7 @@ class CalcularProductos(
                     all_alimentos_cesta.addAll(alimentos_cesta!!)
             }
         }
+
         //Obtengo los alimentos activos de la despensa.
         val responseDespensa = despensaCache.getAlimentoDespensaByActive(active = true)
         var alimentos_despensa = arrayListOf<Alimento>()
@@ -46,6 +47,7 @@ class CalcularProductos(
         } else {
             alimentos_despensa = ArrayList(alimentos_despensa)
         }
+
         //En el caso de que se hayan encontrado alimentos a traducir a productos.
         println("He llegado a justo antes del calculo de los productos, con cesta de tamaño: " + all_alimentos_cesta.size)
         if(all_alimentos_cesta.isNotEmpty()){
@@ -54,17 +56,34 @@ class CalcularProductos(
             println("He instanciado la calculadora")
             //Preparo la calculadora
             caluladoraProductos.iniciarCalculadora()
+            var alimentos_unificados: ArrayList<Alimento> = arrayListOf()
+
+            //Calculo las cantidades de ingredientes únicos necesario respecto a las cantidades de sus recetas.
+            if (!ingredientes_cesta.isNullOrEmpty()) {
+                for(alimento in ingredientes_cesta){
+                    //Modifico la cantidad del alimento según la cantidad de la receta.
+                    alimento.cantidad = alimento.cantidad * (recetaCache.getRecetaByIdInCestaCompra(id_receta = alimento.id_receta?: -1)?.cantidad ?: 1)
+                }
+            }
+
+            if(!all_alimentos_cesta.isNullOrEmpty()){
+                //Unifico los alimentos necesarios duplicados.
+                alimentos_unificados =  caluladoraProductos.unificarAlimentos(ArrayList(all_alimentos_cesta))
+                println("Los alimentos unificados a necesitar son; " + alimentos_unificados.toString())
+            }
+
             //Calculo la cantidad de alimentos necesarios; restando lo que ya se tiene en despensa.
             if(!alimentos_despensa.isNullOrEmpty()){
-                all_alimentos_cesta = caluladoraProductos.calcularNecesidadesAlimentos(alimentos_despensa = alimentos_despensa, alimentos_cesta = all_alimentos_cesta)
+                alimentos_unificados = caluladoraProductos.calcularNecesidadesAlimentos(alimentos_despensa = alimentos_despensa, alimentos_cesta = alimentos_unificados)
+                println("Los alimentos necesarios restando despensa son: " + all_alimentos_cesta.toString())
             }
             //Encuentro los productos
-            val productos_brutos = caluladoraProductos.encontrarProductos(all_alimentos_cesta)
-            var otravez = true
+            val productos_brutos = caluladoraProductos.encontrarProductos(alimentos_unificados)
+            //var otravez = true
             //Selecciono los mejores productos
             val mejores_productos = caluladoraProductos.seleccionarMejorProducto(productos_brutos)
             //Calculo la cantidad de productos.
-            mejores_productos_unidades = caluladoraProductos.calcularCantidadesProductos(alimentos = ArrayList(all_alimentos_cesta), productos = ArrayList(mejores_productos))
+            mejores_productos_unidades = caluladoraProductos.calcularCantidadesProductos(alimentos = ArrayList(alimentos_unificados), productos = ArrayList(mejores_productos))
             for(producto in mejores_productos_unidades){
                 println("La cantidad del producto es: " + producto.cantidad)
                 println("El peso del producto es: " + producto.peso)

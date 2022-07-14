@@ -144,9 +144,15 @@ class ListaCompraViewModel: ObservableObject {
             callback: { dataState in
                 if dataState?.data != nil {
                     //Productos guardados eliminados.
-                    self.state = ListaCompraState()
+                    self.state = self.state.doCopy(
+                        listaProductos: [],
+                        id_cestaCompra: Int32(self.id_listaRecetas),
+                        precio_total: 0,
+                        peso_total: 0,
+                        alimentos_cesta: [],
+                        alimentos_no_encontrados: []
+                    )
                 }
-
             }
         )
     }

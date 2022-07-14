@@ -21,6 +21,8 @@ struct RecetaList: View {
     
     @State var isBusqueda: Bool
     
+    @Binding var onRecetaContent: Bool
+    
     @ObservedObject var viewModel: ListaRecetasViewModel
         
     init(
@@ -32,7 +34,8 @@ struct RecetaList: View {
         eliminarReceta: @escaping (Receta) -> Void,
         addRecetaExistente: @escaping (Receta) -> Void,
         id_listaRecetas: Int,
-        caseUses: UseCases
+        caseUses: UseCases,
+        onRecetaContent: Binding<Bool>
     ){
         self.viewModel = viewModel
         self.isBusqueda = isBusqueda
@@ -43,6 +46,7 @@ struct RecetaList: View {
         self.id_listaRecetas = id_listaRecetas
         self.addRecetaExistente = addRecetaExistente
         self.caseUses = caseUses
+        self._onRecetaContent = onRecetaContent
     }
     
     @State var nombreReceta: String = ""
@@ -98,7 +102,8 @@ struct RecetaList: View {
                                         addRecetaExistente(receta)
                                     },
                                     id_listaRecetas: id_listaRecetas,
-                                    caseUses: caseUses
+                                    caseUses: caseUses,
+                                    onRecetaContent: $onRecetaContent
                                 )
                             }
                             .frame(minWidth: 100, minHeight: 100)
@@ -135,7 +140,8 @@ struct RecetaList: View {
                                         addRecetaExistente(receta)
                                     },
                                     id_listaRecetas: id_listaRecetas,
-                                    caseUses: caseUses
+                                    caseUses: caseUses,
+                                    onRecetaContent: $onRecetaContent
                                 )
                             }
                             .frame(minWidth: 100, minHeight: 100)
@@ -170,7 +176,8 @@ struct RecetaList: View {
                                         addRecetaExistente(receta)
                                     },
                                     id_listaRecetas: id_listaRecetas,
-                                    caseUses: caseUses
+                                    caseUses: caseUses,
+                                    onRecetaContent: $onRecetaContent
                                 )
                             }
                             .frame(minWidth: 100, minHeight: 100)

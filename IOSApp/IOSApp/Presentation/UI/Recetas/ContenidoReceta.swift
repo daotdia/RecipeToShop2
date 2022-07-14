@@ -15,12 +15,16 @@ struct ContenidoReceta: View {
     
     @ObservedObject var viewModel: RecetaViewModel
     
+    @Binding var onRecetaContent: Bool
+    
     init(
         receta: Receta,
-        caseUses: UseCases
+        caseUses: UseCases,
+        onRecetaContent: Binding<Bool>
     ){
         self.receta = receta
         self.caseUses = caseUses
+        self._onRecetaContent = onRecetaContent
         
         self.viewModel = RecetaViewModel(
             caseUses: caseUses,
@@ -94,6 +98,9 @@ struct ContenidoReceta: View {
             }
         }
         .navigationTitle(receta.nombre)
+        .onDisappear{
+            onRecetaContent = false
+        }
         .sheet(isPresented: $openDialog, content: {
             NewAlimentoDialog(
                 caseUses: self.caseUses,

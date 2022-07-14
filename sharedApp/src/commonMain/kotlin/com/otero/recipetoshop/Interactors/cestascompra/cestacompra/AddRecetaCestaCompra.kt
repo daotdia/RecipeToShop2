@@ -48,7 +48,11 @@ class AddRecetaCestaCompra (
             if (receta.ingredientes.isNotEmpty()){
                 val ingredientes = receta.ingredientes
                 for (ingrediente in ingredientes){
-                    recetaCache.insertIngredienteToReceta(ingrediente.copy(id_cestaCompra = receta.id_cestaCompra, id_receta = receta.id_Receta))
+                    recetaCache.insertIngredienteToReceta(ingrediente.copy(
+                        id_cestaCompra = receta.id_cestaCompra,
+                        id_receta = receta.id_Receta,
+                        active = receta.active
+                    ))
                 }
                 emit(DataState.data(data = Unit))
             }
@@ -56,7 +60,11 @@ class AddRecetaCestaCompra (
             if (receta.ingredientes.isNotEmpty()){
                 val ingredientes = receta.ingredientes
                 for (ingrediente in ingredientes){
-                    recetaCache.insertIngredienteToReceta(ingrediente.copy(id_cestaCompra = receta.id_cestaCompra, id_receta = id_receta))
+                    recetaCache.insertIngredienteToReceta(ingrediente.copy(
+                        id_cestaCompra = receta.id_cestaCompra,
+                        id_receta = id_receta,
+                        active = receta.active
+                    ))
                 }
                 emit(DataState.data(data = Unit))
             }

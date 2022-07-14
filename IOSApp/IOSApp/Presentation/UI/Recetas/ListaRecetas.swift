@@ -41,6 +41,7 @@ struct ListaRecetas: View {
     }
     
     @State var calculateListaCompra: Bool = false
+    @State var onRecetaContent: Bool = false
     
     var body: some View {
         ZStack{
@@ -91,7 +92,8 @@ struct ListaRecetas: View {
                             ))
                         },
                         id_listaRecetas: id_listaRecetasStatic,
-                        caseUses: caseUses
+                        caseUses: caseUses,
+                        onRecetaContent: $onRecetaContent
                     )
                     .offset(y: -24)
                     
@@ -144,7 +146,8 @@ struct ListaRecetas: View {
                         eliminarReceta: { receta in },
                         addRecetaExistente: {receta in},
                         id_listaRecetas: id_listaRecetasStatic,
-                        caseUses: caseUses
+                        caseUses: caseUses,
+                        onRecetaContent: Binding.constant(false)
                     )
                 }
             }
@@ -161,7 +164,10 @@ struct ListaRecetas: View {
         .onDisappear{
             //Modifico la lista de recetas activa
             print("He modificado la lista de recetas")
-            id_listaRecetas = id_listaRecetasStatic
+            if(!onRecetaContent){
+                id_listaRecetas = -2
+                id_listaRecetas = id_listaRecetasStatic
+            }
         }
     }
 }

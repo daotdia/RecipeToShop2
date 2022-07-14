@@ -152,11 +152,11 @@ class ListaRecetasViewModel: ObservableObject{
                     self.addIngredientesReceta(
                         receta: Receta(
                             id_cestaCompra: receta.id_cestaCompra,
-                            id_Receta: KotlinInt(integerLiteral: Int(id_nuevo)),
+                            id_Receta: nil,
                             nombre: receta.nombre,
-                            cantidad: receta.cantidad,
+                            cantidad: cantidad ?? receta.cantidad,
                             user: receta.user,
-                            active: receta.active,
+                            active: active,
                             imagenSource: receta.imagenSource,
                             ingredientes: receta.ingredientes,
                             rating: receta.rating,
@@ -164,7 +164,17 @@ class ListaRecetasViewModel: ObservableObject{
                         ),
                         id_nuevo: Int(id_nuevo)
                     )
+                    //Elimino los ingredientes de la receta,
+                    self.caseUses.deleteIngredienteReceta.deleteIngredientesReceta(
+                        id_receta: receta.id_Receta as! Int32
+                    ).collectFlow(
+                        coroutineScope: nil,
+                        callback: {_ in}
+                    )
+                    
+                    //Elimino la receta (reprint implícito)
                     self.deleteReceta(receta: receta)
+                    
                 }
             }
         )

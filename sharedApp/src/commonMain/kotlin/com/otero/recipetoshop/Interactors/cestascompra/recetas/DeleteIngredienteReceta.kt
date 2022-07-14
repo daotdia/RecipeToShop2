@@ -19,4 +19,14 @@ class DeleteIngredienteReceta(
 
         emit(DataState.data(data = Unit, message = null))
     }.asCommonFlow()
+
+    fun deleteIngredientesReceta(
+        id_receta: Int
+    ): CommonFLow<DataState<Unit>> = flow{
+        emit(DataState.loading())
+
+        recetaCache.removeIngredientesByRecetaInReceta(id_receta)
+
+        emit(DataState.data(data = Unit, message = null))
+    }.asCommonFlow()
 }

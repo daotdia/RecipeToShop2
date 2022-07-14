@@ -20,6 +20,8 @@ struct RecetaCard: View {
     private let caseUses: UseCases
     
     @Binding var isBusqueda: Bool
+    @Binding var onRecetaContent: Bool
+
     
     init(
         receta: Receta,
@@ -29,7 +31,8 @@ struct RecetaCard: View {
         addReceta: @escaping (Receta) -> Void,
         addRecetaExistente: @escaping (Receta) -> Void,
         id_listaRecetas: Int,
-        caseUses: UseCases
+        caseUses: UseCases,
+        onRecetaContent: Binding<Bool>
     ){
         self.receta = receta
         self._isBusqueda = isBusqueda
@@ -39,10 +42,10 @@ struct RecetaCard: View {
         self.id_listaRecetas = id_listaRecetas
         self.addRecetaExistente = addRecetaExistente
         self.caseUses = caseUses
+        self._onRecetaContent = onRecetaContent
     }
     
     @State var openDeleteReceta: Bool = false
-    @State var onRecetaContent: Bool = false
     
     var body: some View {
         VStack{
@@ -111,21 +114,19 @@ struct RecetaCard: View {
                 }
                 
                 //La navegación al contenido de la receta
-                if onRecetaContent{
-                    ZStack{
-                        NavigationLink(
-                            destination: ContenidoReceta(
-                                receta: receta,
-                                caseUses: caseUses
-                            ),
-                            isActive: $onRecetaContent
-                        ){
-                                EmptyView()
-                            }
+                ZStack{
+                    NavigationLink(
+                        destination: ContenidoReceta(
+                            receta: receta,
+                            caseUses: caseUses,
+                            onRecetaContent: $onRecetaContent
+                        ),
+                        isActive: $onRecetaContent
+                    ){
+                        EmptyView()
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
-                
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             .padding(0.1)
             .onTapGesture {

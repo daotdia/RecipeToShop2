@@ -30,8 +30,11 @@ class UpdateRecetaCestaCompra (
             val id = recetaCache.insertRecetaToCestaCompra(nueva_receta)
             emit(DataState.data(message = null, data = id))
         } else {
+            //Primero modifico actve en recera y la inserto en caché.
             val nueva_receta = receta.copy(active = active)
             val id = recetaCache.insertRecetaToCestaCompra(nueva_receta)
+
+            //Devuelvo el id de la receta modificada.
             emit(DataState.data(message = null, data = id))
         }
     }.asCommonFlow()
