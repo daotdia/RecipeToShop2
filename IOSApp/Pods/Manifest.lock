@@ -1,0 +1,16 @@
+PODS:
+  - sharedApp (1.0.0)
+
+DEPENDENCIES:
+  - sharedApp (from `../sharedApp`)
+
+EXTERNAL SOURCES:
+  sharedApp:
+    :path: "../sharedApp"
+
+SPEC CHECKSUMS:
+  sharedApp: 5bdf6cfa4dfbcd2e20041d7c4b92a50ca9dc7b37
+
+PODFILE CHECKSUM: 045435aaf5d37c24067336e3d567dfa150f2fe80
+
+COCOAPODS: 1.11.3

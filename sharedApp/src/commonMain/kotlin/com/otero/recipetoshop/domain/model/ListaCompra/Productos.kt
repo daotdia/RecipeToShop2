@@ -5,7 +5,7 @@ import com.otero.recipetoshop.domain.util.TipoUnidad
 
 data class Productos(
     val id_cestaCompra: Int = -1,
-    val productos: ArrayList<List<Producto>> = arrayListOf(),
+    var productos: ArrayList<List<Producto>> = arrayListOf(),
     val productos_cache: List<Producto> = listOf()
 ) {
     data class Producto(

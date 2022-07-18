@@ -2,7 +2,9 @@ package com.otero.recipetoshop.Interactors.cestascompra.cestacompra
 
 import com.otero.recipetoshop.datasource.cache.cacherecetas.RecetaCache
 import com.otero.recipetoshop.domain.model.despensa.Alimento
+import com.otero.recipetoshop.domain.util.CommonFLow
 import com.otero.recipetoshop.domain.util.DataState
+import com.otero.recipetoshop.domain.util.asCommonFlow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -11,7 +13,7 @@ class DeleteAlimentoCestaCompra (
     ){
     fun deleteAlimentoCestaCompra(
         alimento: Alimento
-    ): Flow<DataState<Unit>> = flow {
+    ): CommonFLow<DataState<Unit>> = flow {
         emit(DataState.loading())
         println("Alimento id: " + alimento.id_alimento)
         if(alimento.id_alimento != null){
@@ -20,5 +22,5 @@ class DeleteAlimentoCestaCompra (
         } else{
             emit(DataState.data(message = null, data = Unit))
         }
-    }
+    }.asCommonFlow()
 }

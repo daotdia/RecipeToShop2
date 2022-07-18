@@ -20,5 +20,24 @@ data class CestaCompraState (
     var onNewReceta: Boolean = false,
     val queueError: Queue<GenericMessageInfo> = Queue(mutableListOf()),
     val resultadosAutoCompleteAlimentos: List<String> = listOf(),
-    val recetasFavoritas: List<Receta> = listOf()
-)
+    val recetasFavoritas: List<Receta> = listOf(),
+    val recetasBuscadas: List<Receta> = listOf()
+){
+    constructor(): this(
+        id_cestaCompra_actual = null,
+        id_receta_actual = null,
+        nombre = "",
+        alimentosActive = listOf(),
+        alimentosInactive = listOf(),
+        allAlimentos = listOf(),
+        recetasActive = listOf(),
+        recetasInactive = listOf(),
+        allrecetas = listOf(),
+        listaCestasCompra = listOf(),
+        onNewReceta = false,
+        queueError = Queue(mutableListOf()),
+        resultadosAutoCompleteAlimentos = listOf(),
+        recetasFavoritas = listOf(),
+        recetasBuscadas = listOf()
+    )
+}

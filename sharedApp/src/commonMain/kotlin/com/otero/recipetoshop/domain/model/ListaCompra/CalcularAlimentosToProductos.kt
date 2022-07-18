@@ -11,7 +11,9 @@ import kotlin.Float.Companion.MAX_VALUE
 import kotlin.math.ceil
 
 class CalcularAlimentosToProductos {
-    val productos: Productos = Productos()
+
+    var productos: Productos = Productos()
+
     fun iniciarCalculadora(): Unit {
         println("He llegado a calculo de JSON")
         val json: JsonArray? = Productos_prueba.json.jsonObject.get("productos")?.jsonArray
@@ -39,26 +41,77 @@ class CalcularAlimentosToProductos {
                             0f
                         }
                     )
-                    producto.add(elemento)
+                    //En el caso de que no se haya añadido ya un producto con nombre identico se añade a los productos existentes,.
+                    if(
+                        !productos.productos.any {
+                            it.any{ producto ->
+                                producto.nombre.equals(elemento.nombre)
+                            }
+                        }
+                    ){
+                        producto.add(elemento)
+                    }
                 }
                 productos.productos.add(producto)
             }
+            println("La cantidad de productos añadidos son: " + productos.productos.size)
+            println("Los productos son: " + productos.productos.toString())
         }
+    }
+
+    fun unificarAlimentos(alimentos: ArrayList<Alimento>): ArrayList<Alimento>{
+        print("Los alimentos a unificar son: " + alimentos.toString())
+        //Los alimentos con mismo nombre se unen en una  misma necesidad de alimento y para ello hace falta una nueva lista.
+        var alimentos_unificados: ArrayList<Alimento> = arrayListOf()
+        //Obtengo lista con alimentos únicos.
+        //Elimino los alimentos unificados con nombre repetido conservando su orden.
+        var alimentos_unicos = ArrayList(alimentos.distinctBy { it.nombre })
+        println("El número de alimentos distintos necesarios son: " + alimentos_unicos.size)
+        for(alimento in alimentos_unicos){
+            //Obtengo los alimentos repetidos para cada alimento si es que los hubiese.
+            val repetidos= alimentos.filter {
+                alimento.nombre.equals(it.nombre)
+            }
+            //En el caso de que hubiese al menos un alimento repetido.
+            if(repetidos.size > 1){
+                println("Encontrados alimentos repetidos con el nombre: " + repetidos.first().nombre)
+                val iterator = repetidos.iterator()
+                //Obtengo el primer alimenyo.
+                val alimento_representativo = iterator.next()
+                //Mientras existan alimentos repetidos se añade la cantidad al alimento repetido encontrado.
+                while(iterator.hasNext()){
+                    //Sumo las cantidades
+                    alimento_representativo.cantidad += iterator.next().cantidad
+                }
+                //Añado el alimento unificado a la lista
+                println("Alimento unificado de peso: " + alimento_representativo.nombre + " , peso " + alimento_representativo.cantidad)
+                alimentos_unificados.add(alimento_representativo)
+            } else {
+                //En caso de que no esté repetido simplemento lo añado a la lista de alimentos unificados.
+                alimentos_unificados.add(alimento)
+            }
+        }
+        println("El número de alimentos unificados es: " + alimentos_unificados.size)
+        return alimentos_unificados
     }
 
     fun encontrarProductos(alimentos: List<Alimento>): ArrayList<ArrayList<Productos.Producto>> {
         val result: ArrayList<ArrayList<Productos.Producto>> = arrayListOf()
+        println("Los alimentos a encontrar producto son: " + alimentos.toString())
         for (alimento in alimentos) {
             val elementos = productos.matchElementos(alimento.nombre)
             if(elementos.isNotEmpty()){
                 result.add(elementos)
             }
         }
+        println("Los productos seleccionados son: " + result.toString())
         return result
     }
 
     fun seleccionarMejorProducto(productos: ArrayList<ArrayList<Productos.Producto>>): ArrayList<Productos.Producto>{
         val result: ArrayList<Productos.Producto> = arrayListOf()
+        println("El numero de tipo de productos a seleccionar es: " + productos.size)
+        println("Los productos a seleccionar son: " + productos.toString())
         for(tipo in productos){
             var best: Float = MAX_VALUE
             var ganador: Productos.Producto? = null
@@ -72,6 +125,7 @@ class CalcularAlimentosToProductos {
                     best = precio_peso
                 }
             }
+            println("El ganador ha sido: " + ganador?.nombre)
             result.add(ganador!!)
         }
         return result
@@ -100,20 +154,22 @@ class CalcularAlimentosToProductos {
                 producto.tipoUnidad = cantidad_tipo.get("tipounidad") as TipoUnidad
             }
         }
+
         //Después determino la cantidad de unidades de producto necesarias
         for(alimento in alimentos){
             for(producto in productos){
                 if(producto.query.trim().lowercase().equals(alimento.nombre.trim().lowercase())){
                     println("He matcheado el producto con el alimento correctamente en calculo de cantidades: " + producto.query)
-                    producto.cantidad = CalcularDiferenciaCantidad(alimento.cantidad,alimento.tipoUnidad,producto.peso,producto.tipoUnidad)
+                    producto.cantidad = calcularDiferenciaCantidad(alimento.cantidad,alimento.tipoUnidad,producto.peso,producto.tipoUnidad)
                     println("La cantidad calculada es: " + producto.cantidad + "para un peso de alimento " + alimento.cantidad + " y de producto unitario " + producto.peso)
                 }
             }
         }
+        println("Los productos finales a comprar son: " + productos.toString())
         return productos
     }
 
-    private fun CalcularDiferenciaCantidad(cantidadAlimento: Int, tipoUnidadAlimento: TipoUnidad, pesoProducto: Float, tipoUnidadProducto: TipoUnidad?): Int {
+    private fun calcularDiferenciaCantidad(cantidadAlimento: Int, tipoUnidadAlimento: TipoUnidad, pesoProducto: Float, tipoUnidadProducto: TipoUnidad?): Int {
         when(tipoUnidadAlimento){
             TipoUnidad.UNIDADES -> {
                 when(tipoUnidadProducto){

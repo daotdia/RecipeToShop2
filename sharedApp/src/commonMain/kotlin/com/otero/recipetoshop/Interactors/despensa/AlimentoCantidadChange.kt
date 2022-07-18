@@ -4,7 +4,9 @@ import com.otero.recipetoshop.datasource.cache.cachedespensa.DespensaCache
 import com.otero.recipetoshop.domain.model.GenericMessageInfo
 import com.otero.recipetoshop.domain.model.UIComponentType
 import com.otero.recipetoshop.domain.model.despensa.Alimento
+import com.otero.recipetoshop.domain.util.CommonFLow
 import com.otero.recipetoshop.domain.util.DataState
+import com.otero.recipetoshop.domain.util.asCommonFlow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -14,7 +16,7 @@ class AlimentoCantidadChange(
     fun updateCantidad(
         cantidad: String,
         alimento: Alimento
-    ): Flow<DataState<Alimento>> = flow{
+    ): CommonFLow<DataState<Alimento>> = flow{
         //Emito de manera predefinida que se está cargando la modificación.
         emit(DataState.loading())
 
@@ -42,5 +44,5 @@ class AlimentoCantidadChange(
                 )
             )
         }
-    }
+    }.asCommonFlow()
 }

@@ -1,5 +1,7 @@
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
+val kotlin_version: String by extra
+
 plugins {
     kotlin(KotlinPlugins.multiplatform)
     kotlin(KotlinPlugins.cocoapods)
@@ -8,7 +10,7 @@ plugins {
     id(Plugins.sqlDelight)
 }
 
-version = "1.1"
+version = "1.0.0"
 
 android {
     compileSdkVersion(Application.compileSdk)
@@ -34,11 +36,11 @@ android {
 kotlin {
     android()
 
-    val iosTarget: (String, KotlinNativeTarget.() -> Unit) -> KotlinNativeTarget =
-        if (System.getenv("SDK_NAME")?.startsWith("iphoneos") == true)
-            ::iosArm64
-        else
-            ::iosX64
+        val iosTarget: (String, KotlinNativeTarget.() -> Unit) -> KotlinNativeTarget =
+            if (System.getenv("SDK_NAME")?.startsWith("iphoneos") == true)
+                ::iosArm64
+            else
+                ::iosX64
 
     iosTarget("ios") {}
 

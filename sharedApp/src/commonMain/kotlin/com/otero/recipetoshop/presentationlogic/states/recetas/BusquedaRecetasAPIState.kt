@@ -7,4 +7,11 @@ data class BusquedaRecetasAPIState (
     val lisaRecetasBuscadas: List<Receta> = emptyList(),
     val recetaCreada: Receta? = null,
     val query: String = ""
-)
+){
+    constructor(): this(
+        id_cestaCompra = -1,
+        lisaRecetasBuscadas = emptyList(),
+        recetaCreada = null,
+        query = ""
+    )
+}

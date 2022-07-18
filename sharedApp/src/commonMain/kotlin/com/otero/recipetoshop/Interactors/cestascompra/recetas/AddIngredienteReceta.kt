@@ -2,8 +2,10 @@ package com.otero.recipetoshop.Interactors.cestascompra.recetas
 
 import com.otero.recipetoshop.datasource.cache.cacherecetas.RecetaCache
 import com.otero.recipetoshop.domain.model.despensa.Alimento
+import com.otero.recipetoshop.domain.util.CommonFLow
 import com.otero.recipetoshop.domain.util.DataState
 import com.otero.recipetoshop.domain.util.TipoUnidad
+import com.otero.recipetoshop.domain.util.asCommonFlow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -16,7 +18,7 @@ class AddIngredienteReceta(
         nombre: String,
         cantidad: Int,
         tipoUnidad: TipoUnidad
-    ): Flow<DataState<Unit>> = flow {
+    ): CommonFLow<DataState<Unit>> = flow {
         emit(DataState.loading())
 
         val ingrediente = Alimento(
@@ -28,8 +30,9 @@ class AddIngredienteReceta(
             active = true
         )
 
+        recetaCache.insertIngredienteToReceta(ingrediente)
+
         emit(DataState.data(data = Unit, message = null))
 
-        recetaCache.insertIngredienteToReceta(ingrediente)
-    }
+    }.asCommonFlow()
 }

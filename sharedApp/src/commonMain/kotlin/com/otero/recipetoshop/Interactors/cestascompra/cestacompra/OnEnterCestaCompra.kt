@@ -3,7 +3,9 @@ package com.otero.recipetoshop.Interactors.cestascompra.cestacompra
 import com.otero.recipetoshop.datasource.cache.cacherecetas.RecetaCache
 import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.domain.model.CestaCompra.Receta
+import com.otero.recipetoshop.domain.util.CommonFLow
 import com.otero.recipetoshop.domain.util.DataState
+import com.otero.recipetoshop.domain.util.asCommonFlow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -12,7 +14,7 @@ class OnEnterCestaCompra (
     ) {
     fun getRecetasCestaCompra(
         id_listaReceta: Int
-    ): Flow<DataState<Pair<List<Receta>?, List<Receta>?>>> = flow {
+    ): CommonFLow<DataState<Pair<List<Receta>?, List<Receta>?>>> = flow {
         emit(DataState.loading())
 
         val recetasActivasCestaCompra: List<Receta>? =
@@ -24,11 +26,11 @@ class OnEnterCestaCompra (
             message = null,
             data = Pair(recetasActivasCestaCompra, recetasInactivasCestaCompra),
         ))
-    }
+    }.asCommonFlow()
 
     fun getAlimentosCestaCompra(
         id_listaReceta: Int
-    ): Flow<DataState<Pair<List<Alimento>?, List<Alimento>?>>> = flow {
+    ): CommonFLow<DataState<Pair<List<Alimento>?, List<Alimento>?>>> = flow {
         emit(DataState.loading())
 
         val alimentosActivosCestaCompra : List<Alimento>? =
@@ -40,5 +42,5 @@ class OnEnterCestaCompra (
             message = null,
             data = Pair(alimentosActivosCestaCompra, alimentosInActivosCestaCompra),
         ))
-    }
+    }.asCommonFlow()
 }

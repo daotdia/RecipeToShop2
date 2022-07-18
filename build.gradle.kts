@@ -1,4 +1,6 @@
 buildscript {
+    var kotlin_version: String by extra
+    kotlin_version = "1.7.0-Beta"
     repositories {
         gradlePluginPortal()
         google()

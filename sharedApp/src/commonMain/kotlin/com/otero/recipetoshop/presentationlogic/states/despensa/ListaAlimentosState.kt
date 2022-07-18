@@ -11,5 +11,15 @@ data class ListaAlimentosState(
     val queueError: Queue<GenericMessageInfo> = Queue(mutableListOf()),
     val resultadoAutoCompletado: List<String> = listOf(),
     val queryAutoComplete: String = ""
-)
+){
+    //Esto es necesario porque Swift no maneja bien los valores predeterminados
+    constructor(): this(
+        allAlimentos = listOf(),
+        alimentosActivos = listOf(),
+        alimentosInactivos = listOf(),
+        queueError = Queue(mutableListOf()),
+        resultadoAutoCompletado = listOf(),
+        queryAutoComplete = ""
+    )
+}
 

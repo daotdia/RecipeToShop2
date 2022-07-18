@@ -2,7 +2,9 @@ package com.otero.recipetoshop.Interactors.cestascompra.cestacompra
 
 import com.otero.recipetoshop.datasource.cache.cacherecetas.RecetaCache
 import com.otero.recipetoshop.domain.model.CestaCompra.Receta
+import com.otero.recipetoshop.domain.util.CommonFLow
 import com.otero.recipetoshop.domain.util.DataState
+import com.otero.recipetoshop.domain.util.asCommonFlow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -13,7 +15,7 @@ class UpdateRecetaCestaCompra (
         receta: Receta,
         active: Boolean,
         cantidad: Int? = null
-    ): Flow<DataState<Int>> = flow  {
+    ): CommonFLow<DataState<Int>> = flow  {
         emit(DataState.loading())
 
         val recetasFavoritas = recetaCache.getAllRecetasFavoritas()
@@ -28,9 +30,12 @@ class UpdateRecetaCestaCompra (
             val id = recetaCache.insertRecetaToCestaCompra(nueva_receta)
             emit(DataState.data(message = null, data = id))
         } else {
+            //Primero modifico actve en recera y la inserto en caché.
             val nueva_receta = receta.copy(active = active)
             val id = recetaCache.insertRecetaToCestaCompra(nueva_receta)
+
+            //Devuelvo el id de la receta modificada.
             emit(DataState.data(message = null, data = id))
         }
-    }
+    }.asCommonFlow()
 }

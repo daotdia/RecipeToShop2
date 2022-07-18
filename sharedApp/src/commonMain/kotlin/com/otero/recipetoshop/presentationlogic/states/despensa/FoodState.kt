@@ -10,4 +10,12 @@ data class FoodState(
     var cantidad: String = "0",
     val queueError: Queue<GenericMessageInfo> = Queue(mutableListOf()),
     var queryAutoComplete: String = ""
-)
+){
+    constructor(): this(
+        nombre = "",
+        tipo = TipoUnidad.GRAMOS.name,
+        cantidad = "0",
+        queueError = Queue(mutableListOf()),
+        queryAutoComplete = ""
+    )
+}
