@@ -31,11 +31,44 @@ struct ListaCompra: View {
         )
     }
     
+    @State var openFilters: Bool = false
+    
     var body: some View {
         ZStack{
             VStack{
                 //La pila de la pantalla
                 ScrollView{
+                    //Menu desplegable para filtrar por peso o por precio.
+                    ZStack(alignment: .trailing){
+                        Button(action: {
+                            if openFilters == false{
+                                openFilters = true
+                            }
+                            else{
+                                openFilters = true
+                            }
+                        }){
+                            //Menú desplegable con las opsciones.
+                            if openFilters{
+                                VStack{
+                                    Text("Más baratos")
+                                    Divider()
+                                    Text("Más ligeros")
+                                }
+                                .onTapGesture(perform: {
+                                    openFilters = false
+                                })
+                                
+                            }
+                            else {
+                                Image(systemName: "ellipsis")
+                                    .font(Font.system(size: 18, weight: .medium))
+                                    .foregroundColor(Color.black)
+                            }
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                    .zIndex(5)
                     LazyVStack{
                         //Recuadro de cada supermercado. TODO: Pendiente hacer para varios.
                         ForEach(1..<2){ _ in
