@@ -1,0 +1,42 @@
+{
+"productos":
+[
+[
+{"query": "Zumo con leche", "nombre": "Zumo de frutas y leche Carrefour sabor mediterr\u00e1neo pack de 6 briks de 20 cl.", "imagen_src": "https://static.carrefour.es/hd_350x_/img_pim_food/902206_00_1.jpg", "precio_peso": "0,83 \u20ac/l", "precio": "0,99 \u20ac", "oferta": "", "supermercado": "Carrefour"},
+{"query": "Zumo con leche", "nombre": "Zumo de fruta y leche Carrefour Tropical pack de 6 briks de 20 cl.", "imagen_src": "https://static.carrefour.es/hd_350x_/img_pim_food/902174_00_1.jpg", "precio_peso": "0,88 \u20ac/l", "precio": "1,05 \u20ac", "oferta": "", "supermercado": "Carrefour"},
+{"query": "Zumo con leche", "nombre": "Zumo de frutas y leche Carrefour sabor tropical pack de 3 briks de 33 cl.", "imagen_src": "https://static.carrefour.es/hd_350x_/img_pim_food/902172_00_1.jpg", "precio_peso": "0,96 \u20ac/l", "precio": "0,95 \u20ac", "oferta": "", "supermercado": "Carrefour"},
+{"query": "Zumo con leche", "nombre": "Zumo de fruta y leche Carrefour Mediterr\u00e1neo pack de 3 briks de 33 cl.", "imagen_src": "https://static.carrefour.es/hd_350x_/img_pim_food/902190_00_1.jpg", "precio_peso": "1,03 \u20ac/l", "precio": "1,02 \u20ac", "oferta": "", "supermercado": "Carrefour"},
+{"query": "Zumo con leche", "nombre": "", "imagen_src": "https://static.carrefour.es/hd_350x_/img_pim_food/902169_00_1.jpg", "precio_peso": "", "precio": "0,92 \u20ac", "oferta": "", "supermercado": "Carrefour"},
+{"query": "Zumo con leche", "nombre": "", "imagen_src": "https://static.carrefour.es/hd_350x_/img_pim_food/902171_00_1.jpg", "precio_peso": "", "precio": "0,92 \u20ac", "oferta": "", "supermercado": "Carrefour"},
+],
+[
+{"query": "Mostaza", "nombre": "Mostaza de Dij\u00f3n Maille 215 g.", "imagen_src": "https://static.carrefour.es/hd_350x_/img_pim_food/002263_00_1.jpg", "precio_peso": "14,19 \u20ac/kg", "precio": "3,05 \u20ac", "oferta": "", "supermercado": "Carrefour"},
+{"query": "Mostaza", "nombre": "Mostaza Orlando sin gluten envase 290 g.", "imagen_src": "https://static.carrefour.es/hd_350x_/img_pim_food/002259_00_1.jpg", "precio_peso": "3,41 \u20ac/kg", "precio": "0,99 \u20ac", "oferta": "", "supermercado": "Carrefour"},
+{"query": "Mostaza", "nombre": "Mostaza original Prima sin gluten envase 330 g.", "imagen_src": "https://static.carrefour.es/hd_350x_/img_pim_food/711556_00_1.jpg", "precio_peso": "5,42 \u20ac/kg", "precio": "1,79 \u20ac", "oferta": "", "supermercado": "Carrefour"},
+{"query": "Mostaza", "nombre": "Mostaza Heinz envase 220 ml.", "imagen_src": "https://static.carrefour.es/hd_350x_/img_pim_food/890418_00_1.jpg", "precio_peso": "7,63 \u20ac/l", "precio": "1,83 \u20ac", "oferta": "", "supermercado": "Carrefour"},
+{"query": "Mostaza", "nombre": "", "imagen_src": "https://static.carrefour.es/hd_350x_/img_pim_food/002264_00_1.jpg", "precio_peso": "", "precio": "", "oferta": "", "supermercado": "Carrefour"},
+{"query": "Mostaza", "nombre": "", "imagen_src": "https://static.carrefour.es/hd_350x_/img_pim_food/482906_00_1.jpg", "precio_peso": "", "precio": "", "oferta": "", "supermercado": "Carrefour"},
+],
+[
+{"query": "Pan hamburguesa", "nombre": "Pan de hamburguesa maxi Carrefour 4 ud.", "imagen_src": "https://static.carrefour.es/hd_350x_/img_pim_food/447078_00_1.jpg", "precio_peso": "3,17 \u20ac/kg", "precio": "0,95 \u20ac", "oferta": "", "supermercado": "Carrefour"},
+{"query": "Pan hamburguesa", "nombre": "Pan de hamburguesa r\u00fastica XXL 4 ud", "imagen_src": "https://static.carrefour.es/hd_350x_/img_pim_food/067400_00_1.jpg", "precio_peso": "4,47 \u20ac/kg", "precio": "1,79 \u20ac", "oferta": "", "supermercado": "Carrefour"},
+{"query": "Pan hamburguesa", "nombre": "Pan de Hamburguesa Carrefour 4 ud 300 g", "imagen_src": "https://static.carrefour.es/hd_350x_/img_pim_food/289641_00_1.jpg", "precio_peso": "5,97 \u20ac/kg", "precio": "1,79 \u20ac", "oferta": "", "supermercado": "Carrefour"},
+{"query": "Pan hamburguesa", "nombre": "Pan de hamburguesa Juanito Baker 150 g.", "imagen_src": "https://static.carrefour.es/hd_350x_/img_pim_food/024197_00_1.jpg", "precio_peso": "11,80 \u20ac/kg", "precio": "1,77 \u20ac", "oferta": "", "supermercado": "Carrefour"},
+{"query": "Pan hamburguesa", "nombre": "", "imagen_src": "https://static.carrefour.es/hd_350x_/img_pim_food/024178_00_1.jpg", "precio_peso": "", "precio": "", "oferta": "", "supermercado": "Carrefour"},
+{"query": "Pan hamburguesa", "nombre": "", "imagen_src": "https://static.carrefour.es/hd_350x_/img_pim_food/025658_00_1.jpg", "precio_peso": "", "precio": "", "oferta": "", "supermercado": "Carrefour"},
+],
+[
+{"query": "Ketchup", "nombre": "K\u00e9tchup Carrefour envase 560 g.", "imagen_src": "https://static.carrefour.es/hd_350x_/img_pim_food/438870_00_1.jpg", "precio_peso": "1,61 \u20ac/kg", "precio": "0,90 \u20ac", "oferta": "", "supermercado": "Carrefour"},
+{"query": "Ketchup", "nombre": "K\u00e9tchup Heinz envase 570 g.", "imagen_src": "https://static.carrefour.es/hd_350x_/img_pim_food/507178_00_1.jpg", "precio_peso": "5,53 \u20ac/kg", "precio": "3,15 \u20ac", "oferta": "", "supermercado": "Carrefour"},
+{"query": "Ketchup", "nombre": "K\u00e9tchup Heinz envase 700 g.", "imagen_src": "https://static.carrefour.es/hd_350x_/img_pim_food/680150_00_1.jpg", "precio_peso": "4,61 \u20ac/kg", "precio": "3,23 \u20ac", "oferta": "", "supermercado": "Carrefour"},
+{"query": "Ketchup", "nombre": "K\u00e9tchup Orlando Barrilito 300 g.", "imagen_src": "https://static.carrefour.es/hd_350x_/img_pim_food/002212_00_1.jpg", "precio_peso": "3,30 \u20ac/kg", "precio": "0,99 \u20ac", "oferta": "", "supermercado": "Carrefour"},
+{"query": "Ketchup", "nombre": "", "imagen_src": "https://static.carrefour.es/hd_350x_/img_pim_food/833020_00_1.jpg", "precio_peso": "", "precio": "1,50 \u20ac", "oferta": "", "supermercado": "Carrefour"},
+{"query": "Ketchup", "nombre": "", "imagen_src": "https://static.carrefour.es/hd_350x_/img_pim_food/438868_00_1.jpg", "precio_peso": "", "precio": "0,99 \u20ac", "oferta": "", "supermercado": "Carrefour"},
+],
+[
+{"query": "Salsa cesar", "nombre": "Salsa c\u00e9sar Carrefour envase 300 g.", "imagen_src": "https://static.carrefour.es/hd_350x_/img_pim_food/247396_00_1.jpg", "precio_peso": "4,03 \u20ac/kg", "precio": "1,21 \u20ac", "oferta": "", "supermercado": "Carrefour"},
+{"query": "Salsa cesar", "nombre": "Mini Filetes Cesar En Salsa - 4 Variedades - Para Perros Adultos - 4 X 150 G (x6)", "imagen_src": "https://static.carrefour.es/hd_350x_/imagenes/products/30658/90135/086/3065890135086/imagenGrande1.jpg", "precio_peso": "", "precio": "77,71 \u20ac", "oferta": "", "supermercado": "Carrefour"},
+{"query": "Salsa cesar", "nombre": "Comida h\u00fameda selecci\u00f3n carnes mixtas en salsa para perro Cesar pack de 4 unidades de 100 g.", "imagen_src": "https://static.carrefour.es/hd_350x_/img_pim_food/904452_00_1.jpg", "precio_peso": "6,62 \u20ac/kg", "precio": "2,65 \u20ac", "oferta": "", "supermercado": "Carrefour"},
+],
+],
+}

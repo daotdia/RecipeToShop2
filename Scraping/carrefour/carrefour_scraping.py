@@ -108,7 +108,8 @@ class Carrefour(webdriver.Firefox):
                         imagen_src = imagen.get_attribute("src"),
                         precio = precio.text,
                         precio_peso = precio_peso.text,
-                        oferta = oferta.text if oferta is not None else ''
+                        oferta = oferta.text if oferta is not None else '',
+                        supermercado = "Carrefour"
                     )
                     data.append(alimento)
         except StaleElementReferenceException:

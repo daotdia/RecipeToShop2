@@ -7,6 +7,7 @@ import com.otero.recipetoshop.domain.model.ListaCompra.Productos
 import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.domain.util.CommonFLow
 import com.otero.recipetoshop.domain.util.DataState
+import com.otero.recipetoshop.domain.util.FilterEnum
 import com.otero.recipetoshop.domain.util.asCommonFlow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -16,7 +17,8 @@ class CalcularProductos(
     private val despensaCache: DespensaCache
 ) {
     fun calcularProductos(
-        id_cestaCompra: Int
+        id_cestaCompra: Int,
+        filter: FilterEnum = FilterEnum.BARATOS
     ): CommonFLow<DataState<Pair<ArrayList<Alimento>, ArrayList<Productos.Producto>>>> = flow {
         emit(DataState.loading())
 
@@ -81,7 +83,7 @@ class CalcularProductos(
             val productos_brutos = caluladoraProductos.encontrarProductos(alimentos_unificados)
             //var otravez = true
             //Selecciono los mejores productos
-            val mejores_productos = caluladoraProductos.seleccionarMejorProducto(productos_brutos)
+            val mejores_productos = caluladoraProductos.seleccionarMejorProducto(productos_brutos, filter)
             //Calculo la cantidad de productos.
             mejores_productos_unidades = caluladoraProductos.calcularCantidadesProductos(alimentos = ArrayList(alimentos_unificados), productos = ArrayList(mejores_productos))
             for(producto in mejores_productos_unidades){

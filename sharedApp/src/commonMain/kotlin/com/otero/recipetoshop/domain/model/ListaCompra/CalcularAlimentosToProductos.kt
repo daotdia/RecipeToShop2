@@ -2,6 +2,7 @@ package com.otero.recipetoshop.domain.model.ListaCompra
 
 import com.otero.recipetoshop.datasource.static.Productos_prueba
 import com.otero.recipetoshop.domain.model.despensa.Alimento
+import com.otero.recipetoshop.domain.util.FilterEnum
 import com.otero.recipetoshop.domain.util.TipoUnidad
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.jsonArray
@@ -108,26 +109,44 @@ class CalcularAlimentosToProductos {
         return result
     }
 
-    fun seleccionarMejorProducto(productos: ArrayList<ArrayList<Productos.Producto>>): ArrayList<Productos.Producto>{
+    fun seleccionarMejorProducto(productos: ArrayList<ArrayList<Productos.Producto>>, filterEnum: FilterEnum = FilterEnum.BARATOS): ArrayList<Productos.Producto>{
         val result: ArrayList<Productos.Producto> = arrayListOf()
         println("El numero de tipo de productos a seleccionar es: " + productos.size)
         println("Los productos a seleccionar son: " + productos.toString())
-        for(tipo in productos){
-            var best: Float = MAX_VALUE
-            var ganador: Productos.Producto? = null
-            for(elemento in tipo){
-                val precio_peso = elemento.precio_peso
-                    .replace(',', '.')
-                    .filter { it.isDigit() || it.equals('.') }
-                    .toFloat()
-                if(precio_peso< best){
-                    ganador = elemento
-                    best = precio_peso
+        when(filterEnum){
+            FilterEnum.BARATOS ->
+                for(tipo in productos){
+                    var best: Float = MAX_VALUE
+                    var ganador: Productos.Producto? = null
+                    for(elemento in tipo){
+                        val precio_peso = elemento.precio_peso
+                            .replace(',', '.')
+                            .filter { it.isDigit() || it.equals('.') }
+                            .toFloat()
+                        if(precio_peso< best){
+                            ganador = elemento
+                            best = precio_peso
+                        }
+                    }
+                    println("El ganador ha sido: " + ganador?.nombre)
+                    result.add(ganador!!)
                 }
-            }
-            println("El ganador ha sido: " + ganador?.nombre)
-            result.add(ganador!!)
+            FilterEnum.LIGEROS ->
+                for(tipo in productos){
+                    var best: Float = MAX_VALUE
+                    var ganador: Productos.Producto? = null
+                    for(elemento in tipo){
+                        val peso = elemento.peso
+                        if(peso < best){
+                            ganador = elemento
+                            best = peso
+                        }
+                    }
+                    println("El ganador ha sido: " + ganador?.nombre)
+                    result.add(ganador!!)
+                }
         }
+
         return result
     }
 

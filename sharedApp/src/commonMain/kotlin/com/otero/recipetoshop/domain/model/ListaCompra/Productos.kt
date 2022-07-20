@@ -19,7 +19,7 @@ data class Productos(
         var peso: Float,
         var tipoUnidad: TipoUnidad?,
         val precio_numero: Float,
-        val noEontrado: Boolean = false
+        val noEncontrado: Boolean = false
     )
 }
 

@@ -7,8 +7,9 @@ class Alimento():
     precio = ''
     oferta = ''
     query = ''
+    supermercado = ''
     
-    def build_alimento(query, nombre, imagen_src, precio_peso, oferta, precio):
+    def build_alimento(query, nombre, imagen_src, precio_peso, oferta, precio, supermercado):
         alimento = Alimento()
         alimento.query = query
         alimento.nombre = nombre
@@ -16,6 +17,7 @@ class Alimento():
         alimento.precio_peso = precio_peso
         alimento.oferta = oferta
         alimento.precio = precio
+        alimento.supermercado = supermercado
         return alimento
     
     def alimento_JSON(self) -> str:
@@ -27,6 +29,7 @@ class Alimento():
                 'precio_peso': self.precio_peso,
                 'precio': self.precio,
                 'oferta': self.oferta,
+                'supermercado': self.supermercado
             }
         )
         return result

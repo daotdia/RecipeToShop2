@@ -1,4 +1,5 @@
 import os
+from shlex import join
 import time
 import random
 from numpy import prod
@@ -12,20 +13,20 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
-import mercadona.constantes as mercConsts
+import dia.constantes as diaConsts
 import carrefour.constantes as consts
 from selenium import webdriver
 from selenium.common.exceptions import StaleElementReferenceException, NoSuchElementException, TimeoutException
 from http_request_randomizer.requests.proxy.requestProxy import RequestProxy
 from selenium.webdriver.common.keys import Keys
 
-class Mercadona(webdriver.Firefox):
+class Dia(webdriver.Firefox):
     def __init__(self, driver_path='/home/david/AndroidStudioProjects/RecipeToShop2/Scraping', teardown=False):
         self.driver_path=driver_path
         self.teardonw=teardown
         os.environ['PATH']+=os.pathsep+self.driver_path
         
-        super(Mercadona, self).__init__()
+        super(Dia, self).__init__()
         
         #Utilizo proxys dinámicos.
         #req_proxy = RequestProxy() 
@@ -50,30 +51,28 @@ class Mercadona(webdriver.Firefox):
         if self.teardonw:
             self.quit()
 
-    def get_url_mercadona(self):
-        self.get(mercConsts.BASE_URL)
+    def get_url_dia(self):
+        self.get(diaConsts.BASE_URL)
         
-    def set_codigoPostal(self, cp):
-        #Primero randomizo el proxy.
-        self.randomize_proxy()
-        #Obtengo el campo del código postal
-        input_cp = self.find_element(By.XPATH,'//input[@aria-label="Código postal"]')
-        input_cp.click()
-        #Escribo el código postal de casa de mi padre
-        input_cp.send_keys(cp)
-        #hago click en el botón de búsqueda
-        bottom_cp = self.find_elements(By.XPATH,'//input[@value="ENTRAR"]')[0]
-        bottom_cp.click()
+    def esperar_cookies(self):
+        #Espero a que se cargue la barra de búsqueda de Carrefour.
+        cockies = WebDriverWait(self,10).until(
+            ec.presence_of_element_located((By.XPATH, '//button[@id="onetrust-accept-btn-handler"]'))
+        )
+        cockies.click()
+        time.sleep(1)
         
     def searchQuery(self, query):        
         #Obtengo el campo de búsqueda de Mercadona tras esperar 5 segundos y añado la query.
         WebDriverWait(self, 5).until(
             ec.visibility_of_all_elements_located(
-                (By.XPATH, '//input[@class="body1-r search__input"]')
+                (By.XPATH, '//input[@class="text ui-autocomplete-input"]')
                 )
             )
-        input_query = self.find_element(By.XPATH,'//input[@class="body1-r search__input"]')
+        input_query = self.find_element(By.XPATH,'//input[@class="text ui-autocomplete-input"]')
         input_query.send_keys(query)
+        bottom_query = self.find_element(By.XPATH,'//input[@class="button desktop-search"]')
+        bottom_query.click()
     
     def getData(self, query) -> list:
         incompleto = False
@@ -84,19 +83,19 @@ class Mercadona(webdriver.Firefox):
         time.sleep(4)
         
         #Obtengo todas las células de alimentos de la tabla de búsqueda
-        productos = self.find_elements_by_class_name("product-cell__content-link")
+        productos = self.find_elements_by_class_name("productMainLink")
         print("El número de productos encontrados es: " + str(len(productos)))
         for index,producto in enumerate(productos):
             try:
                 if index > 10:
                     break
-                nombre: WebElement = producto.find_element_by_tag_name('h4')#Hay que buscar el texto
+                nombre: WebElement = producto.find_element_by_class_name("details")#Hay que buscar el texto
                 #print(nombre.text)
                 imagen: WebElement = producto.find_element_by_tag_name('img')#Hay que obtener el atributo src
                 #print("La imagen es: " + imagen.get_attribute("src"))
-                precio_peso: List[WebElement] = producto.find_elements_by_class_name("footnote1-r")#Hay que buscar el texto
+                precio_peso: WebElement = producto.find_element_by_class_name("pricePerKilogram")#Hay que buscar el texto
                 #print("El peso es: " + ' '.join([peso.text for peso in precio_peso]))
-                precio: WebElement = producto.find_element(By.XPATH,'//p[@class="product-price__unit-price subhead1-b"]')#Hay que buscar el texto
+                precio: WebElement = producto.find_element_by_class_name("price")#Hay que buscar el texto
                 #print("El precio es: " + precio.text)
                 #El buscar la oferta demora mucho tiempo.
                 #oferta: WebElement = articulo.find_element_by_class_name("ebx-result__banner")#Hay que buscar texto
@@ -108,9 +107,9 @@ class Mercadona(webdriver.Firefox):
                         nombre= nombre.text,
                         imagen_src = imagen.get_attribute("src"),
                         precio = precio.text,
-                        precio_peso = ' '.join([peso.text for peso in precio_peso]),
+                        precio_peso = precio_peso.text,
                         oferta = oferta.text if oferta is not None else '',
-                        supermercado = "Mercadona"
+                        supermercado = "Dia"
                     )
                     data.append(alimento)
             
@@ -123,15 +122,77 @@ class Mercadona(webdriver.Firefox):
             except TimeoutException:
                 incompleto = True
                 print('No encuentra un elemento porque se ha esperado demasiado')
-    
-        #Elimino la query actual.
-        close_query = self.find_element(By.XPATH,'//span[@class="search__close"]')
-        close_query.click()
         
         for alimento in data:
-            result.append(alimento.alimento_JSON())
+            print("La query sin preposiciones es: " + self.replaceAll(
+                            query.lower().strip(), consts.PREPOSICIONES
+                        )  + " y el nombre es: "+ self.replaceAll(
+                            alimento.nombre.lower().strip(), consts.PREPOSICIONES
+                        )
+                        )
+            if (
+                    (
+                        self.replaceAll(
+                            query.lower().strip(), consts.PREPOSICIONES
+                        )    
+                    in 
+                        self.replaceAll(
+                            alimento.nombre.lower().strip(), consts.PREPOSICIONES
+                        )
+                    )
+                or 
+                    (
+                        self.replaceAll(
+                            query.lower().strip(), consts.PREPOSICIONES
+                        ) 
+                    in 
+                        's '.join(
+                            self.replaceAll(
+                                alimento.nombre.lower().strip(), consts.PREPOSICIONES
+                            ).split()
+                        )
+                    )
+                or 
+                    (
+                        self.replaceAll(
+                            query.lower().strip(), consts.PREPOSICIONES
+                        ) 
+                    in 
+                        'es '.join(
+                            self.replaceAll(
+                                alimento.nombre.lower().strip(), consts.PREPOSICIONES
+                            ).split()
+                        )
+                    )
+                or 
+                    (
+                        self.replaceAll(
+                            query.lower().strip(), consts.PREPOSICIONES
+                        ) 
+                    in 
+                        self.replaceAll(
+                            alimento.nombre.lower().strip(), consts.PREPOSICIONES
+                        ) + "s" 
+                    )
+                or
+                    (
+                        self.replaceAll(
+                            query.lower().strip(), consts.PREPOSICIONES
+                        ) 
+                    in 
+                        self.replaceAll(
+                            alimento.nombre.lower().strip(), consts.PREPOSICIONES
+                        ) + "es" 
+                    )
+                ):
+                
+                result.append(alimento.alimento_JSON())
         return result
-            
+        
+    def replaceAll(self, text, replaces) -> str:
+        for rep in replaces:
+            text.replace(rep, '')
+        return text
         
         
         
