@@ -41,6 +41,7 @@ class Main_Carrefour():
             file.write("],\n")
         file.write("],\n}\n")        
         file.close()
+        carrefour.close()
             
             
         

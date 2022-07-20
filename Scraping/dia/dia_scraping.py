@@ -19,6 +19,8 @@ from selenium import webdriver
 from selenium.common.exceptions import StaleElementReferenceException, NoSuchElementException, TimeoutException
 from http_request_randomizer.requests.proxy.requestProxy import RequestProxy
 from selenium.webdriver.common.keys import Keys
+from Util.Tools import checkContent as check
+import unidecode
 
 class Dia(webdriver.Firefox):
     def __init__(self, driver_path='/home/david/AndroidStudioProjects/RecipeToShop2/Scraping', teardown=False):
@@ -104,7 +106,7 @@ class Dia(webdriver.Firefox):
                 if not incompleto:
                     alimento = Alimento.build_alimento(
                         query = query,
-                        nombre= nombre.text,
+                        nombre= unidecode.unidecode(nombre.text),
                         imagen_src = imagen.get_attribute("src"),
                         precio = precio.text,
                         precio_peso = precio_peso.text,
@@ -124,75 +126,11 @@ class Dia(webdriver.Firefox):
                 print('No encuentra un elemento porque se ha esperado demasiado')
         
         for alimento in data:
-            print("La query sin preposiciones es: " + self.replaceAll(
-                            query.lower().strip(), consts.PREPOSICIONES
-                        )  + " y el nombre es: "+ self.replaceAll(
-                            alimento.nombre.lower().strip(), consts.PREPOSICIONES
-                        )
-                        )
-            if (
-                    (
-                        self.replaceAll(
-                            query.lower().strip(), consts.PREPOSICIONES
-                        )    
-                    in 
-                        self.replaceAll(
-                            alimento.nombre.lower().strip(), consts.PREPOSICIONES
-                        )
-                    )
-                or 
-                    (
-                        self.replaceAll(
-                            query.lower().strip(), consts.PREPOSICIONES
-                        ) 
-                    in 
-                        's '.join(
-                            self.replaceAll(
-                                alimento.nombre.lower().strip(), consts.PREPOSICIONES
-                            ).split()
-                        )
-                    )
-                or 
-                    (
-                        self.replaceAll(
-                            query.lower().strip(), consts.PREPOSICIONES
-                        ) 
-                    in 
-                        'es '.join(
-                            self.replaceAll(
-                                alimento.nombre.lower().strip(), consts.PREPOSICIONES
-                            ).split()
-                        )
-                    )
-                or 
-                    (
-                        self.replaceAll(
-                            query.lower().strip(), consts.PREPOSICIONES
-                        ) 
-                    in 
-                        self.replaceAll(
-                            alimento.nombre.lower().strip(), consts.PREPOSICIONES
-                        ) + "s" 
-                    )
-                or
-                    (
-                        self.replaceAll(
-                            query.lower().strip(), consts.PREPOSICIONES
-                        ) 
-                    in 
-                        self.replaceAll(
-                            alimento.nombre.lower().strip(), consts.PREPOSICIONES
-                        ) + "es" 
-                    )
-                ):
-                
+            if (check(query = query, nombre = alimento.nombre)):
                 result.append(alimento.alimento_JSON())
         return result
         
-    def replaceAll(self, text, replaces) -> str:
-        for rep in replaces:
-            text.replace(rep, '')
-        return text
+    
         
         
         

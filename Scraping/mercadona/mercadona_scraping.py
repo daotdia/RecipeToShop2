@@ -18,6 +18,8 @@ from selenium import webdriver
 from selenium.common.exceptions import StaleElementReferenceException, NoSuchElementException, TimeoutException
 from http_request_randomizer.requests.proxy.requestProxy import RequestProxy
 from selenium.webdriver.common.keys import Keys
+import unidecode
+from Util.Tools import checkContent as check
 
 class Mercadona(webdriver.Firefox):
     def __init__(self, driver_path='/home/david/AndroidStudioProjects/RecipeToShop2/Scraping', teardown=False):
@@ -105,7 +107,7 @@ class Mercadona(webdriver.Firefox):
                 if not incompleto:
                     alimento = Alimento.build_alimento(
                         query = query,
-                        nombre= nombre.text,
+                        nombre= unidecode.unidecode(nombre.text),
                         imagen_src = imagen.get_attribute("src"),
                         precio = precio.text,
                         precio_peso = ' '.join([peso.text for peso in precio_peso]),
@@ -129,7 +131,8 @@ class Mercadona(webdriver.Firefox):
         close_query.click()
         
         for alimento in data:
-            result.append(alimento.alimento_JSON())
+            if check(query = query, nombre = alimento.nombre):
+                result.append(alimento.alimento_JSON())
         return result
             
         

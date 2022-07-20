@@ -11281,3 +11281,548 @@ TimedPromise/<@chrome://remote/content/marionette/sync.js:234:19
 TimedPromise@chrome://remote/content/marionette/sync.js:219:10
 interaction.flushEventLoop@chrome://remote/content/marionette/interaction.js:431:10
 webdriverClickElement@chrome://remote/content/marionette/interaction.js:179:31
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658319844101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658319844101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+1658319907506	Marionette	INFO	Stopped listening on port 45427
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 1996\"  data: no]"
+1658322532425	geckodriver	INFO	Listening on 127.0.0.1:45849
+1658322532428	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "40979" "-no-remote" "-profile" "/tmp/rust_mozprofileqg3TTM"
+1658322533204	Marionette	INFO	Marionette enabled
+1658322533210	Marionette	INFO	Listening on port 34731
+WebDriver BiDi listening on ws://localhost:40979
+1658322533313	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileqg3TTM/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+DevTools listening on ws://localhost:40979/devtools/browser/f2337a48-099d-4fd2-8cd5-b6125716b65c
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658322548103%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658322548103%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658322548103%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658322548103%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658322548103%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658322548103%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658322548103%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658322548103%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658322548103%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658322548103%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1658322668529	geckodriver	INFO	Listening on 127.0.0.1:54079
+1658322668533	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "33531" "-no-remote" "-profile" "/tmp/rust_mozprofileUo6W0A"
+1658322669728	Marionette	INFO	Marionette enabled
+1658322669733	Marionette	INFO	Listening on port 35407
+WebDriver BiDi listening on ws://localhost:33531
+1658322669834	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileUo6W0A/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+DevTools listening on ws://localhost:33531/devtools/browser/1a67b29a-5bd2-47bd-a992-b7ce0ea4a544
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658322678102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658322678102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658322678102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658322678102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+1658322708388	geckodriver	INFO	Listening on 127.0.0.1:55567
+1658322708391	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "48093" "-no-remote" "-profile" "/tmp/rust_mozprofile0BFOsP"
+1658322709189	Marionette	INFO	Marionette enabled
+1658322709193	Marionette	INFO	Listening on port 45037
+WebDriver BiDi listening on ws://localhost:48093
+1658322709424	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile0BFOsP/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+DevTools listening on ws://localhost:48093/devtools/browser/44bbdb20-e535-44de-a9b3-12aa6ae5b7bc
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 1996\"  data: no]"
+1658322710534	Marionette	INFO	Stopped listening on port 35407
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 1996\"  data: no]"
+1658322739311	Marionette	INFO	Stopped listening on port 45037
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1658322741590	geckodriver	INFO	Listening on 127.0.0.1:46015
+1658322741593	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "59787" "-no-remote" "-profile" "/tmp/rust_mozprofileJiu83J"
+1658322742372	Marionette	INFO	Marionette enabled
+1658322742379	Marionette	INFO	Listening on port 41527
+WebDriver BiDi listening on ws://localhost:59787
+1658322742480	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileJiu83J/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+DevTools listening on ws://localhost:59787/devtools/browser/eeff9944-ba50-4993-8fb2-4c32da6b1f73
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658322751100%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658322751100%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658322751100%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658322751100%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+1658323000756	geckodriver	INFO	Listening on 127.0.0.1:52449
+1658323001254	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "60863" "-no-remote" "-profile" "/tmp/rust_mozprofile4epOXp"
+1658323002759	Marionette	INFO	Marionette enabled
+1658323002765	Marionette	INFO	Listening on port 38391
+WebDriver BiDi listening on ws://localhost:60863
+1658323002989	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile4epOXp/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+DevTools listening on ws://localhost:60863/devtools/browser/6d573ed4-f3f2-4d66-a7c8-81c833b325b3
+console.error: Region.jsm: "Error fetching region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 767))
+console.error: Region.jsm: "Failed to fetch region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 419))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 1996\"  data: no]"
+1658323008988	Marionette	INFO	Stopped listening on port 41527
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 1996\"  data: no]"
+1658323067958	Marionette	INFO	Stopped listening on port 38391
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1658323070237	geckodriver	INFO	Listening on 127.0.0.1:46667
+1658323070241	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "49495" "-no-remote" "-profile" "/tmp/rust_mozprofilemxnCZV"
+Sandbox: Unexpected EOF, op 0 flags 00 path /proc/cpuinfo
+1658323071025	Marionette	INFO	Marionette enabled
+1658323071029	Marionette	INFO	Listening on port 41703
+WebDriver BiDi listening on ws://localhost:49495
+1658323071135	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilemxnCZV/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+DevTools listening on ws://localhost:49495/devtools/browser/42f62ae4-2488-4062-95c7-a5084ae7f065
+console.error: Region.jsm: "Error fetching region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 767))
+console.error: Region.jsm: "Failed to fetch region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 419))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 1996\"  data: no]"
+1658323090904	Marionette	INFO	Stopped listening on port 41703
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1658323169920	geckodriver	INFO	Listening on 127.0.0.1:51541
+1658323169924	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "50177" "-no-remote" "-profile" "/tmp/rust_mozprofileKYeani"
+1658323170657	Marionette	INFO	Marionette enabled
+1658323170663	Marionette	INFO	Listening on port 38273
+WebDriver BiDi listening on ws://localhost:50177
+1658323170774	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileKYeani/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+DevTools listening on ws://localhost:50177/devtools/browser/e895d57b-c3b4-4738-b53e-1dae5a009d31
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323181101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323181102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323181102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323181102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+1658323227701	geckodriver	INFO	Listening on 127.0.0.1:50775
+1658323227704	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "36969" "-no-remote" "-profile" "/tmp/rust_mozprofileP5Up6M"
+1658323228455	Marionette	INFO	Marionette enabled
+1658323228461	Marionette	INFO	Listening on port 45509
+WebDriver BiDi listening on ws://localhost:36969
+1658323228564	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileP5Up6M/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+DevTools listening on ws://localhost:36969/devtools/browser/367d0149-3157-4ebd-b688-4ade8b9fe13e
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 1996\"  data: no]"
+1658323236485	Marionette	INFO	Stopped listening on port 38273
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323239102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323239102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323239102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323239102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323239102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323239102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323239102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323239102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323239102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323239102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323239102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323239102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+1658323269884	Marionette	INFO	Stopped listening on port 45509
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 1996\"  data: no]"
+Sandbox: Unexpected EOF, op 0 flags 00 path /proc/cpuinfo
+1658323435899	geckodriver	INFO	Listening on 127.0.0.1:55511
+1658323435902	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "36853" "-no-remote" "-profile" "/tmp/rust_mozprofile3H92Jz"
+1658323436708	Marionette	INFO	Marionette enabled
+1658323436715	Marionette	INFO	Listening on port 38533
+WebDriver BiDi listening on ws://localhost:36853
+1658323436919	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile3H92Jz/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+DevTools listening on ws://localhost:36853/devtools/browser/c8ebf054-054f-4f39-b7e5-e12fe4cd8923
+console.error: Region.jsm: "Error fetching region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 767))
+console.error: Region.jsm: "Failed to fetch region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 419))
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323464101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323464101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323464101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323464101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323464101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323464101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323464101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323464101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323464101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323464101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323464101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658323464101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+1658323493227	Marionette	INFO	Stopped listening on port 38533
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 1996\"  data: no]"
+1658324298339	geckodriver	INFO	Listening on 127.0.0.1:36663
+1658324298845	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "40083" "-no-remote" "-profile" "/tmp/rust_mozprofileWM4viz"
+1658324299852	Marionette	INFO	Marionette enabled
+1658324299856	Marionette	INFO	Listening on port 32993
+WebDriver BiDi listening on ws://localhost:40083
+1658324300064	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileWM4viz/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+DevTools listening on ws://localhost:40083/devtools/browser/c07ec7d4-ba16-43dd-9129-eb5ad424cabb
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658324314102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658324314102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1658324349666	geckodriver	INFO	Listening on 127.0.0.1:51777
+1658324349669	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "46761" "-no-remote" "-profile" "/tmp/rust_mozprofilejrjV11"
+1658324350480	Marionette	INFO	Marionette enabled
+1658324350487	Marionette	INFO	Listening on port 35803
+WebDriver BiDi listening on ws://localhost:46761
+1658324350682	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilejrjV11/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+DevTools listening on ws://localhost:46761/devtools/browser/b2c0e8dd-c71e-40f2-b256-08ebd2d6fc77
+console.error: Region.jsm: "Error fetching region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 767))
+console.error: Region.jsm: "Failed to fetch region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 419))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 1996\"  data: no]"
+1658324388535	Marionette	INFO	Stopped listening on port 35803
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1658324582013	geckodriver	INFO	Listening on 127.0.0.1:45073
+1658324582016	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "53099" "-no-remote" "-profile" "/tmp/rust_mozprofile2eCdfR"
+1658324582745	Marionette	INFO	Marionette enabled
+1658324582754	Marionette	INFO	Listening on port 44879
+WebDriver BiDi listening on ws://localhost:53099
+1658324582887	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile2eCdfR/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+DevTools listening on ws://localhost:53099/devtools/browser/7f696fc0-80c1-4322-9232-ae2b3166724f
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658324590101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658324590102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658324590102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658324590102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+1658324676718	geckodriver	INFO	Listening on 127.0.0.1:57093
+1658324676721	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "40081" "-no-remote" "-profile" "/tmp/rust_mozprofileC4Go7V"
+1658324677460	Marionette	INFO	Marionette enabled
+1658324677465	Marionette	INFO	Listening on port 40285
+WebDriver BiDi listening on ws://localhost:40081
+1658324677578	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileC4Go7V/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+DevTools listening on ws://localhost:40081/devtools/browser/6a019dad-29e1-4122-a5f4-3fda1699d5e5
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658324684101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658324684101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+1658324685538	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+1658324685539	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658324684101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658324684101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658324684101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658324684101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658324684101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658324684101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658324684101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658324684101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658324684101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658324684101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+1658324714519	Marionette	INFO	Stopped listening on port 40285
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 1996\"  data: no]"
+1658325643943	geckodriver	INFO	Listening on 127.0.0.1:60021
+1658325644447	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "52275" "-no-remote" "-profile" "/tmp/rust_mozprofilev2ZThe"
+1658325645372	Marionette	INFO	Marionette enabled
+1658325645379	Marionette	INFO	Listening on port 44549
+WebDriver BiDi listening on ws://localhost:52275
+1658325645499	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilev2ZThe/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+DevTools listening on ws://localhost:52275/devtools/browser/b983315d-02d2-4316-b8e1-04fe927a8e90
+JavaScript warning: https://www.carrefour.es/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=2146915708, line 1: unreachable code after return statement
+JavaScript warning: https://www.carrefour.es/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=2146915708, line 1: unreachable code after return statement
+JavaScript warning: https://www.carrefour.es/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=2146915708, line 1: unreachable code after return statement
+JavaScript warning: https://www.carrefour.es/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=2146915708 line 1 > eval, line 1: unreachable code after return statement
+JavaScript warning: https://www.carrefour.es/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=2146915708 line 1 > eval, line 1: unreachable code after return statement
+JavaScript error: https://www.carrefour.es/ line 494 > injectedScript, line 1: ReferenceError: gtag is not defined
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.carrefour.es"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.carrefour.es"
+JavaScript error: https://cdn.cookielaw.org/scripttemplates/6.12.0/otTCF.js, line 1: SyntaxError: An invalid or illegal string was specified
+JavaScript error: https://cdn.cookielaw.org/scripttemplates/6.12.0/otTCF.js, line 1: SyntaxError: An invalid or illegal string was specified
+JavaScript error: https://cdn.cookielaw.org/scripttemplates/6.12.0/otTCF.js, line 1: SyntaxError: An invalid or illegal string was specified
+JavaScript error: https://www.carrefour.es/?q=Zumo+con+leche line 5 > injectedScript, line 1: TypeError: dataLayer[0].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/?q=Zumo+con+leche line 5 > injectedScript, line 1: TypeError: dataLayer[1].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/?q=Zumo+con+leche line 5 > injectedScript, line 1: TypeError: dataLayer[2].ecommerce.purchase is undefined
+JavaScript error: https://www.carrefour.es/?q=Zumo+con+leche line 5 > injectedScript, line 1: TypeError: dataLayer[3].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/?q=Zumo+con+leche line 5 > injectedScript, line 1: TypeError: dataLayer[4].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/?q=Zumo+con+leche line 5 > injectedScript, line 1: TypeError: dataLayer[5].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/?q=Zumo+con+leche line 5 > injectedScript, line 1: TypeError: dataLayer[6].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/?q=Zumo+con+leche line 5 > injectedScript, line 1: TypeError: dataLayer[7].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/?q=Zumo+con+leche line 5 > injectedScript, line 1: TypeError: dataLayer[8].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/?q=Zumo+con+leche line 5 > injectedScript, line 1: TypeError: dataLayer[9].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/?q=Zumo+con+leche line 5 > injectedScript, line 1: TypeError: dataLayer[10].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/?q=Zumo+con+leche line 5 > injectedScript, line 1: TypeError: dataLayer[11].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/?q=Zumo+con+leche line 5 > injectedScript, line 1: TypeError: dataLayer[12].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/?q=Zumo+con+leche line 5 > injectedScript, line 1: TypeError: dataLayer[13].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/?q=Zumo+con+leche line 5 > injectedScript, line 1: TypeError: dataLayer[14].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/?q=Zumo+con+leche line 5 > injectedScript, line 1: TypeError: dataLayer[15].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/?q=Zumo+con+leche line 5 > injectedScript, line 1: TypeError: dataLayer[16].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/?q=Zumo+con+leche line 5 > injectedScript, line 1: TypeError: dataLayer[17].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/?q=Zumo+con+leche line 5 > injectedScript, line 1: TypeError: dataLayer[18].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/?q=Zumo+con+leche line 5 > injectedScript, line 1: TypeError: dataLayer[19].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/?q=Zumo+con+leche line 5 > injectedScript, line 1: TypeError: dataLayer[20].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/?q=Zumo+con+leche line 5 > injectedScript, line 1: TypeError: dataLayer[21].ecommerce is null
+JavaScript error: https://www.carrefour.es/?q=Zumo+con+leche line 5 > injectedScript, line 1: TypeError: dataLayer[22].ecommerce.purchase is undefined
+JavaScript error: https://www.carrefour.es/?q=Zumo+con+leche line 5 > injectedScript, line 1: TypeError: dataLayer[23].ecommerce is undefined
+JavaScript error: https://cdn.cookielaw.org/scripttemplates/6.12.0/otTCF.js, line 1: SyntaxError: An invalid or illegal string was specified
+JavaScript error: https://www.carrefour.es/ line 494 > injectedScript, line 1: ReferenceError: gtag is not defined
+JavaScript error: https://cdn.cookielaw.org/scripttemplates/6.12.0/otTCF.js, line 1: SyntaxError: An invalid or illegal string was specified
+JavaScript error: https://cdn.cookielaw.org/scripttemplates/6.12.0/otTCF.js, line 1: SyntaxError: An invalid or illegal string was specified
+JavaScript error: https://cdn.cookielaw.org/scripttemplates/6.12.0/otTCF.js, line 1: SyntaxError: An invalid or illegal string was specified
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[0].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[1].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[2].ecommerce.purchase is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[3].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[4].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[5].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[6].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[7].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[8].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[9].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[10].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[11].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[12].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[13].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[14].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[15].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[16].ecommerce is undefined
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.carrefour.es"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.carrefour.es"
+JavaScript error: https://cdn.cookielaw.org/scripttemplates/6.12.0/otTCF.js, line 1: SyntaxError: An invalid or illegal string was specified
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: https://www.carrefour.es/ line 494 > injectedScript, line 1: ReferenceError: gtag is not defined
+JavaScript error: https://cdn.cookielaw.org/scripttemplates/6.12.0/otTCF.js, line 1: SyntaxError: An invalid or illegal string was specified
+JavaScript error: https://cdn.cookielaw.org/scripttemplates/6.12.0/otTCF.js, line 1: SyntaxError: An invalid or illegal string was specified
+JavaScript error: https://cdn.cookielaw.org/scripttemplates/6.12.0/otTCF.js, line 1: SyntaxError: An invalid or illegal string was specified
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[0].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[1].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[2].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[3].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[4].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[5].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[6].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[7].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[8].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[9].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[10].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[11].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[12].ecommerce.purchase is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[13].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[14].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[15].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[16].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[17].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[18].ecommerce is undefined
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.carrefour.es"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.carrefour.es"
+JavaScript error: https://cdn.cookielaw.org/scripttemplates/6.12.0/otTCF.js, line 1: SyntaxError: An invalid or illegal string was specified
+JavaScript error: https://www.carrefour.es/ line 494 > injectedScript, line 1: ReferenceError: gtag is not defined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[0].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[1].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[2].ecommerce.purchase is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[3].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[4].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[5].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[6].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[7].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[8].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[9].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[10].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[11].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[12].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[13].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[14].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[15].ecommerce is undefined
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.carrefour.es"
+JavaScript error: https://cdn.cookielaw.org/scripttemplates/6.12.0/otTCF.js, line 1: SyntaxError: An invalid or illegal string was specified
+JavaScript error: https://cdn.cookielaw.org/scripttemplates/6.12.0/otTCF.js, line 1: SyntaxError: An invalid or illegal string was specified
+JavaScript error: https://cdn.cookielaw.org/scripttemplates/6.12.0/otTCF.js, line 1: SyntaxError: An invalid or illegal string was specified
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.carrefour.es"
+JavaScript error: https://cdn.cookielaw.org/scripttemplates/6.12.0/otTCF.js, line 1: SyntaxError: An invalid or illegal string was specified
+JavaScript error: https://www.carrefour.es/ line 494 > injectedScript, line 1: ReferenceError: gtag is not defined
+JavaScript error: https://cdn.cookielaw.org/scripttemplates/6.12.0/otTCF.js, line 1: SyntaxError: An invalid or illegal string was specified
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[0].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[1].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[2].ecommerce.purchase is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[3].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[4].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[5].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[6].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[7].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[8].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[9].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[10].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[11].ecommerce is undefined
+JavaScript error: https://www.carrefour.es/ line 5 > injectedScript, line 1: TypeError: dataLayer[12].ecommerce is undefined
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.carrefour.es"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.carrefour.es"
+1658325676369	geckodriver	INFO	Listening on 127.0.0.1:58941
+1658325676874	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "39663" "-no-remote" "-profile" "/tmp/rust_mozprofilecO1p60"
+1658325677919	Marionette	INFO	Marionette enabled
+1658325677929	Marionette	INFO	Listening on port 44049
+WebDriver BiDi listening on ws://localhost:39663
+1658325678038	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilecO1p60/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+JavaScript warning: https://pagead2.googlesyndication.com/bg/ACi6DSqP1mWZFGCZU7-0gloc5gpOF9kOHjubX77D_HU.js line 2 > eval line 3472 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+DevTools listening on ws://localhost:39663/devtools/browser/d29ee7c8-f746-4791-9e1e-36619a55a842
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.mercadona.es"
+1658325708990	Marionette	INFO	Stopped listening on port 44049
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 1996\"  data: no]"
+Sandbox: Unexpected EOF, op 0 flags 00 path /proc/cpuinfo
+1658325709701	geckodriver	INFO	Listening on 127.0.0.1:39345
+1658325709705	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "48905" "-no-remote" "-profile" "/tmp/rust_mozprofileNzqsKF"
+1658325710539	Marionette	INFO	Marionette enabled
+1658325710548	Marionette	INFO	Listening on port 37501
+WebDriver BiDi listening on ws://localhost:48905
+1658325710653	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileNzqsKF/search.json.mozlz4", (void 0)))
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+DevTools listening on ws://localhost:48905/devtools/browser/6fc8f854-6a3c-4b7e-9119-7dbf6ebbabe0
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658325718101%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658325718102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658325718102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658325718102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658325718102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658325718102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 90: unreachable code after return statement
+JavaScript warning: https://s0.dia.es/compra-online/wro/dia_custom1_js-ef56e90e7f5dfbb087e04d6d28dc9d78.js, line 101: unreachable code after return statement
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658325718102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658325718102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658325718102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658325718102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.dia.es"
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658325718102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+JavaScript error: https://api.brainsins.com/RecSinsAPI/api/page/trackBrainSinsData.json?bsdata=%7B%22pageType%22%3A%22home%22%2C%22language%22%3A%2252507%22%2C%22login%22%3A1%2C%22token%22%3A%22BS-8625485410-1%22%2C%22bsCoId%22%3A%223658325718102%22%7D&callback=bsTrackBTEventCallback, line 1: SyntaxError: unexpected token: ':'
+1658325751948	Marionette	INFO	Stopped listening on port 37501
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 1996\"  data: no]"
+JavaScript error: https://cdn.cookielaw.org/scripttemplates/6.12.0/otTCF.js, line 1: SyntaxError: An invalid or illegal string was specified
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 1996\"  data: no]"
+1658325755511	Marionette	INFO	Stopped listening on port 44549
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
+Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
+console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 1996\"  data: no]"
+1658325867403	Marionette	INFO	Stopped listening on port 44879
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.

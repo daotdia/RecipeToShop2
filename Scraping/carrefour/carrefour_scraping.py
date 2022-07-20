@@ -16,6 +16,7 @@ from selenium import webdriver
 from selenium.common.exceptions import StaleElementReferenceException, NoSuchElementException, TimeoutException
 from http_request_randomizer.requests.proxy.requestProxy import RequestProxy
 from selenium.webdriver.common.keys import Keys
+import unidecode
 #from carrefour.format_output import ParseOutput
 
 class Carrefour(webdriver.Firefox):
@@ -104,7 +105,7 @@ class Carrefour(webdriver.Firefox):
                 if not incompleto:
                     alimento = Alimento.build_alimento(
                         query = query,
-                        nombre= nombre.text,
+                        nombre= unidecode.unidecode(nombre.text),
                         imagen_src = imagen.get_attribute("src"),
                         precio = precio.text,
                         precio_peso = precio_peso.text,
@@ -123,7 +124,8 @@ class Carrefour(webdriver.Firefox):
             print('No encuentra un elemento')
     
         for alimento in data:
-            result.append(alimento.alimento_JSON())
+            if "perro" not in alimento.nombre.lower().strip():
+                result.append(alimento.alimento_JSON())
         return result
     
     def save_disk(self, database):
