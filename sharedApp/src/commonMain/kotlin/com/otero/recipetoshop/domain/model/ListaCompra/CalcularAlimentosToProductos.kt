@@ -1,13 +1,13 @@
 package com.otero.recipetoshop.domain.model.ListaCompra
 
-import com.otero.recipetoshop.datasource.static.Productos_prueba
+import com.otero.recipetoshop.datasource.static.Productos_Carrefour
+import com.otero.recipetoshop.datasource.static.productos_Dia
+import com.otero.recipetoshop.datasource.static.productos_Mercadona
 import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.domain.util.FilterEnum
+import com.otero.recipetoshop.domain.util.SupermercadosEnum
 import com.otero.recipetoshop.domain.util.TipoUnidad
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.jsonArray
-import kotlinx.serialization.json.jsonObject
-import kotlinx.serialization.json.jsonPrimitive
+import kotlinx.serialization.json.*
 import kotlin.Float.Companion.MAX_VALUE
 import kotlin.math.ceil
 
@@ -15,45 +15,64 @@ class CalcularAlimentosToProductos {
 
     var productos: Productos = Productos()
 
-    fun iniciarCalculadora(): Unit {
+    fun iniciarCalculadora(
+        supermercados: MutableSet<SupermercadosEnum> = mutableSetOf(SupermercadosEnum.CARREFOUR)
+    ): Unit {
         println("He llegado a calculo de JSON")
-        val json: JsonArray? = Productos_prueba.json.jsonObject.get("productos")?.jsonArray
-        if (json != null) {
-            for (tipo in json) {
-                val producto: ArrayList<Productos.Producto> = arrayListOf()
-                for (instancia in tipo.jsonArray) {
-                    println("Producto en json alcanzado: " + instancia.jsonObject.getValue("nombre").jsonPrimitive.content)
-                    val elemento: Productos.Producto = Productos.Producto(
-                        nombre = instancia.jsonObject.getValue("nombre").jsonPrimitive.content,
-                        imagen_src = instancia.jsonObject.getValue("imagen_src").jsonPrimitive.content,
-                        oferta = instancia.jsonObject.getValue("oferta").jsonPrimitive.content,
-                        precio_texto = instancia.jsonObject.getValue("precio").jsonPrimitive.content,
-                        precio_peso = instancia.jsonObject.getValue("precio_peso").jsonPrimitive.content,
-                        query = instancia.jsonObject.getValue("query").jsonPrimitive.content,
-                        cantidad = 0,
-                        tipoUnidad = TipoUnidad.GRAMOS,
-                        peso = 0f,
-                        precio_numero = if(!instancia.jsonObject.getValue("precio").jsonPrimitive.content.isEmpty()){
-                            instancia.jsonObject.getValue("precio").jsonPrimitive.content
-                                .replace(',', '.')
-                                .filter { it.isDigit() || it.equals('.') }
-                                .toFloat()
-                        } else {
-                            0f
-                        }
-                    )
-                    //En el caso de que no se haya añadido ya un producto con nombre identico se añade a los productos existentes,.
-                    if(
-                        !productos.productos.any {
-                            it.any{ producto ->
-                                producto.nombre.equals(elemento.nombre)
+        val jsons: ArrayList<JsonArray?> = arrayListOf()
+
+        for (supermercado in supermercados) {
+            when(supermercado) {
+                SupermercadosEnum.CARREFOUR ->
+                    jsons.add(Productos_Carrefour.json.jsonObject.get("productos")?.jsonArray)
+                SupermercadosEnum.DIA ->
+                    jsons.add(productos_Dia.json.jsonObject.get("productos")?.jsonArray)
+                SupermercadosEnum.MERCADONA ->
+                    jsons.add(productos_Mercadona.json.jsonObject.get("productos")?.jsonArray)
+            }
+        }
+
+        if (!jsons.isEmpty()) {
+            for (json in jsons) {
+                if(!json.isNullOrEmpty()) {
+                    for (tipo in json) {
+                        val producto: ArrayList<Productos.Producto> = arrayListOf()
+                        for (instancia in tipo.jsonArray) {
+                            println("Producto en json alcanzado: " + instancia.jsonObject.getValue("nombre").jsonPrimitive.content)
+                            val elemento: Productos.Producto = Productos.Producto(
+                                nombre = instancia.jsonObject.getValue("nombre").jsonPrimitive.content,
+                                imagen_src = instancia.jsonObject.getValue("imagen_src").jsonPrimitive.content,
+                                oferta = instancia.jsonObject.getValue("oferta").jsonPrimitive.content,
+                                precio_texto = instancia.jsonObject.getValue("precio").jsonPrimitive.content,
+                                precio_peso = instancia.jsonObject.getValue("precio_peso").jsonPrimitive.content,
+                                query = instancia.jsonObject.getValue("query").jsonPrimitive.content,
+                                cantidad = 0,
+                                tipoUnidad = TipoUnidad.GRAMOS,
+                                peso = 0f,
+                                precio_numero = if(!instancia.jsonObject.getValue("precio").jsonPrimitive.content.isEmpty()){
+                                    instancia.jsonObject.getValue("precio").jsonPrimitive.content
+                                        .replace(',', '.')
+                                        .filter { it.isDigit() || it.equals('.') }
+                                        .toFloat()
+                                } else {
+                                    0f
+                                },
+                                supermercado = SupermercadosEnum.parseString(instancia.jsonObject.getValue("supermercado").jsonPrimitive.content)
+                            )
+                            //En el caso de que no se haya añadido ya un producto con nombre identico se añade a los productos existentes,.
+                            if(
+                                !productos.productos.any {
+                                    it.any{ producto ->
+                                        producto.nombre.equals(elemento.nombre)
+                                    }
+                                }
+                            ){
+                                producto.add(elemento)
                             }
                         }
-                    ){
-                        producto.add(elemento)
+                        productos.productos.add(producto)
                     }
                 }
-                productos.productos.add(producto)
             }
             println("La cantidad de productos añadidos son: " + productos.productos.size)
             println("Los productos son: " + productos.productos.toString())
@@ -63,10 +82,10 @@ class CalcularAlimentosToProductos {
     fun unificarAlimentos(alimentos: ArrayList<Alimento>): ArrayList<Alimento>{
         print("Los alimentos a unificar son: " + alimentos.toString())
         //Los alimentos con mismo nombre se unen en una  misma necesidad de alimento y para ello hace falta una nueva lista.
-        var alimentos_unificados: ArrayList<Alimento> = arrayListOf()
+        val alimentos_unificados: ArrayList<Alimento> = arrayListOf()
         //Obtengo lista con alimentos únicos.
         //Elimino los alimentos unificados con nombre repetido conservando su orden.
-        var alimentos_unicos = ArrayList(alimentos.distinctBy { it.nombre })
+        val alimentos_unicos = ArrayList(alimentos.distinctBy { it.nombre })
         println("El número de alimentos distintos necesarios son: " + alimentos_unicos.size)
         for(alimento in alimentos_unicos){
             //Obtengo los alimentos repetidos para cada alimento si es que los hubiese.
@@ -109,6 +128,7 @@ class CalcularAlimentosToProductos {
         return result
     }
 
+    //TODO: Hacerlo sgún supermercado, es diferente el filtro a aplicar
     fun seleccionarMejorProducto(productos: ArrayList<ArrayList<Productos.Producto>>, filterEnum: FilterEnum = FilterEnum.BARATOS): ArrayList<Productos.Producto>{
         val result: ArrayList<Productos.Producto> = arrayListOf()
         println("El numero de tipo de productos a seleccionar es: " + productos.size)

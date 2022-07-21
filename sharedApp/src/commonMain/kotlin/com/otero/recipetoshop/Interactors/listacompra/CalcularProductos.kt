@@ -5,10 +5,7 @@ import com.otero.recipetoshop.datasource.cache.cacherecetas.RecetaCache
 import com.otero.recipetoshop.domain.model.ListaCompra.CalcularAlimentosToProductos
 import com.otero.recipetoshop.domain.model.ListaCompra.Productos
 import com.otero.recipetoshop.domain.model.despensa.Alimento
-import com.otero.recipetoshop.domain.util.CommonFLow
-import com.otero.recipetoshop.domain.util.DataState
-import com.otero.recipetoshop.domain.util.FilterEnum
-import com.otero.recipetoshop.domain.util.asCommonFlow
+import com.otero.recipetoshop.domain.util.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -18,14 +15,15 @@ class CalcularProductos(
 ) {
     fun calcularProductos(
         id_cestaCompra: Int,
-        filter: FilterEnum = FilterEnum.BARATOS
+        filter: FilterEnum = FilterEnum.BARATOS,
+        supermercados: MutableSet<SupermercadosEnum> = mutableSetOf(SupermercadosEnum.CARREFOUR)
     ): CommonFLow<DataState<Pair<ArrayList<Alimento>, ArrayList<Productos.Producto>>>> = flow {
         emit(DataState.loading())
 
         //Obtengo todos los alimentos activos de la cesta de la compra actual
         val alimentos_cesta = recetaCache.getAlimentosByActiveInCestaCompra(active = true, id_cestaCompra = id_cestaCompra)
         val ingredientes_cesta = recetaCache.getIngredientesByActiveByIdCestaCompra(active = true, id_cestaCompra = id_cestaCompra)
-        var all_alimentos_cesta: ArrayList<Alimento> = arrayListOf()
+        val all_alimentos_cesta: ArrayList<Alimento> = arrayListOf()
         var mejores_productos_unidades: ArrayList<Productos.Producto> = arrayListOf()
         if (alimentos_cesta == null && ingredientes_cesta == null){
             emit(DataState.data(data = Pair(arrayListOf(), arrayListOf()), message = null))
@@ -57,7 +55,7 @@ class CalcularProductos(
             val caluladoraProductos = CalcularAlimentosToProductos()
             println("He instanciado la calculadora")
             //Preparo la calculadora
-            caluladoraProductos.iniciarCalculadora()
+            caluladoraProductos.iniciarCalculadora(supermercados)
             var alimentos_unificados: ArrayList<Alimento> = arrayListOf()
 
             //Calculo las cantidades de ingredientes únicos necesario respecto a las cantidades de sus recetas.

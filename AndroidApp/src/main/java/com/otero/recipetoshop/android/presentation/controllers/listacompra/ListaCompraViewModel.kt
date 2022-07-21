@@ -14,6 +14,7 @@ import com.otero.recipetoshop.domain.model.ListaCompra.toAlimentos
 import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.domain.model.despensa.toProductos
 import com.otero.recipetoshop.domain.util.DataState
+import com.otero.recipetoshop.domain.util.SupermercadosEnum
 import com.otero.recipetoshop.events.listacompra.ListaCompraEvents
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -46,6 +47,7 @@ constructor(
 
         //Si hemos llegado directos del menú de navegación, entonces compruebo si hay lista calculada, sino folio en blanco de momento.
         if(listaCompraState.value.id_cestaCompra == -1){
+            //Lo sé porque al navegar hasta aquí guardo en savedStateHandle -1 como id de lista de la compra.
             actualizaLista()
         }
         //En caso contrario estamos llegando desde el cálculo de una cesta de la compra, hay que calcularlos.
@@ -104,9 +106,19 @@ constructor(
     }
 
     private fun calcularProductos() {
+        //TODO: Falta que los supermercados se puedan elegir dinámicamente
+        listaCompraState.value = listaCompraState.value.copy(
+            supermercados = mutableSetOf(
+                SupermercadosEnum.CARREFOUR,
+                SupermercadosEnum.MERCADONA,
+                SupermercadosEnum.DIA
+            )
+        )
+
         //Calculo los productos.
         calcularProductos.calcularProductos(
-            id_cestaCompra = listaCompraState.value.id_cestaCompra
+            id_cestaCompra = listaCompraState.value.id_cestaCompra,
+            supermercados = listaCompraState.value.supermercados
         ).onEach { dataState ->
             dataState.data?.let { alimentos_productosEncontrados ->
                 //Actualizo el precio total y el peso total
@@ -148,8 +160,13 @@ constructor(
     }
 
     private fun actualizarListaProductosEncontrados(productosEncontrados: List<Productos.Producto>) {
+
+        //Actualizo los supermercados seleccionados y con productos encontrados.
+        actualziarSupermercados(productosEncontrados)
+
         //Actualizo los productos.
         listaCompraState.value = listaCompraState.value.copy(listaProductos = productosEncontrados)
+
         //Actualizo el precio total y atualizo el peso total de los productos (considero que los ml pesan igual que los Kg).
         var precio_total = 0f
         var peso_total = 0f
@@ -160,6 +177,7 @@ constructor(
                 peso_total += producto.peso*producto.cantidad
             }
         }
+
         //Los actualizo.
         listaCompraState.value = listaCompraState.value.copy(
             precio_total = precio_total,
@@ -185,5 +203,19 @@ constructor(
         }
         //Actualizo la lista de alimentos no encontrados en el state de la lista de la compra.
         listaCompraState.value = listaCompraState.value.copy(alimentos_no_encontrados = alimentosNoEncontrados)
+    }
+
+    private fun actualziarSupermercados(productos: List<Productos.Producto>){
+        val supermercados_actuales: MutableSet<SupermercadosEnum> = mutableSetOf()
+        for(supermercado in SupermercadosEnum.values()){
+            if (
+                productos.any{ producto ->
+                    producto.supermercado.equals(supermercado)
+                }
+            ){
+                supermercados_actuales.add(supermercado)
+            }
+        }
+        listaCompraState.value = listaCompraState.value.copy(supermercados = supermercados_actuales)
     }
 }

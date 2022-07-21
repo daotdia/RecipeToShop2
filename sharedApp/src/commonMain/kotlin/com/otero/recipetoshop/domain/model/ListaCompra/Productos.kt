@@ -1,6 +1,7 @@
 package com.otero.recipetoshop.domain.model.ListaCompra
 
 import com.otero.recipetoshop.domain.model.despensa.Alimento
+import com.otero.recipetoshop.domain.util.SupermercadosEnum
 import com.otero.recipetoshop.domain.util.TipoUnidad
 
 data class Productos(
@@ -19,7 +20,8 @@ data class Productos(
         var peso: Float,
         var tipoUnidad: TipoUnidad?,
         val precio_numero: Float,
-        val noEncontrado: Boolean = false
+        val noEncontrado: Boolean = false,
+        val supermercado: SupermercadosEnum = SupermercadosEnum.CARREFOUR
     )
 }
 

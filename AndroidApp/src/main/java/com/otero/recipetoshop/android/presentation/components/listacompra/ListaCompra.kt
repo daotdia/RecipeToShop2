@@ -24,6 +24,7 @@ import androidx.navigation.NavController
 import com.otero.recipetoshop.android.presentation.components.RecetaImagen
 import com.otero.recipetoshop.android.presentation.components.alimentos.ListaAlimentosCestaCompra
 import com.otero.recipetoshop.android.presentation.theme.*
+import com.otero.recipetoshop.domain.util.SupermercadosEnum
 import com.otero.recipetoshop.domain.util.TipoUnidad
 import com.otero.recipetoshop.events.listacompra.ListaCompraEvents
 import com.otero.recipetoshop.presentationlogic.states.listacompra.ListaCompraState
@@ -41,10 +42,10 @@ fun ListaCompra(
     Column(Modifier.fillMaxSize()) {
         LazyColumn(
             Modifier
-                .fillMaxSize()
-                .weight(6f)
-        ) {
-            items(items = listaCompraState.value.listaProductos) { item ->
+            .fillMaxSize()
+            .weight(6f)
+        ){
+            items(items = listaCompraState.value.supermercados.toList()){ supermercado ->
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -62,8 +63,8 @@ fun ListaCompra(
                         ) {
                             //Se tendrá que cambiar dinamicamente cuando tenga más supermercados
                             RecetaImagen(
-                                url = "https://vams-loyalia-storage.s3.eu-west-1.amazonaws.com/images/deals/_720x495/carrefour.jpg",
-                                contentDescription = "logo_carrefour"
+                                url = SupermercadosEnum.getImage(supermercado),
+                                contentDescription = "logo " + supermercado.name
                             )
                         }
                         Column(
@@ -72,14 +73,17 @@ fun ListaCompra(
                                 .height(312.dp)
                                 .align(Alignment.CenterHorizontally)
                         ) {
-                            //Aquí está la lista grid de tres columnas
                             LazyVerticalGrid(
                                 modifier = Modifier
                                     .fillMaxSize()
                                     .padding(4.dp),
                                 cells = GridCells.Fixed(3)
                             ) {
-                                items(listaCompraState.value.listaProductos) {
+                                items(
+                                    listaCompraState.value.listaProductos.filter { producto ->
+                                        producto.supermercado.equals(supermercado)
+                                    }
+                                ) { producto ->
                                     Column(
                                         Modifier
                                             .fillMaxSize()
@@ -104,7 +108,9 @@ fun ListaCompra(
                                             backgroundCardContentColor = secondaryLightColor,
                                             hiddenContentEnd = {
                                                 Icon(
-                                                    modifier = Modifier.padding(horizontal = 14.dp).size(22.dp),
+                                                    modifier = Modifier
+                                                        .padding(horizontal = 14.dp)
+                                                        .size(22.dp),
                                                     imageVector = Icons.Outlined.Delete,
                                                     contentDescription = null
                                                 )
@@ -113,7 +119,9 @@ fun ListaCompra(
                                             maxRevealDp = 34.dp,
                                             hiddenContentStart = {
                                                 Icon(
-                                                    modifier = Modifier.padding(horizontal = 14.dp).size(22.dp),
+                                                    modifier = Modifier
+                                                        .padding(horizontal = 14.dp)
+                                                        .size(22.dp),
                                                     imageVector = Icons.Outlined.Edit,
                                                     contentDescription = null,
                                                     tint = Color.White
@@ -124,8 +132,8 @@ fun ListaCompra(
                                                 Column() {
                                                     //La imagen del producto, no importa que sea de receta o de producto.
                                                     RecetaImagen(
-                                                        url = item.imagen_src,
-                                                        contentDescription = item.nombre
+                                                        url = producto.imagen_src,
+                                                        contentDescription = producto.nombre
                                                     )
                                                 }
                                                 //La cantidad de unidades del producto.
@@ -144,7 +152,7 @@ fun ListaCompra(
                                                             color = Color.Black
                                                         ),
                                                         maxLines = 2,
-                                                        text = item.cantidad.toString() + " Ud",
+                                                        text = producto.cantidad.toString() + " Ud",
                                                     )
                                                 }
                                                 //La informaación sobre el producto: nombre, precio, peso
@@ -165,7 +173,7 @@ fun ListaCompra(
                                                                 color = Color.Black
                                                             ),
                                                             maxLines = 2,
-                                                            text = item.nombre,
+                                                            text = producto.nombre,
                                                         )
                                                     }
                                                     Column {
@@ -182,10 +190,10 @@ fun ListaCompra(
                                                                 ),
                                                                 maxLines = 1,
                                                                 text = (
-                                                                        if ((item.cantidad * item.peso) >= 1000) {
+                                                                        if ((producto.cantidad * producto.peso) >= 1000) {
                                                                             val peso =
-                                                                                (item.cantidad * item.peso) / 1000
-                                                                            if (item.tipoUnidad!!.name.equals(
+                                                                                (producto.cantidad * producto.peso) / 1000
+                                                                            if (producto.tipoUnidad!!.name.equals(
                                                                                     "GRAMOS"
                                                                                 )
                                                                             ) {
@@ -194,8 +202,8 @@ fun ListaCompra(
                                                                                 "$peso L"
                                                                             }
                                                                         } else {
-                                                                            (item.cantidad * item.peso).toString() + " " + TipoUnidad.parseAbrev(
-                                                                                item.tipoUnidad!!
+                                                                            (producto.cantidad * producto.peso).toString() + " " + TipoUnidad.parseAbrev(
+                                                                                producto.tipoUnidad!!
                                                                             )
                                                                         }
                                                                         )
@@ -210,7 +218,7 @@ fun ListaCompra(
                                                                     color = primaryDarkColor
                                                                 ),
                                                                 maxLines = 1,
-                                                                text = (item.cantidad * item.precio_numero).toString() + " €",
+                                                                text = (producto.cantidad * producto.precio_numero).toString() + " €",
                                                             )
                                                         }
                                                     }
@@ -224,24 +232,30 @@ fun ListaCompra(
                         //Aquí está el precio total y el peso total de la lista de la compra de este supermercado.
                         Column{
                             Box (
-                                Modifier.fillMaxSize().padding(2.dp)
+                                Modifier
+                                    .fillMaxSize()
+                                    .padding(2.dp)
                             ){
                                 //El peso total de la lista de la compra aproximado, no puedo saber el peso de los productos con unidades; estimación optimista.
                                 Text(
-                                    modifier = Modifier.align(Alignment.CenterStart).padding(start = 42.dp),
+                                    modifier = Modifier
+                                        .align(Alignment.CenterStart)
+                                        .padding(start = 42.dp),
                                     style = MaterialTheme.typography.h5.copy(color = primaryDarkColor),
                                     textAlign = TextAlign.Center,
                                     maxLines = 1,
                                     text =
-                                        if(listaCompraState.value.peso_total >= 1000){
-                                            "> " + listaCompraState.value.peso_total/1000 + " Kg"
-                                        }else {
-                                            "> " + listaCompraState.value.peso_total + " Gr"
-                                        }
+                                    if(listaCompraState.value.peso_total >= 1000){
+                                        "> " + listaCompraState.value.peso_total/1000 + " Kg"
+                                    }else {
+                                        "> " + listaCompraState.value.peso_total + " Gr"
+                                    }
                                 )
                                 //El precio total de la compra exacto.
                                 Text(
-                                    modifier = Modifier.align(Alignment.CenterEnd).padding(end = 42.dp),
+                                    modifier = Modifier
+                                        .align(Alignment.CenterEnd)
+                                        .padding(end = 42.dp),
                                     style = MaterialTheme.typography.h5.copy(color = primaryDarkColor),
                                     textAlign = TextAlign.Center,
                                     maxLines = 1,
