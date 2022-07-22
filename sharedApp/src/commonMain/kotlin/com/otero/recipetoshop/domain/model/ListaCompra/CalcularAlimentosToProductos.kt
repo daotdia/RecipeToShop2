@@ -139,11 +139,8 @@ class CalcularAlimentosToProductos {
                     var best: Float = MAX_VALUE
                     var ganador: Productos.Producto? = null
                     for(elemento in tipo){
-                        val precio_peso = elemento.precio_peso
-                            .replace(',', '.')
-                            .filter { it.isDigit() || it.equals('.') }
-                            .toFloat()
-                        if(precio_peso< best){
+                        val precio_peso = ParsersJsonToProducto.parseJsonPrecioPesoToProductoPrecioPeso(elemento)
+                        if(precio_peso != null && precio_peso < best){
                             ganador = elemento
                             best = precio_peso
                         }
@@ -184,23 +181,27 @@ class CalcularAlimentosToProductos {
         return ArrayList(alimentos_cesta.filter { it.active == true })
     }
 
-    fun calcularCantidadesProductos(alimentos: ArrayList<Alimento>, productos: ArrayList<Productos.Producto>): ArrayList<Productos.Producto>{
+    fun calcularCantidadesProductos(alimentos: ArrayList<Alimento>, productos: ArrayList<ArrayList<Productos.Producto>>): ArrayList<ArrayList<Productos.Producto>>{
         //Primero calculo la cantidad de una unidad de producto
-        for(producto in productos){
-            val cantidad_tipo = producto.calcularCantidad()
-            if(cantidad_tipo != null){
-                producto.peso = cantidad_tipo.get("peso") as Float
-                producto.tipoUnidad = cantidad_tipo.get("tipounidad") as TipoUnidad
+        for(tipo in productos){
+            for(producto in tipo){
+                val cantidad_tipoUnidad = ParsersJsonToProducto.parsePesoJsonToProductoJson(producto)
+                if(cantidad_tipoUnidad != null){
+                    producto.peso = cantidad_tipoUnidad.get("peso") as Float
+                    producto.tipoUnidad = cantidad_tipoUnidad.get("tipounidad") as TipoUnidad
+                }
             }
         }
 
         //Después determino la cantidad de unidades de producto necesarias
         for(alimento in alimentos){
-            for(producto in productos){
-                if(producto.query.trim().lowercase().equals(alimento.nombre.trim().lowercase())){
-                    println("He matcheado el producto con el alimento correctamente en calculo de cantidades: " + producto.query)
-                    producto.cantidad = calcularDiferenciaCantidad(alimento.cantidad,alimento.tipoUnidad,producto.peso,producto.tipoUnidad)
-                    println("La cantidad calculada es: " + producto.cantidad + "para un peso de alimento " + alimento.cantidad + " y de producto unitario " + producto.peso)
+            for(tipo in productos){
+                for(producto in tipo){
+                    if(producto.query.trim().lowercase().equals(alimento.nombre.trim().lowercase())){
+                        println("He matcheado el producto con el alimento correctamente en calculo de cantidades: " + producto.query)
+                        producto.cantidad = calcularDiferenciaCantidad(alimento.cantidad,alimento.tipoUnidad,producto.peso,producto.tipoUnidad)
+                        println("La cantidad calculada es: " + producto.cantidad + "para un peso de alimento " + alimento.cantidad + " y de producto unitario " + producto.peso)
+                    }
                 }
             }
         }

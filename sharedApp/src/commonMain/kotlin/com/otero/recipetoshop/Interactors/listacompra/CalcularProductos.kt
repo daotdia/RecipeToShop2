@@ -24,7 +24,7 @@ class CalcularProductos(
         val alimentos_cesta = recetaCache.getAlimentosByActiveInCestaCompra(active = true, id_cestaCompra = id_cestaCompra)
         val ingredientes_cesta = recetaCache.getIngredientesByActiveByIdCestaCompra(active = true, id_cestaCompra = id_cestaCompra)
         val all_alimentos_cesta: ArrayList<Alimento> = arrayListOf()
-        var mejores_productos_unidades: ArrayList<Productos.Producto> = arrayListOf()
+        var productos_unidades: ArrayList<ArrayList<Productos.Producto>> = arrayListOf()
         if (alimentos_cesta == null && ingredientes_cesta == null){
             emit(DataState.data(data = Pair(arrayListOf(), arrayListOf()), message = null))
         } else{
@@ -80,15 +80,19 @@ class CalcularProductos(
             //Encuentro los productos
             val productos_brutos = caluladoraProductos.encontrarProductos(alimentos_unificados)
             //var otravez = true
-            //Selecciono los mejores productos
-            val mejores_productos = caluladoraProductos.seleccionarMejorProducto(productos_brutos, filter)
             //Calculo la cantidad de productos.
-            mejores_productos_unidades = caluladoraProductos.calcularCantidadesProductos(alimentos = ArrayList(alimentos_unificados), productos = ArrayList(mejores_productos))
-            for(producto in mejores_productos_unidades){
-                println("La cantidad del producto es: " + producto.cantidad)
-                println("El peso del producto es: " + producto.peso)
-                println("El precio del producto numeral es: " + producto.precio_numero)
+            productos_unidades = caluladoraProductos.calcularCantidadesProductos(alimentos = ArrayList(alimentos_unificados), productos = productos_brutos)
+            for (tipo in productos_unidades){
+                for(producto in tipo){
+                    println("La cantidad del producto es: " + producto.cantidad)
+                    println("El peso del producto es: " + producto.peso)
+                    println("El precio del producto numeral es: " + producto.precio_numero)
+                }
             }
+
+            //Selecciono los mejores productos
+            val mejores_productos_unidades = caluladoraProductos.seleccionarMejorProducto(productos_unidades, filter)
+
 //            while(otravez){
 //                otravez = false
 //                //Selecciono los mejores productos
@@ -116,7 +120,6 @@ class CalcularProductos(
 //                    }
 //                }
 //            }
-
             emit(DataState.data(data = Pair(all_alimentos_cesta, mejores_productos_unidades), message = null))
         }
     }.asCommonFlow()
