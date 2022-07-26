@@ -43,6 +43,7 @@ class CalcularAlimentosToProductos {
                         for (instancia in tipo.jsonArray) {
                             println("Producto en json alcanzado: " + instancia.jsonObject.getValue("nombre").jsonPrimitive.content)
                             val elemento: Productos.Producto = Productos.Producto(
+                                id_producto = -1,
                                 id_cestaCompra = -1,
                                 nombre = instancia.jsonObject.getValue("nombre").jsonPrimitive.content,
                                 imagen_src = instancia.jsonObject.getValue("imagen_src").jsonPrimitive.content,

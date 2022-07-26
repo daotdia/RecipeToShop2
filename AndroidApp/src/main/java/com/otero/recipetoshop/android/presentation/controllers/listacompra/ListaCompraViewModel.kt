@@ -31,7 +31,8 @@ constructor(
     private val getProductos: ObtenerProductos,
     private val deleteProductos: DeleteProductos,
     private val getAlimentosNoEncontradosCache: GetAlimentosNoEncontradosCache,
-    private val saveListaCompra: SaveListaCompra
+    private val saveListaCompra: SaveListaCompra,
+    private val updateProducto: UpdateProducto
 ):ViewModel(){
     val listaCompraState: MutableState<ListaCompraState> = mutableStateOf(ListaCompraState())
     init {
@@ -66,10 +67,21 @@ constructor(
                 //Actualizo la lsita de la compra según el filter aplicado
                 aplicarFlitro(FilterEnum.parseString(event.filter_nombre))
             }
+
+            is ListaCompraEvents.onClickProducto -> {
+                actualizarProducto(active = !event.producto.active, producto = event.producto)
+            }
             else -> {
                 print("Evento de la lista de la compra no esperado.")
             }
         }
+    }
+
+    private fun actualizarProducto(active: Boolean, producto: Productos.Producto) {
+        updateProducto.updateProducto(active = active, producto = producto).onEach { dataState ->
+            //Actualizo la lista de la compra
+            actualizaLista()
+        }.launchIn(viewModelScope)
     }
 
     private fun aplicarFlitro(filter: FilterEnum) {
@@ -108,17 +120,15 @@ constructor(
         getProductosEncontrados()
         //Obtengo y actualizo productos no encontrados.
         getProductosNoEncontrados()
-        //Actualizo el precio y peso totales de la lista de la compra-
-        actualizarListaProductosEncontrados(listaCompraState.value.listaProductos)
     }
 
     private fun getProductosNoEncontrados(){
         getAlimentosNoEncontradosCache.getAlimentosNoEncontradosCache().onEach {DataState ->
-            DataState.data?.let { productos ->
-               if(!productos.isEmpty()){
+            DataState.data?.let { productosNoEncontrados ->
+               if(!productosNoEncontrados.isEmpty()){
                    //Actualizo la lista de la compra con los productos encontrados en cache.
                    listaCompraState.value = listaCompraState.value.copy(
-                       listaProductos = productos,
+                       alimentos_no_encontrados = productosNoEncontrados.toAlimentos(),
                    )
                }
             }
@@ -127,13 +137,15 @@ constructor(
 
     private fun getProductosEncontrados() {
         getProductos.obtenerProductos().onEach {DataState ->
-            DataState.data?.let { productosNoEncontrados ->
-                if(!productosNoEncontrados.productos_cache.isEmpty()){
+            DataState.data?.let { productosEncontrados ->
+                if(!productosEncontrados.productos_cache.isEmpty()){
                     //Actualizo la lista de la compra con los productos no encontrados en cache.
                     listaCompraState.value = listaCompraState.value.copy(
-                        alimentos_no_encontrados = productosNoEncontrados.productos_cache.toAlimentos(),
-                        id_cestaCompra = productosNoEncontrados.id_cestaCompra
+                        listaProductos = productosEncontrados.productos_cache,
+                        id_cestaCompra = productosEncontrados.id_cestaCompra
                     )
+                    //Actualizo el precio y peso totales de la lista de la compra-
+                    actualizarListaProductosEncontrados(listaCompraState.value.listaProductos)
                 }
             }
         }.launchIn(viewModelScope)
@@ -159,11 +171,15 @@ constructor(
                 //Actualizo el precio total y el peso total
                 actualizarListaProductosEncontrados(productosEncontrados = alimentos_productosEncontrados.second)
                 //Calculo los alimentos no encontrados.
-                calcularAlimentosNoEncontrados(alimentosNecesarios = alimentos_productosEncontrados.first)
+                calcularAlimentosNoEncontrados(
+                    alimentosNecesarios = alimentos_productosEncontrados.first,
+                    productos_encontrados = alimentos_productosEncontrados.second
+                )
                 //Guardo los productos encontrados en cache.
-                saveProductosEncontrados()
+                saveProductosEncontrados(productos_encontrados = alimentos_productosEncontrados.second)
                 //Guardo los productos no encontrados en cache.
                 saveProductosNoEncontrados()
+
             }
         }.launchIn(viewModelScope)
     }
@@ -178,15 +194,17 @@ constructor(
         ).onEach { dataState ->
             dataState.data?.let {
                 //Productos no encontrados guardados
+                //Actualizo la lista.
+                actualizaLista()
             }
         }.launchIn(viewModelScope)
     }
 
-    private fun saveProductosEncontrados() {
+    private fun saveProductosEncontrados(productos_encontrados: List<Productos.Producto>) {
         //Guardo en cache los productos encontrados de la cesta de la compra actual.
         saveListaCompra.saveProductos(
             id_cestaCompra = listaCompraState.value.id_cestaCompra,
-            productos = listaCompraState.value.listaProductos
+            productos = productos_encontrados
         ).onEach { dataState ->
             dataState.data?.let {
                 //Productos encontrados guardados
@@ -198,9 +216,6 @@ constructor(
 
         //Actualizo los supermercados seleccionados y con productos encontrados.
         actualziarSupermercados(productosEncontrados)
-
-        //Actualizo los productos.
-        listaCompraState.value = listaCompraState.value.copy(listaProductos = productosEncontrados)
 
         //Actualizo el precio total y atualizo el peso total de los productos (considero que los ml pesan igual que los Kg).
         var precio_total_carrefour = 0f
@@ -250,11 +265,11 @@ constructor(
     }
 
     //Metodo para calcular los alimentos que no han sido encontrados o que ha habido problemas en calcular las cantidades.
-    private fun calcularAlimentosNoEncontrados(alimentosNecesarios: ArrayList<Alimento>) {
+    private fun calcularAlimentosNoEncontrados(alimentosNecesarios: ArrayList<Alimento>, productos_encontrados: List<Productos.Producto>) {
         val alimentosNoEncontrados: ArrayList<Alimento> = arrayListOf()
         for(alimento in alimentosNecesarios){
             var match: Boolean = false
-            for(producto in listaCompraState.value.listaProductos){
+            for(producto in productos_encontrados){
                 //Si encuentra al menos un producto de su tipo; sí ha sido encontrado.
                 if(producto.query.trim().lowercase().equals(alimento.nombre.trim().lowercase())){
                     match = true

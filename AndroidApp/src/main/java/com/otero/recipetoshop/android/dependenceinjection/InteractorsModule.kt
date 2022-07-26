@@ -240,4 +240,14 @@ object InteractorsModule {
             recetaCache = recetaCache
         )
     }
+
+    @Singleton
+    @Provides
+    fun provideUpdateProducto(
+        recetaCache: RecetaCache
+    ): UpdateProducto{
+        return UpdateProducto(
+            recetaCache = recetaCache
+        )
+    }
 }

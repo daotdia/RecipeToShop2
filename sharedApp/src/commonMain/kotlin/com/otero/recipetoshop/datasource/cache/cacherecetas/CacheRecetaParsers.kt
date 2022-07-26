@@ -76,6 +76,7 @@ fun List<Ingredients_Entity>.toListaIngredientes(): List<Alimento>{
 
 fun Producto_Entity.toProducto(): Productos.Producto{
     return Productos.Producto(
+        id_producto = id_producto.toInt(),
         id_cestaCompra = id_cestaCompra.toInt(),
         imagen_src = imagen_src,
         nombre = nombre,
@@ -84,10 +85,11 @@ fun Producto_Entity.toProducto(): Productos.Producto{
         precio_peso = precio_peso,
         query = query,
         cantidad = cantidad.toInt(),
-        peso = peso.toFloat(),
+        peso = peso,
         tipoUnidad = TipoUnidad.valueOf(tipoUnidad),
-        precio_numero = precio_numero.toFloat(),
-        supermercado = SupermercadosEnum.parseString(supermercado)
+        precio_numero = precio_numero,
+        supermercado = SupermercadosEnum.parseString(supermercado),
+        active = active
     )
 }
 

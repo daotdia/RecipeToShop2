@@ -295,7 +295,8 @@ CREATE TABLE  producto_Entity(
     imagen_src TEXT NOT NULL,
     cantidad INTEGER NOT NULL,
     supermercado TEXT NOT NULL,
-    noEnocntrado INTEGER AS Boolean NOT NULL
+    noEnocntrado INTEGER AS Boolean NOT NULL,
+    active INTEGER AS Boolean NOT NULL
 );
 
 insertProducto:
@@ -313,8 +314,9 @@ INTO producto_Entity(
     cantidad,
     imagen_src,
     supermercado,
-    noEnocntrado
-) VALUES(?,?,?,?,?,?,?,?,?,?,?, ?, ?);
+    noEnocntrado,
+    active
+) VALUES(?,?,?,?,?,?,?,?,?,?,?, ?, ?,?);
 
 getAllProductos:
 SELECT * FROM producto_Entity
@@ -324,6 +326,10 @@ getProductosSegunEncontrado:
 SELECT * FROM producto_Entity
 WHERE noEnocntrado = :noencontrado
 ORDER BY nombre DESC;
+
+deleteProductoByID:
+DELETE FROM producto_Entity
+WHERE id_producto = :id_producto;
 
 deleteProductos:
 DELETE FROM producto_Entity;

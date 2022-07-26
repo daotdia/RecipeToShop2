@@ -10,6 +10,7 @@ data class Productos(
     val productos_cache: List<Producto> = listOf()
 ) {
     data class Producto(
+        val id_producto: Int,
         val id_cestaCompra: Int,
         val imagen_src: String,
         val nombre: String,
@@ -22,7 +23,8 @@ data class Productos(
         var tipoUnidad: TipoUnidad?,
         val precio_numero: Float,
         val noEncontrado: Boolean = false,
-        val supermercado: SupermercadosEnum = SupermercadosEnum.CARREFOUR
+        val supermercado: SupermercadosEnum = SupermercadosEnum.CARREFOUR,
+        val active: Boolean = true
     )
 }
 

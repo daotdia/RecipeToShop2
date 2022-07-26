@@ -90,5 +90,7 @@ interface RecetaCache {
 
     fun getProductosNoEncontrados(): List<Productos.Producto>
 
+    fun deleteProducto(id_producto: Int): Unit
+
     fun deleteProductos(): Boolean
 }

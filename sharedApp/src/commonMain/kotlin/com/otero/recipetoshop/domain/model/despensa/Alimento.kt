@@ -15,6 +15,7 @@ data class Alimento(
 
 fun Alimento.toProducto(): Productos.Producto{
     return Productos.Producto(
+        id_producto = -1,
         id_cestaCompra = id_cestaCompra!!.toInt(),
         nombre = nombre,
         peso = cantidad.toFloat(),

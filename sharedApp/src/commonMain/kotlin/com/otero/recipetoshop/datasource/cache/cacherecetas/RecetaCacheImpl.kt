@@ -345,6 +345,9 @@ class RecetaCacheImpl(
 
     override fun insertProducto(id_cestaCompra: Int, producto: Productos.Producto): Boolean {
        try {
+           if(producto.id_producto != -1){
+               deleteProducto(producto.id_producto)
+           }
            queries.insertProducto(
                id_cestaCompra = id_cestaCompra.toLong(),
                nombre = producto.nombre,
@@ -358,7 +361,8 @@ class RecetaCacheImpl(
                tipoUnidad = producto.tipoUnidad!!.name,
                query = producto.query,
                supermercado = producto.supermercado.name,
-               noEnocntrado = producto.noEncontrado
+               noEnocntrado = producto.noEncontrado,
+               active = producto.active
            )
            println("El precio numeral en cache es: " + producto.precio_numero)
            return true
@@ -371,7 +375,7 @@ class RecetaCacheImpl(
     override fun getProductosEncontrados(): Productos {
         return try {
             queries
-                .getProductosSegunEncontrado(noencontrado = true)
+                .getProductosSegunEncontrado(noencontrado = false)
                 .executeAsList()
                 .toProductos()
         }catch (e: Exception){
@@ -385,7 +389,7 @@ class RecetaCacheImpl(
     override fun getProductosNoEncontrados(): List<Productos.Producto> {
         try {
             val productos = queries
-                .getProductosSegunEncontrado(noencontrado = false)
+                .getProductosSegunEncontrado(noencontrado = true)
                 .executeAsList()
                 .toProductos()
             return productos.productos_cache
@@ -395,6 +399,13 @@ class RecetaCacheImpl(
         }
     }
 
+    override fun deleteProducto(id_producto: Int) {
+        try {
+            queries.deleteProductoByID(id_producto = id_producto.toLong())
+        }catch (e: Exception){
+            println("Probelmas al eleiminar el producto por su ID")
+        }
+    }
     override fun deleteProductos(): Boolean {
         try{
             queries.deleteProductos()
