@@ -357,6 +357,7 @@ class RecetaCacheImpl(
                oferta = producto.oferta,
                tipoUnidad = producto.tipoUnidad!!.name,
                query = producto.query,
+               supermercado = producto.supermercado.name,
                noEnocntrado = producto.noEncontrado
            )
            println("El precio numeral en cache es: " + producto.precio_numero)

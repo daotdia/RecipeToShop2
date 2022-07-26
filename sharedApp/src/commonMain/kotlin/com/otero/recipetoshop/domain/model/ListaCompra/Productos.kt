@@ -10,6 +10,7 @@ data class Productos(
     val productos_cache: List<Producto> = listOf()
 ) {
     data class Producto(
+        val id_cestaCompra: Int,
         val imagen_src: String,
         val nombre: String,
         val oferta: String,
@@ -51,7 +52,7 @@ fun Productos.Producto.isComplete(): Boolean {
 
 fun Productos.Producto.toAlimento(): Alimento{
     return Alimento(
-        id_cestaCompra = -1,
+        id_cestaCompra = id_cestaCompra,
         id_receta = -1,
         id_alimento = -1,
         nombre = nombre,
@@ -63,4 +64,35 @@ fun Productos.Producto.toAlimento(): Alimento{
 
 fun List<Productos.Producto>.toAlimentos(): List<Alimento>{
     return map { it.toAlimento() }
+}
+
+fun List<List<Productos.Producto>>.getPesoMedio(): Float{
+    var peso_total = 0f
+    var num_productos = 0
+    this.forEach { it.forEach {
+        peso_total += it.peso
+        num_productos += 1
+    } }
+   return peso_total / num_productos
+}
+
+fun List<List<Productos.Producto>>.getPrecioMedio(): Float{
+    var peso_total = 0f
+    var num_productos = 0f
+    this.forEach { it.forEach {
+        val precio = ParsersJsonToProducto.parseJsonPrecioPesoToProductoPrecioPeso(it)
+        if (precio != null) {
+            peso_total +=  precio
+            num_productos += 1
+        }
+    } }
+    return peso_total / num_productos
+}
+
+fun List<List<Productos.Producto>>.getNumeroProductos(): Int{
+    var num_productos = 0
+    this.forEach { it.forEach {
+        num_productos += 1
+    } }
+    return num_productos
 }

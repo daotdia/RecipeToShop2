@@ -5,6 +5,7 @@ import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.domain.model.CestaCompra.CestaCompra
 import com.otero.recipetoshop.domain.model.CestaCompra.Receta
 import com.otero.recipetoshop.domain.model.ListaCompra.Productos
+import com.otero.recipetoshop.domain.util.SupermercadosEnum
 import com.otero.recipetoshop.domain.util.TipoUnidad
 /*
 En este fichero hay distintas funciones auxiliares para parsear la respuesta de la caché.
@@ -75,6 +76,7 @@ fun List<Ingredients_Entity>.toListaIngredientes(): List<Alimento>{
 
 fun Producto_Entity.toProducto(): Productos.Producto{
     return Productos.Producto(
+        id_cestaCompra = id_cestaCompra.toInt(),
         imagen_src = imagen_src,
         nombre = nombre,
         oferta = oferta,
@@ -84,7 +86,8 @@ fun Producto_Entity.toProducto(): Productos.Producto{
         cantidad = cantidad.toInt(),
         peso = peso.toFloat(),
         tipoUnidad = TipoUnidad.valueOf(tipoUnidad),
-        precio_numero = precio_numero.toFloat()
+        precio_numero = precio_numero.toFloat(),
+        supermercado = SupermercadosEnum.parseString(supermercado)
     )
 }
 

@@ -66,14 +66,14 @@ class CalcularProductos(
                 }
             }
 
-            if(!all_alimentos_cesta.isNullOrEmpty()){
+            if(!all_alimentos_cesta.isEmpty()){
                 //Unifico los alimentos necesarios duplicados.
                 alimentos_unificados =  caluladoraProductos.unificarAlimentos(ArrayList(all_alimentos_cesta))
                 println("Los alimentos unificados a necesitar son; " + alimentos_unificados.toString())
             }
 
             //Calculo la cantidad de alimentos necesarios; restando lo que ya se tiene en despensa.
-            if(!alimentos_despensa.isNullOrEmpty()){
+            if(!alimentos_despensa.isEmpty()){
                 alimentos_unificados = caluladoraProductos.calcularNecesidadesAlimentos(alimentos_despensa = alimentos_despensa, alimentos_cesta = alimentos_unificados)
                 println("Los alimentos necesarios restando despensa son: " + all_alimentos_cesta.toString())
             }

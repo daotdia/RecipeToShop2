@@ -23,12 +23,14 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.otero.recipetoshop.android.presentation.components.RecetaImagen
 import com.otero.recipetoshop.android.presentation.components.alimentos.ListaAlimentosCestaCompra
+import com.otero.recipetoshop.android.presentation.components.util.NestedDownMenu
 import com.otero.recipetoshop.android.presentation.theme.*
 import com.otero.recipetoshop.domain.util.SupermercadosEnum
 import com.otero.recipetoshop.domain.util.TipoUnidad
 import com.otero.recipetoshop.events.listacompra.ListaCompraEvents
 import com.otero.recipetoshop.presentationlogic.states.listacompra.ListaCompraState
 import de.charlex.compose.RevealSwipe
+import java.text.DecimalFormat
 
 
 @ExperimentalMaterialApi
@@ -40,10 +42,28 @@ fun ListaCompra(
     onTriggeEvent: (ListaCompraEvents) -> Unit,
 ) {
     Column(Modifier.fillMaxSize()) {
+        if(
+            !listaCompraState.value.listaProductos.isEmpty()
+            || !listaCompraState.value.alimentos_no_encontrados.isEmpty()
+        ){
+            NestedDownMenu(
+                options = listOf(
+                    "Más baratos",
+                    "Más ligeros",
+                    "Más baratos ajustados",
+                    "Supermercado más barato",
+                    "Supermercado más ligero",
+                    "Supermercado más ajustado"
+                ),
+                onClickItem = {
+                    onTriggeEvent(ListaCompraEvents.onCLickFilter(it))
+                }
+            )
+        }
         LazyColumn(
             Modifier
-            .fillMaxSize()
-            .weight(6f)
+                .fillMaxSize()
+                .weight(6f)
         ){
             items(items = listaCompraState.value.supermercados.toList()){ supermercado ->
                 Card(
@@ -70,7 +90,7 @@ fun ListaCompra(
                         Column(
                             Modifier
                                 .fillMaxWidth()
-                                .height(312.dp)
+                                .height(254.dp)
                                 .align(Alignment.CenterHorizontally)
                         ) {
                             LazyVerticalGrid(
@@ -191,19 +211,19 @@ fun ListaCompra(
                                                                 maxLines = 1,
                                                                 text = (
                                                                         if ((producto.cantidad * producto.peso) >= 1000) {
-                                                                            val peso =
-                                                                                (producto.cantidad * producto.peso) / 1000
+                                                                            val peso = (producto.cantidad * producto.peso) / 1000
                                                                             if (producto.tipoUnidad!!.name.equals(
                                                                                     "GRAMOS"
                                                                                 )
                                                                             ) {
-                                                                                "$peso Kg"
+                                                                                String.format("%.2f", peso) + " Kg"
                                                                             } else {
-                                                                                "$peso L"
+                                                                                String.format("%.2f", peso) + " L"
                                                                             }
                                                                         } else {
-                                                                            (producto.cantidad * producto.peso).toString() + " " + TipoUnidad.parseAbrev(
-                                                                                producto.tipoUnidad!!
+                                                                            (
+                                                                                    String.format("%.1f", producto.cantidad * producto.peso) + " "
+                                                                                            + TipoUnidad.parseAbrev(producto.tipoUnidad!!)
                                                                             )
                                                                         }
                                                                         )
@@ -245,10 +265,10 @@ fun ListaCompra(
                                     textAlign = TextAlign.Center,
                                     maxLines = 1,
                                     text =
-                                    if(listaCompraState.value.peso_total >= 1000){
-                                        "> " + listaCompraState.value.peso_total/1000 + " Kg"
+                                    if((listaCompraState.value.peso_total.get(supermercado))!! >= 1000){
+                                        "> " + (listaCompraState.value.peso_total.get(supermercado)?.div(1000) ?: 0) + " Kg"
                                     }else {
-                                        "> " + listaCompraState.value.peso_total + " Gr"
+                                        "> " + (listaCompraState.value.peso_total.get(supermercado)?.div(1000) ?: 0) + " Gr"
                                     }
                                 )
                                 //El precio total de la compra exacto.
@@ -259,7 +279,7 @@ fun ListaCompra(
                                     style = MaterialTheme.typography.h5.copy(color = primaryDarkColor),
                                     textAlign = TextAlign.Center,
                                     maxLines = 1,
-                                    text = listaCompraState.value.precio_total.toString() + " €",
+                                    text = listaCompraState.value.precio_total.get(supermercado).toString() + " €",
                                 )
                             }
                         }

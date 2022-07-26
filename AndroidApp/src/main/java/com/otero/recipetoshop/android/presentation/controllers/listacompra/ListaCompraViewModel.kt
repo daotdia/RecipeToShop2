@@ -14,6 +14,7 @@ import com.otero.recipetoshop.domain.model.ListaCompra.toAlimentos
 import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.domain.model.despensa.toProductos
 import com.otero.recipetoshop.domain.util.DataState
+import com.otero.recipetoshop.domain.util.FilterEnum
 import com.otero.recipetoshop.domain.util.SupermercadosEnum
 import com.otero.recipetoshop.events.listacompra.ListaCompraEvents
 import kotlinx.coroutines.flow.launchIn
@@ -60,6 +61,30 @@ constructor(
     }
 
     fun onTriggerEvent(event: ListaCompraEvents){
+        when(event){
+            is ListaCompraEvents.onCLickFilter -> {
+                //Actualizo la lsita de la compra según el filter aplicado
+                aplicarFlitro(FilterEnum.parseString(event.filter_nombre))
+            }
+            else -> {
+                print("Evento de la lista de la compra no esperado.")
+            }
+        }
+    }
+
+    private fun aplicarFlitro(filter: FilterEnum) {
+        //Seteo la lista de la compra a los productos anteriores.
+        var id_anterior = -1
+        if(listaCompraState.value.listaProductos.isNotEmpty()){
+            id_anterior = listaCompraState.value.listaProductos.first().id_cestaCompra
+        } else if(listaCompraState.value.alimentos_no_encontrados.isNotEmpty()) {
+            id_anterior = listaCompraState.value.alimentos_no_encontrados.first().id_cestaCompra!!
+        }
+        listaCompraState.value = listaCompraState.value.copy(id_cestaCompra = id_anterior)
+        //Elimino los productos calculados hasta le momento
+        deleteProductosCache()
+        //Calculo los productos con el filtro seleccionado
+        calcularProductos(filter = filter)
     }
 
     private fun deleteProductosCache() {
@@ -71,6 +96,14 @@ constructor(
     }
 
     private fun actualizaLista() {
+        //TODO: Falta que los supermercados se puedan elegir dinámicamente
+        listaCompraState.value = listaCompraState.value.copy(
+            supermercados = mutableSetOf(
+                SupermercadosEnum.CARREFOUR,
+                SupermercadosEnum.MERCADONA,
+                SupermercadosEnum.DIA
+            )
+        )
         //Obtengo y actualizo productos encontrados.
         getProductosEncontrados()
         //Obtengo y actualizo productos no encontrados.
@@ -82,7 +115,7 @@ constructor(
     private fun getProductosNoEncontrados(){
         getAlimentosNoEncontradosCache.getAlimentosNoEncontradosCache().onEach {DataState ->
             DataState.data?.let { productos ->
-               if(!productos.isNullOrEmpty()){
+               if(!productos.isEmpty()){
                    //Actualizo la lista de la compra con los productos encontrados en cache.
                    listaCompraState.value = listaCompraState.value.copy(
                        listaProductos = productos,
@@ -95,17 +128,18 @@ constructor(
     private fun getProductosEncontrados() {
         getProductos.obtenerProductos().onEach {DataState ->
             DataState.data?.let { productosNoEncontrados ->
-                if(!productosNoEncontrados.productos_cache.isNullOrEmpty()){
+                if(!productosNoEncontrados.productos_cache.isEmpty()){
                     //Actualizo la lista de la compra con los productos no encontrados en cache.
                     listaCompraState.value = listaCompraState.value.copy(
                         alimentos_no_encontrados = productosNoEncontrados.productos_cache.toAlimentos(),
+                        id_cestaCompra = productosNoEncontrados.id_cestaCompra
                     )
                 }
             }
         }.launchIn(viewModelScope)
     }
 
-    private fun calcularProductos() {
+    private fun calcularProductos(filter: FilterEnum = FilterEnum.BARATOS, supermercadosEnum: SupermercadosEnum = SupermercadosEnum.CARREFOUR) {
         //TODO: Falta que los supermercados se puedan elegir dinámicamente
         listaCompraState.value = listaCompraState.value.copy(
             supermercados = mutableSetOf(
@@ -118,7 +152,8 @@ constructor(
         //Calculo los productos.
         calcularProductos.calcularProductos(
             id_cestaCompra = listaCompraState.value.id_cestaCompra,
-            supermercados = listaCompraState.value.supermercados
+            supermercados = listaCompraState.value.supermercados,
+            filter = filter
         ).onEach { dataState ->
             dataState.data?.let { alimentos_productosEncontrados ->
                 //Actualizo el precio total y el peso total
@@ -168,20 +203,49 @@ constructor(
         listaCompraState.value = listaCompraState.value.copy(listaProductos = productosEncontrados)
 
         //Actualizo el precio total y atualizo el peso total de los productos (considero que los ml pesan igual que los Kg).
-        var precio_total = 0f
-        var peso_total = 0f
+        var precio_total_carrefour = 0f
+        var precio_total_dia = 0f
+        var precio_total_mercadona = 0f
+
+        var peso_total_carrefour = 0f
+        var peso_total_dia = 0f
+        var peso_total_mercadona = 0f
+
         for(producto in productosEncontrados){
-            precio_total += producto.precio_numero * producto.cantidad
-            //En el caso del peso desecho los productos que sean unidades o sea null, por lo que siempre es una estimación optimista.
-            if((producto.tipoUnidad != null && !producto.tipoUnidad!!.name.equals("UNIDADES"))){
-                peso_total += producto.peso*producto.cantidad
+            when(producto.supermercado){
+                SupermercadosEnum.CARREFOUR -> {
+                    precio_total_carrefour += producto.precio_numero
+                    if((producto.tipoUnidad != null && !producto.tipoUnidad!!.name.equals("UNIDADES"))){
+                        peso_total_carrefour += producto.peso
+                    }
+                }
+                SupermercadosEnum.MERCADONA -> {
+                    precio_total_mercadona += producto.precio_numero
+                    if((producto.tipoUnidad != null && !producto.tipoUnidad!!.name.equals("UNIDADES"))){
+                        peso_total_mercadona += producto.peso
+                    }
+                }
+                SupermercadosEnum.DIA -> {
+                    precio_total_dia += producto.precio_numero
+                    if((producto.tipoUnidad != null && !producto.tipoUnidad!!.name.equals("UNIDADES"))){
+                        peso_total_dia += producto.peso
+                    }
+                }
             }
         }
 
         //Los actualizo.
         listaCompraState.value = listaCompraState.value.copy(
-            precio_total = precio_total,
-            peso_total = peso_total
+            precio_total = hashMapOf(
+                SupermercadosEnum.CARREFOUR to precio_total_carrefour,
+                SupermercadosEnum.DIA to precio_total_dia,
+                SupermercadosEnum.MERCADONA to precio_total_mercadona
+            ),
+            peso_total = hashMapOf(
+                SupermercadosEnum.CARREFOUR to peso_total_carrefour,
+                SupermercadosEnum.DIA to peso_total_dia,
+                SupermercadosEnum.MERCADONA to peso_total_mercadona
+            )
         )
     }
 

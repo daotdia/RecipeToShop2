@@ -294,6 +294,7 @@ CREATE TABLE  producto_Entity(
     precio_numero REAL AS Float NOT NULL,
     imagen_src TEXT NOT NULL,
     cantidad INTEGER NOT NULL,
+    supermercado TEXT NOT NULL,
     noEnocntrado INTEGER AS Boolean NOT NULL
 );
 
@@ -311,8 +312,9 @@ INTO producto_Entity(
     peso,
     cantidad,
     imagen_src,
+    supermercado,
     noEnocntrado
-) VALUES(?,?,?,?,?,?,?,?,?,?,?, ?);
+) VALUES(?,?,?,?,?,?,?,?,?,?,?, ?, ?);
 
 getAllProductos:
 SELECT * FROM producto_Entity

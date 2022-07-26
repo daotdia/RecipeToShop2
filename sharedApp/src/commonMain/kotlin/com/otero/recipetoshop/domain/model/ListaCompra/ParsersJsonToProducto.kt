@@ -3,6 +3,7 @@ package com.otero.recipetoshop.domain.model.ListaCompra
 import com.otero.recipetoshop.domain.util.FilterEnum
 import com.otero.recipetoshop.domain.util.SupermercadosEnum
 import com.otero.recipetoshop.domain.util.TipoUnidad
+import kotlin.math.roundToInt
 
 class ParsersJsonToProducto {
 
@@ -31,6 +32,7 @@ class ParsersJsonToProducto {
 
         private fun parseJsonPrecioPesoToProductoPrecioPesoCarrefour(elemento: Productos.Producto): Float? {
             if(!elemento.precio_peso.isEmpty()){
+                println("Precio_peso Carrefour: " + elemento.precio_peso)
                 return elemento.precio_peso
                     .replace(',', '.')
                     .filter { it.isDigit() || it.equals('.') }
@@ -41,7 +43,10 @@ class ParsersJsonToProducto {
 
         private fun parseJsonPrecioPesoToProductoPrecioPesoDia(elemento: Productos.Producto): Float? {
             if(!elemento.precio_peso.isEmpty()){
+                println("Precio_peso Dia: " + elemento.precio_peso)
                 return elemento.precio_peso
+                    //Para eliminar el punto dle final.
+                    .filter { !it.equals('.') }
                     .replace(',', '.')
                     .filter { it.isDigit() || it.equals('.') }
                     .toFloat()
@@ -87,9 +92,13 @@ class ParsersJsonToProducto {
             //Obtengo el tipo de unidad
             val pattern_tipoUnidad = Regex("piezas|pieza|tarrinas|tarrina|bandejas|bandeja|latas|lata|sticks|stick|botellas|botella|unidades|unidad|bote|botes|tarros|tarro|sobre|sobres|envases|envase|paquete|paquetes|bolsas|bolsa|briks|brik|mg|g|dg|cg|kg|ml|cl|dl|l|lt|ud", RegexOption.IGNORE_CASE)
             // \\s** = cualquier número de espacioes en blanco
-            val pattern_cantidad = Regex("[0-9]+,?[0-9]*\\s*" + pattern_tipoUnidad )
+            val pattern_cantidad = Regex("[0-9]+,?[0-9]*\\s*" + "(" + pattern_tipoUnidad + ")")
             val sequencia_unidad = pattern_tipoUnidad.findAll(nombreUnidades)
             val valor_multiplicador = pattern_cantidad.findAll(nombreUnidades)
+            println("Las tipos unidades obtenidas" + " del nombre " + nombreUnidades +  "son: " )
+            sequencia_unidad.toList().forEach { println("Sequencia: " + it.value) }
+            println("Las cantidades obtenidas son: ")
+            valor_multiplicador.toList().forEach { println("valor-Multiplicador: " + it.value)}
             var nombre_unidad: String? = null
             var multiplicador_unidad: Float = 1f
             var cantidad_unidad_bruta: Float? = null
@@ -198,8 +207,12 @@ class ParsersJsonToProducto {
             //Obtengo el tipo de unidad
             val pattern_tipoUnidad = Regex("boles|bol|quesitos|mallas|malla|minis|mini|saquitos|saquito|sacos|saco|porciones|porcion|porción|tabletas|tableta|barritas|barra|barras|frasquitos|frascos|frasco|piezas|pieza|tarrinas|tarrina|bandejas|bandeja|latas|lata|sticks|stick|botellin|botellines|botellas|botella|unidades|unidad|bote|botes|tarritos|tarros|tarro|sobre|sobres|envases|envase|paquete|paquetes|bolsitas|bolsas|bolsa|brick|bricks|briks|brik|mg|g|dg|cg|kg|ml|cl|dl|l|lt|ud", RegexOption.IGNORE_CASE)
             val secuencia_unidad = pattern_tipoUnidad.findAll(cantidad_texto)
-            val pattern_cantidad = Regex("[0-9]+,?[0-9]*\\s*" + pattern_tipoUnidad  + "\\s*(escurrido)?")
+            val pattern_cantidad = Regex("[0-9]+,?[0-9]*\\s*" + "(" + pattern_tipoUnidad + ")"  + "(\\s*(escurrido)?)?")
             var valor_multiplicador = pattern_cantidad.findAll(cantidad_texto)
+            println("Las tipos unidades obtenidas" + " del nombre " + cantidad_texto +  "son: " )
+            secuencia_unidad.toList().forEach { println("Sequencia: " + it.value) }
+            println("Las cantidades obtenidas son: ")
+            valor_multiplicador.toList().forEach { println("valor-Multiplicador: " + it.value)}
             //Debo evitar multiplicar valore scuando mercadona indica el peso bruto y el peso escurrido.
             if(
                 valor_multiplicador.any{

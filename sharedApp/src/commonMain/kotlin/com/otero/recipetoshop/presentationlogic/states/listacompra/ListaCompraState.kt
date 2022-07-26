@@ -7,8 +7,8 @@ import com.otero.recipetoshop.domain.util.SupermercadosEnum
 data class ListaCompraState (
     val listaProductos: List<Productos.Producto> = listOf(),
     val id_cestaCompra: Int = -1,
-    val precio_total: Float = 0f,
-    val peso_total: Float = 0f,
+    val precio_total: HashMap<SupermercadosEnum, Float> = hashMapOf(),
+    val peso_total: HashMap<SupermercadosEnum, Float> = hashMapOf(),
     val alimentos_cesta: List<Alimento> = listOf(),
     val alimentos_no_encontrados: List<Alimento> = listOf(),
     val supermercados: MutableSet<SupermercadosEnum> = mutableSetOf()
@@ -16,8 +16,8 @@ data class ListaCompraState (
     constructor(): this(
         listaProductos = listOf(),
         id_cestaCompra = -1,
-        precio_total = 0f,
-        peso_total = 0f,
+        precio_total = hashMapOf(),
+        peso_total = hashMapOf(),
         alimentos_cesta = listOf(),
         alimentos_no_encontrados = listOf(),
         supermercados = mutableSetOf()
