@@ -56,8 +56,8 @@ fun Productos.Producto.toAlimento(): Alimento{
     return Alimento(
         id_cestaCompra = id_cestaCompra,
         id_receta = -1,
-        id_alimento = -1,
-        nombre = nombre,
+        id_alimento = null,
+        nombre = query,
         cantidad = peso.toInt(),
         tipoUnidad = tipoUnidad!!,
         active = true

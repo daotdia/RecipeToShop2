@@ -13,6 +13,8 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -23,10 +25,14 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.otero.recipetoshop.android.presentation.components.RecetaImagen
 import com.otero.recipetoshop.android.presentation.components.alimentos.ListaAlimentosCestaCompra
+import com.otero.recipetoshop.android.presentation.components.util.GenericForm
 import com.otero.recipetoshop.android.presentation.components.util.NestedDownMenu
+import com.otero.recipetoshop.android.presentation.navigation.RutasNavegacion
 import com.otero.recipetoshop.android.presentation.theme.*
 import com.otero.recipetoshop.domain.model.CestaCompra.Receta
 import com.otero.recipetoshop.domain.model.ListaCompra.Productos
+import com.otero.recipetoshop.domain.model.NegativeAction
+import com.otero.recipetoshop.domain.model.PositiveAction
 import com.otero.recipetoshop.domain.util.SupermercadosEnum
 import com.otero.recipetoshop.domain.util.TipoUnidad
 import com.otero.recipetoshop.events.listacompra.ListaCompraEvents
@@ -43,13 +49,15 @@ fun ListaCompra(
     listaCompraState: MutableState<ListaCompraState>,
     onTriggeEvent: (ListaCompraEvents) -> Unit,
 ) {
+    val onFinalizar = remember { mutableStateOf(false) }
+
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    //TODO: Finalizar lista de la compra y dar opción al usuario para añadir los productos que le sobrarán a la despensa
-                    
+                    //Lanza el diálogo de finalizar compra
+                    onFinalizar.value = true
                 },
                 backgroundColor = primaryDarkColor,
                 contentColor = secondaryLightColor,
@@ -58,6 +66,30 @@ fun ListaCompra(
             }
         }
     ){
+        //En el caso de que se aprete el botón de finalizar compra aparece el diálogo de asegurarse.
+        if(onFinalizar.value){
+            GenericForm(
+                onDismiss = { onFinalizar.value = false },
+                title = { Text(text = "Finalizar Compra") },
+                positiveAction = PositiveAction(
+                    positiveBtnTxt = "Sí",
+                    onPositiveAction = {
+                        //LLamo a viewModel para que finalice compra
+                        onTriggeEvent(ListaCompraEvents.onFinishCompra())
+
+                        //Navego a la despensa.
+                        navController.navigate(RutasNavegacion.Despensa.route)
+
+                        //Quito diálogo
+                        onFinalizar.value = false
+                    }
+                ),
+                negativeAction = NegativeAction(
+                    negativeBtnTxt = "No",
+                    onNegativeAction = { onFinalizar.value = false }
+                )
+            )
+        }
         Column(Modifier.fillMaxSize()) {
             if(
                 !listaCompraState.value.listaProductos.isEmpty()

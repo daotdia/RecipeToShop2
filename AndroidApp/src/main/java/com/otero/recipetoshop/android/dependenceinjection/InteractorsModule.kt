@@ -250,4 +250,16 @@ object InteractorsModule {
             recetaCache = recetaCache
         )
     }
+
+    @Singleton
+    @Provides
+    fun provideFinalizarCompra(
+        recetaCache: RecetaCache,
+        despensaCache: DespensaCache
+    ): FinalizarCompra {
+        return FinalizarCompra(
+            recetaCache = recetaCache,
+            despensaCache = despensaCache
+        )
+    }
 }

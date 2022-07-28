@@ -32,7 +32,8 @@ constructor(
     private val deleteProductos: DeleteProductos,
     private val getAlimentosNoEncontradosCache: GetAlimentosNoEncontradosCache,
     private val saveListaCompra: SaveListaCompra,
-    private val updateProducto: UpdateProducto
+    private val updateProducto: UpdateProducto,
+    private val finalizarCompra: FinalizarCompra
 ):ViewModel(){
     val listaCompraState: MutableState<ListaCompraState> = mutableStateOf(ListaCompraState())
     init {
@@ -71,10 +72,22 @@ constructor(
             is ListaCompraEvents.onClickProducto -> {
                 actualizarProducto(active = !event.producto.active, producto = event.producto)
             }
+
+            is ListaCompraEvents.onFinishCompra -> {
+                finalizarCompra()
+            }
             else -> {
                 print("Evento de la lista de la compra no esperado.")
             }
         }
+    }
+
+    private fun finalizarCompra() {
+        finalizarCompra.finalizarCompra(
+            id_cestaCompra = listaCompraState.value.id_cestaCompra
+        ).onEach { dataState ->
+            //TODO: Se navega  a la despensa.
+        }.launchIn(viewModelScope)
     }
 
     private fun actualizarProducto(active: Boolean, producto: Productos.Producto) {
