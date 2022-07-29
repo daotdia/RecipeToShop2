@@ -10,6 +10,7 @@ import javax.inject.Inject
 import androidx.lifecycle.viewModelScope
 import com.otero.recipetoshop.Interactors.listacompra.*
 import com.otero.recipetoshop.domain.model.ListaCompra.Productos
+import com.otero.recipetoshop.domain.model.ListaCompra.toAlimento
 import com.otero.recipetoshop.domain.model.ListaCompra.toAlimentos
 import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.domain.model.despensa.toProductos
@@ -84,7 +85,8 @@ constructor(
 
     private fun finalizarCompra() {
         finalizarCompra.finalizarCompra(
-            id_cestaCompra = listaCompraState.value.id_cestaCompra
+            id_cestaCompra = listaCompraState.value.id_cestaCompra,
+            productos = ArrayList(listaCompraState.value.listaProductos)
         ).onEach { dataState ->
             //TODO: Se navega  a la despensa.
         }.launchIn(viewModelScope)
@@ -141,7 +143,10 @@ constructor(
                if(!productosNoEncontrados.isEmpty()){
                    //Actualizo la lista de la compra con los productos encontrados en cache.
                    listaCompraState.value = listaCompraState.value.copy(
-                       alimentos_no_encontrados = productosNoEncontrados.toAlimentos(),
+                       //Devuelvo la lista de los productos no encontrados como alimentos con ID -1.
+                       alimentos_no_encontrados = productosNoEncontrados.map{ producto ->
+                           producto.toAlimento().copy(id_alimento = -1)
+                       },
                    )
                }
             }
@@ -242,21 +247,21 @@ constructor(
         for(producto in productosEncontrados){
             when(producto.supermercado){
                 SupermercadosEnum.CARREFOUR -> {
-                    precio_total_carrefour += producto.precio_numero
+                    precio_total_carrefour += producto.cantidad * producto.precio_numero
                     if((producto.tipoUnidad != null && !producto.tipoUnidad!!.name.equals("UNIDADES"))){
-                        peso_total_carrefour += producto.peso
+                        peso_total_carrefour += producto.cantidad * producto.peso
                     }
                 }
                 SupermercadosEnum.MERCADONA -> {
-                    precio_total_mercadona += producto.precio_numero
+                    precio_total_mercadona += producto.cantidad * producto.precio_numero
                     if((producto.tipoUnidad != null && !producto.tipoUnidad!!.name.equals("UNIDADES"))){
-                        peso_total_mercadona += producto.peso
+                        peso_total_mercadona += producto.cantidad * producto.peso
                     }
                 }
                 SupermercadosEnum.DIA -> {
-                    precio_total_dia += producto.precio_numero
+                    precio_total_dia += producto.cantidad * producto.precio_numero
                     if((producto.tipoUnidad != null && !producto.tipoUnidad!!.name.equals("UNIDADES"))){
-                        peso_total_dia += producto.peso
+                        peso_total_dia += producto.cantidad * producto.peso
                     }
                 }
             }

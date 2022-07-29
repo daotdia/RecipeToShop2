@@ -9,8 +9,15 @@ class CalcularFinalCompra {
             alimentos_despensa: List<Alimento>,
             alimentos_cesta: List<Alimento>
         ): List<Alimento>{
+            val alimentos_SinGastar:ArrayList<Alimento> = ArrayList(
+                alimentos_despensa.filter { alimento_despensa ->
+                    alimentos_cesta.none{
+                        it.nombre.equals(alimento_despensa.nombre)
+                    }
+                }
+            )
             //Obtengo los alimentos de la despensa que se van a gastar por ser necesarios
-            val alimentos_AGastar = alimentos_despensa.filter { alimento_despensa ->
+            var alimentos_AGastar: List<Alimento> = alimentos_despensa.filter { alimento_despensa ->
                 alimentos_cesta.any{
                     it.nombre.equals(alimento_despensa.nombre)
                 }
@@ -20,7 +27,7 @@ class CalcularFinalCompra {
             alimentos_AGastar.forEach { alimento_despensa ->
                 var cantidad_cesta = 0
                 //Obtengo los alimentos en la cesta que se llaman igual que él mismo.
-                val alimentos_cesta_despensa = alimentos_cesta.filter { it.nombre.equals(alimento_despensa) }
+                val alimentos_cesta_despensa = alimentos_cesta.filter { it.nombre.equals(alimento_despensa.nombre) }
                 //Obtengo la cantidad de alimento a restar
                 alimentos_cesta_despensa.forEach {
                     if(
@@ -38,11 +45,11 @@ class CalcularFinalCompra {
                 }
             }
             //Eliminos los alimentos que se van a gastar por las recetas.
-            val alimentos_SinGastar = alimentos_AGastar.filter {
+            alimentos_AGastar= alimentos_AGastar.filter {
                 it.cantidad != 0
             }
-
-            return alimentos_SinGastar
+            alimentos_SinGastar.addAll(alimentos_AGastar)
+            return alimentos_SinGastar.toList()
         }
 
         fun calcularProductosNoGastados(
@@ -53,7 +60,7 @@ class CalcularFinalCompra {
             productos.forEach { producto ->
                 var cantidad_cesta: Int = 0
                 //Obtengo los alimentos de la cesta correspondientes al producto.
-                val alimentos_producto = alimentos_cesta.filter { it.nombre ==  producto.query }
+                val alimentos_producto = alimentos_cesta.filter { it.nombre.lowercase().trim() ==  producto.query.lowercase().trim() }
                 //Calculo la cantidad en la cesta a necesitar del producto
                 alimentos_producto.forEach {
                     if(
@@ -64,15 +71,16 @@ class CalcularFinalCompra {
                     }
                 }
                 //Resto la cantidad a necesitar con la cantiad comprada
-                producto.cantidad = producto.cantidad - cantidad_cesta
+                producto.peso = (producto.cantidad * producto.peso) - cantidad_cesta
+
                 //Si la cantidad es menor lo seteo a 0 aunque no debería ser así
-                if(producto.cantidad < 0){
+                if(producto.peso < 0){
                     println("no deberíamos llegar hasta aquí ojo")
-                    producto.cantidad = 0
+                    producto.peso = 0f
                 }
             }
             //Devuelvo los productos cuya cantidad no sea cero
-            return productos.filter { it.cantidad != 0 }
+            return productos.filter { it.peso != 0f }
         }
     }
 }

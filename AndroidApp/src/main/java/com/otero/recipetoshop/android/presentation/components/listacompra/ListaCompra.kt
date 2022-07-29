@@ -10,6 +10,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -59,10 +60,10 @@ fun ListaCompra(
                     //Lanza el diálogo de finalizar compra
                     onFinalizar.value = true
                 },
-                backgroundColor = primaryDarkColor,
+                backgroundColor = analogousColorBlue,
                 contentColor = secondaryLightColor,
             ) {
-                Icon(Icons.Filled.Add, "")
+                Icon(Icons.Filled.Done, "")
             }
         }
     ){
@@ -70,7 +71,7 @@ fun ListaCompra(
         if(onFinalizar.value){
             GenericForm(
                 onDismiss = { onFinalizar.value = false },
-                title = { Text(text = "Finalizar Compra") },
+                title = { Text(text = "¿Estás seguro de querer finalizar la compra? La lista de la compra se eliminará y los productos ticados se considerán comprados. Las cantidades sobrantes de éstos se añadirán a la despensa para próximas compras.")},
                 positiveAction = PositiveAction(
                     positiveBtnTxt = "Sí",
                     onPositiveAction = {
@@ -335,10 +336,14 @@ fun ListaCompra(
                                         textAlign = TextAlign.Center,
                                         maxLines = 1,
                                         text =
-                                        if((listaCompraState.value.peso_total.get(supermercado))!! >= 1000){
-                                            "> " + (listaCompraState.value.peso_total.get(supermercado)?.div(1000) ?: 0) + " Kg"
-                                        }else {
-                                            "> " + (listaCompraState.value.peso_total.get(supermercado)?.div(1000) ?: 0) + " Gr"
+                                        if(listaCompraState.value.peso_total.get(supermercado) != null){
+                                            if(listaCompraState.value.peso_total.get(supermercado)!! >= 1000){
+                                                "> " + (listaCompraState.value.peso_total.get(supermercado)?.div(1000) ?: 0) + " Kg"
+                                            }else {
+                                                "> " + (listaCompraState.value.peso_total.get(supermercado)?.div(1000) ?: 0) + " Gr"
+                                            }
+                                        } else {
+                                            "> 0 Kg"
                                         }
                                     )
                                     //El precio total de la compra exacto.
@@ -349,7 +354,12 @@ fun ListaCompra(
                                         style = MaterialTheme.typography.h5.copy(color = primaryDarkColor),
                                         textAlign = TextAlign.Center,
                                         maxLines = 1,
-                                        text = listaCompraState.value.precio_total.get(supermercado).toString() + " €",
+                                        text =
+                                        if(listaCompraState.value.precio_total.get(supermercado) != null){
+                                            listaCompraState.value.precio_total.get(supermercado).toString() + " €"
+                                        } else {
+                                            "0 €"
+                                        }
                                     )
                                 }
                             }

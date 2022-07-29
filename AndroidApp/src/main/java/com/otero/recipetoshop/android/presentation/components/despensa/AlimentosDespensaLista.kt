@@ -122,6 +122,7 @@ fun AlimentosDespensaLista (
                         )
                     )
                 },
+                cantidad = item.cantidad,
                 onDelete = {
                     onTriggeEvent(
                         DespensaEventos.onAlimentoDelete(

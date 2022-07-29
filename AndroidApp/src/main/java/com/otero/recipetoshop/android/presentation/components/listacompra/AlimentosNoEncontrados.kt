@@ -26,9 +26,7 @@ fun AlimentosNoEncontrados (
 ){
     LazyRow(modifier = Modifier
         .padding(2.dp)){
-        items(
-            items = stateListaCompra.value.alimentos_no_encontrados,
-            { listItem: Alimento -> listItem.id_alimento!! }) { item ->
+        items(items = stateListaCompra.value.alimentos_no_encontrados) { item ->
             IngredienteCard(
                 nombre = item.nombre,
                 cantidad = item.cantidad,

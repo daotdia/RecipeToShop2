@@ -45,7 +45,7 @@ class CalcularProductos(
         if(responseDespensa == null){
             alimentos_despensa = arrayListOf()
         } else {
-            alimentos_despensa = ArrayList(alimentos_despensa)
+            alimentos_despensa = ArrayList(responseDespensa)
         }
 
         //En el caso de que se hayan encontrado alimentos a traducir a productos.
@@ -120,7 +120,7 @@ class CalcularProductos(
 //                    }
 //                }
 //            }
-            emit(DataState.data(data = Pair(all_alimentos_cesta, mejores_productos_unidades), message = null))
+            emit(DataState.data(data = Pair(alimentos_unificados, mejores_productos_unidades), message = null))
         }
     }.asCommonFlow()
 }
