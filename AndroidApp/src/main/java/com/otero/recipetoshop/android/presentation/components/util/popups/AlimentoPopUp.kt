@@ -27,19 +27,36 @@ import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
 import com.otero.recipetoshop.domain.model.NegativeAction
 import com.otero.recipetoshop.domain.model.PositiveAction
+import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.domain.util.TipoUnidad
 import com.otero.recipetoshop.presentationlogic.states.despensa.FoodState
 
 @ExperimentalComposeUiApi
 @Composable
-fun NewAlimentoPopUp(
-    onAddAlimento: (String, String, String) -> Unit,
-    onNewAlimento: MutableState<Boolean>,
+fun AlimentoPopUp(
+    onAddAlimento: (String, String, String) -> Unit = { _,_,_ ->},
+    onNewAlimento: MutableState<Boolean> = mutableStateOf(false),
+    onEditAlimento: MutableState<Boolean> = mutableStateOf(false),
     autocompleteResults: List<String> = listOf(),
     onAutoCompleteChange: (String) -> Unit = {},
     onAutoCompleteClick: () -> Unit = {},
+    editAlimento: (Int, String, String, String) -> Unit = {_, _, _,_ ->},
+    alimento_actual: Alimento? = null
 ) {
-    val newAlimentoState = remember { mutableStateOf(FoodState()) }
+    val newAlimentoState = remember {
+        if (onEditAlimento.value){
+            mutableStateOf(
+                FoodState(
+                    nombre = alimento_actual!!.nombre,
+                    tipo = alimento_actual.tipoUnidad.name,
+                    cantidad = alimento_actual.cantidad.toString()
+                )
+            )
+        }
+        else {
+            mutableStateOf(FoodState())
+        }
+    }
     val nombreError = remember { mutableStateOf(false) }
     val cantidadError = remember { mutableStateOf(false) }
     val isAceptable = remember { mutableStateOf(false) }
@@ -66,23 +83,39 @@ fun NewAlimentoPopUp(
         ,
         onDismiss = {
             onNewAlimento.value = false
+            onEditAlimento.value = false
         },
         title = {},
         negativeAction = NegativeAction(
             negativeBtnTxt = "Cancelar",
             onNegativeAction = {
                 onNewAlimento.value = false
+                onEditAlimento.value = false
             }
         ),
         positiveAction = PositiveAction(
-            positiveBtnTxt = "Añadir",
+            positiveBtnTxt = if (onEditAlimento.value) "Editar" else "Añadir",
             onPositiveAction = {
-                onNewAlimento.value = false
-                onAddAlimento(
-                    newAlimentoState.value.nombre,
-                    newAlimentoState.value.tipo,
-                    newAlimentoState.value.cantidad
-                )
+                if (onEditAlimento.value){
+                    onEditAlimento.value = false
+                    onNewAlimento.value = false
+                    if(alimento_actual != null){
+                        editAlimento(
+                            alimento_actual.id_alimento!!,
+                            newAlimentoState.value.nombre,
+                            newAlimentoState.value.tipo,
+                            newAlimentoState.value.cantidad,
+                        )
+                    }
+                } else {
+                    onEditAlimento.value = false
+                    onNewAlimento.value = false
+                    onAddAlimento(
+                        newAlimentoState.value.nombre,
+                        newAlimentoState.value.tipo,
+                        newAlimentoState.value.cantidad
+                    )
+                }
             },
         ),
         positiveEnabled = isAceptable,
@@ -109,7 +142,7 @@ fun NewAlimentoPopUp(
                             .fillMaxWidth()
                             .padding(top = 4.dp, bottom = 8.dp),
                         textAlign = TextAlign.Center,
-                        text = "Registro Nuevo Alimento",
+                        text = if(onEditAlimento.value) "Edición Alimento" else "Registro Nuevo Alimento",
                         style = MaterialTheme.typography.subtitle1,
                         color = primaryDarkColor
                     )
@@ -122,9 +155,10 @@ fun NewAlimentoPopUp(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     //Campo para el nombre del alimento.
-                    AutoCompleteField(
-                        modifier = Modifier,
-                        query =
+                    if(!onEditAlimento.value) {
+                        AutoCompleteField(
+                            modifier = Modifier,
+                            query =
                             if(keyBoardState == Keyboard.Closed){
                                 if(onClickAutoCompleteItem.value){
                                     newAlimentoState.value.queryAutoComplete
@@ -136,45 +170,46 @@ fun NewAlimentoPopUp(
                             }else{
                                 newAlimentoState.value.queryAutoComplete
                             }
-                        ,
-                        onQueryChanged = {
-                            newAlimentoState.value = newAlimentoState.value.copy(queryAutoComplete = it)
-                            onAutoCompleteChange(it)
-                        },
-                        queryLabel = "Nombre",
-                        predictions = autocompleteResults,
-                        onItemClick = {
-                            onClickAutoCompleteItem.value = true
-                            newAlimentoState.value = newAlimentoState.value.copy(queryAutoComplete = it)
-                            newAlimentoState.value = newAlimentoState.value.copy(nombre = it)
-                            onAutoCompleteClick()
-                            //En el caso de que el campo de nombre esté vacío lo indico como error.
-                            if (
-                                newAlimentoState.value.nombre.equals("") ||
-                                newAlimentoState.value.nombre.isBlank()
-                            ) {
-                                nombreError.value = true
-                            } else {
-                                nombreError.value = false
-                            }
-                        },
-                        onClearClick = {
-                            onClickAutoCompleteItem.value = false
-                            newAlimentoState.value = newAlimentoState.value.copy(queryAutoComplete = "")
-                            newAlimentoState.value = newAlimentoState.value.copy(nombre = "")
-                            onAutoCompleteClick()
-                        },
-                        onDoneActionClick = {
-                            onClickAutoCompleteItem.value = false
-                            newAlimentoState.value = newAlimentoState.value.copy(queryAutoComplete = "")
-                            newAlimentoState.value = newAlimentoState.value.copy(nombre = "")
-                            onAutoCompleteClick()
-                        },
-                        onFocusChanged = {
-                            onClickAutoCompleteItem.value = false
-                        },
-                        isError = nombreError
-                    )
+                            ,
+                            onQueryChanged = {
+                                newAlimentoState.value = newAlimentoState.value.copy(queryAutoComplete = it)
+                                onAutoCompleteChange(it)
+                            },
+                            queryLabel = "Nombre",
+                            predictions = autocompleteResults,
+                            onItemClick = {
+                                onClickAutoCompleteItem.value = true
+                                newAlimentoState.value = newAlimentoState.value.copy(queryAutoComplete = it)
+                                newAlimentoState.value = newAlimentoState.value.copy(nombre = it)
+                                onAutoCompleteClick()
+                                //En el caso de que el campo de nombre esté vacío lo indico como error.
+                                if (
+                                    newAlimentoState.value.nombre.equals("") ||
+                                    newAlimentoState.value.nombre.isBlank()
+                                ) {
+                                    nombreError.value = true
+                                } else {
+                                    nombreError.value = false
+                                }
+                            },
+                            onClearClick = {
+                                onClickAutoCompleteItem.value = false
+                                newAlimentoState.value = newAlimentoState.value.copy(queryAutoComplete = "")
+                                newAlimentoState.value = newAlimentoState.value.copy(nombre = "")
+                                onAutoCompleteClick()
+                            },
+                            onDoneActionClick = {
+                                onClickAutoCompleteItem.value = false
+                                newAlimentoState.value = newAlimentoState.value.copy(queryAutoComplete = "")
+                                newAlimentoState.value = newAlimentoState.value.copy(nombre = "")
+                                onAutoCompleteClick()
+                            },
+                            onFocusChanged = {
+                                onClickAutoCompleteItem.value = false
+                            },
+                            isError = nombreError
+                        )
+                    }
 //                    OutlinedTextField(
 //                        value = newAlimentoState.value.nombre,
 //                        onValueChange = {
@@ -230,7 +265,7 @@ fun NewAlimentoPopUp(
                             onValueChange = {
                                 newAlimentoState.value = newAlimentoState.value.copy(tipo = it)
                             },
-                            label = { Text(text = "Unidad Medición") },
+                            label = { if (onEditAlimento.value) Text(text = alimento_actual!!.tipoUnidad.name) else Text(text = "Unidad Medición") },
                             textStyle = MaterialTheme.typography.body1,
                             trailingIcon = {
                                 Icon(

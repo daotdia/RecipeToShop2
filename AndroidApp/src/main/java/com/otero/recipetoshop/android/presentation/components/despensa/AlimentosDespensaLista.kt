@@ -1,28 +1,21 @@
 package com.otero.recipetoshop.android.presentation.components.despensa
 
-import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.scale
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.otero.recipetoshop.events.despensa.DespensaEventos
 import com.otero.recipetoshop.android.presentation.components.util.NestedDownMenu
 import com.otero.recipetoshop.android.presentation.components.util.cards.IngredienteCard
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
-import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.presentationlogic.states.despensa.ListaAlimentosState
 
 /*
@@ -54,7 +47,7 @@ fun AlimentosDespensaLista (
     ) {
         //PopUp de la ventana para crear nuevo alimento.
         if (onNewFood.value) {
-            NewAlimentoPopUp(
+            AlimentoPopUp(
                 onAddAlimento = { nombre, tipo, cantidad ->
                     onTriggeEvent(
                         DespensaEventos.onAddAlimento(
@@ -113,14 +106,9 @@ fun AlimentosDespensaLista (
             )
             IngredienteCard(
                 nombre = item.nombre,
-                onClickAlimento = {
-                    item.active = !item.active
-                    onTriggeEvent(
-                        DespensaEventos.onClickAlimento(
-                            alimento = item,
-                            active = item.active
-                        )
-                    )
+                onClickAlimento = { id_alimento, nombre, tipo, cantidad ->
+                    //Llamo a viewmodel para que edite el alimento
+                    onTriggeEvent(DespensaEventos.onEditaAlimento(id_alimento, nombre, tipo, cantidad))
                 },
                 cantidad = item.cantidad,
                 onDelete = {
@@ -129,7 +117,8 @@ fun AlimentosDespensaLista (
                             alimento = item
                         )
                     )
-                }
+                },
+                alimento_actual = item
             )
         }
     }

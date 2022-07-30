@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.otero.recipetoshop.Interactors.Common.ActualizarAutoComplete
 import com.otero.recipetoshop.Interactors.despensa.*
+import com.otero.recipetoshop.android.presentation.navigation.RutasNavegacion
 import com.otero.recipetoshop.events.despensa.DespensaEventos
 import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.domain.util.TipoUnidad
@@ -26,7 +27,8 @@ constructor(
     private val deleteAlimentos: DeleteAlimentos,
     private val deleteAlimento: DeleteAlimento,
     private val onCLickAlimento: OnCLickAlimento,
-    private val actualizarAutoComplete: ActualizarAutoComplete
+    private val actualizarAutoComplete: ActualizarAutoComplete,
+    private val editAlimento: EditAlimento
 ): ViewModel(){
     val despensaState: MutableState<ListaAlimentosState> = mutableStateOf(ListaAlimentosState())
 
@@ -44,6 +46,14 @@ constructor(
             }
             is DespensaEventos.onCantidadChange -> {
                 updateAlimento(alimento = event.alimento, cantidad = event.cantidad, )
+            }
+            is DespensaEventos.onEditaAlimento -> {
+                editAlimento(
+                    id_alimento = event.id_alimento,
+                    nombre = event.nombre,
+                    cantidad = event.cantidad,
+                    tipo = event.tipo
+                )
             }
             is DespensaEventos.onAddAlimento -> {
                 val alimento = createAlimento(
@@ -75,6 +85,18 @@ constructor(
 //                )
             }
         }
+    }
+
+    private fun editAlimento(id_alimento: Int, nombre: String, cantidad: String, tipo: String) {
+        editAlimento.editaAlimento(
+            id_alimento = id_alimento,
+            nombre = nombre,
+            cantidad = cantidad.toInt(),
+            tipo = tipo
+        ).onEach { dataState ->
+            //Actualizo la despensa.
+            rePrintAlimentos()
+        }.launchIn(viewModelScope)
     }
 
     private fun updateAutocomplete(nombre: String) {

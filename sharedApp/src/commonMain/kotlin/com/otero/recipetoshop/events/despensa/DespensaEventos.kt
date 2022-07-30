@@ -8,6 +8,8 @@ sealed class DespensaEventos {
 
     data class onAutoCompleteChange(val nombre: String): DespensaEventos()
 
+    data class onEditaAlimento(val id_alimento: Int, val nombre: String, val tipo: String, val cantidad: String): DespensaEventos()
+
     data class onCantidadChange(val cantidad: String, val alimento: Alimento) : DespensaEventos()
 
     data class onAddAlimento(val nombre: String, val tipo: String, val cantidad: String): DespensaEventos()

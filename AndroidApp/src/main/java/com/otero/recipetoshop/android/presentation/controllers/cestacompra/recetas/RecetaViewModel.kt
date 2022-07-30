@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.otero.recipetoshop.Interactors.Common.ActualizarAutoComplete
 import com.otero.recipetoshop.Interactors.cestascompra.recetas.AddIngredienteReceta
 import com.otero.recipetoshop.Interactors.cestascompra.recetas.DeleteIngredienteReceta
+import com.otero.recipetoshop.Interactors.cestascompra.recetas.EditIngrediente
 import com.otero.recipetoshop.Interactors.cestascompra.recetas.GetDatosReceta
 import com.otero.recipetoshop.domain.util.TipoUnidad
 import com.otero.recipetoshop.events.cestacompra.receta.RecetaEventos
@@ -25,7 +26,8 @@ constructor(
     private val addIngredienteReceta: AddIngredienteReceta,
     private val getDatosReceta: GetDatosReceta,
     private val deleteIngredienteReceta: DeleteIngredienteReceta,
-    private val actualizarAutoComplete: ActualizarAutoComplete
+    private val actualizarAutoComplete: ActualizarAutoComplete,
+    private val editIngrediente: EditIngrediente
 ): ViewModel() {
     val recetaState = mutableStateOf(RecetaState())
 
@@ -72,10 +74,32 @@ constructor(
             is RecetaEventos.onDeleteIngrediente -> {
                 deleteIngredienteReceta(id_ingrediente = event.id_ingrediente)
             }
+            is RecetaEventos.onEditIngrediente -> {
+                editarIngrediente(
+                    id_alimento = event.id_ingrediente,
+                    nombre = event.nombre,
+                    cantidad = event.cantidad,
+                    tipo = event.tipoUnidad
+                )
+            }
             else -> {
                 throw Exception("ERROR")
             }
         }
+    }
+
+    private fun editarIngrediente(id_alimento: Int, nombre: String, cantidad: Int, tipo: String) {
+        editIngrediente.editIngrediente(
+            id_receta = recetaState.value.receta_id,
+            id_cestaCompra = recetaState.value.cestaCompra_id,
+            id_alimento = id_alimento,
+            nombre = nombre,
+            cantidad = cantidad,
+            tipoUnidad = TipoUnidad.parseTipoUnidad(tipo)
+        ).onEach { dataState ->
+            //Actualizo la receta.
+            reprintContenidoReceta(recetaState.value.receta_id)
+        }.launchIn(viewModelScope)
     }
 
     private fun deleteIngredienteReceta(id_ingrediente: Int) {

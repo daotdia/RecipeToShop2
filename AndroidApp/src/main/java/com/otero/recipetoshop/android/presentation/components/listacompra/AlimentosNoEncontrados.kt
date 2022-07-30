@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -19,6 +20,7 @@ import com.otero.recipetoshop.android.presentation.components.util.cards.Ingredi
 import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.presentationlogic.states.listacompra.ListaCompraState
 
+@OptIn(ExperimentalMaterialApi::class)
 @ExperimentalFoundationApi
 @Composable
 fun AlimentosNoEncontrados (
@@ -31,7 +33,6 @@ fun AlimentosNoEncontrados (
                 nombre = item.nombre,
                 cantidad = item.cantidad,
                 tipoUnidad = item.tipoUnidad,
-                onClickAlimento = {},
                 onDelete = {}
             )
         }

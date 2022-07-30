@@ -16,7 +16,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.otero.recipetoshop.android.presentation.components.alimentos.ListaAlimentosCestaCompra
-import com.otero.recipetoshop.android.presentation.components.despensa.NewAlimentoPopUp
+import com.otero.recipetoshop.android.presentation.components.despensa.AlimentoPopUp
 import com.otero.recipetoshop.android.presentation.navigation.RutasNavegacion
 import com.otero.recipetoshop.android.presentation.theme.*
 import com.otero.recipetoshop.domain.util.TipoUnidad
@@ -54,7 +54,7 @@ fun ContenidoCestaCompra (
     ) {
         //En el caso de que se haya clicado la adición de nuevo alimento; el dialogo está por encima,.
         if(newAlimentoDialog.value){
-            NewAlimentoPopUp(
+            AlimentoPopUp(
                 onAddAlimento = { nombre, tipoUnidad, cantidad  ->
                     onTriggeEventCestaCompra(
                         CestaCompraEventos.onAddAlimento(

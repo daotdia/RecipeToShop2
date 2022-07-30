@@ -7,16 +7,14 @@ import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
@@ -24,22 +22,28 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.otero.recipetoshop.android.presentation.components.despensa.AlimentoPopUp
 import com.otero.recipetoshop.android.presentation.theme.*
+import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.domain.util.TipoUnidad
 /*
 Este es el componente que implementa la Card de un ingrediente.
  */
+@OptIn(ExperimentalComposeUiApi::class)
 @ExperimentalFoundationApi
+@ExperimentalMaterialApi
 @Composable
 fun IngredienteCard (
     nombre: String,
     cantidad: Int = 0,
     tipoUnidad: TipoUnidad = TipoUnidad.GRAMOS,
-    onClickAlimento: () -> Unit,
+    onClickAlimento: (Int, String, String, String) -> Unit = {_,_,_,_ ->},
     onDelete: () -> Unit,
     active: Boolean = true,
-    longpressed: Boolean = true
+    longpressed: Boolean = true,
+    alimento_actual: Alimento? = null
 ) {
+    val clickAlimento = remember { mutableStateOf(false)}
     val longPressed = remember { mutableStateOf(false) }
     val borderStroke = remember { mutableStateOf(BorderStroke(0.dp, Color.White.copy(alpha = 0f))) }
 
@@ -80,7 +84,8 @@ fun IngredienteCard (
                             if (longPressed.value) {
                                 longPressed.value = false
                             } else {
-                                onClickAlimento()
+                                //Dialogo con los datos del ingrediente a editar.
+                                clickAlimento.value = true
                             }
                         },
                     ),
@@ -127,6 +132,16 @@ fun IngredienteCard (
                                     contentDescription = "Eliminar Tarjeta"
                                 )
                             }
+                        }
+                        if(clickAlimento.value){
+                            AlimentoPopUp(
+                                onEditAlimento = clickAlimento,
+                                editAlimento = { id_aliemnto, nombre, tipo, cantidad ->
+                                    //FUnción para llamar a viewmodel para ediatr alimento.
+                                    onClickAlimento(id_aliemnto,nombre,tipo,cantidad)
+                                },
+                                alimento_actual = alimento_actual
+                            )
                         }
                     }
                 }

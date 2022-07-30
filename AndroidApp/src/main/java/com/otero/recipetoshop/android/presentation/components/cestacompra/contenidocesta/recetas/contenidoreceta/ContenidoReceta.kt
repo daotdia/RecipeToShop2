@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.otero.recipetoshop.android.presentation.components.RecetaImagen
 import com.otero.recipetoshop.android.presentation.components.cestacompra.contenidocesta.recetas.contenidoreceta.ListaIngredientesReceta
-import com.otero.recipetoshop.android.presentation.components.despensa.NewAlimentoPopUp
+import com.otero.recipetoshop.android.presentation.components.despensa.AlimentoPopUp
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.domain.util.TipoUnidad
 import com.otero.recipetoshop.events.cestacompra.receta.RecetaEventos
@@ -48,7 +48,7 @@ fun ContenidoReceta(
     ) {
         //En el caso de que se de a añadir alimento salta el dialogo.
         if(newAlimentoDialog.value){
-          NewAlimentoPopUp(
+          AlimentoPopUp(
               onAddAlimento = { nombre, tipoUnidad, cantidad,  ->
                 onTriggeEventReceta(RecetaEventos.onaAddIngrediente(
                     nombre = nombre,
