@@ -1,9 +1,17 @@
 package com.otero.recipetoshop.android.presentation.components.cestacompra
 
+import androidx.compose.animation.AnimatedContentScope.SlideDirection.Companion.End
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AddAPhoto
+import androidx.compose.material.icons.filled.Lens
+import androidx.compose.material.icons.filled.Remove
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -13,8 +21,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.otero.recipetoshop.android.presentation.components.RecetaImagen
+import com.otero.recipetoshop.android.presentation.components.errorhandle.GenericDialog
 import com.otero.recipetoshop.android.presentation.theme.appShapes
+import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.domain.model.CestaCompra.CestaCompra
+import org.intellij.lang.annotations.JdkConstants
+
 /*
 Este es el componente que implementa la card de una Cesta de recetas y alimentos.
  */
@@ -23,51 +35,54 @@ Este es el componente que implementa la card de una Cesta de recetas y alimentos
 fun ListaCestasCompraCard(
     cesta: CestaCompra,
     elevation: Dp,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    addPicture: MutableState<Boolean> = mutableStateOf(false)
 ) {
     val keyboardController = LocalSoftwareKeyboardController.current
 
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(6.dp)
-            .clickable(onClick = onClick)
+            .heightIn(min = 94.dp)
         ,
         elevation = elevation,
         shape = appShapes.medium
     ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Box(
+        Box (
+            modifier = Modifier
+                .fillMaxSize()
+                .clickable(onClick = onClick)
+            ,
+        ){
+            RecetaImagen(
+                url =cesta.imagen,
+                contentDescription = cesta.nombre,
+            )
+            if(cesta.imagen == ""){
+                Icon(
+                    Icons.Filled.AddAPhoto,
+                    modifier = Modifier
+                        .size(28.dp)
+                        .padding( end = 6.dp)
+                        .align(Alignment.TopEnd)
+                        .clickable(onClick = {
+                            //Abrir dialogo de para seleccionar o bien camera o bien galeria.
+                            addPicture.value = true
+                        }),
+                    tint = primaryDarkColor,
+                    contentDescription = "No Favorito",
+                )
+            }
+            Text(
+                text = cesta.nombre,
                 modifier = Modifier
                     .fillMaxSize()
-                    ,
-                contentAlignment = Alignment.Center
-            ){
-                Column(Modifier
-                    .fillMaxSize()
-                    .align(Alignment.Center)
-                ) {
-                    RecetaImagen(
-                        url =cesta.imagen,
-                        contentDescription = cesta.nombre,
-                    )
-                }
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .align(Alignment.BottomCenter)
-                        .padding(top = 12.dp, bottom = 12.dp, start = 8.dp, end = 8.dp)
-                ) {
-                    Text(
-                        text = cesta.nombre,
-                        modifier = Modifier.fillMaxWidth(0.85f),
-                        style = MaterialTheme.typography.h5.copy(color = Color.Black),
-                        textAlign = TextAlign.Center
-                    )
-                }
-            }
+                    .align(Alignment.BottomCenter)
+                    .padding(bottom = 8.dp)
+                ,
+                style = MaterialTheme.typography.h5.copy(color = Color.Black),
+                textAlign = TextAlign.Center
+            )
         }
     }
 //    Card(

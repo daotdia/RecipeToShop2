@@ -1,5 +1,7 @@
 package com.otero.recipetoshop.android.presentation.components.cestacompra
 
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
@@ -20,6 +22,8 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.otero.recipetoshop.android.presentation.components.util.ChoosePicture
+import com.otero.recipetoshop.android.presentation.components.util.GenericForm
 import com.otero.recipetoshop.android.presentation.navigation.RutasNavegacion
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
@@ -40,6 +44,15 @@ fun ListaCestasCompra(
     onTriggeEvent: (ListaCestasCompraEventos) -> Any,
 ) {
     val dialogElement = remember { mutableStateOf(false)}
+    val addPicture = remember { mutableStateOf(false)}
+
+    //Launcher de la galeria
+    val galleryLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri ->
+        //Llamo a la base de datos para que guarde la dirección de la imagen
+        onTriggeEvent(ListaCestasCompraEventos.onAddPicture(uri.path))
+    }
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -55,6 +68,28 @@ fun ListaCestasCompra(
             }
         }
     ) {
+        if(addPicture.value){
+            if(dialogElement.value){
+                addPicture.value = false
+            }
+            //Dialogo para seleccionar una foto o una camara.
+            ChoosePicture(
+                onDismiss = addPicture,
+                onSelectMedia = { media ->
+                    //TODO: según el medio seleccionado tomar una captura o ir a galeria.
+                    //En el caso de que sea la galeria
+                    if(media.equals("Gallery")){
+                        //Lanzo el launcher de la galeria
+                        galleryLauncher.launch("image/*")
+                    } else if(media.equals("Camera")){
+
+                    }
+                    else {
+                        println("No se debería de llegar aquí al seleccionar la camará")
+                    }
+                }
+            )
+        }
         if(dialogElement.value){
             NewCestaCompraPopUp(
                 onTriggerEvent = onTriggeEvent,
@@ -69,14 +104,15 @@ fun ListaCestasCompra(
         //Crear la lista de items.
         LazyVerticalGrid(
             modifier = Modifier
-                .offset(y = 48.dp)
-                .padding(1.dp),
+                .offset(y = 12.dp)
+                .padding(8.dp),
             cells = GridCells.Fixed(2)
         ) {
             items(items = listaCestaCompraState.value.listaCestasCompra)
             { item ->
                 RevealSwipe(
                     modifier = Modifier
+                        .fillMaxSize()
                         .padding(vertical = 5.dp),
                     directions = setOf(
                         RevealDirection.EndToStart
@@ -98,7 +134,8 @@ fun ListaCestasCompra(
                             val idCestaCompraActual: Int = item.id_cestaCompra!!
                             //Posteriormente se navega a la pantalal de lista de recetas clicada.
                             navController.navigate(RutasNavegacion.CestaCompra.route + "/$idCestaCompraActual")
-                        }
+                        },
+                        addPicture = addPicture
                     )
                 }
             }

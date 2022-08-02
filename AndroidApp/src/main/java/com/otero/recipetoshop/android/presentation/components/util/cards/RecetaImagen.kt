@@ -9,6 +9,7 @@ import androidx.compose.material.Surface
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.AddAPhoto
+import androidx.compose.material.icons.filled.NoPhotography
 import androidx.compose.material.icons.filled.PictureInPicture
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -26,7 +27,7 @@ Este componente es el encargado de pintar las imágenes de receta a partir de un
  */
 @Composable
 fun RecetaImagen (
-    url: String,
+    url: Any,
     contentDescription: String
 ){
     val painter = rememberCoilPainter(request = url)
@@ -50,7 +51,7 @@ fun RecetaImagen (
                     Box(modifier = Modifier.fillMaxSize())
                     {
                         Icon(
-                            Icons.Filled.AddAPhoto,
+                            Icons.Filled.NoPhotography,
                             modifier = Modifier
                                 .size(46.dp)
                                 .padding(2.dp)
@@ -73,7 +74,7 @@ fun RecetaImagen (
                     Box(modifier = Modifier.fillMaxSize())
                     {
                         Icon(
-                            Icons.Filled.AddAPhoto,
+                            Icons.Filled.NoPhotography,
                             modifier = Modifier
                                 .size(46.dp)
                                 .padding(2.dp)

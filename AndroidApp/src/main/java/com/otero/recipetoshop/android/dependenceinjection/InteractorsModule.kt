@@ -279,4 +279,14 @@ object InteractorsModule {
             recetaCache = recetaCache
         )
     }
+
+    @Singleton
+    @Provides
+    fun providesAddPicture(
+        recetaCache: RecetaCache
+    ): AddPicture{
+        return AddPicture(
+            recetaCache = recetaCache
+        )
+    }
 }

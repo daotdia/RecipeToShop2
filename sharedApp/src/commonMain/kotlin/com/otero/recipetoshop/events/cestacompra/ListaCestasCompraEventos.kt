@@ -9,4 +9,6 @@ sealed class ListaCestasCompraEventos {
     data class onAddListaRecetaEventos(val nombre: String): ListaCestasCompraEventos()
     
     data class onDeleteCestaCompra(val id_cestaCompra: Int): ListaCestasCompraEventos()
+
+    data class onAddPicture(val picture: String?): ListaCestasCompraEventos()
 }
