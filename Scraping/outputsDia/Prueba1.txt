@@ -1,36 +1,3 @@
 {
 "productos":
 [
-[
-],
-[
-{"query": "Mostaza", "nombre": "MAILLE mostaza frasco 210 gr", "imagen_src": "https://s0.dia.es/medias/h86/h9d/11147528241182.jpg", "precio_peso": "14,24 \u20ac/Kg.", "precio": "2,99 \u20ac", "oferta": "", "supermercado": "Dia"},
-{"query": "Mostaza", "nombre": "PRIMA mostaza americana bote 300 gr", "imagen_src": "https://s3.dia.es/medias/hde/h4b/11147542659102.jpg", "precio_peso": "4,82 \u20ac/Kg.", "precio": "1,59 \u20ac", "oferta": "", "supermercado": "Dia"},
-{"query": "Mostaza", "nombre": "HEINZ mostaza suave bote 220 ml", "imagen_src": "https://s1.dia.es/medias/h61/he6/11131378827294.jpg", "precio_peso": "9,05 \u20ac/l.", "precio": "1,99 \u20ac", "oferta": "", "supermercado": "Dia"},
-{"query": "Mostaza", "nombre": "MAILLE mostaza dijon original tarro 215 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h52/h8a/11146324869150.jpg", "precio_peso": "13,91 \u20ac/Kg.", "precio": "2,99 \u20ac", "oferta": "", "supermercado": "Dia"},
-{"query": "Mostaza", "nombre": "PRIMA salsa mostaza cero bote 325 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h80/h79/11147654332446.jpg", "precio_peso": "6,12 \u20ac/Kg.", "precio": "1,99 \u20ac", "oferta": "", "supermercado": "Dia"},
-{"query": "Mostaza", "nombre": "COOSUR mostaza al estilo americano antigoteo bote 300 ml", "imagen_src": "https://s2.dia.es/medias/h90/h8f/9560187240478.jpg", "precio_peso": "3,83 \u20ac/l.", "precio": "1,15 \u20ac", "oferta": "", "supermercado": "Dia"},
-{"query": "Mostaza", "nombre": "FRIT RAVICH cocktail con miel y mostaza bolsa 360 gr", "imagen_src": "https://s2.dia.es/medias/productimages/h03/h0e/11028458405918.jpg", "precio_peso": "8,03 \u20ac/Kg.", "precio": "2,89 \u20ac", "oferta": "", "supermercado": "Dia"},
-{"query": "Mostaza", "nombre": "DIA SALSEO salsa cualitativa de eneldo y mostaza frasco 200 gr", "imagen_src": "https://www.dia.es/compra-online/_ui/desktop/theme-dia/images/dia/svg/image-not-available.svg", "precio_peso": "9,38 \u20ac/Kg.", "precio": "1,97 \u20ac", "oferta": "", "supermercado": "Dia"},
-],
-[
-{"query": "Pan hamburguesa", "nombre": "BIMBO pan de hamburguesas 4 uds bolsa 300 gr", "imagen_src": "https://s1.dia.es/medias/productimages/hd0/hec/11137039826974.jpg", "precio_peso": "8,30 \u20ac/Kg.", "precio": "2,49 \u20ac", "oferta": "", "supermercado": "Dia"},
-{"query": "Pan hamburguesa", "nombre": "EL MOLINO DE DIA pan de hamburguesas 4 unidades bolsa 220 gr", "imagen_src": "https://s0.dia.es/medias/h16/h76/10567166492702.jpg", "precio_peso": "4,55 \u20ac/Kg.", "precio": "1,00 \u20ac", "oferta": "", "supermercado": "Dia"},
-{"query": "Pan hamburguesa", "nombre": "EL MOLINO DE DIA pan de hamburguesa maxi 4 unidades bolsa 300 gr", "imagen_src": "https://s0.dia.es/medias/h43/h34/10567167475742.jpg", "precio_peso": "3,30 \u20ac/Kg.", "precio": "0,99 \u20ac", "oferta": "", "supermercado": "Dia"},
-],
-[
-{"query": "Ketchup", "nombre": "DIA ketchup bote 560 gr", "imagen_src": "https://s1.dia.es/medias/h30/h4e/9667530358814.jpg", "precio_peso": "1,59 \u20ac/Kg.", "precio": "0,89 \u20ac", "oferta": "", "supermercado": "Dia"},
-{"query": "Ketchup", "nombre": "TOSFRIT apetinas ketchup bolsa 90GRS", "imagen_src": "https://s3.dia.es/medias/productimages/hc2/h5f/10682713866270.jpg", "precio_peso": "13,00 \u20ac/Kg.", "precio": "1,17 \u20ac", "oferta": "", "supermercado": "Dia"},
-{"query": "Ketchup", "nombre": "HELLMANN'S ketchup bote 430 ml", "imagen_src": "https://s2.dia.es/medias/productimages/h00/h24/10948352573470.jpg", "precio_peso": "3,60 \u20ac/Kg.", "precio": "1,75 \u20ac", "oferta": "", "supermercado": "Dia"},
-{"query": "Ketchup", "nombre": "DIA ketchup bote 340 gr", "imagen_src": "https://s1.dia.es/medias/h1c/h2a/9592242962462.jpg", "precio_peso": "2,32 \u20ac/Kg.", "precio": "0,79 \u20ac", "oferta": "", "supermercado": "Dia"},
-{"query": "Ketchup", "nombre": "ORLANDO ketchup bote 300 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h04/h0a/11105553645598.jpg", "precio_peso": "3,30 \u20ac/Kg.", "precio": "0,99 \u20ac", "oferta": "", "supermercado": "Dia"},
-{"query": "Ketchup", "nombre": "DIA ketchup light bote 540 gr", "imagen_src": "https://s3.dia.es/medias/he1/h4b/9667527737374.jpg", "precio_peso": "1,94 \u20ac/Kg.", "precio": "1,05 \u20ac", "oferta": "", "supermercado": "Dia"},
-{"query": "Ketchup", "nombre": "PRIMA ketchup clasico bote 600 gr", "imagen_src": "https://s3.dia.es/medias/hb9/hf1/11147542986782.jpg", "precio_peso": "3,98 \u20ac/Kg.", "precio": "2,39 \u20ac", "oferta": "", "supermercado": "Dia"},
-{"query": "Ketchup", "nombre": "HEINZ ketchup light botella 550 gr", "imagen_src": "https://s0.dia.es/medias/h75/h29/11131388330014.jpg", "precio_peso": "6,53 \u20ac/Kg.", "precio": "3,59 \u20ac", "oferta": "", "supermercado": "Dia"},
-{"query": "Ketchup", "nombre": "PRIMA ketchup cero bote 570 gr", "imagen_src": "https://s0.dia.es/medias/productimages/h67/h77/11147652366366.jpg", "precio_peso": "4,54 \u20ac/Kg.", "precio": "2,59 \u20ac", "oferta": "", "supermercado": "Dia"},
-{"query": "Ketchup", "nombre": "HEINZ Ketchup top down bote 400 gr", "imagen_src": "https://s0.dia.es/medias/productimages/haa/hd8/11131561148446.jpg", "precio_peso": "6,50 \u20ac/Kg.", "precio": "2,99 \u20ac", "oferta": "", "supermercado": "Dia"},
-],
-[
-],
-],
-}
