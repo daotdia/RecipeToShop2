@@ -13,6 +13,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.focus.FocusState
 import androidx.compose.ui.focus.focusProperties
 import androidx.compose.ui.focus.onFocusChanged
@@ -46,7 +47,8 @@ fun LongPressCard(
     onFavoritaClick: () -> Unit = {},
     isReceta: Boolean = false,
     onReducirCantidadReceta: () -> Unit = {},
-    onAumentarCantidadReceta: () -> Unit = {}
+    onAumentarCantidadReceta: () -> Unit = {},
+    addPicture: () -> Unit = {}
 ) {
     val longPressed = remember { mutableStateOf(false) }
     val borderStroke = remember { mutableStateOf(BorderStroke(0.dp, Color.White.copy(alpha = 0f))) }
@@ -88,17 +90,21 @@ fun LongPressCard(
     ) {
         Column(Modifier.fillMaxSize()) {
             Box(Modifier.fillMaxSize()) {
-                RecetaImagen(
-                    url = imagen,
-                    contentDescription = nombre
-                )
+                Box(Modifier.alpha(0.65f)) {
+                    RecetaImagen(
+                        url = imagen,
+                        isReceta = isReceta,
+                        contentDescription = nombre
+                    )
+                }
+
                 if(favorita && isReceta && !longPressed.value) {
                     Icon(
                         Icons.Filled.Favorite,
                         modifier = Modifier
                             .size(36.dp)
                             .padding(top = 12.dp, end = 12.dp)
-                            .align(Alignment.TopEnd)
+                            .align(Alignment.TopStart)
                             .clickable {
                                 onFavoritaClick()
                             }
@@ -112,14 +118,28 @@ fun LongPressCard(
                         Icons.Filled.FavoriteBorder,
                         modifier = Modifier
                             .size(36.dp)
-                            .padding(top = 12.dp, end = 12.dp)
-                            .align(Alignment.TopEnd)
+                            .padding(start = 8.dp)
+                            .align(Alignment.TopStart)
                             .clickable {
                                 onFavoritaClick()
                             }
                         ,
                         tint = primaryDarkColor,
                         contentDescription = "No Favorito",
+                    )
+
+                    Icon(
+                        Icons.Filled.AddAPhoto,
+                        modifier = Modifier
+                            .size(28.dp)
+                            .padding(end = 8.dp)
+                            .align(Alignment.TopEnd)
+                            .clickable(onClick = {
+                                //Abrir dialogo de para seleccionar o bien camera o bien galeria.
+                                addPicture()
+                            }),
+                        tint = primaryDarkColor,
+                        contentDescription = "Add Photo",
                     )
                 }
                 Text(
@@ -128,7 +148,7 @@ fun LongPressCard(
                         .wrapContentSize()
                         .align(Alignment.Center),
                     style = MaterialTheme.typography.h6.copy(color = primaryDarkColor),
-                    color = primaryDarkColor,
+                    color = Color.Gray,
                     textAlign = TextAlign.Center
                 )
                 Text(
@@ -137,7 +157,7 @@ fun LongPressCard(
                         .wrapContentSize()
                         .align(Alignment.BottomCenter),
                     style = MaterialTheme.typography.h6.copy(color = primaryDarkColor),
-                    color = primaryDarkColor,
+                    color = Color.Gray,
                     textAlign = TextAlign.Center
                 )
                 if(active && isReceta){
@@ -151,9 +171,10 @@ fun LongPressCard(
                                 onReducirCantidadReceta()
                             }
                         ,
-                        tint = primaryDarkColor,
+                        tint = Color.Gray,
                         contentDescription = "No Favorito",
                     )
+
                     Icon(
                         Icons.Filled.Add,
                         modifier = Modifier
@@ -164,7 +185,7 @@ fun LongPressCard(
                                 onAumentarCantidadReceta()
                             }
                         ,
-                        tint = primaryDarkColor,
+                        tint = Color.Gray,
                         contentDescription = "No Favorito",
                     )
                 }

@@ -15,6 +15,7 @@ fun CestaCompra_Entity.toCestaCompra(): CestaCompra{
     return CestaCompra(
         id_cestaCompra = id_cestaCompra.toInt(),
         nombre = nombre,
+        imagen = imagen
     )
 }
 

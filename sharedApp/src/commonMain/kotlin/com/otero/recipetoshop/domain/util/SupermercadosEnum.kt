@@ -21,9 +21,9 @@ enum class SupermercadosEnum {
                 CARREFOUR ->
                     return "https://vams-loyalia-storage.s3.eu-west-1.amazonaws.com/images/deals/_720x495/carrefour.jpg"
                 DIA ->
-                    return "https://marketing4ecommerce.net/wp-content/uploads/2015/10/supermercado-dia-1.jpg"
+                    return "https://thefoodtech.com/wp-content/uploads/2020/12/supermercados-dia-ofrece-espectaculo-para-consumidores.jpg"
                 MERCADONA ->
-                    return "https://www.mercadona.com/estaticos/images/mercadona_logo/es/mercadona-imagotipo-color-300.png"
+                    return "https://1000marcas.net/wp-content/uploads/2021/09/Mercadona-Logo.png"
             }
         }
     }

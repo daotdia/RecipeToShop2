@@ -34,7 +34,8 @@ fun ScaffoldApp(){
                         coroutineScope.launch {
                             scaffoldState.drawerState.open()
                         }
-                    }
+                    },
+                    navController = navController
                 )
             },
             bottomBar = {

@@ -96,19 +96,22 @@ fun ListaCompra(
                 !listaCompraState.value.listaProductos.isEmpty()
                 || !listaCompraState.value.alimentos_no_encontrados.isEmpty()
             ){
-                NestedDownMenu(
-                    options = listOf(
-                        "Más baratos",
-                        "Más ligeros",
-                        "Más baratos ajustados",
-                        "Supermercado más barato",
-                        "Supermercado más ligero",
-                        "Supermercado más ajustado"
-                    ),
-                    onClickItem = {
-                        onTriggeEvent(ListaCompraEvents.onCLickFilter(it))
-                    }
-                )
+                Box(Modifier.fillMaxWidth().align(Alignment.End)){
+                    NestedDownMenu(
+                        options = listOf(
+                            "Más baratos",
+                            "Más ligeros",
+                            "Más baratos ajustados",
+                            "Supermercado más barato",
+                            "Supermercado más ligero",
+                            "Supermercado más ajustado"
+                        ),
+                        onClickItem = {
+                            onTriggeEvent(ListaCompraEvents.onCLickFilter(it))
+                        }
+                    )
+                }
+
             }
             LazyColumn(
                 Modifier
@@ -133,6 +136,7 @@ fun ListaCompra(
                             ) {
                                 //Se tendrá que cambiar dinamicamente cuando tenga más supermercados
                                 RecetaImagen(
+                                    isSuper = true,
                                     url = SupermercadosEnum.getImage(supermercado),
                                     contentDescription = "logo " + supermercado.name
                                 )

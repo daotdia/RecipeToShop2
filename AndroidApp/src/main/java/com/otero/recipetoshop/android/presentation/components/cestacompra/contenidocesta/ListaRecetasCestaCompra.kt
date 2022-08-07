@@ -36,6 +36,8 @@ fun ListaRecetasCestaCompra(
     recetasFavoritas: Boolean,
     navController: NavController,
     onNuevaReceta: () -> Unit = {},
+    receta_actual: MutableState<Receta?> = mutableStateOf(null),
+    addPicture: () -> Unit = {},
 ) {
     val cardHeight:Dp = 126.dp
     val cardWidth: Dp = 168.dp
@@ -173,7 +175,12 @@ fun ListaRecetasCestaCompra(
                                 )
                             )
                         },
-                        cantidad = item.cantidad
+                        cantidad = item.cantidad,
+                        addPicture = {
+                            receta_actual.value = item
+
+                            addPicture()
+                        }
                     )
                 }
             }

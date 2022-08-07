@@ -44,11 +44,27 @@ class UpdateRecetaCestaCompra (
                 recetaCache.insertIngredientesToReceta(ingredientes_antiguos)
             }
 
+            recetaCache.removeRecetaByIdInCestaCompra(nueva_receta.id_Receta)
+
             emit(DataState.data(message = null, data = id))
         } else {
             //Primero modifico actve en recera y la inserto en caché.
             val nueva_receta = receta.copy(active = active)
             val id = recetaCache.insertRecetaToCestaCompra(nueva_receta)
+
+            val ingredientes_antiguos = recetaCache.getIngredientesByReceta(id_receta = nueva_receta.id_Receta!!)
+
+            //Elimino los ingredientes antiguos.
+            recetaCache.removeIngredientesByRecetaInReceta(id_receta = nueva_receta.id_Receta)
+            //Por cada ingrediente le modifico su id de receta a la nueva receta si hay.
+            if(!ingredientes_antiguos.isNullOrEmpty()){
+                ingredientes_antiguos.forEach {
+                    it.id_receta = id
+                }
+                recetaCache.insertIngredientesToReceta(ingredientes_antiguos)
+            }
+
+            recetaCache.removeRecetaByIdInCestaCompra(nueva_receta.id_Receta)
 
             //Devuelvo el id de la receta modificada.
             emit(DataState.data(message = null, data = id))

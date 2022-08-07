@@ -53,14 +53,16 @@ WHERE id_despensa= :id_despensa;
 
 CREATE TABLE cestaCompra_Entity(
     id_cestaCompra INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    nombre TEXT NOT NULL UNIQUE
+    nombre TEXT NOT NULL UNIQUE,
+    imagen TEXT NOT NULL
 );
 
 insertCestaCompra:
 INSERT OR REPLACE
 INTO cestaCompra_Entity (
-    nombre
-) VALUES (?);
+    nombre,
+    imagen
+) VALUES (?, ?);
 
 getAllCestasCompra:
 SELECT * FROM cestaCompra_Entity

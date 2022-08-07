@@ -326,24 +326,31 @@ class CalcularAlimentosToProductos {
 
                 var best_precio_total = MAX_VALUE
                 var sup_ganador: SupermercadosEnum? = null
-                listas_mas_completas.forEach {
-                    var precio_total = 0f
-                    it.forEach {
-                        val precio_peso = ParsersJsonToProducto.parseJsonPrecioPesoToProductoPrecioPeso(it)
-                        if (precio_peso != null) {
-                            precio_total += precio_peso
+
+                if(listas_mas_completas.isNotEmpty()){
+                    listas_mas_completas.forEach {
+                        if(it.isNotEmpty()){
+                            var precio_total = 0f
+                            it.forEach {
+                                val precio_peso = ParsersJsonToProducto.parseJsonPrecioPesoToProductoPrecioPeso(it)
+                                if (precio_peso != null) {
+                                    precio_total += precio_peso
+                                }
+                            }
+                            if(precio_total < best_precio_total){
+                                best_precio_total = precio_total
+                                sup_ganador = it.first().supermercado
+                            }
                         }
                     }
-                    if(precio_total < best_precio_total){
-                        best_precio_total = precio_total
-                        sup_ganador = it.first().supermercado
-                    }
-                }
 
-                listas_mas_completas.forEach {
-                    it.forEach {
-                        if(it.supermercado.equals(sup_ganador)){
-                            result.add(it)
+                    listas_mas_completas.forEach {
+                        if(it.isNotEmpty()){
+                            it.forEach {
+                                if(it.supermercado.equals(sup_ganador)){
+                                    result.add(it)
+                                }
+                            }
                         }
                     }
                 }
@@ -405,21 +412,28 @@ class CalcularAlimentosToProductos {
 
                 var best_precio_total = MAX_VALUE
                 var sup_ganador: SupermercadosEnum? = null
-                listas_mas_completas.forEach {
-                    var peso_total = 0f
-                    it.forEach {
-                        peso_total += it.peso
-                    }
-                    if(peso_total < best_precio_total){
-                        best_precio_total = peso_total
-                        sup_ganador = it.first().supermercado
-                    }
-                }
 
-                listas_mas_completas.forEach {
-                    it.forEach {
-                        if(it.supermercado.equals(sup_ganador)){
-                            result.add(it)
+                if(listas_mas_completas.isNotEmpty()){
+                    listas_mas_completas.forEach {
+                        if(it.isNotEmpty()){
+                            var peso_total = 0f
+                            it.forEach {
+                                peso_total += it.peso
+                            }
+                            if(peso_total < best_precio_total){
+                                best_precio_total = peso_total
+                                sup_ganador = it.first().supermercado
+                            }
+                        }
+                    }
+
+                    listas_mas_completas.forEach {
+                        if(it.isNotEmpty()){
+                            it.forEach {
+                                if(it.supermercado.equals(sup_ganador)){
+                                    result.add(it)
+                                }
+                            }
                         }
                     }
                 }
@@ -516,35 +530,41 @@ class CalcularAlimentosToProductos {
                 var best_ponderacion_total: Float
                 var sup_ganador: SupermercadosEnum? = null
 
-                listas_mas_completas.forEach {
-                    best_ponderacion_total = listOf(
-                        if(listas_mas_completas.any { it.any { it.supermercado == SupermercadosEnum.CARREFOUR }}) pond_carr else NEGATIVE_INFINITY,
-                        if(listas_mas_completas.any { it.any { it.supermercado == SupermercadosEnum.DIA }}) pond_dia else NEGATIVE_INFINITY,
-                        if(listas_mas_completas.any { it.any { it.supermercado == SupermercadosEnum.MERCADONA }}) pond_merc else NEGATIVE_INFINITY
-                    ).maxOrNull()!!
-                    println("La ponderación máxima ha sido: " + best_ponderacion_total)
-                    when(best_ponderacion_total){
-                        pond_carr -> {
-                            sup_ganador = result_carr.first().supermercado
-                        }
-                        pond_dia -> {
-                            sup_ganador = result_dia.first().supermercado
-                        }
-                        pond_merc -> {
-                            sup_ganador = result_merc.first().supermercado
-                        }
-                        else -> {
-                            sup_ganador = SupermercadosEnum.CARREFOUR
+                if(listas_mas_completas.isNotEmpty()){
+                    listas_mas_completas.forEach {
+                        if(it.isNotEmpty()){
+                            best_ponderacion_total = listOf(
+                                if(listas_mas_completas.any { it.any { it.supermercado == SupermercadosEnum.CARREFOUR }}) pond_carr else NEGATIVE_INFINITY,
+                                if(listas_mas_completas.any { it.any { it.supermercado == SupermercadosEnum.DIA }}) pond_dia else NEGATIVE_INFINITY,
+                                if(listas_mas_completas.any { it.any { it.supermercado == SupermercadosEnum.MERCADONA }}) pond_merc else NEGATIVE_INFINITY
+                            ).maxOrNull()!!
+                            println("La ponderación máxima ha sido: " + best_ponderacion_total)
+                            when(best_ponderacion_total){
+                                pond_carr -> {
+                                    sup_ganador = result_carr.first().supermercado
+                                }
+                                pond_dia -> {
+                                    sup_ganador = result_dia.first().supermercado
+                                }
+                                pond_merc -> {
+                                    sup_ganador = result_merc.first().supermercado
+                                }
+                                else -> {
+                                    sup_ganador = SupermercadosEnum.CARREFOUR
+                                }
+                            }
                         }
                     }
-                }
 
-                listas_mas_completas.forEach {
-                    it.forEach {
-                        println("El contnido de las listas completas: " + it.nombre)
-                        if(it.supermercado == sup_ganador){
-                            println("El ganador de ajuste ha sido: " + it.nombre)
-                            result.add(it)
+                    listas_mas_completas.forEach {
+                        if(it.isNotEmpty()){
+                            it.forEach {
+                                println("El contnido de las listas completas: " + it.nombre)
+                                if(it.supermercado == sup_ganador){
+                                    println("El ganador de ajuste ha sido: " + it.nombre)
+                                    result.add(it)
+                                }
+                            }
                         }
                     }
                 }

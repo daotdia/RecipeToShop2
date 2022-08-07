@@ -34,6 +34,7 @@ constructor(
     private val getCestaCompra: GetCestaCompra,
     private val actualizarAutoComplete: ActualizarAutoComplete,
     private val getRecetasFavoritas: GetRecetasFavoritas,
+    private val addRecetaCestaCompra: AddRecetaCestaCompra
 ): ViewModel() {
     val cestaCompraState = mutableStateOf(CestaCompraState())
     init {
@@ -112,6 +113,9 @@ constructor(
                 val receta = event.receta.copy(isFavorita = event.isFavorita)
                 updateReceta(receta)
             }
+            is CestaCompraEventos.onUpdatePicture -> {
+                updateReceta(event.receta.copy(imagenSource = event.picture))
+            }
             else -> {
                 throw Exception("ERROR")
             }
@@ -119,7 +123,7 @@ constructor(
     }
 
     private fun addReceta(newReceta: Receta) {
-        updateRecetaCestaCompra.updateRecetaCestaCompra(receta = newReceta, active = newReceta.active, cantidad = newReceta.cantidad).onEach { dataState ->
+        addRecetaCestaCompra.addRecetaCestaCompra(receta = newReceta).onEach { dataState ->
             dataState.data?.let { id ->
                 cestaCompraState.value = cestaCompraState.value.copy(id_receta_actual = id)
                 rePrintElementosDeListaRecetas(cestaCompraState.value.id_cestaCompra_actual!!)

@@ -21,19 +21,42 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.coil.rememberCoilPainter
 import com.google.accompanist.imageloading.ImageLoadState
+import com.google.accompanist.imageloading.LoadPainter
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
+import java.io.File
+
 /*
 Este componente es el encargado de pintar las imágenes de receta a partir de una url.
  */
 @Composable
 fun RecetaImagen (
+    isSuper: Boolean = false,
+    isReceta: Boolean = false,
+    isCestaCompra: Boolean = false,
     url: Any,
     contentDescription: String
 ){
-    val painter = rememberCoilPainter(request = url)
+    var max_height: Int = Int.MAX_VALUE
+
+    val painter: LoadPainter<Any>
+
+    if(isCestaCompra && url is String){
+        painter = rememberCoilPainter(File(url))
+        max_height = 126
+    } else if(isReceta && url is String){
+        painter = rememberCoilPainter(File(url))
+    } else if(isSuper){
+        painter = rememberCoilPainter(request = url)
+        max_height = 38
+    } else {
+        painter = rememberCoilPainter(request = url)
+    }
     Box(Modifier.fillMaxSize()){
         Image(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize()
+                .heightIn(max = max_height.dp)
+            ,
             painter = painter,
             contentDescription = contentDescription,
             contentScale = ContentScale.Crop

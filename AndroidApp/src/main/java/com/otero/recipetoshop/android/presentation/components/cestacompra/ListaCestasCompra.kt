@@ -1,12 +1,27 @@
 package com.otero.recipetoshop.android.presentation.components.cestacompra
 
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
+import android.Manifest
+import android.content.Context
+import android.content.ContextWrapper
+import android.content.pm.PackageManager.PERMISSION_DENIED
+import android.content.pm.PackageManager.PERMISSION_GRANTED
+import android.graphics.Bitmap
+import android.graphics.ImageDecoder
+import android.graphics.Typeface.DEFAULT
+import android.net.Uri
+import android.os.Build
+import android.provider.MediaStore
+import android.util.Base64.DEFAULT
+import android.util.Base64.encodeToString
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.*
+import androidx.compose.foundation.lazy.GridCells
+import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
@@ -20,10 +35,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
-import com.otero.recipetoshop.android.presentation.components.util.ChoosePicture
-import com.otero.recipetoshop.android.presentation.components.util.GenericForm
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.google.accompanist.permissions.rememberPermissionState
+import com.otero.recipetoshop.android.presentation.components.util.CameraView
 import com.otero.recipetoshop.android.presentation.navigation.RutasNavegacion
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
@@ -31,9 +51,15 @@ import com.otero.recipetoshop.events.cestacompra.ListaCestasCompraEventos
 import com.otero.recipetoshop.presentationlogic.states.recetas.ListaCestasCompraState
 import de.charlex.compose.RevealDirection
 import de.charlex.compose.RevealSwipe
+import java.io.ByteArrayOutputStream
+import java.util.*
+
+
 /*
 Este componente implementa la lista de cestas de recetas y alimentos
  */
+@RequiresApi(Build.VERSION_CODES.N)
+@OptIn(ExperimentalPermissionsApi::class)
 @ExperimentalFoundationApi
 @ExperimentalComposeUiApi
 @ExperimentalMaterialApi
@@ -43,53 +69,36 @@ fun ListaCestasCompra(
     listaCestaCompraState: MutableState<ListaCestasCompraState>,
     onTriggeEvent: (ListaCestasCompraEventos) -> Any,
 ) {
+
     val dialogElement = remember { mutableStateOf(false)}
     val addPicture = remember { mutableStateOf(false)}
+    val permisos_correctos = remember { mutableStateOf(false) }
+    val rationale_camera = remember { mutableStateOf(false) }
+    val rationale_external = remember { mutableStateOf(false) }
+    val context = LocalContext.current
+    val bitmap: MutableState<Bitmap?> = remember { mutableStateOf(null) }
+    val activity = context.getActivity()!!
+    val id_cestaCompraActual = remember { mutableStateOf(-1) }
 
-    //Launcher de la galeria
-    val galleryLauncher = rememberLauncherForActivityResult(
-        ActivityResultContracts.GetContent()
-    ) { uri ->
-        //Llamo a la base de datos para que guarde la dirección de la imagen
-        onTriggeEvent(ListaCestasCompraEventos.onAddPicture(uri.path))
-    }
+    //Launcher y registro de permisos
+    val permission_states = rememberPermissionState(Manifest.permission.CAMERA)
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         floatingActionButton = {
-            FloatingActionButton(
-                onClick = {
-                    dialogElement.value = true
-                },
-                backgroundColor = primaryDarkColor,
-                contentColor = secondaryLightColor,
-            ) {
-                Icon(Icons.Filled.Add, "Añadir nueva cesta de la compra")
+            if(!addPicture.value){
+                FloatingActionButton(
+                    onClick = {
+                        dialogElement.value = true
+                    },
+                    backgroundColor = primaryDarkColor,
+                    contentColor = secondaryLightColor,
+                ) {
+                    Icon(Icons.Filled.Add, "Añadir nueva cesta de la compra")
+                }
             }
         }
     ) {
-        if(addPicture.value){
-            if(dialogElement.value){
-                addPicture.value = false
-            }
-            //Dialogo para seleccionar una foto o una camara.
-            ChoosePicture(
-                onDismiss = addPicture,
-                onSelectMedia = { media ->
-                    //TODO: según el medio seleccionado tomar una captura o ir a galeria.
-                    //En el caso de que sea la galeria
-                    if(media.equals("Gallery")){
-                        //Lanzo el launcher de la galeria
-                        galleryLauncher.launch("image/*")
-                    } else if(media.equals("Camera")){
-
-                    }
-                    else {
-                        println("No se debería de llegar aquí al seleccionar la camará")
-                    }
-                }
-            )
-        }
         if(dialogElement.value){
             NewCestaCompraPopUp(
                 onTriggerEvent = onTriggeEvent,
@@ -135,10 +144,84 @@ fun ListaCestasCompra(
                             //Posteriormente se navega a la pantalal de lista de recetas clicada.
                             navController.navigate(RutasNavegacion.CestaCompra.route + "/$idCestaCompraActual")
                         },
-                        addPicture = addPicture
+                        addPicture = {
+                            addPicture.value = true
+
+                            id_cestaCompraActual.value = item.id_cestaCompra!!
+
+                            //Determino si ya se ha dado permiso para usar la cámara y el almacenaje externo
+                            val isPermissionCamera = ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA)
+
+                            if(isPermissionCamera == PERMISSION_GRANTED){
+                                permisos_correctos.value = true
+                            }else {
+                                when {
+                                    ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.CAMERA) -> {
+                                        //TODO: Mostrar diálogo de porque es necesario el permiso de cámara
+                                        rationale_camera.value = true
+                                    }
+
+                                    ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.MANAGE_EXTERNAL_STORAGE) -> {
+                                        //TODO: Mostrar diálogo de porqué son necesarios los permisos del almacenaje externo.
+                                        rationale_external.value = true
+                                    }
+                                }
+                                if (isPermissionCamera == PERMISSION_DENIED){
+                                    //Se deben de solicitar los permisos
+                                    permission_states.launchPermissionRequest()
+                                }
+                            }
+                        }
                     )
                 }
             }
         }
+        if(addPicture.value){
+            if(permisos_correctos.value){
+                if(dialogElement.value){
+                    addPicture.value = false
+                }
+                //Se abre la pantalla de la cámara.
+                CameraView(onImageCaptured = { uri, fromGallery ->
+                    //Todo : use the uri as needed
+                    println("La URI es: " + uri.path)
+                    addPicture.value = false
+
+                    onTriggeEvent(ListaCestasCompraEventos.onAddPicture(
+                        picture = uri.path,
+                        id_cestaCompra = id_cestaCompraActual.value
+                    ))
+                }, onError = { imageCaptureException ->
+                    //Todo: que hacer cuando haya error
+
+                })
+
+            }
+        }
     }
 }
+
+fun Context.getActivity(): AppCompatActivity? = when (this) {
+    is AppCompatActivity -> this
+    is ContextWrapper -> baseContext.getActivity()
+    else -> null
+}
+
+
+fun getPath(context: Context, uri: Uri?): String {
+    var result: String? = null
+    val proj = arrayOf(MediaStore.Images.Media.DATA)
+    val cursor = context.contentResolver.query(uri!!, proj, null, null, null)
+    if (cursor != null) {
+        if (cursor.moveToFirst()) {
+            val column_index = cursor.getColumnIndexOrThrow(proj[0])
+            result = cursor.getString(column_index)
+        }
+        cursor.close()
+    }
+    if (result == null) {
+        result = "Not found"
+    }
+    return result
+}
+

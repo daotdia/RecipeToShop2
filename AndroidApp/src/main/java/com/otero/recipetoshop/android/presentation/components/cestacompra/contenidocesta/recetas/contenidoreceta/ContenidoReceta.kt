@@ -81,6 +81,7 @@ fun ContenidoReceta(
                 .weight(3f)
             ) {
                 RecetaImagen(
+                    isReceta = true,
                     url = recetaState.value.imagen,
                     contentDescription = recetaState.value.nombre
                 )

@@ -2,9 +2,11 @@ package com.otero.recipetoshop.android.presentation.controllers.cestacompra
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.otero.recipetoshop.Interactors.cestascompra.AddNewCestaCompra
+import com.otero.recipetoshop.Interactors.cestascompra.AddPictureCestaCompra
 import com.otero.recipetoshop.Interactors.cestascompra.PrintListaCestasCompra
 import com.otero.recipetoshop.Interactors.cestascompra.cestacompra.AddPicture
 import com.otero.recipetoshop.domain.model.CestaCompra.CestaCompra
@@ -21,7 +23,7 @@ class ListaCestasCompraListViewModel
 constructor(
     private val addNewCestaCompra: AddNewCestaCompra,
     private  val printListaCestasCompra: PrintListaCestasCompra,
-    private val addPicture: AddPicture
+    private val addPictureCestaCompra: AddPictureCestaCompra
     ): ViewModel(){
     val listadelistarecetasstate: MutableState<ListaCestasCompraState> = mutableStateOf(ListaCestasCompraState())
 
@@ -36,7 +38,12 @@ constructor(
                 return id
             }
             is ListaCestasCompraEventos.onAddPicture -> {
-                updatePicture(event.picture)
+                if(event.picture != null){
+                    updatePicture(
+                        picture = event.picture!!,
+                        id_cestaCompra = event.id_cestaCompra
+                    )
+                }
             }
             //            is ListaCestasCompraEventos.onEnterCestaCompraEventos -> {
 //                //Guardo el id actual de la lista de recetas, es importante para guardar futuros nuevos elementos de la lista.
@@ -50,14 +57,13 @@ constructor(
         return Unit
     }
 
-    private fun updatePicture(picture: String?) {
-        addPicture.addPicture(
-            id_cestaCompra = listadelistarecetasstate.value.id_cestaCompraActual,
+    private fun updatePicture(picture: String, id_cestaCompra: Int) {
+        addPictureCestaCompra.addPictureCestaCompra(
+            id_cestaCompra =id_cestaCompra,
             picture = picture
         ).onEach { dataState ->
             //Actualizo el id actual de cesta de compra y actualizo la lista
             if(dataState.data != null){
-                listadelistarecetasstate.value = listadelistarecetasstate.value.copy(id_cestaCompraActual = dataState.data!!)
                 rePrintListaDeListasRecetas()
             }
         }.launchIn(viewModelScope)

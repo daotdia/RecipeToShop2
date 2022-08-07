@@ -41,4 +41,6 @@ sealed class CestaCompraEventos {
 
     data class onAddRecetaExistente(val receta: Receta): CestaCompraEventos()
 
+    data class onUpdatePicture(val receta: Receta, val picture: String): CestaCompraEventos()
+
 }

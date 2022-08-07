@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="icn_camera_view_switch_camera_content_description">\"flip camera\"</string>
+    <string name="icn_camera_view_camera_shutter_content_description">\"shoot camera\"</string>
+    <string name="icn_camera_view_view_gallery_content_description">\"gallery\"</string>
+</resources>

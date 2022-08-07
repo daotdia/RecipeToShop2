@@ -15,6 +15,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.style.TextAlign
@@ -36,14 +37,14 @@ fun ListaCestasCompraCard(
     cesta: CestaCompra,
     elevation: Dp,
     onClick: () -> Unit,
-    addPicture: MutableState<Boolean> = mutableStateOf(false)
+    addPicture: () -> Unit = {}
 ) {
     val keyboardController = LocalSoftwareKeyboardController.current
 
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .heightIn(min = 94.dp)
+            .heightIn(min = 128.dp)
         ,
         elevation = elevation,
         shape = appShapes.medium
@@ -54,25 +55,31 @@ fun ListaCestasCompraCard(
                 .clickable(onClick = onClick)
             ,
         ){
-            RecetaImagen(
-                url =cesta.imagen,
-                contentDescription = cesta.nombre,
-            )
-            if(cesta.imagen == ""){
-                Icon(
-                    Icons.Filled.AddAPhoto,
-                    modifier = Modifier
-                        .size(28.dp)
-                        .padding( end = 6.dp)
-                        .align(Alignment.TopEnd)
-                        .clickable(onClick = {
-                            //Abrir dialogo de para seleccionar o bien camera o bien galeria.
-                            addPicture.value = true
-                        }),
-                    tint = primaryDarkColor,
-                    contentDescription = "No Favorito",
+            Row(modifier = Modifier
+                .alpha(alpha = 0.65f)
+                .align(Alignment.Center)
+            ) {
+                RecetaImagen(
+                    isCestaCompra = true,
+                    url = cesta.imagen,
+                    contentDescription = cesta.nombre,
                 )
             }
+
+            Icon(
+                Icons.Filled.AddAPhoto,
+                modifier = Modifier
+                    .size(28.dp)
+                    .padding(end = 6.dp)
+                    .align(Alignment.TopEnd)
+                    .clickable(onClick = {
+                        //Abrir dialogo de para seleccionar o bien camera o bien galeria.
+                        addPicture()
+                    }),
+                tint = primaryDarkColor,
+                contentDescription = "No Favorito",
+            )
+
             Text(
                 text = cesta.nombre,
                 modifier = Modifier

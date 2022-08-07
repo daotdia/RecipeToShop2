@@ -2,6 +2,7 @@ package com.otero.recipetoshop.android.dependenceinjection
 
 import com.otero.recipetoshop.Interactors.Common.ActualizarAutoComplete
 import com.otero.recipetoshop.Interactors.cestascompra.AddNewCestaCompra
+import com.otero.recipetoshop.Interactors.cestascompra.AddPictureCestaCompra
 import com.otero.recipetoshop.Interactors.cestascompra.GetCestaCompra
 import com.otero.recipetoshop.Interactors.cestascompra.PrintListaCestasCompra
 import com.otero.recipetoshop.Interactors.despensa.*
@@ -286,6 +287,16 @@ object InteractorsModule {
         recetaCache: RecetaCache
     ): AddPicture{
         return AddPicture(
+            recetaCache = recetaCache
+        )
+    }
+
+    @Singleton
+    @Provides
+    fun providesAddPictureCestaCompra(
+        recetaCache: RecetaCache
+    ): AddPictureCestaCompra{
+        return AddPictureCestaCompra(
             recetaCache = recetaCache
         )
     }

@@ -18,7 +18,8 @@ class RecetaCacheImpl(
         var id: Int = -1
         cestaCompraDataBase.transaction {
             queries.insertCestaCompra(
-                nombre = cestaCompra.nombre
+                nombre = cestaCompra.nombre,
+                imagen = cestaCompra.imagen
             )
             id = lastIdInserted()
         }

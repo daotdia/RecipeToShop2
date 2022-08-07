@@ -70,8 +70,11 @@ dependencies {
 
     implementation(Compose.iconsPlus)
 
+    implementation(CameraX.camera2)
+    implementation(CameraX.lyfe_cicle_camera)
+    implementation(CameraX.camera_view)
+
     implementation("de.charlex.compose:revealswipe:1.0.0-beta05")
-
-
+    implementation("com.google.accompanist:accompanist-permissions:0.21.1-beta")
 }
 
