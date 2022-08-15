@@ -36,6 +36,16 @@ struct Despensa: View {
     
     //Estado para controlar el dialogo de creación de alimento.
     @State var openDialog: Bool = false
+    @State var alimento_actual: Alimento = Alimento(
+        id_cestaCompra: nil,
+        id_receta: nil,
+        id_alimento: nil,
+        nombre: "",
+        cantidad: 0,
+        tipoUnidad: TipoUnidad.gramos,
+        active: false
+    )
+    @State var inEditAlimento: Bool = false
     
     var body: some View {
         ZStack{
@@ -77,12 +87,20 @@ struct Despensa: View {
                                     viewModel.onTriggerEvent(
                                         stateEvent: DespensaEventos.onAlimentoDelete(alimento: alimento)
                                     )
+                                },
+                                onClickAlimento: { alimento in
+                                    //Seteo le alimento actual de la despensa clicado
+                                    $alimento_actual.wrappedValue = alimento
+                                    
+                                    //Abro el diálogo del nuevo alimento setado con la información del alimento actual
+                                    $inEditAlimento.wrappedValue = true
+                                    $openDialog.wrappedValue = true
                                 }
                             )
                         }
                     }
                     .offset(y:24)
-                    .padding(6)
+                    .padding([.leading, .trailing], 8)
                 }
             }
             //El floating button.
@@ -147,11 +165,15 @@ struct Despensa: View {
 //                id_cestaCompra: -1, id_receta: -1, id_alimento: -1, nombre: "Prueba", cantidad: 1 , tipoUnidad:TipoUnidad.gramos,
 //                    active: true
 //            ))
+        }.onAppear{
+            viewModel.reprintDespensa()
         }
         .sheet(isPresented: $openDialog, content: {
             NewAlimentoDialog(
                 caseUses: self.caseUses,
+                alimento: alimento_actual,
                 openDialog: $openDialog,
+                inEditAlimento: $inEditAlimento,
                 addAlimento: { nombre, peso, tipoUnidad -> Void in
                     viewModel.onTriggerEvent(
                         stateEvent: DespensaEventos.onAddAlimento(
@@ -160,6 +182,11 @@ struct Despensa: View {
                             cantidad: peso
                         )
                     )
+                },
+                editAlimento: { alimento in
+                    viewModel.onTriggerEvent(stateEvent: DespensaEventos.onClickAlimento(
+                        alimento: alimento, active: alimento.active
+                    ))
                 }
             )
         })

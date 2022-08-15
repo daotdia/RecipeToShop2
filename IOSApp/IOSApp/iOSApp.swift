@@ -40,7 +40,7 @@ struct iOSApp: App {
                     Text("Despensa")
                 }
                 .tag(1)
-                
+            
                 //Pantalla de lista de recetas.
                 NavigationView{
                     ListasRecetasScreen(
@@ -65,7 +65,8 @@ struct iOSApp: App {
                     if #available(iOS 15.0, *) {
                         ListaCompra(
                             caseUses: caseUses,
-                            id_listaCompra: $id_listaCompra
+                            id_listaCompra: $id_listaCompra,
+                            tabSelection: $tabSelection
                         )
                         .navigationTitle("Lista de la compra")
                     } else {

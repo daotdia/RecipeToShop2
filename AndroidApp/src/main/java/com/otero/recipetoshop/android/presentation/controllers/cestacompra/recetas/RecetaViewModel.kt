@@ -68,9 +68,6 @@ constructor(
             is RecetaEventos.onaAddIngrediente -> {
                 addAlimentoReceta(nombre = event.nombre, cantidad = event.cantidad, tipoUnidad = event.tipoUnidad)
             }
-            is RecetaEventos.onClickIngrediente -> {
-                TODO("Pendiente edicicion de las cantidades de alimentos")
-            }
             is RecetaEventos.onDeleteIngrediente -> {
                 deleteIngredienteReceta(id_ingrediente = event.id_ingrediente)
             }

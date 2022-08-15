@@ -88,7 +88,6 @@ constructor(
             id_cestaCompra = listaCompraState.value.id_cestaCompra,
             productos = ArrayList(listaCompraState.value.listaProductos)
         ).onEach { dataState ->
-            //TODO: Se navega  a la despensa.
         }.launchIn(viewModelScope)
     }
 

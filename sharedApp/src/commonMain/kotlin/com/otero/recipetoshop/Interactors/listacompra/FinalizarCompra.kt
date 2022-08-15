@@ -7,7 +7,8 @@ import com.otero.recipetoshop.domain.model.ListaCompra.Productos
 import com.otero.recipetoshop.domain.model.ListaCompra.toAlimento
 import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.domain.util.DataState
-import kotlinx.coroutines.flow.Flow
+import com.otero.recipetoshop.domain.util.asCommonFlow
+import com.otero.recipetoshop.domain.util.CommonFLow
 import kotlinx.coroutines.flow.flow
 
 class FinalizarCompra (
@@ -17,7 +18,7 @@ class FinalizarCompra (
         fun finalizarCompra(
             id_cestaCompra: Int,
             productos:  ArrayList<Productos.Producto>
-        ): Flow<DataState<Unit>> = flow {
+        ): CommonFLow<DataState<Unit>> = flow {
 
             emit(DataState.loading())
 
@@ -28,6 +29,8 @@ class FinalizarCompra (
 
             //Obetngo los productos encontrados que actualmente estén seleccionados como comprados.
             val productos_comprados = productos.filter { it.active == false }
+            println("Los productos comprados son: ")
+            println(productos_comprados)
 
             //Obtengo los alimentos de la cesta de la compra necesarios
             var alimentos_cesta: ArrayList<Alimento> = arrayListOf()
@@ -90,6 +93,8 @@ class FinalizarCompra (
                 alimentos_despensa_Unificados.none{ it.nombre.lowercase().trim().equals(alimento_cesta.nombre.lowercase().trim()) }
             }
 
+            println("La nueva despensa es: ")
+            println(new_despensa)
             //Guardo en la despensa los nuevos alimentos no usados, antes elimino la anterior claro.
             if(eliminarDespensa){
                 despensaCache.removeAllAlimentosDespensa()
@@ -100,5 +105,5 @@ class FinalizarCompra (
             recetaCache.deleteProductos()
 
             emit(DataState.data(data = Unit))
-        }
+        }.asCommonFlow()
 }

@@ -47,10 +47,45 @@ class RecetaViewModel: ObservableObject {
                 )
             case is RecetaEventos.onDeleteIngrediente:
                 deleteIngrediente(id_ingrediente: (event as! RecetaEventos.onDeleteIngrediente).id_ingrediente)
+            
+            case is RecetaEventos.onEditIngrediente:
+                editarIngrediente(
+                    id_alimento: Int((event as! RecetaEventos.onEditIngrediente).id_ingrediente),
+                    nombre: (event as! RecetaEventos.onEditIngrediente).nombre,
+                    cantidad: Int((event as! RecetaEventos.onEditIngrediente).cantidad),
+                    tipoUnidad:
+                        ComprobarTipoUnidad(
+                            tipoUnidad: (event as! RecetaEventos.onEditIngrediente).tipoUnidad
+                        ).returnTipo()
+                )
                 
             default:
                 print("Evento de receta no conocido")
         }
+    }
+    
+    private func editarIngrediente(
+        id_alimento: Int,
+        nombre: String,
+        cantidad: Int,
+        tipoUnidad: TipoUnidad
+    ) -> Void {
+        self.caseUses.editIngrediente.editIngrediente(
+            id_receta: self.state.receta_id,
+            id_cestaCompra: self.state.cestaCompra_id,
+            id_alimento: Int32(id_alimento),
+            nombre: nombre,
+            cantidad: Int32(cantidad),
+            tipoUnidad: tipoUnidad
+        ).collectFlow(
+            coroutineScope: nil,
+            callback: {dataState in
+                if(dataState?.data != nil){
+                    //Vuelvo a actualizar el contenido.
+                    self.reprintReceta()
+                }
+            }
+        )
     }
     
     private func addIngrediente(ingrediente: Alimento) -> Void {

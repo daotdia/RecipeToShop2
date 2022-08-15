@@ -15,15 +15,18 @@ struct ListaCompra: View {
     private let caseUses: UseCases
     
     @Binding var id_listaCompra: Int
+    @Binding var tabSelection: Int
     
     @ObservedObject var viewModel: ListaCompraViewModel
     
     init (
         caseUses: UseCases,
-        id_listaCompra: Binding<Int>
+        id_listaCompra: Binding<Int>,
+        tabSelection: Binding<Int>
     ){
         self.caseUses =  caseUses
         self._id_listaCompra = id_listaCompra
+        self._tabSelection = tabSelection
         
         self.viewModel = ListaCompraViewModel(
             caseUses: self.caseUses,
@@ -48,17 +51,28 @@ struct ListaCompra: View {
                                 openFilters = true
                             }
                         }){
-                            //Menú desplegable con las opsciones.
+                            //Menú desplegable con las opciones.
                             if openFilters{
                                 VStack{
-                                    Text("Más baratos")
-                                    Divider()
-                                    Text("Más ligeros")
+                                    ForEach(
+                                        ParseKoltinArrayToArray().parseFilters(
+                                            kotlin_array: FilterEnum.values()
+                                        ),
+                                        id: \.self)
+                                    { item in
+                                        FilterRow(filter: item)
+                                            .onTapGesture(perform: {
+                                                openFilters = false
+                                                
+                                                viewModel.onTriggerEvent(
+                                                    event: ListaCompraEvents.onCLickFilter(
+                                                        filter_nombre: item.name
+                                                    )
+                                                )
+                                            }
+                                        )
+                                    }
                                 }
-                                .onTapGesture(perform: {
-                                    openFilters = false
-                                })
-                                
                             }
                             else {
                                 Image(systemName: "ellipsis")
@@ -70,86 +84,68 @@ struct ListaCompra: View {
                     .frame(maxWidth: .infinity)
                     .zIndex(5)
                     LazyVStack{
-                        //Recuadro de cada supermercado. TODO: Pendiente hacer para varios.
-                        ForEach(1..<2){ _ in
-                            //Imagen del supermercado
-                            AsyncImage(
-                                url: URL(
-                                    string: "https://vams-loyalia-storage.s3.eu-west-1.amazonaws.com/images/deals/_720x495/carrefour.jpg"
-                                )
-                            ){ phase in
-                                switch phase {
-                                    case .empty:
-                                        ProgressView()
-                                    case .success(let image):
-                                        image.resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            .frame(maxWidth: .infinity, maxHeight: 80)
-                                    case .failure:
-                                        Image(systemName: "photo")
-                                            .frame(width: 84, height: 84, alignment: .center)
-                                    @unknown default:
-                                        EmptyView()
+                        //Recuadro de cada supermercado.
+                        ForEach(
+                            viewModel.state.supermercados.allObjects as! [SupermercadosEnum],
+                            id: \.self
+                        ){ supermercado in
+                            SupermercadoCard(
+                                productos: viewModel.state.listaProductos.filter{ it in
+                                    it.supermercado.isEqual(supermercado)
+                                },
+                                imagen_super:
+                                    ParserSupermercadosEnum().getImage(
+                                        supermercado: supermercado
+                                    ),
+                                peso_super:
+                                    viewModel.state.peso_total[supermercado] as? Float ?? 0,
+                                precio_super:
+                                    viewModel.state.precio_total[supermercado] as? Float ?? 0,
+                                onClickProducto: { producto in
+                                    viewModel.onTriggerEvent(event: ListaCompraEvents.onClickProducto(
+                                        producto: producto
+                                    ))
                                 }
-                            }
-                            
-                            //Lista de productos del supermercado. TODO: falta por añadir los productos para cada supermercado.
-                            LazyVGrid(
-                                columns: Array(repeating: .init(.adaptive(minimum: 100)), count: 3),
-                                spacing: 8
-                            ){
-                                ForEach(self.viewModel.state.listaProductos, id: \.self.query){ producto in
-                                    ProductoCard(producto: producto)
-                                        .frame(maxWidth: 150, maxHeight: 150)
-                                }
-                            }
+                            )
                         }
                         .padding()
                     }
                 }
                 .frame(minHeight: 400)
-                //Aquí se encuentra el peso total y el precio total de la lista de la compra.
-                HStack{
-                    //Peso total de la compra.
-                    Text(
-                        viewModel.state.peso_total > 1000 ?
-                        String(
-                            String(Float(viewModel.state.peso_total/1000)) + " Kg"
-                        )
-                        :
-                        String(
-                            String(Float(viewModel.state.peso_total/1000)) + " Gr"
-                        )
-                    )
-                        .foregroundColor(Color.green)
-                    
-                    Spacer()
-                    
-                    //Precio total de la compra.
-                    Text(String(viewModel.state.precio_total) + " €")
-                        .foregroundColor(Color.green)
-                }
-                .padding([.leading, .trailing], 18)
                 
                 //Aquí se encuentran todos los alimentos no encontrados.
                 Text("Alimentos no encontrados")
                     .foregroundColor(Color.green)
                 
                 //Lista con todos los alimentos no encontrados.
-                HStack{
-                    ScrollView{
-                        LazyHStack{
-                            ForEach(
-                                viewModel.state.alimentos_no_encontrados,
-                                id: \.self.id_alimento
-                            ){ alimento in
-                                //Cada alimento no encontrado.
-                                DespensaCard(
-                                    alimento: alimento, deleteAlimento: { alimento in }
-                                )
+                ZStack{
+                    HStack{
+                        ScrollView{
+                            LazyHStack{
+                                ForEach(
+                                    viewModel.state.alimentos_no_encontrados,
+                                    id: \.self.id_alimento
+                                ){ alimento in
+                                    //Cada alimento no encontrado.
+                                    DespensaCard(
+                                        alimento: alimento,
+                                        deleteAlimento: { alimento in },
+                                        onClickAlimento: {alimento in}
+                                    )
+                                }
                             }
                         }
                     }
+                    //Boton Floating oara añadir una nueva lista de recetas.
+                    FloatingButton(
+                        openDialog: Binding.constant(true),
+                        simbolsys: "cart.circle.fill",
+                        isFinish: true,
+                        tabSelection: $tabSelection,
+                        finalizarCompra: {
+                            viewModel.onTriggerEvent(event: ListaCompraEvents.onFinishCompra())
+                        }
+                    )
                 }
             }
         }

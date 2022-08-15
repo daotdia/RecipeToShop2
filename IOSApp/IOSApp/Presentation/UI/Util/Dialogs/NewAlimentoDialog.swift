@@ -15,30 +15,57 @@ struct NewAlimentoDialog: View {
     private let caseUses: UseCases
     private var tipoUnidadOptions: [String] = []
     private let addAlimento: (String, String, String) -> Void
+    private let alimento: Alimento?
     @Binding var openDialog: Bool
-    
-    init(
-        caseUses: UseCases,
-        openDialog:  Binding<Bool>,
-        addAlimento: @escaping (String, String, String) -> Void
-    ) {
-        self.caseUses = caseUses
-        self._openDialog = openDialog
-        self.addAlimento = addAlimento
-        //Obtengo los tipos, lo he tendido que hacer manualmente debido a problemas con la compatibilidad de los Enums en Kotlin y en Swift al usarlo dentro de un ForEach; necesita que sea una colección con randomacces.
-        tipoUnidadOptions.append("Gr")
-        tipoUnidadOptions.append("Ml")
-        tipoUnidadOptions.append("Ud")
-                
-    }
+    @Binding var inEditAlimento: Bool
+    private var editAlimento: (Alimento) -> Void = { alimento in }
     
     @State var peso: String = ""
     @State var tipoUnidad: String? = ""
-    @State var nombre: String = ""
+    @State var nombre: String
     @State var incompleto: Bool = false
     @State var nombreValido: Bool = false
     @State var pesoValido: Bool = false
     @State var tipoValido: Bool = false
+    
+    init(
+        caseUses: UseCases,
+        alimento: Alimento? = nil,
+        openDialog:  Binding<Bool>,
+        inEditAlimento: Binding<Bool>,
+        addAlimento: @escaping (String, String, String) -> Void,
+        editAlimento: @escaping (Alimento) -> Void
+    ) {
+        self.caseUses = caseUses
+        self.alimento = alimento
+
+        self._openDialog = openDialog
+        self.addAlimento = addAlimento
+        self._inEditAlimento = inEditAlimento
+        self.editAlimento = editAlimento
+        
+        //Obtengo los tipos, lo he tendido que hacer manualmente debido a problemas con la compatibilidad de los Enums en Kotlin y en Swift al usarlo dentro de un ForEach; necesita que sea una colección con randomacces.
+        tipoUnidadOptions.append("Gr")
+        tipoUnidadOptions.append("Ml")
+        tipoUnidadOptions.append("Ud")
+        
+        if(alimento != nil){
+            self.nombre = inEditAlimento.wrappedValue ? alimento!.nombre : ""
+            self.peso = inEditAlimento.wrappedValue ? String(alimento!.cantidad) : "0"
+            self.tipoUnidad = inEditAlimento.wrappedValue ?
+                AbrevTipoUnidad(tipoUnidad: alimento!.tipoUnidad).parseAbrev()
+            :
+                "Gr"
+            
+        } else {
+            self.nombre = ""
+            self.peso = "0"
+            self.tipoUnidad = "Gr"
+        }
+                
+    }
+    
+    
     
     var body: some View {
         ZStack{
@@ -119,15 +146,32 @@ struct NewAlimentoDialog: View {
                             )
                             //Si los datos son válidos.
                             if nombreValido && pesoValido && tipoValido {
-                                //Llamo a añadir el alimento nuevo a la despensa
-                                self.addAlimento(
-                                    //OJO!: MUY IMPORTANTE RESPETAR EL ORDEN.
-                                    $nombre.wrappedValue,
-                                    $peso.wrappedValue,
-                                    $tipoUnidad.wrappedValue!
-                                )
+                                if(!inEditAlimento){
+                                    //Llamo a añadir el alimento nuevo a la despensa
+                                    self.addAlimento(
+                                        //OJO!: MUY IMPORTANTE RESPETAR EL ORDEN.
+                                        $nombre.wrappedValue,
+                                        $peso.wrappedValue,
+                                        $tipoUnidad.wrappedValue!
+                                    )
+                                } else {
+                                    if(alimento != nil){
+                                        //Llamo a editar alimento
+                                        self.editAlimento(alimento!.doCopy(
+                                            id_cestaCompra: alimento?.id_cestaCompra,
+                                            id_receta: alimento?.id_receta,
+                                            id_alimento: alimento?.id_alimento,
+                                            nombre: self.nombre,
+                                            cantidad: Int32(self.peso) ?? 0,
+                                            tipoUnidad:
+                                                ComprobarTipoUnidad(tipoUnidad: self.tipoUnidad).returnTipo(),
+                                            active: alimento!.active)
+                                        )
+                                    }
+                                }
                                 //Cierro el diálogo
                                 $openDialog.wrappedValue = false
+                                $inEditAlimento.wrappedValue = false
                             }
                             else{
                                 //Se ha intentado añadir un alimento con errores o información incompleta
@@ -145,6 +189,7 @@ struct NewAlimentoDialog: View {
                                 animated: true, completion: {}
                             )
                             $openDialog.wrappedValue = false
+                            inEditAlimento = false
                         }
                     ){ Text("Cancel") }
                     Spacer()

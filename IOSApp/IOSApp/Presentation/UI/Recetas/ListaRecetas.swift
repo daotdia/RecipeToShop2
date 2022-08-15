@@ -33,6 +33,7 @@ struct ListaRecetas: View {
         self.nombre = nombre
         self.id_listaRecetasStatic = id_listaRecetasStatic
         
+        
         self.viewModel = ListaRecetasViewModel(
             caseUses: self.caseUses,
             id_listaRecetas: self.id_listaRecetasStatic,
@@ -90,6 +91,11 @@ struct ListaRecetas: View {
                                     isFavorita: receta.isFavorita
                                 )
                             ))
+                        }, saveImage: { image, receta in
+                            viewModel.onTriggerEvent(event: CestaCompraEventos.onUpdatePicture(
+                                receta: receta,
+                                picture: WriteLoadIImage().saveImageToDocumentDirectory(image)
+                            ))
                         },
                         id_listaRecetas: id_listaRecetasStatic,
                         caseUses: caseUses,
@@ -145,6 +151,9 @@ struct ListaRecetas: View {
                         activarReceta:{ receta, active in },
                         eliminarReceta: { receta in },
                         addRecetaExistente: {receta in},
+                        saveImage: {image, receta in
+                            
+                        },
                         id_listaRecetas: id_listaRecetasStatic,
                         caseUses: caseUses,
                         onRecetaContent: Binding.constant(false)
@@ -156,7 +165,11 @@ struct ListaRecetas: View {
                     openDialog: $calculateListaCompra,
                     simbolsys: "cart",
                     isCalcular: true,
-                    tabSelection: $tabSelection
+                    tabSelection: $tabSelection,
+                    determinarListaCompra: {
+                        id_listaRecetas = id_listaRecetasStatic
+                    }
+                    
                 )
                 .offset(y: -18)
             }
@@ -164,10 +177,10 @@ struct ListaRecetas: View {
         .onDisappear{
             //Modifico la lista de recetas activa
             print("He modificado la lista de recetas")
-            if(!onRecetaContent){
-                id_listaRecetas = -2
-                id_listaRecetas = id_listaRecetasStatic
-            }
+//            if(!onRecetaContent){
+//                id_listaRecetas = -2
+//                id_listaRecetas = id_listaRecetasStatic
+//            }
         }
     }
 }

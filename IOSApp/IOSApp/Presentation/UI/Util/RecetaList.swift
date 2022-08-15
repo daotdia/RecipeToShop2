@@ -18,6 +18,7 @@ struct RecetaList: View {
     private let id_listaRecetas: Int
     private let addRecetaExistente: (Receta) -> Void
     private let caseUses: UseCases
+    private let saveImage: (UIImage, Receta) -> Void
     
     @State var isBusqueda: Bool
     
@@ -33,6 +34,7 @@ struct RecetaList: View {
         activarReceta: @escaping (Receta, Bool) -> Void,
         eliminarReceta: @escaping (Receta) -> Void,
         addRecetaExistente: @escaping (Receta) -> Void,
+        saveImage: @escaping (UIImage, Receta) -> Void,
         id_listaRecetas: Int,
         caseUses: UseCases,
         onRecetaContent: Binding<Bool>
@@ -45,6 +47,7 @@ struct RecetaList: View {
         self.eliminarReceta = eliminarReceta
         self.id_listaRecetas = id_listaRecetas
         self.addRecetaExistente = addRecetaExistente
+        self.saveImage = saveImage
         self.caseUses = caseUses
         self._onRecetaContent = onRecetaContent
     }
@@ -101,9 +104,22 @@ struct RecetaList: View {
                                     addRecetaExistente: { receta in
                                         addRecetaExistente(receta)
                                     },
+                                    saveImage: { image in
+                                        self.saveImage(image,receta)
+                                    },
                                     id_listaRecetas: id_listaRecetas,
                                     caseUses: caseUses,
-                                    onRecetaContent: $onRecetaContent
+                                    onRecetaContent: $onRecetaContent,
+                                    sumarReceta: { receta in
+                                        viewModel.onTriggerEvent(event: CestaCompraEventos.onAumentarCantidadReceta(
+                                            receta: receta
+                                        ))
+                                    },
+                                    restarRecera: { receta in
+                                        viewModel.onTriggerEvent(event: CestaCompraEventos.onReducirCantidadReceta(
+                                            receta: receta
+                                        ))
+                                    }
                                 )
                             }
                             .frame(minWidth: 100, minHeight: 100)
@@ -139,9 +155,14 @@ struct RecetaList: View {
                                         print("He llegado hasta aquí")
                                         addRecetaExistente(receta)
                                     },
+                                    saveImage: { image in
+                                        self.saveImage(image,receta)
+                                    },
                                     id_listaRecetas: id_listaRecetas,
                                     caseUses: caseUses,
-                                    onRecetaContent: $onRecetaContent
+                                    onRecetaContent: $onRecetaContent,
+                                    sumarReceta: { receta in },
+                                    restarRecera: { receta in }
                                 )
                             }
                             .frame(minWidth: 100, minHeight: 100)
@@ -175,9 +196,14 @@ struct RecetaList: View {
                                         print("He llegado hasta aquí")
                                         addRecetaExistente(receta)
                                     },
+                                    saveImage: { image in
+                                        self.saveImage(image,receta)
+                                    },
                                     id_listaRecetas: id_listaRecetas,
                                     caseUses: caseUses,
-                                    onRecetaContent: $onRecetaContent
+                                    onRecetaContent: $onRecetaContent,
+                                    sumarReceta: { receta in },
+                                    restarRecera: { receta in }
                                 )
                             }
                             .frame(minWidth: 100, minHeight: 100)

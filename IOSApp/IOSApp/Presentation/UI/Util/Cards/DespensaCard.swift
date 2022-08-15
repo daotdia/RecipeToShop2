@@ -15,13 +15,16 @@ struct DespensaCard: View {
     
     private let alimento: Alimento
     private let deleteAlimento: (Alimento) -> Void
+    private var onClickAlimento: (Alimento) -> Void = { alimento in }
     
     init(
         alimento: Alimento,
-        deleteAlimento: @escaping (Alimento) -> Void
+        deleteAlimento: @escaping (Alimento) -> Void,
+        onClickAlimento: @escaping (Alimento) -> Void
     ){
         self.deleteAlimento = deleteAlimento
         self.alimento = alimento
+        self.onClickAlimento = onClickAlimento
     }
     
     @State var isLongPressed: Bool = false
@@ -35,9 +38,10 @@ struct DespensaCard: View {
                 Text(alimento.nombre)
                     .foregroundColor(Color.white)
                     .padding()
-                    .lineLimit(1)
-                    .scaledToFill()
+                    .lineLimit(3)
+                    //.scaledToFill()
                     .minimumScaleFactor(0.6)
+                    .multilineTextAlignment(.center)
                 //Botón de eliminar en el caso de que se haya presionado long.
                 if $isLongPressed.wrappedValue {
                     Image(systemName: "trash.fill")
@@ -51,7 +55,7 @@ struct DespensaCard: View {
             }
             .background(Color.green)
             .clipShape(Capsule())
-            .frame(minWidth: width_card/5, maxWidth: width_card, minHeight: (height_card/5), maxHeight:(height_card*2)/5)
+            .frame(minWidth: width_card/5, maxWidth: width_card, minHeight: (height_card/5), maxHeight:(height_card*8)/5)
             
             Spacer()
             //La cantidad y tipo de unidad del alimento.
@@ -69,6 +73,9 @@ struct DespensaCard: View {
         .frame(minWidth: width_card/5, maxWidth: width_card, minHeight: height_card, maxHeight: height_card*2)
         .padding(6)
         .onTapGesture(perform: {
+            if(!isLongPressed){
+                onClickAlimento(alimento)
+            }
             $isLongPressed.wrappedValue = false
         })
         .onLongPressGesture(perform: {

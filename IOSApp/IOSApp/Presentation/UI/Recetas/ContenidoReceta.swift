@@ -12,6 +12,7 @@ import sharedApp
 struct ContenidoReceta: View {
     private let receta: Receta
     private let caseUses: UseCases
+    private let saveImage: (UIImage) -> Void
     
     @ObservedObject var viewModel: RecetaViewModel
     
@@ -20,7 +21,9 @@ struct ContenidoReceta: View {
     init(
         receta: Receta,
         caseUses: UseCases,
-        onRecetaContent: Binding<Bool>
+        onRecetaContent: Binding<Bool>,
+        image: UIImage = UIImage(),
+        saveImage: @escaping (UIImage) -> Void
     ){
         self.receta = receta
         self.caseUses = caseUses
@@ -30,22 +33,44 @@ struct ContenidoReceta: View {
             caseUses: caseUses,
             receta: receta
         )
+        self.image = image
+        self.saveImage = saveImage
+        
     }
     
     @State var openDialog: Bool = false
+    @State var inEditAlimento: Bool = false
+    @State var alimento_actual: Alimento = Alimento(
+        id_cestaCompra: nil,
+        id_receta: nil,
+        id_alimento: nil,
+        nombre: "",
+        cantidad: 0,
+        tipoUnidad: TipoUnidad.gramos,
+        active: false
+    )
+    @State private var image: UIImage
+    @State private var showSheet = false
     
     var body: some View {
         ZStack{
             VStack{
                 //Imagen
                 ZStack(alignment: .center){
-                    Color(white: 0.90)
-                        .frame(maxWidth: .infinity, minHeight: 240)
+                    Image(uiImage: UIImage(contentsOfFile: receta.imagenSource ?? "") ?? UIImage())
+                        .resizable()
+                        .frame(maxHeight: 256)
+                    
+                    //Icono de añadir imagen
                     Image(systemName: "camera")
                         .resizable()
-                        .frame(width: 64, height: 64, alignment: .center)
-                        .zIndex(1)
-                    //TODO: Permitir añadir imágenes locales.
+                        .frame(width: 24, height: 24, alignment: .topLeading)
+                        .opacity(0.75)
+                        .foregroundColor(.darkGreen)
+                        .offset(y:-24)
+                        .onTapGesture(perform: {
+                            showSheet = true
+                        })
                 }
                 
                 Text("Ingredientes de la receta")
@@ -87,6 +112,12 @@ struct ContenidoReceta: View {
                                             id_ingrediente: alimento.id_alimento as! Int32
                                         )
                                     )
+                                },
+                                onClickAlimento: { alimento in
+                                    alimento_actual = alimento
+                                    
+                                    inEditAlimento = true
+                                    openDialog = true
                                 }
                             )
                         }
@@ -104,7 +135,9 @@ struct ContenidoReceta: View {
         .sheet(isPresented: $openDialog, content: {
             NewAlimentoDialog(
                 caseUses: self.caseUses,
+                alimento: alimento_actual,
                 openDialog: $openDialog,
+                inEditAlimento: $inEditAlimento,
                 addAlimento: { nombre, peso, tipoUnidad -> Void in
                     viewModel.onTriggerEvent(
                         event: RecetaEventos.onaAddIngrediente(
@@ -113,7 +146,22 @@ struct ContenidoReceta: View {
                             tipoUnidad: ComprobarTipoUnidad(tipoUnidad: tipoUnidad).returnTipo()
                         )
                     )
+                },
+                editAlimento: { alimento in
+                    viewModel.onTriggerEvent(event: RecetaEventos.onEditIngrediente(
+                        id_ingrediente: alimento.id_alimento as! Int32,
+                        nombre: alimento.nombre,
+                        cantidad: alimento.cantidad,
+                        tipoUnidad: alimento.tipoUnidad.name
+                    ))
                 }
+            )
+        })
+        .sheet(isPresented: $showSheet, content: {
+            ImagePicker(
+                sourceType: .camera,
+                selectedImage: self.$image,
+                saveImage: self.saveImage
             )
         })
     }

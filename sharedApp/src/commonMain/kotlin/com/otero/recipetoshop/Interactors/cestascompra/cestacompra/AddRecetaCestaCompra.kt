@@ -54,7 +54,6 @@ class AddRecetaCestaCompra (
                         active = receta.active
                     ))
                 }
-                emit(DataState.data(data = Unit))
             }
         } else{
             if (receta.ingredientes.isNotEmpty()){
@@ -66,8 +65,8 @@ class AddRecetaCestaCompra (
                         active = receta.active
                     ))
                 }
-                emit(DataState.data(data = Unit))
             }
         }
+        emit(DataState.data(data = Unit))
     }.asCommonFlow()
 }

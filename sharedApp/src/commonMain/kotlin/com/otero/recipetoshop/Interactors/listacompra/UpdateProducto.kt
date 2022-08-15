@@ -19,6 +19,8 @@ class UpdateProducto (
         emit(DataState.loading())
 
         val updated_producto = producto.copy(active = active)
+
+        println("Producto actualizado: " + updated_producto.id_producto)
         recetaCache.insertProducto(id_cestaCompra = producto.id_cestaCompra, producto = updated_producto)
 
         emit(DataState.data(data = Unit))

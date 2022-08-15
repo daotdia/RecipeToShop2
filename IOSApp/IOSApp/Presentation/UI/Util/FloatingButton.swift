@@ -14,7 +14,11 @@ struct FloatingButton: View {
     @Binding var openDialog: Bool
     @State var simboloSys: String
     
+    private let finalizarCompra: () -> Void
+    private let determinarListaCompra: () -> Void
+    
     private let isCalcular: Bool
+    private let isFinish: Bool
     
     @Binding var tabSelection: Int
     
@@ -22,12 +26,18 @@ struct FloatingButton: View {
         openDialog: Binding<Bool>,
         simbolsys: String,
         isCalcular: Bool = false,
-        tabSelection: Binding<Int> = Binding.constant(-1)
+        isFinish: Bool = false,
+        tabSelection: Binding<Int> = Binding.constant(-1),
+        finalizarCompra: @escaping () -> Void = { },
+        determinarListaCompra: @escaping () -> Void = {}
     ){
         self._openDialog = openDialog
         self.simboloSys = simbolsys
         self.isCalcular = isCalcular
+        self.isFinish = isFinish
         self._tabSelection = tabSelection
+        self.finalizarCompra = finalizarCompra
+        self.determinarListaCompra = determinarListaCompra
     }
     
     var body: some View {
@@ -37,8 +47,15 @@ struct FloatingButton: View {
                 action: {
                     if isCalcular  {
                         if tabSelection != -1 {
+                            determinarListaCompra()
                             print("Llego a intentar cambiar de pantalla")
                             tabSelection = 3
+                        }
+                    }
+                    if isFinish {
+                        if tabSelection != -1 {
+                            finalizarCompra()
+                            tabSelection = 1
                         }
                     }
                     //Ordena la apertura del dialogo

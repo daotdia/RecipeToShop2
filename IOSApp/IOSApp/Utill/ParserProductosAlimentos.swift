@@ -16,9 +16,11 @@ extension Array where Element == Alimento {
         self.forEach{ alimento in
             productos.append(
                 Productos.Producto(
+                    id_producto: -1,
+                    id_cestaCompra: alimento.id_cestaCompra as! Int32,
                     imagen_src: "",
                     nombre: alimento.nombre,
-                    oferta: "",
+                    oferta:"",
                     precio_texto: "",
                     precio_peso: "",
                     query: alimento.nombre,
@@ -26,7 +28,9 @@ extension Array where Element == Alimento {
                     peso: Float(alimento.cantidad),
                     tipoUnidad: alimento.tipoUnidad,
                     precio_numero: 0,
-                    noEncontrado: true
+                    noEncontrado: true,
+                    supermercado: SupermercadosEnum.carrefour,
+                    active: true
                 )
             )
         }

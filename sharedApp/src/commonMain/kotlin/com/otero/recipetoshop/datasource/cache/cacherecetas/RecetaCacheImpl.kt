@@ -347,7 +347,9 @@ class RecetaCacheImpl(
     override fun insertProducto(id_cestaCompra: Int, producto: Productos.Producto): Boolean {
        try {
            if(producto.id_producto != -1){
+               println("Eliminando producto: "+ producto.id_producto)
                deleteProducto(producto.id_producto)
+
            }
            queries.insertProducto(
                id_cestaCompra = id_cestaCompra.toLong(),

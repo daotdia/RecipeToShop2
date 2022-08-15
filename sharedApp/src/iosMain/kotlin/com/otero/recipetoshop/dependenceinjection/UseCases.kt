@@ -2,13 +2,11 @@ package com.otero.recipetoshop.dependenceinjection
 
 import com.otero.recipetoshop.Interactors.Common.ActualizarAutoComplete
 import com.otero.recipetoshop.Interactors.cestascompra.AddNewCestaCompra
+import com.otero.recipetoshop.Interactors.cestascompra.AddPictureCestaCompra
 import com.otero.recipetoshop.Interactors.cestascompra.GetCestaCompra
 import com.otero.recipetoshop.Interactors.cestascompra.PrintListaCestasCompra
 import com.otero.recipetoshop.Interactors.cestascompra.cestacompra.*
-import com.otero.recipetoshop.Interactors.cestascompra.recetas.AddIngredienteReceta
-import com.otero.recipetoshop.Interactors.cestascompra.recetas.DeleteIngredienteReceta
-import com.otero.recipetoshop.Interactors.cestascompra.recetas.GetDatosReceta
-import com.otero.recipetoshop.Interactors.cestascompra.recetas.GetRecetasFavoritas
+import com.otero.recipetoshop.Interactors.cestascompra.recetas.*
 import com.otero.recipetoshop.Interactors.cestascompra.recetas.busquedarecetas.BuscarRecetasAPI
 import com.otero.recipetoshop.Interactors.despensa.*
 import com.otero.recipetoshop.Interactors.listacompra.*
@@ -194,6 +192,49 @@ class UseCases(
 
     val searchRecetasCache: SearchRecetasCache by lazy {
         SearchRecetasCache(
+            recetaCache = cacheModule.recetasCache
+        )
+    }
+
+    val updateProducto: UpdateProducto by lazy {
+        UpdateProducto(
+            recetaCache = cacheModule.recetasCache
+        )
+    }
+
+    val finalizarCompra: FinalizarCompra by lazy {
+        FinalizarCompra(
+            recetaCache = cacheModule.recetasCache,
+            despensaCache = cacheModule.despensaCache
+        )
+    }
+
+    val onClickAlimento: OnCLickAlimento by lazy {
+        OnCLickAlimento(
+            despensaCache = cacheModule.despensaCache
+        )
+    }
+
+    val editAlimento: EditAlimento by lazy {
+        EditAlimento(
+            despensaCache = cacheModule.despensaCache
+        )
+    }
+
+    val addPictureCestaCompra by lazy {
+        AddPictureCestaCompra(
+            recetaCache = cacheModule.recetasCache
+        )
+    }
+
+    val getProductos by lazy {
+        ObtenerProductos(
+            recetaCache = cacheModule.recetasCache
+        )
+    }
+
+    val editIngrediente by lazy {
+        EditIngrediente(
             recetaCache = cacheModule.recetasCache
         )
     }

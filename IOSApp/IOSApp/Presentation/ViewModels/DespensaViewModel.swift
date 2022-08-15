@@ -30,6 +30,8 @@ class DespensaViewModel: ObservableObject{
     
     func onTriggerEvent(stateEvent: DespensaEventos){
         switch stateEvent {
+            case is DespensaEventos.onCantidadChange:
+                reprintDespensa()
             case is DespensaEventos.onAddAlimento:
                 addAlimento(
                     nombre: (stateEvent as! DespensaEventos.onAddAlimento).nombre,
@@ -45,10 +47,28 @@ class DespensaViewModel: ObservableObject{
             case is DespensaEventos.onAlimentoDelete:
                 //Elimino el alimento
                 eliminarAlimento(alimento: (stateEvent as! DespensaEventos.onAlimentoDelete).alimento)
+            case is DespensaEventos.onClickAlimento:
+                //Edito el alimento con el nombre, cantidades y tipo de unidades establecidas
+                self.updateAlimento(
+                    alimento: (stateEvent as! DespensaEventos.onClickAlimento).alimento,
+                    active: (stateEvent as! DespensaEventos.onClickAlimento).active
+                )
             default:
                 
                 print("Evento inesperado en la despensa: " + stateEvent.description)
         }
+    }
+    
+    private func updateAlimento(alimento: Alimento, active: Bool) -> Void {
+        self.useCases.onClickAlimento.onCLickAlimento(alimento: alimento, active: active).collectFlow(
+            coroutineScope: nil,
+            callback: { dataState in
+                if(dataState?.data != nil){
+                    //Vuelvo a pintar la despensa con el alimento modificado.
+                    self.reprintDespensa()
+                }
+            }
+        )
     }
     
     //Función para añadir un nuevo alimento a la despensa.
@@ -91,7 +111,7 @@ class DespensaViewModel: ObservableObject{
     }
     
     //Función para actualizar la lista de alimentos en la despensa.
-    private func reprintDespensa(){
+    func reprintDespensa(){
         let currentState = self.state.copy() as! ListaAlimentosState
         //Obtengo la lista de alimentos de despensa nueva.
         useCases.getAlimentos.getAlimentos().collectFlow(

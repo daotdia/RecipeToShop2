@@ -29,6 +29,16 @@ struct AlimentosList: View {
     }
     
     @State var openDialog: Bool = false
+    @State var inEditAlimento: Bool = false
+    @State var alimento_actual: Alimento = Alimento(
+        id_cestaCompra: nil,
+        id_receta: nil,
+        id_alimento: nil,
+        nombre: "",
+        cantidad: 0,
+        tipoUnidad: TipoUnidad.gramos,
+        active: false
+    )
     
     var body: some View {
         Text("Alimentos sueltos")
@@ -60,6 +70,15 @@ struct AlimentosList: View {
                             alimento: alimento,
                             deleteAlimento: { alimento in
                                 removeAlimento(alimento)
+                            },
+                           onClickAlimento: { alimento in
+                                //Seteo le alimento actual de la despensa clicado
+                                alimento_actual = alimento
+                                
+                                //Abro el diálogo del nuevo alimento setado con la información del alimento actual
+                                inEditAlimento = true
+                                openDialog = true
+                                
                             }
                         )
                     }
@@ -72,8 +91,15 @@ struct AlimentosList: View {
         .sheet(isPresented: $openDialog, content: {
             NewAlimentoDialog(
                 caseUses: self.caseUses,
+                alimento: alimento_actual,
                 openDialog: $openDialog,
-                addAlimento: addAlimento
+                inEditAlimento: $inEditAlimento,
+                addAlimento: addAlimento,
+                editAlimento: { alimento in
+                    viewModel.onTriggerEvent(event: CestaCompraEventos.onAlimentoClick(
+                        alimento: alimento, active: alimento.active
+                    ))
+                }
             )
         })
     }

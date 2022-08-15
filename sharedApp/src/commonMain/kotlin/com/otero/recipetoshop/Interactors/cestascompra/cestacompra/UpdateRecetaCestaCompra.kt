@@ -25,9 +25,23 @@ class UpdateRecetaCestaCompra (
             }
         }
 
+        println("La cantidad a actualizar es: " + cantidad)
+
         if(cantidad != null){
 
-            val nueva_receta = receta.copy(cantidad = cantidad)
+            println("La cantidad a actualizar es: " + cantidad)
+            val nueva_receta = receta.copy(
+                id_cestaCompra = receta.id_cestaCompra,
+                id_Receta = receta.id_Receta,
+                nombre = receta.nombre,
+                cantidad = cantidad,
+                user = receta.user,
+                active = receta.active,
+                imagenSource = receta.imagenSource,
+                ingredientes = receta.ingredientes,
+                rating = receta.rating,
+                isFavorita = receta.isFavorita
+            )
 
             val ingredientes_antiguos = recetaCache.getIngredientesByReceta(id_receta = nueva_receta.id_Receta!!)
 

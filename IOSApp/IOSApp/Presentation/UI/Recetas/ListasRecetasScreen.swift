@@ -60,8 +60,15 @@ struct ListasRecetasScreen: View {
                                     )
                                 )
                             },
+                            saveImage: { image in
+                                viewModel.onTriggerEvent(stateEvent: ListaCestasCompraEventos.onAddPicture(
+                                    picture: WriteLoadIImage().saveImageToDocumentDirectory(image),
+                                    id_cestaCompra: listaRecetas.id_cestaCompra as! Int32
+                                ))
+                            },
                             tabSelection: $tabSelection,
-                            id_listaCompra: $id_listaCompra
+                            id_listaCompra: $id_listaCompra,
+                            uiImage: UIImage(contentsOfFile: listaRecetas.imagen) ?? UIImage()
                         )
                     }
                     .frame(minWidth: 164, minHeight: 164)

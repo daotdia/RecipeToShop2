@@ -36,9 +36,33 @@ class ListasRecetasViewModel: ObservableObject {
                         stateEvent as! ListaCestasCompraEventos.onDeleteCestaCompra
                     ).id_cestaCompra)
                 )
+            case is ListaCestasCompraEventos.onAddPicture:
+                if((stateEvent as! ListaCestasCompraEventos.onAddPicture).picture != nil){
+                    updatePicture(
+                        picture: (stateEvent as! ListaCestasCompraEventos.onAddPicture).picture!,
+                        id_cestaCompra: Int((stateEvent as! ListaCestasCompraEventos.onAddPicture).id_cestaCompra)
+                    )
+                }
             default:
                 print("Evento no reconocido")
         }
+    }
+    
+    private func updatePicture(picture: String, id_cestaCompra: Int) -> Void {
+        print("Las listas de la compra antes")
+        dump(self.state.listaCestasCompra)
+        self.caseUses.addPictureCestaCompra.addPictureCestaCompra(
+            id_cestaCompra: Int32(id_cestaCompra),
+            picture: picture
+        ).collectFlow(
+            coroutineScope: nil,
+            callback: { dataState in
+                if(dataState?.data != nil){
+                    //Vuelvo a pintar las recetas.
+                    self.rePrintListasRecetas()
+                }
+            }
+        )
     }
     
     private func addListaRecetas(nombre: String)-> Void{
@@ -78,6 +102,8 @@ class ListasRecetasViewModel: ObservableObject {
             coroutineScope: nil,
             callback: { dataState in
                 if dataState?.data != nil {
+                    print("Las listas de la compra después: ")
+                    dump(dataState?.data as! [CestaCompra])
                     //Obtengo las listas de recetas y las añado al estado actual.
                     self.state = self.state.doCopy(
                         listaCestasCompra: dataState?.data as! [CestaCompra],
