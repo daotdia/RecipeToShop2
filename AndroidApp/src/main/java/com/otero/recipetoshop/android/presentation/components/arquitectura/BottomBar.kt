@@ -54,26 +54,30 @@ fun BottomBar(navController: NavHostController){
 
             val currentRoute = navBackStackEntry?.destination?.route
 
-            BottomNavigationItem(
-                icon = {
-                    Image(
-                        modifier = Modifier
-                            .width(36.dp)
-                            .height(36.dp),
-                        painter = painter,
-                        contentDescription = bottomItem.label,
-                        contentScale = ContentScale.Crop
-                    )
-                },
-                selected = currentRoute == bottomItem.route,
-                label = {
-                    Text(text = bottomItem.label)
-                },
-                onClick = {
-                    navController.navigate(bottomItem.route)
-                },
-                alwaysShowLabel = false
-            )
+            if (currentRoute != null) {
+                BottomNavigationItem(
+                    icon = {
+                        Image(
+                            modifier = Modifier
+                                .width(36.dp)
+                                .height(36.dp),
+                            painter = painter,
+                            contentDescription = bottomItem.label,
+                            contentScale = ContentScale.Crop
+                        )
+                    },
+                    selected = currentRoute.contains(bottomItem.route),
+                    label = {
+                        Text(text = bottomItem.label)
+                    },
+                    onClick = {
+                        navController.navigate(bottomItem.route)
+                    },
+                    alwaysShowLabel = false
+                )
+            }
         }
     }
 }
+
+

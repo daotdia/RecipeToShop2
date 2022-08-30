@@ -18,10 +18,12 @@ class UpdateRecetaCestaCompra (
     ): CommonFLow<DataState<Int>> = flow  {
         emit(DataState.loading())
 
-        val recetasFavoritas = recetaCache.getAllRecetasFavoritas()
-        for (recetaFavorita in recetasFavoritas){
-            if(recetaFavorita.nombre.equals(receta.nombre) && recetaFavorita.id_Receta != receta.id_Receta){
-                recetaCache.insertRecetaToCestaCompra(recetaFavorita.copy(isFavorita = receta.isFavorita))
+        if (receta.isFavorita){
+            val recetasFavoritas = recetaCache.getAllRecetasFavoritas()
+            for (recetaFavorita in recetasFavoritas){
+                if(recetaFavorita.nombre.equals(receta.nombre) && recetaFavorita.id_Receta != receta.id_Receta){
+                    recetaCache.insertRecetaToCestaCompra(recetaFavorita.copy(isFavorita = receta.isFavorita))
+                }
             }
         }
 

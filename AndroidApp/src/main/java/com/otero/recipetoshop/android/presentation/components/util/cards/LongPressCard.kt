@@ -48,7 +48,8 @@ fun LongPressCard(
     isReceta: Boolean = false,
     onReducirCantidadReceta: () -> Unit = {},
     onAumentarCantidadReceta: () -> Unit = {},
-    addPicture: () -> Unit = {}
+    addPicture: () -> Unit = {},
+    isAlimento: Boolean = false
 ) {
     val longPressed = remember { mutableStateOf(false) }
     val borderStroke = remember { mutableStateOf(BorderStroke(0.dp, Color.White.copy(alpha = 0f))) }
@@ -91,11 +92,13 @@ fun LongPressCard(
         Column(Modifier.fillMaxSize()) {
             Box(Modifier.fillMaxSize()) {
                 Box(Modifier.alpha(0.65f)) {
-                    RecetaImagen(
-                        url = imagen,
-                        isReceta = isReceta,
-                        contentDescription = nombre
-                    )
+                    if(!isAlimento){
+                        RecetaImagen(
+                            url = imagen,
+                            isReceta = isReceta,
+                            contentDescription = nombre
+                        )
+                    }
                 }
 
                 if(favorita && isReceta && !longPressed.value) {
@@ -148,7 +151,7 @@ fun LongPressCard(
                         .wrapContentSize()
                         .align(Alignment.Center),
                     style = MaterialTheme.typography.h6.copy(color = primaryDarkColor),
-                    color = Color.Gray,
+                    color = primaryDarkColor,
                     textAlign = TextAlign.Center
                 )
                 Text(
@@ -157,7 +160,7 @@ fun LongPressCard(
                         .wrapContentSize()
                         .align(Alignment.BottomCenter),
                     style = MaterialTheme.typography.h6.copy(color = primaryDarkColor),
-                    color = Color.Gray,
+                    color = primaryDarkColor,
                     textAlign = TextAlign.Center
                 )
                 if(active && isReceta){
@@ -171,7 +174,7 @@ fun LongPressCard(
                                 onReducirCantidadReceta()
                             }
                         ,
-                        tint = Color.Gray,
+                        tint = primaryDarkColor,
                         contentDescription = "No Favorito",
                     )
 
@@ -185,7 +188,7 @@ fun LongPressCard(
                                 onAumentarCantidadReceta()
                             }
                         ,
-                        tint = Color.Gray,
+                        tint = primaryDarkColor,
                         contentDescription = "No Favorito",
                     )
                 }
@@ -215,3 +218,4 @@ fun LongPressCard(
         }
     }
 }
+

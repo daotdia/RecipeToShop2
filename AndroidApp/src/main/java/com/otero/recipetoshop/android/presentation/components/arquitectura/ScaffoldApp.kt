@@ -1,5 +1,7 @@
 package com.otero.recipetoshop.android.presentation.components.arquitectura
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -18,6 +20,7 @@ import kotlinx.coroutines.launch
 Este es la raíz de la UI de la app.
 Se encuentra la estructura golbal de tipo Scaffold.
  */
+@RequiresApi(Build.VERSION_CODES.N)
 @ExperimentalFoundationApi
 @ExperimentalMaterialApi
 @ExperimentalComposeUiApi
@@ -48,9 +51,9 @@ fun ScaffoldApp(){
                 )
             },
             scaffoldState = scaffoldState,
-            drawerContent = {
-                LeftDrawer(navController = navController)
-            }
+            //drawerContent = {
+                //LeftDrawer(navController = navController)
+            //}
         )
     }
 }

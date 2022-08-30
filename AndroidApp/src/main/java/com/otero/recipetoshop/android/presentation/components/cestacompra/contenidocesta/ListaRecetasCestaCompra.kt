@@ -108,7 +108,7 @@ fun ListaRecetasCestaCompra(
                             if(!recetaIsActive){
                                 if(item.id_cestaCompra != stateCestaCompra.value.id_cestaCompra_actual) {
                                     val newReceta = item.copy(
-                                        id_Receta = -1,
+                                        //id_Receta = -1,
                                         id_cestaCompra = stateCestaCompra.value.id_cestaCompra_actual!!
                                     )
                                     recetaIsActive = true

@@ -227,7 +227,7 @@ constructor(
                     it.nombre == receta.nombre
                 }
                 if (recetas_aux.isEmpty()){
-                    recetasFaboritasExternasPreparadasDistintas.add(receta)
+                    recetasFaboritasExternasPreparadasDistintas.add(receta.copy(cantidad = 1))
                 }
             }
             recetas_actuales.addAll(recetasFaboritasExternasPreparadasDistintas)
