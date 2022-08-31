@@ -2,15 +2,13 @@ package com.otero.recipetoshop.android.presentation.controllers.cestacompra
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.otero.recipetoshop.Interactors.cestascompra.AddNewCestaCompra
 import com.otero.recipetoshop.Interactors.cestascompra.AddPictureCestaCompra
 import com.otero.recipetoshop.Interactors.cestascompra.PrintListaCestasCompra
-import com.otero.recipetoshop.Interactors.cestascompra.cestacompra.AddPicture
 import com.otero.recipetoshop.domain.model.CestaCompra.CestaCompra
-import com.otero.recipetoshop.events.cestacompra.ListaCestasCompraEventos
+import com.otero.recipetoshop.presentationlogic.events.cestacompra.ListaCestasCompraEventos
 import com.otero.recipetoshop.presentationlogic.states.recetas.ListaCestasCompraState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn

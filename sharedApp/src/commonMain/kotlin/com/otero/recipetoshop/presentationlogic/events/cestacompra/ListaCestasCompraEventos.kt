@@ -1,4 +1,4 @@
-package com.otero.recipetoshop.events.cestacompra
+package com.otero.recipetoshop.presentationlogic.events.cestacompra
 
 sealed class ListaCestasCompraEventos {
     //data class onCantidadChange(val cantidad: String, val alimento: Alimento) : DespensaEventos()

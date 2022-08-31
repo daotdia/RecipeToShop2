@@ -11,13 +11,11 @@ import androidx.lifecycle.viewModelScope
 import com.otero.recipetoshop.Interactors.listacompra.*
 import com.otero.recipetoshop.domain.model.ListaCompra.Productos
 import com.otero.recipetoshop.domain.model.ListaCompra.toAlimento
-import com.otero.recipetoshop.domain.model.ListaCompra.toAlimentos
 import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.domain.model.despensa.toProductos
-import com.otero.recipetoshop.domain.util.DataState
-import com.otero.recipetoshop.domain.util.FilterEnum
-import com.otero.recipetoshop.domain.util.SupermercadosEnum
-import com.otero.recipetoshop.events.listacompra.ListaCompraEvents
+import com.otero.recipetoshop.domain.dataEstructres.FilterEnum
+import com.otero.recipetoshop.domain.dataEstructres.SupermercadosEnum
+import com.otero.recipetoshop.presentationlogic.events.listacompra.ListaCompraEvents
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch

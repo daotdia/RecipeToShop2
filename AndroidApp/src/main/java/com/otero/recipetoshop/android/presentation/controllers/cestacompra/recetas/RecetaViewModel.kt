@@ -9,8 +9,8 @@ import com.otero.recipetoshop.Interactors.cestascompra.recetas.AddIngredienteRec
 import com.otero.recipetoshop.Interactors.cestascompra.recetas.DeleteIngredienteReceta
 import com.otero.recipetoshop.Interactors.cestascompra.recetas.EditIngrediente
 import com.otero.recipetoshop.Interactors.cestascompra.recetas.GetDatosReceta
-import com.otero.recipetoshop.domain.util.TipoUnidad
-import com.otero.recipetoshop.events.cestacompra.receta.RecetaEventos
+import com.otero.recipetoshop.domain.dataEstructres.TipoUnidad
+import com.otero.recipetoshop.presentationlogic.events.cestacompra.receta.RecetaEventos
 import com.otero.recipetoshop.presentationlogic.states.recetas.RecetaState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn

@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import com.otero.recipetoshop.android.presentation.components.util.cards.IngredienteCard
-import com.otero.recipetoshop.events.cestacompra.receta.RecetaEventos
+import com.otero.recipetoshop.presentationlogic.events.cestacompra.receta.RecetaEventos
 import com.otero.recipetoshop.presentationlogic.states.recetas.RecetaState
 /*
 Este es el componente que implementa la lista de ingredientes dentro de una receta.

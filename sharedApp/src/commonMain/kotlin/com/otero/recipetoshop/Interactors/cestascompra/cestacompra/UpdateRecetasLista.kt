@@ -1,11 +1,10 @@
 package com.otero.recipetoshop.Interactors.cestascompra.cestacompra
 
-import com.otero.recipetoshop.Interactors.cestascompra.recetas.GetDatosReceta
 import com.otero.recipetoshop.datasource.cache.cacherecetas.RecetaCache
 import com.otero.recipetoshop.domain.model.CestaCompra.Receta
-import com.otero.recipetoshop.domain.util.CommonFLow
-import com.otero.recipetoshop.domain.util.DataState
-import com.otero.recipetoshop.domain.util.asCommonFlow
+import com.otero.recipetoshop.domain.dataEstructres.CommonFLow
+import com.otero.recipetoshop.domain.dataEstructres.DataState
+import com.otero.recipetoshop.domain.dataEstructres.asCommonFlow
 import kotlinx.coroutines.flow.flow
 
 class UpdateRecetasLista(

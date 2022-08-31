@@ -1,4 +1,4 @@
-package com.otero.recipetoshop.domain.util
+package com.otero.recipetoshop.domain.dataEstructres
 
 enum class FilterEnum {
     BARATOS, LIGEROS, AJUSTADOS, UNICOBARATO, UNICOLIGERO, UNICOAJUSTADO;

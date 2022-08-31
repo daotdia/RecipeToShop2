@@ -3,10 +3,9 @@ package com.otero.recipetoshop.Interactors.cestascompra
 import com.otero.recipetoshop.Interactors.cestascompra.cestacompra.UpdateAlimentoCestaCompra
 import com.otero.recipetoshop.Interactors.cestascompra.cestacompra.UpdateRecetaCestaCompra
 import com.otero.recipetoshop.datasource.cache.cacherecetas.RecetaCache
-import com.otero.recipetoshop.domain.model.CestaCompra.CestaCompra
-import com.otero.recipetoshop.domain.util.CommonFLow
-import com.otero.recipetoshop.domain.util.DataState
-import com.otero.recipetoshop.domain.util.asCommonFlow
+import com.otero.recipetoshop.domain.dataEstructres.CommonFLow
+import com.otero.recipetoshop.domain.dataEstructres.DataState
+import com.otero.recipetoshop.domain.dataEstructres.asCommonFlow
 import kotlinx.coroutines.flow.flow
 
 class AddPictureCestaCompra(

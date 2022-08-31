@@ -1,7 +1,7 @@
 package com.otero.recipetoshop.domain.model.ListaCompra
 
 import com.otero.recipetoshop.domain.model.despensa.Alimento
-import com.otero.recipetoshop.domain.util.TipoUnidad
+import com.otero.recipetoshop.domain.dataEstructres.TipoUnidad
 
 class CalcularFinalCompra {
     companion object {

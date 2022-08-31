@@ -19,8 +19,8 @@ import com.otero.recipetoshop.android.presentation.components.RecetaImagen
 import com.otero.recipetoshop.android.presentation.components.cestacompra.contenidocesta.recetas.contenidoreceta.ListaIngredientesReceta
 import com.otero.recipetoshop.android.presentation.components.despensa.AlimentoPopUp
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
-import com.otero.recipetoshop.domain.util.TipoUnidad
-import com.otero.recipetoshop.events.cestacompra.receta.RecetaEventos
+import com.otero.recipetoshop.domain.dataEstructres.TipoUnidad
+import com.otero.recipetoshop.presentationlogic.events.cestacompra.receta.RecetaEventos
 import com.otero.recipetoshop.presentationlogic.states.recetas.RecetaState
 /*
 Este es el componeente que se encarga de implementar la pantalla de contenido de cada receta.

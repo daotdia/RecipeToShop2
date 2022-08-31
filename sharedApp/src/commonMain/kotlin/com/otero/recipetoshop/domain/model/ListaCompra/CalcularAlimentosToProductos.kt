@@ -4,15 +4,13 @@ import com.otero.recipetoshop.datasource.static.Productos_Carrefour
 import com.otero.recipetoshop.datasource.static.productos_Dia
 import com.otero.recipetoshop.datasource.static.productos_Mercadona
 import com.otero.recipetoshop.domain.model.despensa.Alimento
-import com.otero.recipetoshop.domain.util.FilterEnum
-import com.otero.recipetoshop.domain.util.SupermercadosEnum
-import com.otero.recipetoshop.domain.util.TipoUnidad
+import com.otero.recipetoshop.domain.dataEstructres.FilterEnum
+import com.otero.recipetoshop.domain.dataEstructres.SupermercadosEnum
+import com.otero.recipetoshop.domain.dataEstructres.TipoUnidad
 import kotlinx.serialization.json.*
 import kotlin.Float.Companion.MAX_VALUE
-import kotlin.Float.Companion.MIN_VALUE
 import kotlin.Float.Companion.NEGATIVE_INFINITY
 import kotlin.math.ceil
-import kotlin.math.max
 
 class CalcularAlimentosToProductos {
 

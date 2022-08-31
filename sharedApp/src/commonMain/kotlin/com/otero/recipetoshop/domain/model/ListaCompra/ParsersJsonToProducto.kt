@@ -1,9 +1,7 @@
 package com.otero.recipetoshop.domain.model.ListaCompra
 
-import com.otero.recipetoshop.domain.util.FilterEnum
-import com.otero.recipetoshop.domain.util.SupermercadosEnum
-import com.otero.recipetoshop.domain.util.TipoUnidad
-import kotlin.math.roundToInt
+import com.otero.recipetoshop.domain.dataEstructres.SupermercadosEnum
+import com.otero.recipetoshop.domain.dataEstructres.TipoUnidad
 
 class ParsersJsonToProducto {
 

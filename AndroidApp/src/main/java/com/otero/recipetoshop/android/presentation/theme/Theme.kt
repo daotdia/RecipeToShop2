@@ -2,11 +2,9 @@ package com.otero.recipetoshop.android.presentation.theme
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Shapes
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -15,7 +13,7 @@ import androidx.compose.ui.graphics.Color
 import com.otero.recipetoshop.android.presentation.components.errorhandle.ProcessDialogQueue
 import com.otero.recipetoshop.android.presentation.components.util.CircularIndeterminateProgressBar
 import com.otero.recipetoshop.domain.model.GenericMessageInfo
-import com.otero.recipetoshop.domain.util.Queue
+import com.otero.recipetoshop.domain.dataEstructres.Queue
 
 private val LightThemeColors = lightColors(
     primary = primaryColor,

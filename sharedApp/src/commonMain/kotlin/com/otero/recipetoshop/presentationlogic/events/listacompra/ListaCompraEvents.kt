@@ -1,4 +1,4 @@
-package com.otero.recipetoshop.events.listacompra
+package com.otero.recipetoshop.presentationlogic.events.listacompra
 
 import com.otero.recipetoshop.domain.model.ListaCompra.Productos
 

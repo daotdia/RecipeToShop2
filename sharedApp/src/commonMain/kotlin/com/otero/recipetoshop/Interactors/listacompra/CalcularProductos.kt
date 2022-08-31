@@ -5,8 +5,7 @@ import com.otero.recipetoshop.datasource.cache.cacherecetas.RecetaCache
 import com.otero.recipetoshop.domain.model.ListaCompra.CalcularAlimentosToProductos
 import com.otero.recipetoshop.domain.model.ListaCompra.Productos
 import com.otero.recipetoshop.domain.model.despensa.Alimento
-import com.otero.recipetoshop.domain.util.*
-import kotlinx.coroutines.flow.Flow
+import com.otero.recipetoshop.domain.dataEstructres.*
 import kotlinx.coroutines.flow.flow
 
 class CalcularProductos(

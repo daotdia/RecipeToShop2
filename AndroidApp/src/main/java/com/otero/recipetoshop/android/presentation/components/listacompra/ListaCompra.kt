@@ -2,14 +2,12 @@ package com.otero.recipetoshop.android.presentation.components.listacompra
 
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.runtime.Composable
@@ -25,21 +23,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.otero.recipetoshop.android.presentation.components.RecetaImagen
-import com.otero.recipetoshop.android.presentation.components.alimentos.ListaAlimentosCestaCompra
 import com.otero.recipetoshop.android.presentation.components.util.GenericForm
 import com.otero.recipetoshop.android.presentation.components.util.NestedDownMenu
 import com.otero.recipetoshop.android.presentation.navigation.RutasNavegacion
 import com.otero.recipetoshop.android.presentation.theme.*
-import com.otero.recipetoshop.domain.model.CestaCompra.Receta
-import com.otero.recipetoshop.domain.model.ListaCompra.Productos
 import com.otero.recipetoshop.domain.model.NegativeAction
 import com.otero.recipetoshop.domain.model.PositiveAction
-import com.otero.recipetoshop.domain.util.SupermercadosEnum
-import com.otero.recipetoshop.domain.util.TipoUnidad
-import com.otero.recipetoshop.events.listacompra.ListaCompraEvents
+import com.otero.recipetoshop.domain.dataEstructres.SupermercadosEnum
+import com.otero.recipetoshop.domain.dataEstructres.TipoUnidad
+import com.otero.recipetoshop.presentationlogic.events.listacompra.ListaCompraEvents
 import com.otero.recipetoshop.presentationlogic.states.listacompra.ListaCompraState
 import de.charlex.compose.RevealSwipe
-import java.text.DecimalFormat
 
 
 @ExperimentalMaterialApi

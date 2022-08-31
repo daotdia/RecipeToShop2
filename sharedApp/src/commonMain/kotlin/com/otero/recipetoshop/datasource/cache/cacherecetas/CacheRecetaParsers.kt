@@ -5,8 +5,8 @@ import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.domain.model.CestaCompra.CestaCompra
 import com.otero.recipetoshop.domain.model.CestaCompra.Receta
 import com.otero.recipetoshop.domain.model.ListaCompra.Productos
-import com.otero.recipetoshop.domain.util.SupermercadosEnum
-import com.otero.recipetoshop.domain.util.TipoUnidad
+import com.otero.recipetoshop.domain.dataEstructres.SupermercadosEnum
+import com.otero.recipetoshop.domain.dataEstructres.TipoUnidad
 /*
 En este fichero hay distintas funciones auxiliares para parsear la respuesta de la caché.
  */

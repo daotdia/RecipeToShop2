@@ -20,7 +20,7 @@ import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import com.otero.recipetoshop.android.presentation.components.util.camera.CameraControls
-import com.otero.recipetoshop.domain.util.CameraUIAction
+import com.otero.recipetoshop.domain.dataEstructres.CameraUIAction
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 

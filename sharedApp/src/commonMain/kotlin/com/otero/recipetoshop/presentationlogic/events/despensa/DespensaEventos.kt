@@ -1,4 +1,4 @@
-package com.otero.recipetoshop.events.despensa
+package com.otero.recipetoshop.presentationlogic.events.despensa
 
 import com.otero.recipetoshop.domain.model.despensa.Alimento
 

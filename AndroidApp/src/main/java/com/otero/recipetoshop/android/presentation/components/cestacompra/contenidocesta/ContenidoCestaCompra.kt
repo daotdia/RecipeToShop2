@@ -9,7 +9,6 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Summarize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -32,9 +31,8 @@ import com.otero.recipetoshop.android.presentation.components.util.CameraView
 import com.otero.recipetoshop.android.presentation.navigation.RutasNavegacion
 import com.otero.recipetoshop.android.presentation.theme.*
 import com.otero.recipetoshop.domain.model.CestaCompra.Receta
-import com.otero.recipetoshop.domain.util.TipoUnidad
-import com.otero.recipetoshop.events.cestacompra.CestaCompraEventos
-import com.otero.recipetoshop.events.cestacompra.ListaCestasCompraEventos
+import com.otero.recipetoshop.domain.dataEstructres.TipoUnidad
+import com.otero.recipetoshop.presentationlogic.events.cestacompra.CestaCompraEventos
 import com.otero.recipetoshop.presentationlogic.states.recetas.CestaCompraState
 /*
 Este es el componente que implementa el contenido de cada cesta de recetas y alimentos.

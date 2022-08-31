@@ -15,7 +15,7 @@ import androidx.camera.core.ImageCaptureException
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.net.toFile
-import com.otero.recipetoshop.domain.util.CameraUIAction
+import com.otero.recipetoshop.domain.dataEstructres.CameraUIAction
 import java.io.File
 import java.util.*
 import java.util.concurrent.Executors

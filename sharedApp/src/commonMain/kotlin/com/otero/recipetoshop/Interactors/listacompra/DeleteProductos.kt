@@ -1,10 +1,9 @@
 package com.otero.recipetoshop.Interactors.listacompra
 
 import com.otero.recipetoshop.datasource.cache.cacherecetas.RecetaCache
-import com.otero.recipetoshop.domain.util.CommonFLow
-import com.otero.recipetoshop.domain.util.DataState
-import com.otero.recipetoshop.domain.util.asCommonFlow
-import kotlinx.coroutines.flow.Flow
+import com.otero.recipetoshop.domain.dataEstructres.CommonFLow
+import com.otero.recipetoshop.domain.dataEstructres.DataState
+import com.otero.recipetoshop.domain.dataEstructres.asCommonFlow
 import kotlinx.coroutines.flow.flow
 
 class DeleteProductos(

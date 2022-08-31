@@ -4,7 +4,7 @@ import com.otero.recipetoshop.domain.model.GenericMessageInfo
 import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.domain.model.CestaCompra.CestaCompra
 import com.otero.recipetoshop.domain.model.CestaCompra.Receta
-import com.otero.recipetoshop.domain.util.Queue
+import com.otero.recipetoshop.domain.dataEstructres.Queue
 
 data class CestaCompraState (
     val id_cestaCompra_actual: Int? = null,

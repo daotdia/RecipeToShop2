@@ -1,8 +1,8 @@
 package com.otero.recipetoshop.presentationlogic.states.despensa
 
 import com.otero.recipetoshop.domain.model.GenericMessageInfo
-import com.otero.recipetoshop.domain.util.Queue
-import com.otero.recipetoshop.domain.util.TipoUnidad
+import com.otero.recipetoshop.domain.dataEstructres.Queue
+import com.otero.recipetoshop.domain.dataEstructres.TipoUnidad
 
 data class FoodState(
     var nombre: String = "",

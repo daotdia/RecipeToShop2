@@ -2,7 +2,7 @@ package com.otero.recipetoshop.presentationlogic.states.listacompra
 
 import com.otero.recipetoshop.domain.model.ListaCompra.Productos
 import com.otero.recipetoshop.domain.model.despensa.Alimento
-import com.otero.recipetoshop.domain.util.SupermercadosEnum
+import com.otero.recipetoshop.domain.dataEstructres.SupermercadosEnum
 
 data class ListaCompraState (
     val listaProductos: List<Productos.Producto> = listOf(),

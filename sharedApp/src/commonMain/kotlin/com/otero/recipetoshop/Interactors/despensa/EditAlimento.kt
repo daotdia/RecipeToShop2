@@ -2,9 +2,9 @@ package com.otero.recipetoshop.Interactors.despensa
 
 import com.otero.recipetoshop.datasource.cache.cachedespensa.DespensaCache
 import com.otero.recipetoshop.domain.model.despensa.Alimento
-import com.otero.recipetoshop.domain.util.DataState
-import com.otero.recipetoshop.domain.util.TipoUnidad
-import com.otero.recipetoshop.domain.util.asCommonFlow
+import com.otero.recipetoshop.domain.dataEstructres.DataState
+import com.otero.recipetoshop.domain.dataEstructres.TipoUnidad
+import com.otero.recipetoshop.domain.dataEstructres.asCommonFlow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

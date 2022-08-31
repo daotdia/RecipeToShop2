@@ -1,8 +1,8 @@
 package com.otero.recipetoshop.domain.model.ListaCompra
 
 import com.otero.recipetoshop.domain.model.despensa.Alimento
-import com.otero.recipetoshop.domain.util.SupermercadosEnum
-import com.otero.recipetoshop.domain.util.TipoUnidad
+import com.otero.recipetoshop.domain.dataEstructres.SupermercadosEnum
+import com.otero.recipetoshop.domain.dataEstructres.TipoUnidad
 
 data class Productos(
     val id_cestaCompra: Int = -1,

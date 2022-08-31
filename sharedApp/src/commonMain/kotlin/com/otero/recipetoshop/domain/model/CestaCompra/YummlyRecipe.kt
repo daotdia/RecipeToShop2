@@ -1,7 +1,7 @@
 package com.otero.recipetoshop.domain.model.CestaCompra
 
 import com.otero.recipetoshop.domain.model.despensa.Alimento
-import com.otero.recipetoshop.domain.util.TipoUnidad
+import com.otero.recipetoshop.domain.dataEstructres.TipoUnidad
 /*
 Clase necesaria para parsear la receta (bastante compleja) que llega de Yummly.
  */

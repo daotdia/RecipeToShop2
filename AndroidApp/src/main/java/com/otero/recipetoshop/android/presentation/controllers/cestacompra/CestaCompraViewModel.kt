@@ -8,11 +8,10 @@ import com.otero.recipetoshop.Interactors.Common.ActualizarAutoComplete
 import com.otero.recipetoshop.Interactors.cestascompra.GetCestaCompra
 import com.otero.recipetoshop.Interactors.cestascompra.cestacompra.*
 import com.otero.recipetoshop.Interactors.cestascompra.recetas.GetRecetasFavoritas
-import com.otero.recipetoshop.Interactors.listacompra.DeleteProductos
 import com.otero.recipetoshop.domain.model.despensa.Alimento
 import com.otero.recipetoshop.domain.model.CestaCompra.Receta
-import com.otero.recipetoshop.domain.util.TipoUnidad
-import com.otero.recipetoshop.events.cestacompra.CestaCompraEventos
+import com.otero.recipetoshop.domain.dataEstructres.TipoUnidad
+import com.otero.recipetoshop.presentationlogic.events.cestacompra.CestaCompraEventos
 import com.otero.recipetoshop.presentationlogic.states.recetas.CestaCompraState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn

@@ -2,7 +2,7 @@ package com.otero.recipetoshop.presentationlogic.states.recipe_list
 
 import com.otero.recipetoshop.domain.model.GenericMessageInfo
 import com.otero.recipetoshop.domain.model.Recipe
-import com.otero.recipetoshop.domain.util.Queue
+import com.otero.recipetoshop.domain.dataEstructres.Queue
 
 data class RecipeListState(
     val isLoading: Boolean = false,

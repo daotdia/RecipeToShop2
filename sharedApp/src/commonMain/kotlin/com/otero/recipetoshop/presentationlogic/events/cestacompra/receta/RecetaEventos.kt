@@ -1,7 +1,6 @@
-package com.otero.recipetoshop.events.cestacompra.receta
+package com.otero.recipetoshop.presentationlogic.events.cestacompra.receta
 
-import com.otero.recipetoshop.domain.util.TipoUnidad
-import com.otero.recipetoshop.events.cestacompra.CestaCompraEventos
+import com.otero.recipetoshop.domain.dataEstructres.TipoUnidad
 
 sealed class RecetaEventos{
 

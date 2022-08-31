@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.otero.recipetoshop.Interactors.cestascompra.recetas.busquedarecetas.BuscarRecetasAPI
 import com.otero.recipetoshop.Interactors.cestascompra.cestacompra.AddRecetaCestaCompra
 import com.otero.recipetoshop.domain.model.CestaCompra.Receta
-import com.otero.recipetoshop.events.cestacompra.BusquedaRecetasAPIEventos
+import com.otero.recipetoshop.presentationlogic.events.cestacompra.BusquedaRecetasAPIEventos
 import com.otero.recipetoshop.presentationlogic.states.recetas.BusquedaRecetasAPIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn

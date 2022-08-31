@@ -1,7 +1,7 @@
-package com.otero.recipetoshop.domain.util
+package com.otero.recipetoshop.domain.dataEstructres
 
 import com.otero.recipetoshop.domain.model.GenericMessageInfo
-import com.otero.recipetoshop.domain.model.despensa.Alimento
+
 /*
 Esta clase es muy importante, es la clase necesaria para la comunicación Casos de Uso -> Controladores de Vista.
 El controlador se queda en espera de respuesta de los casos de uso en la scope propia. En cuanto

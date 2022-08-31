@@ -3,7 +3,7 @@ package com.otero.recipetoshop.datasource.cache.cachedespensa
 import com.otero.recipetoshop.datasource.cachedespensa.Despensa_Entity
 import com.otero.recipetoshop.datasource.cachedespensa.RecipeToShopDB
 import com.otero.recipetoshop.domain.model.despensa.Alimento
-import com.otero.recipetoshop.domain.util.TipoUnidad
+import com.otero.recipetoshop.domain.dataEstructres.TipoUnidad
 import com.squareup.sqldelight.db.SqlDriver
 
 class DespensaDataBaseFactory(

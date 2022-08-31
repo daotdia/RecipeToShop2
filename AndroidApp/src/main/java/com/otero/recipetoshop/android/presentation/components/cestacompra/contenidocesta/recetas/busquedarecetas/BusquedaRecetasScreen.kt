@@ -1,7 +1,6 @@
 package com.otero.recipetoshop.android.presentation.components.cestacompra.contenidocesta.recetas.busquedarecetas
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -10,18 +9,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.otero.recipetoshop.android.presentation.components.cestacompra.NewRecetaPopUp
 import com.otero.recipetoshop.android.presentation.components.cestacompra.RecetaAPICard
 import com.otero.recipetoshop.android.presentation.components.util.SearchBarRecetas
 import com.otero.recipetoshop.android.presentation.navigation.RutasNavegacion
-import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor
 import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
-import com.otero.recipetoshop.events.cestacompra.BusquedaRecetasAPIEventos
+import com.otero.recipetoshop.presentationlogic.events.cestacompra.BusquedaRecetasAPIEventos
 import com.otero.recipetoshop.presentationlogic.states.recetas.BusquedaRecetasAPIState
 /*
 Este es el componente que se encarga de implementar la pantalla

@@ -7,14 +7,13 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.sharp.FlipCameraAndroid
 import androidx.compose.material.icons.sharp.Lens
-import androidx.compose.material.icons.sharp.PhotoLibrary
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.otero.recipetoshop.android.R
-import com.otero.recipetoshop.domain.util.CameraUIAction
+import com.otero.recipetoshop.domain.dataEstructres.CameraUIAction
 
 @Composable
 fun CameraControls(cameraUIAction: (CameraUIAction) -> Unit) {

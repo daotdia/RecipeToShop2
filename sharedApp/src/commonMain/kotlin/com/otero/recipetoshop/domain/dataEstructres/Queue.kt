@@ -1,4 +1,4 @@
-package com.otero.recipetoshop.domain.util
+package com.otero.recipetoshop.domain.dataEstructres
 
 //Es necesario implementar la esturctura de datos de cola porque kotlin no tiene ninguna implemenatción de colas (y en el módulo share no se puede utilizar Java).
 //Es una copia en Kotlin de la Cola de Java.

@@ -11,7 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.otero.recipetoshop.events.despensa.DespensaEventos
+import com.otero.recipetoshop.presentationlogic.events.despensa.DespensaEventos
 import com.otero.recipetoshop.android.presentation.components.util.NestedDownMenu
 import com.otero.recipetoshop.android.presentation.components.util.cards.IngredienteCard
 import com.otero.recipetoshop.android.presentation.theme.primaryDarkColor

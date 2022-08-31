@@ -6,10 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.otero.recipetoshop.Interactors.Common.ActualizarAutoComplete
 import com.otero.recipetoshop.Interactors.despensa.*
-import com.otero.recipetoshop.android.presentation.navigation.RutasNavegacion
-import com.otero.recipetoshop.events.despensa.DespensaEventos
+import com.otero.recipetoshop.presentationlogic.events.despensa.DespensaEventos
 import com.otero.recipetoshop.domain.model.despensa.Alimento
-import com.otero.recipetoshop.domain.util.TipoUnidad
+import com.otero.recipetoshop.domain.dataEstructres.TipoUnidad
 import com.otero.recipetoshop.presentationlogic.states.despensa.ListaAlimentosState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn

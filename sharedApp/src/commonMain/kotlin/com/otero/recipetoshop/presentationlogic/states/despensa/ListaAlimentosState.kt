@@ -2,7 +2,7 @@ package com.otero.recipetoshop.presentationlogic.states.despensa
 
 import com.otero.recipetoshop.domain.model.GenericMessageInfo
 import com.otero.recipetoshop.domain.model.despensa.Alimento
-import com.otero.recipetoshop.domain.util.Queue
+import com.otero.recipetoshop.domain.dataEstructres.Queue
 
 data class ListaAlimentosState(
     val allAlimentos: List<Alimento> = listOf(),

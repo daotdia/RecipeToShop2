@@ -1,4 +1,4 @@
-package com.otero.recipetoshop.domain.util
+package com.otero.recipetoshop.domain.dataEstructres
 
 import com.otero.recipetoshop.domain.model.GenericMessageInfo
 
