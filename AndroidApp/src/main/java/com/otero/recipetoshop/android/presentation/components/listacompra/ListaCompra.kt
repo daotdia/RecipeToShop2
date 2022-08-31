@@ -20,10 +20,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.toLowerCase
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.otero.recipetoshop.android.R
 import com.otero.recipetoshop.android.presentation.components.RecetaImagen
 import com.otero.recipetoshop.android.presentation.components.alimentos.ListaAlimentosCestaCompra
 import com.otero.recipetoshop.android.presentation.components.util.GenericForm
@@ -40,6 +44,7 @@ import com.otero.recipetoshop.events.listacompra.ListaCompraEvents
 import com.otero.recipetoshop.presentationlogic.states.listacompra.ListaCompraState
 import de.charlex.compose.RevealSwipe
 import java.text.DecimalFormat
+import java.util.*
 
 
 @ExperimentalMaterialApi
@@ -134,12 +139,34 @@ fun ListaCompra(
                                     .fillMaxWidth()
                                     .height(86.dp),
                             ) {
-                                //Se tendrá que cambiar dinamicamente cuando tenga más supermercados
-                                RecetaImagen(
-                                    isSuper = true,
-                                    url = SupermercadosEnum.getImage(supermercado),
-                                    contentDescription = "logo " + supermercado.name
-                                )
+                                when(supermercado.name.lowercase(Locale.getDefault())){
+                                    "carrefour" -> {
+                                        Image(
+                                            painterResource(R.drawable.carrefour),
+                                            contentDescription = "",
+                                            contentScale = ContentScale.Crop,
+                                            modifier = Modifier.fillMaxSize().padding(6.dp)
+                                        )
+                                    }
+                                    "dia" -> {
+                                        Image(
+                                            painterResource(R.drawable.dia),
+                                            contentDescription = "",
+                                            contentScale = ContentScale.Fit,
+                                            modifier = Modifier.fillMaxSize().padding(6.dp)
+                                        )
+                                    }
+                                    "mercadona" -> {
+                                        Image(
+                                            painterResource(R.drawable.mercadona),
+                                            contentDescription = "",
+                                            contentScale = ContentScale.Fit,
+                                            modifier = Modifier.fillMaxSize().padding(6.dp)
+                                        )
+                                    }
+                                }
+
+
                             }
                             Column(
                                 Modifier

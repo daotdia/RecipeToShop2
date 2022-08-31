@@ -16,6 +16,7 @@ import android.util.Base64.encodeToString
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
@@ -122,7 +123,7 @@ fun ListaCestasCompra(
                 RevealSwipe(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(vertical = 5.dp),
+                        .padding(vertical = 5.dp, horizontal = 5.dp),
                     directions = setOf(
                         RevealDirection.EndToStart
                     ),
@@ -130,6 +131,9 @@ fun ListaCestasCompra(
                         Icon(
                             modifier = Modifier
                                 .padding(horizontal = 25.dp)
+                                .clickable {
+                                    onTriggeEvent(ListaCestasCompraEventos.onDeleteCestaCompra(id_cestaCompra = item.id_cestaCompra!!))
+                                }
                             ,
                             imageVector = Icons.Outlined.Delete,
                             contentDescription = null

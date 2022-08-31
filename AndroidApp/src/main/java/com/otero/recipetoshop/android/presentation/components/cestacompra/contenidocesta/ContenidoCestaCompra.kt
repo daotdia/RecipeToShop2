@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.filled.Summarize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -77,7 +78,7 @@ fun ContenidoCestaCompra (
                         navController.navigate(RutasNavegacion.ListaCompra.route + "/${stateCestaCompra.value.id_cestaCompra_actual}")
                     },
                     content = {
-                        Icon(Icons.Default.Summarize, null)
+                        Icon(Icons.Filled.ShoppingCart, null)
                     }
                 )
             }
