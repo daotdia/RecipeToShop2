@@ -7,6 +7,7 @@ import androidx.compose.material.DropdownMenuItem
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MoreHoriz
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -24,7 +25,7 @@ fun NestedDownMenu(
     val expand = remember { mutableStateOf(false) }
     Box{
         Icon(
-            Icons.Filled.MoreVert,
+            Icons.Filled.MoreHoriz,
             contentDescription = "NestedDownMenu",
             modifier = Modifier.clickable {
                 expand.value = true

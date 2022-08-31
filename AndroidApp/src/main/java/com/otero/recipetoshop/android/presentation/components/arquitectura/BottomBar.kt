@@ -1,14 +1,25 @@
 package com.otero.recipetoshop.android.presentation.components.arquitectura
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Icon
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Kitchen
+import androidx.compose.material.icons.filled.MenuBook
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -33,47 +44,62 @@ fun BottomBar(navController: NavHostController){
         cada icono.
          */
         MenuBottomItems.BottomItems.forEach{ bottomItem ->
-
-            val painter: Painter = when(bottomItem.icon){
-                "Despensa" -> {
-                    painterResource(id = R.drawable.ic_despensa)
-                }
-                "Recetas" -> {
-                    painterResource(id = R.drawable.ic_recetas)
-                }
-                "ListaCompra" -> {
-                    painterResource(id = R.drawable.ic_listacompra)
-                }
-                else -> {
-                    throw Exception("No se ha encontrado el icono del bottom item")
-                }
-
-            }
-
             val navBackStackEntry by navController.currentBackStackEntryAsState()
 
             val currentRoute = navBackStackEntry?.destination?.route
 
-            BottomNavigationItem(
-                icon = {
-                    Image(
-                        modifier = Modifier
-                            .width(36.dp)
-                            .height(36.dp),
-                        painter = painter,
-                        contentDescription = bottomItem.label,
-                        contentScale = ContentScale.Crop
-                    )
-                },
-                selected = currentRoute == bottomItem.route,
-                label = {
-                    Text(text = bottomItem.label)
-                },
-                onClick = {
-                    navController.navigate(bottomItem.route)
-                },
-                alwaysShowLabel = false
-            )
+            if (currentRoute != null) {
+                BottomNavigationItem(
+                    icon = {
+                        when(bottomItem.icon){
+                            "Despensa" -> {
+                                Icon(
+                                    Icons.Filled.Kitchen,
+                                    modifier = Modifier
+                                        .size(32.dp)
+                                    ,
+                                    tint = Color.White,
+                                    contentDescription = bottomItem.label,
+                                )
+                            }
+                            "Recetas" -> {
+                                Icon(
+                                    Icons.Filled.MenuBook,
+                                    modifier = Modifier
+                                        .size(32.dp)
+                                    ,
+                                    tint = Color.White,
+                                    contentDescription = bottomItem.label,
+                                )
+                            }
+                            "ListaCompra" -> {
+                                Icon(
+                                    Icons.Filled.ShoppingCart,
+                                    modifier = Modifier
+                                        .size(32.dp)
+                                    ,
+                                    tint = Color.White,
+                                    contentDescription = bottomItem.label,
+                                )
+                            }
+                            else -> {
+                                throw Exception("No se ha encontrado el icono del bottom item")
+                            }
+
+                        }
+                    },
+                    selected = currentRoute.contains(bottomItem.route),
+                    label = {
+                        Text(text = bottomItem.label)
+                    },
+                    onClick = {
+                        navController.navigate(bottomItem.route)
+                    },
+                    alwaysShowLabel = false
+                )
+            }
         }
     }
 }
+
+

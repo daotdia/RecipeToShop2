@@ -57,7 +57,8 @@ class Dia(webdriver.Firefox):
         self.get(diaConsts.BASE_URL)
         
     def esperar_cookies(self):
-        #Espero a que se cargue la barra de búsqueda de Carrefour.
+        #Espero a que se cargue la barra de búsqueda de Carrefour.4
+        time.sleep(6)
         cockies = WebDriverWait(self,10).until(
             ec.presence_of_element_located((By.XPATH, '//button[@id="onetrust-accept-btn-handler"]'))
         )

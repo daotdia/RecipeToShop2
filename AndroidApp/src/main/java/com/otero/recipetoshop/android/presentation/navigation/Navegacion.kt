@@ -1,5 +1,7 @@
 package com.otero.recipetoshop.android.presentation.navigation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
@@ -32,6 +34,7 @@ import com.otero.recipetoshop.android.presentation.theme.secondaryLightColor
 /*
 Aquí se encuentra la lógicade navegación de toda la App.
  */
+@RequiresApi(Build.VERSION_CODES.N)
 @ExperimentalFoundationApi
 @ExperimentalComposeUiApi
 @ExperimentalMaterialApi

@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.otero.recipetoshop.Interactors.cestascompra.AddNewCestaCompra
 import com.otero.recipetoshop.Interactors.cestascompra.AddPictureCestaCompra
+import com.otero.recipetoshop.Interactors.cestascompra.DeleteCestaCompra
 import com.otero.recipetoshop.Interactors.cestascompra.PrintListaCestasCompra
 import com.otero.recipetoshop.domain.model.CestaCompra.CestaCompra
 import com.otero.recipetoshop.presentationlogic.events.cestacompra.ListaCestasCompraEventos
@@ -21,7 +22,8 @@ class ListaCestasCompraListViewModel
 constructor(
     private val addNewCestaCompra: AddNewCestaCompra,
     private  val printListaCestasCompra: PrintListaCestasCompra,
-    private val addPictureCestaCompra: AddPictureCestaCompra
+    private val addPictureCestaCompra: AddPictureCestaCompra,
+    private val deleteCestaCompra: DeleteCestaCompra
     ): ViewModel(){
     val listadelistarecetasstate: MutableState<ListaCestasCompraState> = mutableStateOf(ListaCestasCompraState())
 
@@ -43,6 +45,9 @@ constructor(
                     )
                 }
             }
+            is ListaCestasCompraEventos.onDeleteCestaCompra -> {
+                deleteListaRecetas(id_cestaCompra = event.id_cestaCompra)
+            }
             //            is ListaCestasCompraEventos.onEnterCestaCompraEventos -> {
 //                //Guardo el id actual de la lista de recetas, es importante para guardar futuros nuevos elementos de la lista.
 ////                listaRecetasActualState.value = listaRecetasActualState.value.copy(id_listaReceta_actual = event.id_listaRecetas)
@@ -53,6 +58,14 @@ constructor(
             }
         }
         return Unit
+    }
+
+    private fun deleteListaRecetas(id_cestaCompra: Int){
+        deleteCestaCompra.deleteCestaCompra(id_cestaCompra = id_cestaCompra).onEach { dataState ->
+            if(dataState.data != null){
+                rePrintListaDeListasRecetas()
+            }
+        }.launchIn(viewModelScope)
     }
 
     private fun updatePicture(picture: String, id_cestaCompra: Int) {

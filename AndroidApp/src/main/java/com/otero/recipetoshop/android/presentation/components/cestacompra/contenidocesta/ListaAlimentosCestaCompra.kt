@@ -104,7 +104,8 @@ fun ListaAlimentosCestaCompra(
                     },
                     active = alimentoIsActive,
                     cantidad = item.cantidad,
-                    tipoUnidad = item.tipoUnidad
+                    tipoUnidad = item.tipoUnidad,
+                    isAlimento = true
                 )
             }
         }

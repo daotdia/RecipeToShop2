@@ -1,3 +1,536 @@
 {
 "productos":
 [
+[
+],
+[
+{"query": "Mostaza", "nombre": "MAILLE mostaza frasco 210 gr", "imagen_src": "https://s0.dia.es/medias/h86/h9d/11147528241182.jpg", "precio_peso": "14,24 \u20ac/Kg.", "precio": "2,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Mostaza", "nombre": "PRIMA mostaza americana bote 300 gr", "imagen_src": "https://s3.dia.es/medias/hde/h4b/11147542659102.jpg", "precio_peso": "4,82 \u20ac/Kg.", "precio": "1,59 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Mostaza", "nombre": "MAILLE mostaza dijon original tarro 215 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h52/h8a/11146324869150.jpg", "precio_peso": "13,91 \u20ac/Kg.", "precio": "2,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Mostaza", "nombre": "PRIMA salsa mostaza cero bote 325 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h80/h79/11147654332446.jpg", "precio_peso": "6,12 \u20ac/Kg.", "precio": "1,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Mostaza", "nombre": "COOSUR mostaza al estilo americano antigoteo bote 300 ml", "imagen_src": "https://s2.dia.es/medias/h90/h8f/9560187240478.jpg", "precio_peso": "3,83 \u20ac/l.", "precio": "1,15 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Mostaza", "nombre": "FRIT RAVICH cocktail con miel y mostaza bolsa 360 gr", "imagen_src": "https://s2.dia.es/medias/productimages/h03/h0e/11028458405918.jpg", "precio_peso": "8,03 \u20ac/Kg.", "precio": "2,89 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Mostaza", "nombre": "DIA SALSEO salsa de mostaza y eneldo frasco 200 gr", "imagen_src": "https://s1.dia.es/medias/productimages/hcf/h49/11166238310430.jpg", "precio_peso": "9,38 \u20ac/Kg.", "precio": "1,97 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Pan hamburguesa", "nombre": "BIMBO pan de hamburguesas 4 uds bolsa 300 gr", "imagen_src": "https://s1.dia.es/medias/productimages/hd0/hec/11137039826974.jpg", "precio_peso": "8,30 \u20ac/Kg.", "precio": "2,49 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Pan hamburguesa", "nombre": "EL MOLINO DE DIA pan de hamburguesas 4 unidades bolsa 220 gr", "imagen_src": "https://s0.dia.es/medias/h16/h76/10567166492702.jpg", "precio_peso": "4,55 \u20ac/Kg.", "precio": "1,00 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Pan hamburguesa", "nombre": "EL MOLINO DE DIA pan de hamburguesa maxi 4 unidades bolsa 300 gr", "imagen_src": "https://s0.dia.es/medias/h43/h34/10567167475742.jpg", "precio_peso": "3,30 \u20ac/Kg.", "precio": "0,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Ketchup", "nombre": "HELLMANN'S ketchup bote 430 ml", "imagen_src": "https://s2.dia.es/medias/productimages/h00/h24/10948352573470.jpg", "precio_peso": "3,60 \u20ac/Kg.", "precio": "1,75 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Ketchup", "nombre": "TOSFRIT apetinas ketchup bolsa 90GRS", "imagen_src": "https://s3.dia.es/medias/productimages/hc2/h5f/10682713866270.jpg", "precio_peso": "13,00 \u20ac/Kg.", "precio": "1,17 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Ketchup", "nombre": "DIA ketchup bote 340 gr", "imagen_src": "https://s1.dia.es/medias/h1c/h2a/9592242962462.jpg", "precio_peso": "2,32 \u20ac/Kg.", "precio": "0,79 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Ketchup", "nombre": "HEINZ ketchup light botella 550 gr", "imagen_src": "https://s0.dia.es/medias/h75/h29/11131388330014.jpg", "precio_peso": "6,53 \u20ac/Kg.", "precio": "3,59 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Ketchup", "nombre": "PRIMA ketchup cero bote 570 gr", "imagen_src": "https://s0.dia.es/medias/productimages/h67/h77/11147652366366.jpg", "precio_peso": "4,54 \u20ac/Kg.", "precio": "2,59 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Ketchup", "nombre": "DIA SALSEO ketchup bote 560 gr", "imagen_src": "https://s2.dia.es/medias/productimages/he1/h3b/11162481786910.jpg", "precio_peso": "1,59 \u20ac/Kg.", "precio": "0,89 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Ketchup", "nombre": "PRIMA ketchup clasico bote 600 gr", "imagen_src": "https://s3.dia.es/medias/hb9/hf1/11147542986782.jpg", "precio_peso": "3,98 \u20ac/Kg.", "precio": "2,39 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Ketchup", "nombre": "DIA SALSEO ketchup light bote 540 gr", "imagen_src": "https://s0.dia.es/medias/productimages/hcb/h7f/11165258907678.jpg", "precio_peso": "1,94 \u20ac/Kg.", "precio": "1,05 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+{"query": "Queso parmesano", "nombre": "MICHELANGELO queso parmesano 22 meses DOP cuna (peso aprox. 250 gr)", "imagen_src": "https://s1.dia.es/medias/productimages/h9d/hd1/10882782068766.jpg", "precio_peso": "25,89 \u20ac/Kg.", "precio": "6,47 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+{"query": "Foie de pato", "nombre": "AOSTE mousse de foie de pato envase 100 gr", "imagen_src": "https://s0.dia.es/medias/productimages/h70/he1/10945409810462.jpg", "precio_peso": "18,50 \u20ac/Kg.", "precio": "1,85 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Foie de pato", "nombre": "AOSTE mousse de foie de pato medallon (peso aprox. 150 gr)", "imagen_src": "https://s0.dia.es/medias/h1f/h62/10660899880990.jpg", "precio_peso": "16,99 \u20ac/Kg.", "precio": "2,55 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+],
+[
+],
+[
+{"query": "Ajo", "nombre": "Ajo morado malla 400 gr", "imagen_src": "https://s0.dia.es/medias/h9a/hc2/10508958760990.jpg", "precio_peso": "4,98 \u20ac/Kg.", "precio": "1,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Ajo", "nombre": "Ajo BIO malla 200 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h4c/h2b/11016736374814.jpg", "precio_peso": "7,45 \u20ac/Kg.", "precio": "1,49 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Ajo", "nombre": "Ajo morado malla 250 gr", "imagen_src": "https://s2.dia.es/medias/productimages/h21/h64/11015166165022.jpg", "precio_peso": "5,80 \u20ac/Kg.", "precio": "1,45 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Ajo", "nombre": "CARMENCITA ajo en polvo frasco 60 gr", "imagen_src": "https://s1.dia.es/medias/hc4/h9e/10773164818462.jpg", "precio_peso": "37,50 \u20ac/Kg.", "precio": "2,25 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Ajo", "nombre": "DIA ajo en polvo frasco 65 gr", "imagen_src": "https://s1.dia.es/medias/h41/h4c/8859404795934.png", "precio_peso": "10,62 \u20ac/Kg.", "precio": "0,69 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Ajo", "nombre": "DANI ajo molida frasco 55 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h37/h18/10676666761246.jpg", "precio_peso": "31,82 \u20ac/Kg.", "precio": "1,75 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Ajo", "nombre": "DANI ajo y perejil frasco 150 gr", "imagen_src": "https://s1.dia.es/medias/h69/h6d/10141056073758.jpg", "precio_peso": "27,00 \u20ac/Kg.", "precio": "4,05 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Ajo", "nombre": "DIA VEGECAMPO ajo troceado bolsa 150 gr", "imagen_src": "https://s1.dia.es/medias/productimages/hcb/ha3/11118969290782.jpg", "precio_peso": "7,67 \u20ac/Kg.", "precio": "1,15 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Ajo", "nombre": "SELECCION DE DIA hamburguesas con ajo y perejil bandeja 360 gr", "imagen_src": "https://s0.dia.es/medias/productimages/h27/hf7/10777910771742.jpg", "precio_peso": "5,81 \u20ac/Kg.", "precio": "2,09 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Ajo", "nombre": "EL MOLINO DE DIA pan rallado con ajo y perejil bolsa 500 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h61/h7b/11146286923806.jpg", "precio_peso": "2,18 \u20ac/Kg.", "precio": "1,09 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Ajo", "nombre": "DIA VEGECAMPO pimientos del piquillo en tiras con ajo frasco 225 gr", "imagen_src": "https://s2.dia.es/medias/h95/hdd/10565297930270.jpg", "precio_peso": "4,55 \u20ac/Kg.", "precio": "1,00 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Muesli", "nombre": "DIA muesli extra caja 500 gr", "imagen_src": "https://s3.dia.es/medias/h75/h04/9004965658654.jpg", "precio_peso": "3,18 \u20ac/Kg.", "precio": "1,59 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Muesli", "nombre": "GULLON galleta digestive muesli paquete 365 grs", "imagen_src": "https://s1.dia.es/medias/productimages/h64/h22/10852684660766.jpg", "precio_peso": "5,45 \u20ac/Kg.", "precio": "1,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Muesli", "nombre": "DIA cereales muesli con chocolate paquete 500 gr", "imagen_src": "https://s2.dia.es/medias/h24/h30/8823644815390.png", "precio_peso": "4,18 \u20ac/Kg.", "precio": "2,09 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Muesli", "nombre": "DIA cereales muesli crujiente con frutas paquete 500 gr", "imagen_src": "https://s0.dia.es/medias/h21/h30/8822236610590.png", "precio_peso": "4,18 \u20ac/Kg.", "precio": "2,09 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Muesli", "nombre": "DIA VITAL cereales muesli con frutas bolsa 1 Kg", "imagen_src": "https://s1.dia.es/medias/h70/h47/9004955369502.jpg", "precio_peso": "1,95 \u20ac/Kg.", "precio": "1,95 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Muesli", "nombre": "DIA barritas de cereales muesli con avellana estuche 150 gr", "imagen_src": "https://s3.dia.es/medias/h39/hc6/9334539091998.jpg", "precio_peso": "7,93 \u20ac/Kg.", "precio": "1,19 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Muesli", "nombre": "DIA barritas de cereales muesli con chocolate estuche 150 gr", "imagen_src": "https://s0.dia.es/medias/h9c/hf4/9263092236318.jpg", "precio_peso": "7,93 \u20ac/Kg.", "precio": "1,19 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Muesli", "nombre": "DANONE ACTIVIA bifidus de fibras con muesli pack 4 uds 120 gr", "imagen_src": "https://s2.dia.es/medias/productimages/hda/h19/11067987623966.jpg", "precio_peso": "5,40 \u20ac/Kg.", "precio": "2,59 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Muesli", "nombre": "DANONE ACTIVIA bifidus con muesli 0% M.G pack 4 unidades 120 gr", "imagen_src": "https://s0.dia.es/medias/productimages/h80/h90/11067986640926.jpg", "precio_peso": "5,40 \u20ac/Kg.", "precio": "2,59 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Aguacate", "nombre": "Aguacate bandeja 3/4 piezas", "imagen_src": "https://s1.dia.es/medias/h4d/hf8/10356532936734.jpg", "precio_peso": "4,20 \u20ac/Kg.", "precio": "1,89 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Aguacate", "nombre": "Aguacate unidad (380 gr aprox.)", "imagen_src": "https://s3.dia.es/medias/h41/h9d/10360143347742.jpg", "precio_peso": "3,49 \u20ac/Kg.", "precio": "1,33 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Aguacate", "nombre": "Aguacate bio bandeja 400 gr", "imagen_src": "https://s3.dia.es/medias/hde/h65/9583742025758.jpg", "precio_peso": "7,23 \u20ac/Kg.", "precio": "2,89 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Aguacate", "nombre": "Pulpa de aguacate tarrina 125 gr", "imagen_src": "https://s3.dia.es/medias/h31/hd9/10645089615902.jpg", "precio_peso": "12,40 \u20ac/Kg.", "precio": "1,55 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Aguacate", "nombre": "LA ESPANOLA aceite de aguacate botella 250 ml", "imagen_src": "https://www.dia.es/compra-online/_ui/desktop/theme-dia/images/dia/svg/image-not-available.svg", "precio_peso": "23,96 \u20ac/l.", "precio": "5,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Aguacate", "nombre": "IROHA mascarilla facial hidratante con aguacate y acido hialuronico 1 ud", "imagen_src": "https://s0.dia.es/medias/productimages/hb1/h73/10936308760606.jpg", "precio_peso": "2,50 \u20ac/ud.", "precio": "2,50 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Aguacate", "nombre": "ORIGINAL REMEDIES acondicionador aceite de aguacate y manteca de karite bote 250 ml", "imagen_src": "https://s1.dia.es/medias/hab/h23/9845493891102.jpg", "precio_peso": "13,80 \u20ac/l.", "precio": "3,45 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Aguacate", "nombre": "DIA IMAQE Naturals champu solido reparador con aguacate y arandanos 60 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h7b/h6b/10724285874206.jpg", "precio_peso": "54,83 \u20ac/Kg.", "precio": "3,29 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+{"query": "Palmeritas de hojaldre", "nombre": "EL MOLINO DE DIA palmeritas de hojaldre al cacao bolsa 275 gr", "imagen_src": "https://s2.dia.es/medias/productimages/hd6/h85/11139415146526.jpg", "precio_peso": "7,82 \u20ac/Kg.", "precio": "2,15 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Palmeritas de hojaldre", "nombre": "VIRGEN DEL BREZO mini palmeritas de hojaldre paquete 140 gr", "imagen_src": "https://s1.dia.es/medias/productimages/hfa/hc6/10902493659166.jpg", "precio_peso": "14,93 \u20ac/Kg.", "precio": "2,09 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+{"query": "Nata para cocinar", "nombre": "ASTURIANA nata para cocinar envase 500 ml", "imagen_src": "https://s3.dia.es/medias/heb/h69/10797268303902.jpg", "precio_peso": "4,90 \u20ac/l.", "precio": "2,45 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Nata para cocinar", "nombre": "PULEVA nata para cocinar slim 200 ml", "imagen_src": "https://s3.dia.es/medias/productimages/h8b/h3c/10862809022494.jpg", "precio_peso": "6,25 \u20ac/l.", "precio": "1,25 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Nata para cocinar", "nombre": "KAIKU nata para cocinar sin lactosa envase 200 ml", "imagen_src": "https://s2.dia.es/medias/hd4/hd0/10658595209246.jpg", "precio_peso": "8,75 \u20ac/l.", "precio": "1,75 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Nata para cocinar", "nombre": "DIA LACTEA nata para cocinar envase 500 ml", "imagen_src": "https://s0.dia.es/medias/productimages/hd6/h57/10976988430366.jpg", "precio_peso": "2,78 \u20ac/l.", "precio": "1,39 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+{"query": "Yogur natural", "nombre": "DANONE yogur natural pack 8 unidades 120 gr", "imagen_src": "https://s3.dia.es/medias/productimages/he9/h9e/11068056895518.jpg", "precio_peso": "2,29 \u20ac/Kg.", "precio": "2,29 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Yogur natural", "nombre": "DANONE yogur natural pack 4 unidades 120 gr", "imagen_src": "https://s3.dia.es/medias/productimages/hf0/he9/11067838988318.jpg", "precio_peso": "2,90 \u20ac/Kg.", "precio": "1,39 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Yogur natural", "nombre": "DANONE yogur natural azucarado pack 4 unidades 120 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h26/h7d/11068075573278.jpg", "precio_peso": "2,90 \u20ac/Kg.", "precio": "1,39 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Yogur natural", "nombre": "DANONE yogur natural azucarado pack 8 unidades 120 gr", "imagen_src": "https://s2.dia.es/medias/productimages/hef/h8e/11093254864926.jpg", "precio_peso": "2,39 \u20ac/Kg.", "precio": "2,29 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Yogur natural", "nombre": "SUERTE AMPANERA yogur natural de cabra eco frasco 420 gr", "imagen_src": "https://s0.dia.es/medias/productimages/h9a/he0/10821585272862.jpg", "precio_peso": "6,79 \u20ac/Kg.", "precio": "2,85 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Yogur natural", "nombre": "DIA LACTEA yogur natural pack 8 unidades 125 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h8f/h82/10979976904734.jpg", "precio_peso": "1,25 \u20ac/Kg.", "precio": "1,25 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Yogur natural", "nombre": "DIA LACTEA yogur natural azucarado pack 8 unidades 125 gr", "imagen_src": "https://s2.dia.es/medias/productimages/hed/h1e/10979977232414.jpg", "precio_peso": "1,25 \u20ac/Kg.", "precio": "1,25 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Yogur natural", "nombre": "REINA yogur natural rico en proteinas 0% M.G. vaso 180 gr", "imagen_src": "https://s0.dia.es/medias/productimages/h40/h88/11084827557918.jpg", "precio_peso": "5,50 \u20ac/Kg.", "precio": "0,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+{"query": "Mousse de yogur", "nombre": "DANONE mousse yogur natural azucarado pack 4 unidades 65 g", "imagen_src": "https://s1.dia.es/medias/productimages/h1c/h99/11033733005342.jpg", "precio_peso": "9,19 \u20ac/Kg.", "precio": "2,39 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+{"query": "Yogur de soja", "nombre": "ALPRO yogur de soja con arandanos vaso 500 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h87/he0/11094418063390.jpg", "precio_peso": "4,78 \u20ac/Kg.", "precio": "2,39 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Yogur de soja", "nombre": "ALPRO yogur de soja sabor vainilla vaso 500 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h32/h6c/11074795962398.jpg", "precio_peso": "4,78 \u20ac/Kg.", "precio": "2,39 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Yogur de soja", "nombre": "ALPRO skyr yogur de soja natural vaso 400 gr", "imagen_src": "https://s1.dia.es/medias/productimages/hd4/h15/11094441066526.jpg", "precio_peso": "5,98 \u20ac/Kg.", "precio": "2,39 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Yogur de soja", "nombre": "ALPRO skyr yogur de soja sabor fresa vaso 400 gr", "imagen_src": "https://s1.dia.es/medias/productimages/hbb/h0f/11087226241054.jpg", "precio_peso": "5,98 \u20ac/Kg.", "precio": "2,39 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Yogur de soja", "nombre": "ALPRO yogur de soja sabor arandanos y frutos rojos pack 4 unidades 125 gr", "imagen_src": "https://s1.dia.es/medias/h17/h40/10290944213022.jpg", "precio_peso": "4,78 \u20ac/Kg.", "precio": "2,39 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Yogur de soja", "nombre": "ALPRO yogur de soja sabor melocoton, pina y fruta de la pasion pack 4 uds 125 gr", "imagen_src": "https://s1.dia.es/medias/h4c/h9f/10346106650654.jpg", "precio_peso": "4,78 \u20ac/Kg.", "precio": "2,39 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+],
+[
+{"query": "Leche entera", "nombre": "PASCUAL leche entera envase 1 lt PACK 6", "imagen_src": "https://s0.dia.es/medias/productimages/h54/h0b/10958083686430.jpg", "precio_peso": "0,99 \u20ac/l.", "precio": "5,94\u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Leche entera", "nombre": "ASTURIANA leche entera envase 1 lt PACK 6", "imagen_src": "https://s1.dia.es/medias/productimages/h42/h31/10717083893790.jpg", "precio_peso": "0,99 \u20ac/l.", "precio": "5,94 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Leche entera", "nombre": "ASTURIANA leche entera botella 1.5 lt PACK 6", "imagen_src": "https://s2.dia.es/medias/productimages/hba/h6b/10717081927710.jpg", "precio_peso": "0,99 \u20ac/l.", "precio": "8,94 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Leche entera", "nombre": "DIA LACTEA leche entera envase 1 lt PACK 6", "imagen_src": "https://s3.dia.es/medias/productimages/h47/hd7/10717082583070.jpg", "precio_peso": "0,85 \u20ac/l.", "precio": "5,10 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Leche entera", "nombre": "DIA LACTEA leche entera sin lactosa envase 1 lt PACK 6", "imagen_src": "https://s2.dia.es/medias/productimages/hc1/h35/10717084549150.jpg", "precio_peso": "0,94 \u20ac/l.", "precio": "5,64 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Leche entera", "nombre": "ASTURIANA leche entera botella 2.2 lt", "imagen_src": "https://s1.dia.es/medias/h2e/h60/10659192602654.jpg", "precio_peso": "0,97 \u20ac/l.", "precio": "2,14 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Leche entera", "nombre": "LAUKI leche entera envase 1 lt", "imagen_src": "https://s0.dia.es/medias/h86/hf1/10806054912030.jpg", "precio_peso": "0,99 \u20ac/l.", "precio": "0,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Leche entera", "nombre": "ASTURIANA leche entera envase 1 lt", "imagen_src": "https://s0.dia.es/medias/productimages/h33/hb5/10804643495966.jpg", "precio_peso": "0,99 \u20ac/l.", "precio": "0,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Leche entera", "nombre": "PASCUAL leche entera envase 1 lt", "imagen_src": "https://s1.dia.es/medias/productimages/h48/h5a/11033715310622.jpg", "precio_peso": "0,99 \u20ac/l.", "precio": "0,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Leche semidesnatada", "nombre": "PASCUAL leche semidesnatada envase 1 lt PACK 6", "imagen_src": "https://s2.dia.es/medias/productimages/h30/hc2/10958084014110.jpg", "precio_peso": "0,99 \u20ac/l.", "precio": "5,94\u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Leche semidesnatada", "nombre": "PASCUAL leche semidesnatada sin lactosa envase 1 lt PACK 6", "imagen_src": "https://s0.dia.es/medias/productimages/hb8/h55/11138265448478.jpg", "precio_peso": "1,29 \u20ac/l.", "precio": "7,74\u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Leche semidesnatada", "nombre": "ASTURIANA leche semidesnatada botella 2.2 lt PACK 6", "imagen_src": "https://s2.dia.es/medias/productimages/hbc/hfa/10717077274654.jpg", "precio_peso": "0,95 \u20ac/l.", "precio": "12,54 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Leche semidesnatada", "nombre": "ASTURIANA leche semidesnatada botella 1.5 lt PACK 6", "imagen_src": "https://s0.dia.es/medias/productimages/h55/hdc/10717076881438.jpg", "precio_peso": "0,99 \u20ac/l.", "precio": "8,94 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Leche semidesnatada", "nombre": "ASTURIANA leche semidesnatada envase 1 lt PACK 6", "imagen_src": "https://s2.dia.es/medias/productimages/h38/hbd/10717078913054.jpg", "precio_peso": "0,99 \u20ac/l.", "precio": "5,94 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Leche semidesnatada", "nombre": "ASTURIANA leche semidesnatada sin lactosa envase 1 lt PACK 6", "imagen_src": "https://s3.dia.es/medias/productimages/h99/h85/10717084221470.jpg", "precio_peso": "1,19 \u20ac/l.", "precio": "7,14 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Leche semidesnatada", "nombre": "DIA LACTEA leche semidesnatada envase 1 lt PACK 6", "imagen_src": "https://s0.dia.es/medias/productimages/h2f/h2e/10721488994334.jpg", "precio_peso": "0,84 \u20ac/l.", "precio": "5,04 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Leche semidesnatada", "nombre": "DIA LACTEA leche semidesnatada sin lactosa envase 1 lt PACK 6", "imagen_src": "https://s0.dia.es/medias/productimages/h75/hd1/10717080289310.jpg", "precio_peso": "0,93 \u20ac/l.", "precio": "5,58 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Leche desnatada", "nombre": "PASCUAL leche desnatada sin lactosa envase 1 lt PACK 6", "imagen_src": "https://s3.dia.es/medias/productimages/heb/hee/11138265120798.jpg", "precio_peso": "1,29 \u20ac/l.", "precio": "7,74\u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Leche desnatada", "nombre": "PASCUAL leche desnatada envase 1 lt PACK 6", "imagen_src": "https://s0.dia.es/medias/productimages/h19/h66/10958082375710.jpg", "precio_peso": "0,99 \u20ac/l.", "precio": "5,94\u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Leche desnatada", "nombre": "ASTURIANA leche desnatada envase 1 lt PACK 6", "imagen_src": "https://s3.dia.es/medias/productimages/hd5/h75/10717076062238.jpg", "precio_peso": "0,99 \u20ac/l.", "precio": "5,94 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Leche desnatada", "nombre": "ASTURIANA leche desnatada 0% M.G. sin lactosa envase 1 lt PACK 6", "imagen_src": "https://s0.dia.es/medias/productimages/h73/h62/10717077602334.jpg", "precio_peso": "1,19 \u20ac/l.", "precio": "7,14 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Leche desnatada", "nombre": "DIA LACTEA leche desnatada envase 1 lt PACK 6", "imagen_src": "https://s1.dia.es/medias/productimages/h66/h21/10721488666654.jpg", "precio_peso": "0,83 \u20ac/l.", "precio": "4,98 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Leche desnatada", "nombre": "DIA LACTEA leche desnatada sin lactosa envase 1 lt PACK 6", "imagen_src": "https://s1.dia.es/medias/productimages/hf2/hd6/10717075406878.jpg", "precio_peso": "0,92 \u20ac/l.", "precio": "5,52 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+],
+[
+],
+[
+],
+[
+],
+[
+],
+[
+{"query": "Leche condensada", "nombre": "LA LECHERA leche condensada lata 370 gr", "imagen_src": "https://s0.dia.es/medias/productimages/hd5/h58/10965892956190.jpg", "precio_peso": "5,38 \u20ac/Kg.", "precio": "1,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Leche condensada", "nombre": "LA LECHERA leche condensada bote 740 gr", "imagen_src": "https://s0.dia.es/medias/productimages/h3c/hbf/10874627325982.jpg", "precio_peso": "4,18 \u20ac/Kg.", "precio": "3,09 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Leche condensada", "nombre": "DIA LACTEA leche condensada bote 450 gr", "imagen_src": "https://s0.dia.es/medias/productimages/he0/h7e/11117771620382.jpg", "precio_peso": "3,67 \u20ac/Kg.", "precio": "1,65 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Leche condensada", "nombre": "DIA leche condensada desnatada bote 450 gr", "imagen_src": "https://s2.dia.es/medias/h87/h8b/8962563899422.jpg", "precio_peso": "3,67 \u20ac/Kg.", "precio": "1,65 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Leche condensada", "nombre": "DIA LACTEA leche condensada bote 1 Kg", "imagen_src": "https://s0.dia.es/medias/productimages/h07/hcf/11117773258782.jpg", "precio_peso": "2,49 \u20ac/Kg.", "precio": "2,49 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Cuajada", "nombre": "DANONE cuajada sin azucar pack 2 unidades 135 gr", "imagen_src": "https://s2.dia.es/medias/productimages/h97/hf0/11068058533918.jpg", "precio_peso": "4,41 \u20ac/Kg.", "precio": "1,19 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Cuajada", "nombre": "DIA CAPRICHOSO cuajada pack 4 unidades 125 gr", "imagen_src": "https://s3.dia.es/medias/productimages/hfc/h11/11118968963102.jpg", "precio_peso": "2,38 \u20ac/Kg.", "precio": "1,19 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Cuajada", "nombre": "ROYAL cuajada sabor lacteo para preparar caja 5 sobres de 12 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h24/hc6/10729786277918.jpg", "precio_peso": "31,50 \u20ac/Kg.", "precio": "1,89 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+],
+[
+{"query": "Flan de huevo", "nombre": "REINA flan de huevo pack 6 unidades 100 gr", "imagen_src": "https://s2.dia.es/medias/hcc/h3e/10658941403166.jpg", "precio_peso": "4,92 \u20ac/Kg.", "precio": "2,95 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Flan de huevo", "nombre": "DIA CAPRICHOSO flan de huevo pack 4 unidades 100 gr", "imagen_src": "https://s3.dia.es/medias/productimages/hae/hde/11139425763358.jpg", "precio_peso": "3,62 \u20ac/Kg.", "precio": "1,45 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Flan de huevo", "nombre": "DHUL flan de huevo al bano maria pack 4 unidades 110 g", "imagen_src": "https://s3.dia.es/medias/productimages/hab/hd5/10937815957534.jpg", "precio_peso": "5,11 \u20ac/Kg.", "precio": "2,25 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Flan de huevo", "nombre": "DHUL flan de huevo al bano maria 0% mg pack 4 unidades 100 gr", "imagen_src": "https://s2.dia.es/medias/productimages/h6a/h8b/10936438652958.jpg", "precio_peso": "5,63 \u20ac/Kg.", "precio": "2,25 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Flan de vainilla", "nombre": "DIA CAPRICHOSO flan de vainilla pack 6 unidades 100 gr", "imagen_src": "https://s3.dia.es/medias/productimages/hc5/hc9/11139420389406.jpg", "precio_peso": "1,48 \u20ac/Kg.", "precio": "0,89 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Crema catalana", "nombre": "DIA CAPRICHOSO crema catalana caja 155 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h6b/hd5/11139415474206.jpg", "precio_peso": "6,13 \u20ac/Kg.", "precio": "0,95 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+{"query": "Arroz con leche", "nombre": "DIA CAPRICHOSO arroz con leche tarrina 450 gr", "imagen_src": "https://s2.dia.es/medias/productimages/h0d/h94/11118978859038.jpg", "precio_peso": "3,00 \u20ac/Kg.", "precio": "1,35 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Mousse de chocolate ", "nombre": "VALIO Profeel mousse de chocolate con proteinas vaso 150 gr", "imagen_src": "https://s0.dia.es/medias/productimages/h3a/h80/11041019396126.jpg", "precio_peso": "9,93 \u20ac/Kg.", "precio": "1,49 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Mousse de chocolate ", "nombre": "DIA CAPRICHOSO mousse de chocolate pack 4 unidades 240 gr", "imagen_src": "https://s0.dia.es/medias/productimages/ha0/h6e/11139420717086.jpg", "precio_peso": "3,96 \u20ac/Kg.", "precio": "0,95 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Mousse de chocolate ", "nombre": "REINA mousse de chocolate rico en proteinas pack 2 unidades 100 gr", "imagen_src": "https://s2.dia.es/medias/productimages/h5f/h5a/11090934890526.jpg", "precio_peso": "9,95 \u20ac/Kg.", "precio": "1,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Batido de vainilla", "nombre": "DIA batido de vainilla botella 1 lt", "imagen_src": "https://s0.dia.es/medias/productimages/h26/h29/11053772800030.jpg", "precio_peso": "1,05 \u20ac/l.", "precio": "1,05 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Batido de vainilla", "nombre": "PULEVA batido de vainilla pack 6 unidades 200 ml", "imagen_src": "https://s0.dia.es/medias/ha4/he8/11153530486814.jpg", "precio_peso": "2,04 \u20ac/l.", "precio": "2,45 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Batido de vainilla", "nombre": "DIA LACTEA batido de vainilla pack 6 unidades 200 ml", "imagen_src": "https://s3.dia.es/medias/productimages/h78/h82/10987958829086.jpg", "precio_peso": "1,16 \u20ac/l.", "precio": "1,39 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Batido de fresa", "nombre": "DIA batido de fresa botella 1 lt", "imagen_src": "https://s3.dia.es/medias/productimages/hc8/h53/11053782695966.jpg", "precio_peso": "1,05 \u20ac/l.", "precio": "1,05 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Batido de fresa", "nombre": "PULEVA batido fresa pack 6 unidades 200 ml", "imagen_src": "https://s0.dia.es/medias/h40/ha0/11153529503774.jpg", "precio_peso": "2,04 \u20ac/l.", "precio": "2,45 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Batido de fresa", "nombre": "DIA LACTEA batido de fresa pack 6 unidades 200 ml", "imagen_src": "https://s2.dia.es/medias/productimages/h13/h1a/10765988036638.jpg", "precio_peso": "1,16 \u20ac/l.", "precio": "1,39 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Batido de chocolate", "nombre": "DIA batido de chocolate botella 1 lt", "imagen_src": "https://s0.dia.es/medias/productimages/hae/h89/11053773455390.jpg", "precio_peso": "1,05 \u20ac/l.", "precio": "1,05 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Batido de chocolate", "nombre": "CACAOLAT batido de chocolate botella 1 lt", "imagen_src": "https://s0.dia.es/medias/productimages/h40/hb2/11053005930526.jpg", "precio_peso": "2,25 \u20ac/l.", "precio": "2,25 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Batido de chocolate", "nombre": "CACAOLAT batido de chocolate 0% MG botella 1 lt", "imagen_src": "https://s3.dia.es/medias/productimages/hb0/hef/10901291958302.jpg", "precio_peso": "2,35 \u20ac/l.", "precio": "2,35 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Batido de chocolate", "nombre": "DIA LACTEA batido de chocolate pack 6 unidades 200 ml", "imagen_src": "https://s0.dia.es/medias/productimages/hbd/h64/10765994917918.jpg", "precio_peso": "1,29 \u20ac/l.", "precio": "1,55 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Batido de chocolate", "nombre": "PULEVA batido de chocolate sin lactosa pack 6 uds 200 ml", "imagen_src": "https://s3.dia.es/medias/productimages/h5e/hfd/11152490987550.jpg", "precio_peso": "2,12 \u20ac/l.", "precio": "2,55 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Batido de chocolate", "nombre": "VALIO Profeel batido de chocolate con proteinas botella 250 ml", "imagen_src": "https://s1.dia.es/medias/productimages/h50/h8d/10682222805022.jpg", "precio_peso": "7,27 \u20ac/Kg.", "precio": "1,89 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+],
+[
+],
+[
+{"query": "Queso tierno", "nombre": "EL VENTERO queso tierno light lonchas envase 160 gr", "imagen_src": "https://s0.dia.es/medias/productimages/ha5/h19/10981414240286.jpg", "precio_peso": "20,31 \u20ac/Kg.", "precio": "3,25 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Queso tierno", "nombre": "EL VENTERO queso tierno original en lonchas envase 160 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h69/h63/10981412274206.jpg", "precio_peso": "20,31 \u20ac/Kg.", "precio": "3,25 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Queso tierno", "nombre": "DIA EL CENCERRO queso tierno en lonchas envase 250 gr", "imagen_src": "https://s2.dia.es/medias/h99/hf8/10612566622238.jpg", "precio_peso": "8,36 \u20ac/Kg.", "precio": "2,09 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Queso tierno", "nombre": "DIA EL CENCERRO queso tierno pieza 1 Kg", "imagen_src": "https://s1.dia.es/medias/hb3/hb6/10521838977054.jpg", "precio_peso": "7,99 \u20ac/Kg.", "precio": "7,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Queso tierno", "nombre": "DIA EL CENCERRO queso tierno cuna 300 gr", "imagen_src": "https://s2.dia.es/medias/h36/h54/10521854115870.jpg", "precio_peso": "8,83 \u20ac/Kg.", "precio": "2,65 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Queso tierno", "nombre": "EL VENTERO queso tierno ya cortado cuna 200 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h0d/he4/10887988346910.jpg", "precio_peso": "14,95 \u20ac/Kg.", "precio": "2,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Queso tierno", "nombre": "DIA EL CENCERRO queso tierno light en lonchas envase 200 gr", "imagen_src": "https://s0.dia.es/medias/ha0/hf0/10521839632414.jpg", "precio_peso": "11,25 \u20ac/Kg.", "precio": "2,25 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Queso tierno", "nombre": "DIA EL CENCERRO queso tierno de cabra lonchas envase 200 gr", "imagen_src": "https://s2.dia.es/medias/h65/h5f/10521855754270.jpg", "precio_peso": "14,25 \u20ac/Kg.", "precio": "2,85 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Queso tierno", "nombre": "GARCIA BAQUERO queso tierno ya cortado envase 250 gr", "imagen_src": "https://s2.dia.es/medias/productimages/hbe/he2/11152443998238.jpg", "precio_peso": "17,16 \u20ac/Kg.", "precio": "4,29 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Queso tierno", "nombre": "DIA EL CENCERRO queso tierno de cabra mini 550 gr", "imagen_src": "https://s0.dia.es/medias/productimages/h29/hbf/10807410950174.jpg", "precio_peso": "13,36 \u20ac/Kg.", "precio": "7,35 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Queso tierno", "nombre": "DIA EL CENCERRO queso tierno cortado cuna 250 gr", "imagen_src": "https://s0.dia.es/medias/h33/hf7/10521858048030.jpg", "precio_peso": "11,96 \u20ac/Kg.", "precio": "2,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Queso semicurado", "nombre": "DIA EL CENCERRO queso semicurado en lonchas envase 200 gr", "imagen_src": "https://s3.dia.es/medias/h24/h56/10521853132830.jpg", "precio_peso": "10,45 \u20ac/Kg.", "precio": "2,09 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Queso semicurado", "nombre": "GARCIA BAQUERO queso semicurado en lonchas envase 150 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h10/h88/11024620388382.jpg", "precio_peso": "13,33 \u20ac/Kg.", "precio": "2,00 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Queso semicurado", "nombre": "GARCIA BAQUERO queso semicurado cuna 325 gr", "imagen_src": "https://s2.dia.es/medias/productimages/h7e/hfe/10763397791774.jpg", "precio_peso": "14,92 \u20ac/Kg.", "precio": "4,85 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Queso semicurado", "nombre": "DIA EL CENCERRO queso semicurado cuna 300 gr", "imagen_src": "https://s0.dia.es/medias/h5f/h9d/10521860014110.jpg", "precio_peso": "9,50 \u20ac/Kg.", "precio": "2,85 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Queso semicurado", "nombre": "PRESIDENT crema de queso semicurado tarrina 125 gr", "imagen_src": "https://s0.dia.es/medias/productimages/h07/h13/11137061978142.jpg", "precio_peso": "15,60 \u20ac/Kg.", "precio": "1,95 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Queso semicurado", "nombre": "GARCIA BAQUERO queso semicurado ya cortado envase 250 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h7b/hb1/11152443342878.jpg", "precio_peso": "17,96 \u20ac/Kg.", "precio": "4,49 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Queso semicurado", "nombre": "DIA EL CENCERRO queso semicurado mini pieza 930 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h4f/hbd/10807400792094.jpg", "precio_peso": "9,13 \u20ac/Kg.", "precio": "8,49 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Queso semicurado", "nombre": "DIA EL CENCERRO queso semicurado cortado cuna 250 gr", "imagen_src": "https://s2.dia.es/medias/hc5/hbc/10521860341790.jpg", "precio_peso": "13,80 \u20ac/Kg.", "precio": "3,45 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Queso curado", "nombre": "DIA EL CENCERRO queso curado cuna 300 gr", "imagen_src": "https://s1.dia.es/medias/h4d/h5d/10521853788190.jpg", "precio_peso": "9,97 \u20ac/Kg.", "precio": "2,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Queso curado", "nombre": "GARCIA BAQUERO queso curado ya cortado pieza 250 g", "imagen_src": "https://s1.dia.es/medias/productimages/h98/h8b/11154646073374.jpg", "precio_peso": "19,00 \u20ac/Kg.", "precio": "4,75 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Queso curado", "nombre": "DIA EL CENCERRO queso curado cortado cuna 250 gr", "imagen_src": "https://s3.dia.es/medias/h88/h02/10521852477470.jpg", "precio_peso": "14,36 \u20ac/Kg.", "precio": "3,59 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Queso curado", "nombre": "GARCIA BAQUERO La cava barus queso curado cuna 250 gr", "imagen_src": "https://s1.dia.es/medias/h15/hd3/10801542299678.jpg", "precio_peso": "17,56 \u20ac/Kg.", "precio": "4,39 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Queso curado", "nombre": "DIA SELECCION MUNDIAL queso curado italiano pieza 200 gr", "imagen_src": "https://s0.dia.es/medias/h60/he7/10612571209758.jpg", "precio_peso": "13,95 \u20ac/Kg.", "precio": "2,79 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+],
+[
+{"query": "Queso emmental", "nombre": "DIA LACTEA queso emmental rallado bolsa 200 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h3c/hdd/10987957518366.jpg", "precio_peso": "7,75 \u20ac/Kg.", "precio": "1,55 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Queso emmental", "nombre": "DIA SELECCION MUNDIAL queso emmental pieza 250 gr", "imagen_src": "https://s0.dia.es/medias/productimages/hb9/hed/11132801482782.jpg", "precio_peso": "8,76 \u20ac/Kg.", "precio": "2,19 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Queso emmental", "nombre": "DIA SELECCION MUNDIAL queso emmental en lonchas sobre 200 gr", "imagen_src": "https://s3.dia.es/medias/he3/h99/10612573503518.jpg", "precio_peso": "10,75 \u20ac/Kg.", "precio": "2,15 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+{"query": "Queso edam", "nombre": "DIA SELECCION MUNDIAL queso edam cuna 470 gr", "imagen_src": "https://s2.dia.es/medias/productimages/hf2/h0e/10807409967134.jpg", "precio_peso": "9,26 \u20ac/Kg.", "precio": "4,35 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Queso edam", "nombre": "DIA SELECCION MUNDIAL queso edam en lonchas envase 240 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h81/hde/10976971325470.jpg", "precio_peso": "7,46 \u20ac/Kg.", "precio": "1,79 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Queso edam", "nombre": "HOLLANDIA queso edam tierno cuna (peso aprox. 300 gr)", "imagen_src": "https://s3.dia.es/medias/h44/h7c/9704956395550.jpg", "precio_peso": "10,89 \u20ac/Kg.", "precio": "3,27 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+],
+[
+],
+[
+{"query": "Cereales ", "nombre": "KELLOGGS cereales con chocolate krave caja 375 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h67/h8d/11117806682142.jpg", "precio_peso": "9,15 \u20ac/Kg.", "precio": "3,75\u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Cereales ", "nombre": "M&M'S chocolate con leche relleno de cereales crispy tableta 150 gr", "imagen_src": "https://s3.dia.es/medias/productimages/hd9/h12/10889346220062.jpg", "precio_peso": "15,93 \u20ac/Kg.", "precio": "2,39\u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Cereales ", "nombre": "EKO mezcla de cereales ecologico frasco 150 gr", "imagen_src": "https://s1.dia.es/medias/productimages/hc4/h7d/11016799551518.jpg", "precio_peso": "19,27 \u20ac/Kg.", "precio": "2,89\u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Cereales ", "nombre": "OATIBIX cereales de avena suave bolsa 500 gr", "imagen_src": "https://s1.dia.es/medias/productimages/hb8/ha7/11131478442014.jpg", "precio_peso": "3,18 \u20ac/Kg.", "precio": "1,59 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Barrita de cereales", "nombre": "KELLOGGS barrita de cereales choco krispies estuche 120 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h4e/h8b/11074841706526.jpg", "precio_peso": "22,08 \u20ac/Kg.", "precio": "2,65 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Barrita de cereales", "nombre": "CORNY barrita de cereales con chocolate con leche caja 150 gr", "imagen_src": "https://s0.dia.es/medias/h95/h69/11090923749406.jpg", "precio_peso": "13,67 \u20ac/Kg.", "precio": "2,05 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Barrita de cereales", "nombre": "LU PRINCIPE barrita de cereales y chocolate caja 125 gr", "imagen_src": "https://s1.dia.es/medias/productimages/ha1/hcb/10729832284190.jpg", "precio_peso": "18,32 \u20ac/Kg.", "precio": "2,29 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Barrita de cereales", "nombre": "NAKD barrita de cereales con arandanos caja 4 x 35 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h78/h31/11147552161822.jpg", "precio_peso": "21,79 \u20ac/Kg.", "precio": "3,05 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+],
+[
+{"query": "Pan de molde", "nombre": "PROCELI pan de molde classic SIN GLUTEN bolsa 280 gr", "imagen_src": "https://s3.dia.es/medias/productimages/hb1/h49/11148753043486.jpg", "precio_peso": "10,18 \u20ac/Kg.", "precio": "2,85 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Pan de molde", "nombre": "PROCELI pan de molde complet SIN GLUTEN envase 280 gr", "imagen_src": "https://s2.dia.es/medias/productimages/h78/hdd/11156754563102.jpg", "precio_peso": "10,68 \u20ac/Kg.", "precio": "2,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Pan de molde", "nombre": "OROWEAT pan de molde con pipas bolsa 680 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h7e/hd9/10954195206174.jpg", "precio_peso": "5,07 \u20ac/Kg.", "precio": "2,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Pan de molde", "nombre": "BIMBO pan de molde artesano bolsa 550 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h43/hb1/10683191558174.jpg", "precio_peso": "5,44 \u20ac/Kg.", "precio": "2,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Pan de molde", "nombre": "BIMBO pan de molde blanco grande bolsa 375 gr", "imagen_src": "https://s0.dia.es/medias/productimages/hf8/h75/10954056269854.jpg", "precio_peso": "3,97 \u20ac/Kg.", "precio": "1,49 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Pan de molde", "nombre": "BIMBO pan de molde formato familiar bolsa 700 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h26/h0b/11137042841630.jpg", "precio_peso": "3,56 \u20ac/Kg.", "precio": "2,49 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Pan de molde", "nombre": "BIMBO pan de molde blanco sin corteza bolsa 450 gr", "imagen_src": "https://s1.dia.es/medias/productimages/ha9/h1b/11137040154654.jpg", "precio_peso": "5,53 \u20ac/Kg.", "precio": "2,49 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Pan de molde", "nombre": "BIMBO pan de molde natural 100% bolsa 460 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h12/ha6/10964634173470.jpg", "precio_peso": "5,63 \u20ac/Kg.", "precio": "2,59 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Pan de molde", "nombre": "BIMBO pan de molde natural sin corteza bolsa 450 gr", "imagen_src": "https://s0.dia.es/medias/productimages/h4e/hf4/11119015690270.jpg", "precio_peso": "6,64 \u20ac/Kg.", "precio": "2,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Pan de molde", "nombre": "EL MOLINO DE DIA pan de molde blanco bolsa 460 gr", "imagen_src": "https://s0.dia.es/medias/h5f/hcf/10567200374814.jpg", "precio_peso": "1,96 \u20ac/Kg.", "precio": "0,90 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Pan de molde", "nombre": "EL MOLINO DE DIA pan de molde rustico bolsa 500 gr", "imagen_src": "https://s0.dia.es/medias/hac/h4b/10567202078750.jpg", "precio_peso": "3,60 \u20ac/Kg.", "precio": "1,80 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+{"query": "Arroz", "nombre": "SOS arroz redondo paquete 1 Kg", "imagen_src": "https://s1.dia.es/medias/productimages/hda/h84/10676834664478.jpg", "precio_peso": "1,69 \u20ac/Kg.", "precio": "1,69 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Arroz", "nombre": "BRILLANTE arroz vaporizado caja 1 Kg", "imagen_src": "https://s3.dia.es/medias/productimages/h9e/hcc/10683766112286.jpg", "precio_peso": "1,89 \u20ac/Kg.", "precio": "1,89 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Arroz", "nombre": "BRILLANTE arroz redondo sabroz paquete 1 Kg", "imagen_src": "https://s1.dia.es/medias/productimages/hb5/h16/10683767095326.jpg", "precio_peso": "1,89 \u20ac/Kg.", "precio": "1,89 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Arroz", "nombre": "DIA ARROZONA arroz integral paquete 1 Kg", "imagen_src": "https://s1.dia.es/medias/productimages/hd3/ha2/10715576533022.jpg", "precio_peso": "1,60 \u20ac/Kg.", "precio": "1,60 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Arroz", "nombre": "DIA ARROZONA arroz extra paquete 1 Kg", "imagen_src": "https://s3.dia.es/medias/productimages/h56/h1c/10979307126814.jpg", "precio_peso": "1,04 \u20ac/Kg.", "precio": "1,04 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Arroz", "nombre": "DIA ARROZONA arroz bomba paquete 1 Kg", "imagen_src": "https://s0.dia.es/medias/productimages/h12/ha2/10869831270430.jpg", "precio_peso": "2,75 \u20ac/Kg.", "precio": "2,75 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Arroz", "nombre": "DIA ARROZONA arroz vaporizado paquete 1 Kg", "imagen_src": "https://s2.dia.es/medias/productimages/h08/h44/10728916910110.jpg", "precio_peso": "1,47 \u20ac/Kg.", "precio": "1,47 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Arroz", "nombre": "DIA arroz redondo vaso 2 x 125 gr", "imagen_src": "https://s1.dia.es/medias/h91/hfd/9526618226718.jpg", "precio_peso": "4,60 \u20ac/Kg.", "precio": "1,15 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Arroz", "nombre": "DIA ARROZONA arroz largo de 1a categoria paquete 1 Kg", "imagen_src": "https://s0.dia.es/medias/productimages/h94/h9d/10759164133406.jpg", "precio_peso": "1,08 \u20ac/Kg.", "precio": "1,08 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Arroz", "nombre": "DIA SELECCION MUNDIAL arroz basmati paquete 1 Kg", "imagen_src": "https://s3.dia.es/medias/productimages/h99/hb3/10815705808926.jpg", "precio_peso": "2,25 \u20ac/Kg.", "precio": "2,25 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Arroz", "nombre": "DIA SELECCION MUNDIAL arroz risotto paquete 1 kg", "imagen_src": "https://s2.dia.es/medias/productimages/h8c/h33/10807412326430.jpg", "precio_peso": "2,29 \u20ac/Kg.", "precio": "2,29 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Harina de trigo", "nombre": "DIA harina de trigo paquete 1 Kg", "imagen_src": "https://s3.dia.es/medias/h51/h5e/10492524527646.jpg", "precio_peso": "0,77 \u20ac/Kg.", "precio": "0,77 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Harina de trigo", "nombre": "GALLO harina de trigo paquete 1 Kg", "imagen_src": "https://s1.dia.es/medias/productimages/hbd/h7f/10840155652126.jpg", "precio_peso": "1,49 \u20ac/Kg.", "precio": "1,49 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Harina de trigo", "nombre": "GALLO harina de trigo reposteria 1 Kg", "imagen_src": "https://s2.dia.es/medias/productimages/h53/hcf/10840155324446.jpg", "precio_peso": "1,75 \u20ac/Kg.", "precio": "1,75 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+],
+[
+],
+[
+{"query": "Pasta", "nombre": "COLGATE Total pasta dentifrica original tubo 75 ml", "imagen_src": "https://s3.dia.es/medias/productimages/h9a/h9c/10996214923294.jpg", "precio_peso": "36,67 \u20ac/l.", "precio": "2,75 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Pasta", "nombre": "COLGATE Total pasta dentifrica blanqueador tubo 75 ml", "imagen_src": "https://s0.dia.es/medias/productimages/hfe/hb9/10996217217054.jpg", "precio_peso": "35,87 \u20ac/l.", "precio": "2,69 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Pasta", "nombre": "COLGATE pasta dentifrica max white ultra tubo 50 ml", "imagen_src": "https://s0.dia.es/medias/productimages/hf0/h2c/11167589990430.jpg", "precio_peso": "111,80 \u20ac/l.", "precio": "5,59 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Pasta", "nombre": "GALLO pasta fresca con jamon iberico bolsa 250 gr", "imagen_src": "https://s0.dia.es/medias/productimages/h27/hb7/10886789529630.jpg", "precio_peso": "11,88 \u20ac/Kg.", "precio": "2,97 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Pasta", "nombre": "GALLO pasta fresca con setas del bosque bolsa 250 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h6e/hf5/10886798376990.jpg", "precio_peso": "11,88 \u20ac/Kg.", "precio": "2,97 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Pasta", "nombre": "GALLO pasta fresca con ternera gallega bolsa 250 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h6f/h69/10889350217758.jpg", "precio_peso": "11,88 \u20ac/Kg.", "precio": "2,97 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Pasta", "nombre": "BARILLA pasta penne rigate caja 500 gr", "imagen_src": "https://s0.dia.es/medias/h2d/h0d/11168723927070.jpg", "precio_peso": "3,98 \u20ac/Kg.", "precio": "1,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Pasta", "nombre": "DIA AL DIANTE pasta de tiburones paquete 500 gr", "imagen_src": "https://s2.dia.es/medias/productimages/h30/hfa/10753565327390.jpg", "precio_peso": "1,58 \u20ac/Kg.", "precio": "0,79 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Pasta", "nombre": "GALLO pasta plumas rayadas paquete 450 gr", "imagen_src": "https://s2.dia.es/medias/productimages/h20/h7d/10681677807646.jpg", "precio_peso": "3,22 \u20ac/Kg.", "precio": "1,45 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Cacao en polvo", "nombre": "DIA cacao en polvo bolsa 400 gr", "imagen_src": "https://s0.dia.es/medias/h3b/h79/9582212612126.jpg", "precio_peso": "3,88 \u20ac/Kg.", "precio": "1,55 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Cacao en polvo", "nombre": "DR OETKER cacao en polvo especial reposteria caja 100 gr", "imagen_src": "https://s2.dia.es/medias/productimages/haa/he5/11030604480542.jpg", "precio_peso": "23,90 \u20ac/Kg.", "precio": "2,39 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+{"query": "Chocolate blanco", "nombre": "MILKYBAR chocolate blanco tableta 100 gr", "imagen_src": "https://s3.dia.es/medias/productimages/hc5/h02/11015374569502.jpg", "precio_peso": "12,90 \u20ac/Kg.", "precio": "1,29 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Chocolate blanco", "nombre": "HUESITOS chocolate blanco tableta 125 gr", "imagen_src": "https://s3.dia.es/medias/productimages/hd2/h01/11035752071198.jpg", "precio_peso": "12,72 \u20ac/Kg.", "precio": "1,59 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Chocolate blanco", "nombre": "LACASITOS chocolate blanco con lacasitos tableta 100 gr", "imagen_src": "https://s3.dia.es/medias/productimages/hf6/ha9/10676577959966.jpg", "precio_peso": "14,50 \u20ac/Kg.", "precio": "1,45 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Chocolate blanco", "nombre": "DIA TEMPTATION chocolate blanco tableta 2 x 100 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h83/h8f/10997667495966.jpg", "precio_peso": "6,25 \u20ac/Kg.", "precio": "1,25 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Chocolate blanco", "nombre": "KIT KAT chocolatina chocolate blanco 41,5 gr", "imagen_src": "https://s3.dia.es/medias/productimages/hf4/h09/11167505973278.jpg", "precio_peso": "30,71 \u20ac/Kg.", "precio": "1,29 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Chocolate blanco", "nombre": "KINDER Bueno white chocolate blanco 45 gr", "imagen_src": "https://s3.dia.es/medias/hf1/h80/10811620786206.jpg", "precio_peso": "30,89 \u20ac/Kg.", "precio": "1,39 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Chocolate blanco", "nombre": "NESTLE chocolate blanco postres tableta 180 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h7e/hed/11015386365982.jpg", "precio_peso": "13,28 \u20ac/Kg.", "precio": "2,39 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Chocolate blanco", "nombre": "FILIPINOS roscos de galleta con chocolate blanco paquete 128 gr", "imagen_src": "https://s2.dia.es/medias/productimages/h03/h77/11162764115998.jpg", "precio_peso": "12 903,23 \u20ac/Kg.", "precio": "1,20 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Chocolate blanco", "nombre": "DIA GALLETECA chocoaros de chocolate blanco paquete 150 gr", "imagen_src": "https://s0.dia.es/medias/productimages/hc0/h08/10746267729950.jpg", "precio_peso": "5,00 \u20ac/Kg.", "precio": "0,75 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+],
+[
+{"query": "Kit-Kat", "nombre": "NESTLE bicompartidos KIT-KAT pack 2 x 115 gr", "imagen_src": "https://s3.dia.es/medias/h83/h3b/10453083553822.jpg", "precio_peso": "7,23 \u20ac/Kg.", "precio": "1,85 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Bizcocho", "nombre": "DIA GALLETECA bizcochos con huevo paquete 400 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h98/h3d/10752351600670.jpg", "precio_peso": "3,62 \u20ac/Kg.", "precio": "1,45 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Bizcocho", "nombre": "LA FILO bizcocho soletilla paquete 300 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h4f/hf9/11128878202910.jpg", "precio_peso": "5,17 \u20ac/Kg.", "precio": "1,55 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Bizcocho", "nombre": "BLANCO bizcocho con yogur envase 360 gr", "imagen_src": "https://s0.dia.es/medias/productimages/hff/h6c/11041015136286.jpg", "precio_peso": "6,08 \u20ac/Kg.", "precio": "2,19 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Bizcocho", "nombre": "TUESTA bizcocho de mantequilla envase 400 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h4f/h6f/11077357305886.jpg", "precio_peso": "4,88 \u20ac/Kg.", "precio": "1,95 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Bizcocho", "nombre": "TUESTA bizcocho de marmol envase 400 gr", "imagen_src": "https://s2.dia.es/medias/productimages/he4/had/11077356978206.jpg", "precio_peso": "4,38 \u20ac/Kg.", "precio": "1,75 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Bizcocho", "nombre": "EL MOLINO DE DIA bizcocho de limon envase 350 gr", "imagen_src": "https://s2.dia.es/medias/productimages/hfe/h4e/11167475990558.jpg", "precio_peso": "6,43 \u20ac/Kg.", "precio": "2,25 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Bizcocho", "nombre": "LA BELLA EASO bizcocho con limon paquete 230 gr", "imagen_src": "https://s2.dia.es/medias/productimages/hef/had/10701571883038.jpg", "precio_peso": "10,83 \u20ac/Kg.", "precio": "2,49 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Bizcocho", "nombre": "EL MOLINO DE DIA bizcocho clasico bolsa 300 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h93/h9e/11167475662878.jpg", "precio_peso": "6,67 \u20ac/Kg.", "precio": "2,00 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Bizcocho", "nombre": "EL MOLINO DE DIA bizcocho con pepitas de chocolate envase 350 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h12/ha3/11167476318238.jpg", "precio_peso": "6,43 \u20ac/Kg.", "precio": "2,25 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Bizcocho", "nombre": "EL MOLINO DE DIA bizcocho de naranja con chocolate envase 350 gr", "imagen_src": "https://s0.dia.es/medias/productimages/h5a/ha2/11146282336286.jpg", "precio_peso": "6,43 \u20ac/Kg.", "precio": "2,25 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Bizcocho", "nombre": "FONTANEDA OSITO LULU bizcocho rellenas de chocolate paquete 150 gr", "imagen_src": "https://s0.dia.es/medias/productimages/h85/h05/10683670102046.jpg", "precio_peso": "11,33 \u20ac/Kg.", "precio": "1,70 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Croissant", "nombre": "Croissant de mantequilla 54 gr PACK 6", "imagen_src": "https://s2.dia.es/medias/productimages/he6/hd8/10738282397726.jpg", "precio_peso": "7,22 \u20ac/Kg.", "precio": "2,34 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Croissant", "nombre": "EL MOLINO DE DIA croissants bolsa 450 gr", "imagen_src": "https://s0.dia.es/medias/productimages/h9a/h17/11146260381726.jpg", "precio_peso": "5,09 \u20ac/Kg.", "precio": "2,29 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Croissant", "nombre": "EL MOLINO DE DIA croissants rellenos de cacao bolsa 360 gr", "imagen_src": "https://s0.dia.es/medias/productimages/h95/h46/11146260054046.jpg", "precio_peso": "6,36 \u20ac/Kg.", "precio": "2,29 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Croissant", "nombre": "DULCESOL croissants rellenos de cacao paquete 3 uds 135 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h61/hff/11154596724766.jpg", "precio_peso": "5,56 \u20ac/Kg.", "precio": "1,00 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Croissant", "nombre": "DULCESOL croissants rellenos de crema de leche y avellanas paquete 294 gr", "imagen_src": "https://s0.dia.es/medias/productimages/h8a/h8c/10932951318558.jpg", "precio_peso": "6,97 \u20ac/Kg.", "precio": "2,05 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Croissant", "nombre": "LA BELLA EASO croissants de crema al cacao bolsa 9 uds 378 gr", "imagen_src": "https://s3.dia.es/medias/productimages/he7/h54/11013695701022.jpg", "precio_peso": "7,91 \u20ac/Kg.", "precio": "2,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Ensaimada ", "nombre": "EL MOLINO DE DIA ensaimadas bolsa 220 gr", "imagen_src": "https://s0.dia.es/medias/productimages/h91/h8a/11146259726366.jpg", "precio_peso": "5,68 \u20ac/Kg.", "precio": "1,25 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+{"query": "Magdalena ", "nombre": "LA ABUELA magdalenas bolsa 496 gr", "imagen_src": "https://s2.dia.es/medias/h7e/h2f/8898085290014.jpg", "precio_peso": "6,03 \u20ac/Kg.", "precio": "2,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Magdalena ", "nombre": "DULCESOL magdalena valenciana bolsa 350 gr", "imagen_src": "https://s3.dia.es/medias/h19/hbe/10341803851806.jpg", "precio_peso": "5,40 \u20ac/Kg.", "precio": "1,89 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Magdalena ", "nombre": "ARENAS magdalenas concha bolsa 300 gr", "imagen_src": "https://s2.dia.es/medias/productimages/h6e/h01/10683328593950.jpg", "precio_peso": "4,97 \u20ac/Kg.", "precio": "1,49 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Magdalena ", "nombre": "LA ABUELA magdalenas con mantequilla bolsa 450 gr", "imagen_src": "https://s3.dia.es/medias/hff/he5/9076090241054.jpg", "precio_peso": "5,98 \u20ac/Kg.", "precio": "2,69 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Magdalena ", "nombre": "EL MOLINO DE DIA magdalenas valencianas bolsa 350 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h07/h79/10814288003102.jpg", "precio_peso": "4,26 \u20ac/Kg.", "precio": "1,49 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Magdalena ", "nombre": "LA BELLA EASO magdalenas bolsa 10 uds 290 gr", "imagen_src": "https://s1.dia.es/medias/productimages/hfa/hd1/11107055173662.jpg", "precio_peso": "8,53 \u20ac/Kg.", "precio": "2,49 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Magdalena ", "nombre": "EL MOLINO DE DIA magdalenas clasicas individuales bolsa 615 gr", "imagen_src": "https://s2.dia.es/medias/productimages/h0a/h72/11062175072286.jpg", "precio_peso": "4,21 \u20ac/Kg.", "precio": "2,59 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Magdalena ", "nombre": "EL MOLINO DE DIA magdalenas cuadradas individuales bolsa 350 gr", "imagen_src": "https://s3.dia.es/medias/productimages/hb7/hcd/11139412197406.jpg", "precio_peso": "4,71 \u20ac/Kg.", "precio": "1,65 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Magdalena ", "nombre": "LA BELLA EASO magdalenas 0% azucares bolsa 232 gr", "imagen_src": "https://s2.dia.es/medias/productimages/h41/hdc/10956950372382.jpg", "precio_peso": "12,89 \u20ac/Kg.", "precio": "2,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Magdalena ", "nombre": "BISCUITS GALICIA mini magdalenas con chocolate bolsa 180 gr", "imagen_src": "https://s0.dia.es/medias/productimages/h20/h12/11113898147870.jpg", "precio_peso": "7,17 \u20ac/Kg.", "precio": "1,29 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Magdalena ", "nombre": "BISCUITS GALICIA mini magdalenas con mantequilla bolsa 180 gr", "imagen_src": "https://s0.dia.es/medias/productimages/hf1/h06/11113899786270.jpg", "precio_peso": "7,17 \u20ac/Kg.", "precio": "1,29 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+{"query": "Rosquilletas", "nombre": "ALBA rosquilletas con pipas bolsa 70 gr", "imagen_src": "https://s3.dia.es/medias/productimages/hb3/hf4/11123766919198.jpg", "precio_peso": "13,86 \u20ac/Kg.", "precio": "0,97 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Bacalao", "nombre": "DIA MARI MARINERA bacalao desmigado desalado MSC bandeja 250 gr", "imagen_src": "https://s0.dia.es/medias/productimages/hcb/h31/11139419734046.jpg", "precio_peso": "18,36 \u20ac/Kg.", "precio": "4,59 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Bacalao", "nombre": "DIA SELECCION MUNDIAL fileton bacalao salado MSC envase 700 gr", "imagen_src": "https://s3.dia.es/medias/productimages/heb/h5e/10807407345694.jpg", "precio_peso": "15,56 \u20ac/Kg.", "precio": "10,89 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Bacalao", "nombre": "DIA MARI MARINERA bacalao desmigado salado MSC envase 250 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h63/h01/11060769030174.jpg", "precio_peso": "19,56 \u20ac/Kg.", "precio": "4,89 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Bacalao", "nombre": "EL MOLINO DE DIA empanada de bacalao 550 gr", "imagen_src": "https://s0.dia.es/medias/hb8/h78/10147385704478.jpg", "precio_peso": "6,09 \u20ac/Kg.", "precio": "3,35 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Bacalao", "nombre": "PESCANOVA filete de bacalao envase 400 gr", "imagen_src": "https://s2.dia.es/medias/productimages/h35/h53/10711490232350.jpg", "precio_peso": "18,73 \u20ac/Kg.", "precio": "7,49 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Bacalao", "nombre": "NUCHAR bacalao ahumado envase 80 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h0d/h56/10881619197982.jpg", "precio_peso": "37,38 \u20ac/Kg.", "precio": "2,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Bacalao", "nombre": "DIMAR lomos de bacalao sin piel envase 300 gr", "imagen_src": "https://s3.dia.es/medias/productimages/hd5/h38/10925950369822.jpg", "precio_peso": "19,30 \u20ac/Kg.", "precio": "5,79 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Bacalao", "nombre": "FRISA pimientos del piquillo rellenos de bacalao envase 135 gr", "imagen_src": "https://s2.dia.es/medias/productimages/h37/h49/11162492207134.jpg", "precio_peso": "9,56 \u20ac/Kg.", "precio": "1,29 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Bacalao", "nombre": "DIA MARI MARINERA filetes de bacalao MSC envase 400 gr", "imagen_src": "https://s2.dia.es/medias/productimages/ha7/h8c/11013694783518.jpg", "precio_peso": "11,23 \u20ac/Kg.", "precio": "4,49 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Bacalao", "nombre": "AR-T MORHUA porciones de bacalao sin piel bolsa 500 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h8d/h7d/11016742928414.jpg", "precio_peso": "13,98 \u20ac/Kg.", "precio": "6,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Bacalao", "nombre": "Filete de bacalao con piel, limpio y sin espinas unidad (peso aprox. 500 gr)", "imagen_src": "https://s3.dia.es/medias/h4f/h26/10628029906974.jpg", "precio_peso": "13,49 \u20ac/Kg.", "precio": "6,75 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Lenguado", "nombre": "HERO Baby crema de bechamel con lenguado tarrito 235 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h2d/ha7/10991527755806.jpg", "precio_peso": "6,17 \u20ac/Kg.", "precio": "1,45 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Lubina", "nombre": "Lubina de cultivo limpia y entera unidad (peso aprox. 750 gr)", "imagen_src": "https://s3.dia.es/medias/h98/h31/10633085419550.jpg", "precio_peso": "8,99 \u20ac/Kg.", "precio": "6,74 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Merluza", "nombre": "PESCANOVA varitas de merluza 450 gr", "imagen_src": "https://s0.dia.es/medias/h41/h9a/10755891298334.jpg", "precio_peso": "6,64 \u20ac/Kg.", "precio": "2,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Merluza", "nombre": "Merluza de pincho limpia en filetes (peso aprox. 2.1 Kg)", "imagen_src": "https://s1.dia.es/medias/hfe/h2e/10633086402590.jpg", "precio_peso": "8,99 \u20ac/Kg.", "precio": "18,88 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Merluza", "nombre": "PESCANOVA merluza rebozada al huevo 320 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h88/h16/10681554993182.jpg", "precio_peso": "11,84 \u20ac/Kg.", "precio": "3,79 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Merluza", "nombre": "PESCANOVA corazones de merluza caja 500 gr", "imagen_src": "https://s1.dia.es/medias/productimages/hab/h7e/10943950520350.jpg", "precio_peso": "10,98 \u20ac/Kg.", "precio": "5,49 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Merluza", "nombre": "PESCANOVA lomos de merluza caja 360 gr", "imagen_src": "https://s2.dia.es/medias/productimages/had/hcd/10939358969886.jpg", "precio_peso": "14,58 \u20ac/Kg.", "precio": "5,25 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Merluza", "nombre": "PESCANOVA surfers de merluza rebozada caja 400 gr", "imagen_src": "https://s1.dia.es/medias/productimages/hb9/h66/11147555438622.jpg", "precio_peso": "8,38 \u20ac/Kg.", "precio": "3,35 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Merluza", "nombre": "PESCANOVA filetes de merluza baby bolsa 400 gr", "imagen_src": "https://s2.dia.es/medias/productimages/hef/hbb/11156693286942.jpg", "precio_peso": "10,73 \u20ac/Kg.", "precio": "4,29 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Merluza", "nombre": "HERO verduritas con merluza tarrito 2 x 235 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h28/hd1/11107058450462.jpg", "precio_peso": "6,28 \u20ac/Kg.", "precio": "2,95 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Merluza", "nombre": "DIA MARI MARINERA varitas de merluza MSC caja 300 gr", "imagen_src": "https://s2.dia.es/medias/productimages/h06/h68/10978733391902.jpg", "precio_peso": "6,17 \u20ac/Kg.", "precio": "1,85 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Merluza", "nombre": "DIA MARI MARINERA merluza rebozada al huevo MSC caja 340 gr", "imagen_src": "https://s0.dia.es/medias/productimages/hed/h46/10807426613278.jpg", "precio_peso": "7,62 \u20ac/Kg.", "precio": "2,59 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Merluza", "nombre": "DIA MARI MARINERA rodajas de merluza del Cabo MSC bolsa 550 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h72/h7f/10807422615582.jpg", "precio_peso": "7,25 \u20ac/Kg.", "precio": "3,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Rape", "nombre": "FANDICOSTA cola de rape congelada bolsa ( peso aprox. 500 gr)", "imagen_src": "https://s2.dia.es/medias/productimages/haf/hf2/10997684469790.jpg", "precio_peso": "15,95 \u20ac/Kg.", "precio": "7,98 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+],
+[
+],
+[
+],
+[
+{"query": "Trucha", "nombre": "DIA MARI MARINERA trucha ahumada envase 100 gr", "imagen_src": "https://s2.dia.es/medias/h7e/h95/10523400798238.jpg", "precio_peso": "30,90 \u20ac/Kg.", "precio": "3,09 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Trucha", "nombre": "AS pate para gatos rico en salmon con trucha tarro 100 gr", "imagen_src": "https://s0.dia.es/medias/ha6/h0d/9104424501278.jpg", "precio_peso": "5,90 \u20ac/Kg.", "precio": "0,59 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Trucha", "nombre": "ULTIMA alimento para gatos esterilizados anti bolas de pelo con trucha 1.5 Kg", "imagen_src": "https://s2.dia.es/medias/productimages/he0/hc1/10879370788894.jpg", "precio_peso": "5,86 \u20ac/Kg.", "precio": "8,79 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Trucha", "nombre": "ULTIMA Nature alimento para gatos con salmon y trucha bolsa 4 x 85 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h42/h87/10879371116574.jpg", "precio_peso": "11,03 \u20ac/Kg.", "precio": "3,75 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Trucha", "nombre": "GOURMET Mon petit alimento para gatos con atun/salmon/trucha caja 6 x 50 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h05/hde/11072167182366.jpg", "precio_peso": "9,63 \u20ac/Kg.", "precio": "2,89 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Sardina", "nombre": "ALBO sardinas picantonas lata 85 gr", "imagen_src": "https://s2.dia.es/medias/h32/h25/10387952009246.jpg", "precio_peso": "22,24 \u20ac/Kg.", "precio": "1,89 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Sardina", "nombre": "CUCA sardinas en tomate lata 80 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h17/h3e/11119008153630.jpg", "precio_peso": "26,25 \u20ac/Kg.", "precio": "2,10 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Sardina", "nombre": "CUCA sardinas en aceite de oliva lata 85 gr", "imagen_src": "https://s0.dia.es/medias/productimages/he6/ha9/10733899776030.jpg", "precio_peso": "28,12 \u20ac/Kg.", "precio": "2,39 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Sardina", "nombre": "ALBO sardinas en aceite de oliva lata 85 gr", "imagen_src": "https://s1.dia.es/medias/h83/h46/8834783379486.png", "precio_peso": "22,24 \u20ac/Kg.", "precio": "1,89 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Sardina", "nombre": "DIA MARI MARINERA sardinas picantonas lata 82 gr", "imagen_src": "https://s0.dia.es/medias/h86/h31/10689541373982.jpg", "precio_peso": "13,10 \u20ac/Kg.", "precio": "1,10 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Sardina", "nombre": "LA PIARA pate de sardina pack 2 latas 150 gr", "imagen_src": "https://s1.dia.es/medias/productimages/hdf/hcd/10902614769694.jpg", "precio_peso": "24,60 \u20ac/Kg.", "precio": "3,69 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Sardina", "nombre": "RIANXEIRA sardinas en aceite de oliva ECO lata 57 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h22/h43/11109922701342.jpg", "precio_peso": "28,95 \u20ac/Kg.", "precio": "1,65 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Sardina", "nombre": "KIELE Anchodina lomos de sardinas en salazon envase 70 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h2c/h9d/11000311644190.jpg", "precio_peso": "42,71 \u20ac/Kg.", "precio": "2,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Sardina", "nombre": "DIA MARI MARINERA sardinas en aceite de girasol lata 85 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h89/h17/10797287178270.jpg", "precio_peso": "10,00 \u20ac/Kg.", "precio": "0,85 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Sardina", "nombre": "DIA MARI MARINERA sardinas en aceite de girasol pack 2 latas 82 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h42/h17/10807426940958.jpg", "precio_peso": "8,24 \u20ac/Kg.", "precio": "1,45 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Surimi", "nombre": "KRISSIA surimi fresco rallado envase 125 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h77/h5b/10995927908382.jpg", "precio_peso": "16,72 \u20ac/Kg.", "precio": "2,09 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Surimi", "nombre": "KRISSIA palitos de surimi paquete 12 uds 180 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h80/h73/11127801675806.jpg", "precio_peso": "15,50 \u20ac/Kg.", "precio": "2,79 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Surimi", "nombre": "DIA MARI MARINERA palitos de surimi refrigeradas MSC paquete 300 gr", "imagen_src": "https://s3.dia.es/medias/h73/h5b/10521863946270.jpg", "precio_peso": "6,17 \u20ac/Kg.", "precio": "1,85 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Surimi", "nombre": "DIA MARI MARINERA palitos de surimi ultracongelados MSC envase 450 gr", "imagen_src": "https://s3.dia.es/medias/h09/hab/10521863618590.jpg", "precio_peso": "4,20 \u20ac/Kg.", "precio": "1,89 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+],
+[
+],
+[
+],
+[
+{"query": "Calamar", "nombre": "DIA calamar troceado bolsa 450 gr", "imagen_src": "https://s1.dia.es/medias/hae/hb5/8894353702942.png", "precio_peso": "9,76 \u20ac/Kg.", "precio": "4,39 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Calamar", "nombre": "PESCANOVA calamar limpio envase 400 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h24/h5e/10681534349342.jpg", "precio_peso": "13,88 \u20ac/Kg.", "precio": "5,55 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Calamar", "nombre": "NORTINDAL pack tinta de calamar 4 unidades 4 gr", "imagen_src": "https://s3.dia.es/medias/h18/he7/10324976861214.jpg", "precio_peso": "46,88 \u20ac/Kg.", "precio": "0,75 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Calamar", "nombre": "LA MOLISANA espaguetis con tinta de calamar paquete 500 gr", "imagen_src": "https://s3.dia.es/medias/productimages/hba/h3c/11139440443422.jpg", "precio_peso": "7,70 \u20ac/Kg.", "precio": "3,85 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Calamar", "nombre": "DIA AL PUNTO arroz negro con calamar y gambas bolsa 600 gr", "imagen_src": "https://s0.dia.es/medias/productimages/he8/h62/10989685997598.jpg", "precio_peso": "4,48 \u20ac/Kg.", "precio": "2,69 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Calamar", "nombre": "DIA MARI MARINERA anillas de calamar a la romana bolsa 400 gr", "imagen_src": "https://s3.dia.es/medias/productimages/hed/hbd/10807417962526.jpg", "precio_peso": "8,98 \u20ac/Kg.", "precio": "3,59 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Calamar", "nombre": "ALBO calamares en su tinta lata 72 gr", "imagen_src": "https://s3.dia.es/medias/h90/hf4/10387948732446.jpg", "precio_peso": "34,03 \u20ac/Kg.", "precio": "2,45 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Calamar", "nombre": "CUCA calamares en su tinta lata 72 gr", "imagen_src": "https://s3.dia.es/medias/productimages/hec/h39/10902648979486.jpg", "precio_peso": "40,97 \u20ac/Kg.", "precio": "2,95 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Calamar", "nombre": "ALBO trozos de calamares en salsa americana lata 72 gr", "imagen_src": "https://s3.dia.es/medias/ha3/h88/8816200515614.png", "precio_peso": "34,03 \u20ac/Kg.", "precio": "2,45 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Calamar", "nombre": "CABO DE PENAS calamares en salsa americana pack 3 latas 59 gr", "imagen_src": "https://s0.dia.es/medias/productimages/h49/he6/10955494785054.jpg", "precio_peso": "12,71 \u20ac/Kg.", "precio": "2,25 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+{"query": "Sepia", "nombre": "Sepia mediana limpia y entera unidad (peso aprox. 850 gr)", "imagen_src": "https://s0.dia.es/medias/hd8/haa/10628030234654.jpg", "precio_peso": "9,99 \u20ac/Kg.", "precio": "8,49 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Sepia", "nombre": "ALIGATOR sepia limpia bandeja 350 gr", "imagen_src": "https://s0.dia.es/medias/productimages/h93/h26/10999007576094.jpg", "precio_peso": "16,83 \u20ac/Kg.", "precio": "5,89 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Sepia", "nombre": "DANI trozos de sepia en salsa americana lata 68 gr", "imagen_src": "https://s3.dia.es/medias/productimages/h41/h2a/10972913598494.jpg", "precio_peso": "38,09 \u20ac/Kg.", "precio": "2,59 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+{"query": "Lomo de cerdo", "nombre": "Lomo de cerdo extra al ajillo bandeja 300 gr", "imagen_src": "https://s2.dia.es/medias/hee/h86/8834435579934.png", "precio_peso": "7,50 \u20ac/Kg.", "precio": "2,25 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Lomo de cerdo", "nombre": "SELECCION DE DIA chuleta de lomo de cerdo bandeja 600 gr", "imagen_src": "https://s0.dia.es/medias/productimages/h36/h69/10753560018974.jpg", "precio_peso": "5,48 \u20ac/Kg.", "precio": "3,29 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Lomo de cerdo", "nombre": "SELECCION DE DIA filetes de cinta de lomo de cerdo bandeja 400 gr", "imagen_src": "https://s1.dia.es/medias/productimages/h08/h7b/10757107286046.jpg", "precio_peso": "7,23 \u20ac/Kg.", "precio": "2,89 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Lomo de cerdo", "nombre": "ELPOZO escalopin de lomo de cerdo marinado extratierno bandeja 600 gr", "imagen_src": "https://s1.dia.es/medias/productimages/ha9/h35/11013792137246.jpg", "precio_peso": "6,65 \u20ac/Kg.", "precio": "3,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Lomo de cerdo", "nombre": "SELECCION DE DIA filetes de cabeza de lomo de cerdo (peso aprox. 650 gr)", "imagen_src": "https://s2.dia.es/medias/productimages/h04/h30/10753569194014.jpg", "precio_peso": "5,99 \u20ac/Kg.", "precio": "3,89 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Lomo de cerdo", "nombre": "SELECCION DE DIA cinta de lomo de cerdo en trozo (peso aprox. 1.4 Kg)", "imagen_src": "https://s1.dia.es/medias/productimages/hcf/h37/10753570832414.jpg", "precio_peso": "4,59 \u20ac/Kg.", "precio": "6,43 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Solomillo de cerdo", "nombre": "SELECCION DE DIA solomillo de cerdo (peso aprox. 800 gr)", "imagen_src": "https://s3.dia.es/medias/productimages/h3f/h3a/10753566244894.jpg", "precio_peso": "6,99 \u20ac/Kg.", "precio": "5,59 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+{"query": "Costilla de cerdo", "nombre": "SELECCION DE DIA tira de costilla de cerdo a las finas hierbas (peso aprox. 1.5 Kg)", "imagen_src": "https://s3.dia.es/medias/productimages/h28/h96/11033678610462.jpg", "precio_peso": "7,49 \u20ac/Kg.", "precio": "11,24 \u20ac", "oferta": "", "supermercado": "Dia"},
+{"query": "Costilla de cerdo", "nombre": "SELECCION DE DIA Tira de costilla de cerdo envasada al vacio (peso aprox. 1.25 kg)", "imagen_src": "https://s0.dia.es/medias/productimages/h81/h42/11011935141918.jpg", "precio_peso": "6,39 \u20ac/Kg.", "precio": "7,99 \u20ac", "oferta": "", "supermercado": "Dia"},
+],
+[
+],
+[
+],
+[
+],
+[
+],
+[
+],
