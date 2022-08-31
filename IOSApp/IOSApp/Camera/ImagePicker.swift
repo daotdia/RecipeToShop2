@@ -2,7 +2,7 @@
 //  ImagePicker.swift
 //  IOSApp
 //
-//  Created by Irene Otero Díaz on 14/8/22.
+//  Created by David Otero Diaz on 14/8/22.
 //  Copyright © 2022 orgName. All rights reserved.
 //
 

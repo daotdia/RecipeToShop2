@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1AEA9141FB49409B88476B8C /* Pods_IOSApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E190484EDE338C7DD999A1 /* Pods_IOSApp.framework */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
-		7555FF83242A565900829871 /* Scafold.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* Scafold.swift */; };
 		EE0A788228734FAA00040B05 /* AlimentosList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0A788128734FAA00040B05 /* AlimentosList.swift */; };
 		EE2F948828A5814C00C95CC4 /* ParseKotlinArrayToArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2F948728A5814C00C95CC4 /* ParseKotlinArrayToArray.swift */; };
 		EE2F949028A5893A00C95CC4 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2F948F28A5893A00C95CC4 /* FrameView.swift */; };
@@ -63,7 +62,6 @@
 		03DCBE396C0FC698E08348FD /* Pods-IOSApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSApp.debug.xcconfig"; path = "Target Support Files/Pods-IOSApp/Pods-IOSApp.debug.xcconfig"; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* IOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7555FF82242A565900829871 /* Scafold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scafold.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		954AD292CDE2DF69A9702E41 /* Pods-IOSApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSApp.release.xcconfig"; path = "Target Support Files/Pods-IOSApp/Pods-IOSApp.release.xcconfig"; sourceTree = "<group>"; };
 		C1E190484EDE338C7DD999A1 /* Pods_IOSApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOSApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,14 +226,6 @@
 			path = Presentation;
 			sourceTree = "<group>";
 		};
-		EE94AD18282982B1009087A7 /* Arquitectura */ = {
-			isa = PBXGroup;
-			children = (
-				7555FF82242A565900829871 /* Scafold.swift */,
-			);
-			path = Arquitectura;
-			sourceTree = "<group>";
-		};
 		EE94AD19282982F9009087A7 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,7 +253,6 @@
 				EEB128A928778CFF000163FD /* CestaCompra */,
 				EE42D1F3286B1FAA0068E797 /* Recetas */,
 				EE94AD4B282C57AF009087A7 /* Util */,
-				EE94AD18282982B1009087A7 /* Arquitectura */,
 				EE94AD1D28298819009087A7 /* Despensa */,
 			);
 			path = UI;
@@ -480,7 +469,6 @@
 				EE9789C5286BACB600C4549B /* SearchBar.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				EE42D1E0286758600068E797 /* MyTextFieldStyle.swift in Sources */,
-				7555FF83242A565900829871 /* Scafold.swift in Sources */,
 				EE42D1D22865BFF90068E797 /* NewAlimentoDialog.swift in Sources */,
 				EE9789C3286BA96500C4549B /* ListaRecetasViewModel.swift in Sources */,
 				EE3D3A6A28A2B27E001BAE8B /* ParserFilterEnum.swift in Sources */,

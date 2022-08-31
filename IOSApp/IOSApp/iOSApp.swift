@@ -36,7 +36,7 @@ struct iOSApp: App {
                 }
                 .tabItem(){
                     //TODO: Poner las imagenes correctas de los iconos de los menus.
-                    Image(systemName: "heart.fill")
+                    Image(systemName: "tablecells.fill")
                     Text("Despensa")
                 }
                 .tag(1)
@@ -54,7 +54,7 @@ struct iOSApp: App {
                 }
                 .tabItem(){
                     //TODO: Poner las imagenes correctas de los iconos de los menus.
-                    Image(systemName: "heart.fill")
+                    Image(systemName: "fork.knife.circle.fill")
                     Text("Recetas")
                 }
                 .tag(2)
@@ -76,7 +76,7 @@ struct iOSApp: App {
                 }
                 .tabItem(){
                     //TODO: Poner las imagenes correctas de los iconos de los menus.
-                    Image(systemName: "heart.fill")
+                    Image(systemName: "cart.fill")
                     Text("Compra")
                 }
                 .tag(3)
