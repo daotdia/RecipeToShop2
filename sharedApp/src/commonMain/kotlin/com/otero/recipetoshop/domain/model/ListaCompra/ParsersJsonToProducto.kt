@@ -30,7 +30,6 @@ class ParsersJsonToProducto {
 
         private fun parseJsonPrecioPesoToProductoPrecioPesoCarrefour(elemento: Productos.Producto): Float? {
             if(!elemento.precio_peso.isEmpty()){
-                println("Precio_peso Carrefour: " + elemento.precio_peso)
                 return elemento.precio_peso
                     .replace(',', '.')
                     .filter { it.isDigit() || it.equals('.') }
@@ -41,7 +40,6 @@ class ParsersJsonToProducto {
 
         private fun parseJsonPrecioPesoToProductoPrecioPesoDia(elemento: Productos.Producto): Float? {
             if(!elemento.precio_peso.isEmpty()){
-                println("Precio_peso Dia: " + elemento.precio_peso)
                 return elemento.precio_peso
                     //Para eliminar el punto dle final.
                     .filter { !it.equals('.') }
@@ -77,7 +75,6 @@ class ParsersJsonToProducto {
             val pattern = Regex("[0-9]+[\\w\\s\\W]*")
             val match = pattern.find(nombre)
             if(match != null) {
-                println("El pattern general encontrado es: " + match.value)
                 return parseCantidadBrutaCarrefour(match.value)
             }
             else
@@ -127,7 +124,6 @@ class ParsersJsonToProducto {
             if(nombre_unidad == null || cantidad_unidad_bruta == null){
                 return null
             } else {
-                println("La cantidad por unidad es: " + cantidad_unidad_bruta)
                 return parseCantidadNetaCarrefour(nombre_unidad, cantidad_unidad_bruta)
             }
         }

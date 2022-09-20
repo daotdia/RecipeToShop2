@@ -107,8 +107,10 @@ fun AlimentosDespensaLista (
             IngredienteCard(
                 nombre = item.nombre,
                 onClickAlimento = { id_alimento, nombre, tipo, cantidad ->
-                    //Llamo a viewmodel para que edite el alimento
-                    onTriggeEvent(DespensaEventos.onEditaAlimento(id_alimento, nombre, tipo, cantidad))
+                    //Llamo a viewmodel para que edite el alimento con los eventos de la Despensa.
+                    onTriggeEvent(
+                        DespensaEventos.onEditaAlimento(id_alimento, nombre, tipo, cantidad)
+                    )
                 },
                 cantidad = item.cantidad,
                 onDelete = {
@@ -118,7 +120,8 @@ fun AlimentosDespensaLista (
                         )
                     )
                 },
-                alimento_actual = item
+                alimento_actual = item,
+                tipoUnidad = item.tipoUnidad
             )
         }
     }

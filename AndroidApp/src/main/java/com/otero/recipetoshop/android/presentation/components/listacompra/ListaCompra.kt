@@ -367,12 +367,12 @@ fun ListaCompra(
                                         text =
                                         if(listaCompraState.value.peso_total.get(supermercado) != null){
                                             if(listaCompraState.value.peso_total.get(supermercado)!! >= 1000){
-                                                "> " + (listaCompraState.value.peso_total.get(supermercado)?.div(1000) ?: 0) + " Kg"
+                                                "" + (listaCompraState.value.peso_total.get(supermercado)?.div(1000) ?: 0) + " Kg"
                                             }else {
-                                                "> " + (listaCompraState.value.peso_total.get(supermercado)?.div(1000) ?: 0) + " Gr"
+                                                "" + (listaCompraState.value.peso_total.get(supermercado)?: 0) + " Gr"
                                             }
                                         } else {
-                                            "> 0 Kg"
+                                            "0 Kg"
                                         }
                                     )
                                     //El precio total de la compra exacto.

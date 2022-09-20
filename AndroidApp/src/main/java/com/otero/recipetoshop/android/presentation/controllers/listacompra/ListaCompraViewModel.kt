@@ -34,7 +34,9 @@ constructor(
     private val updateProducto: UpdateProducto,
     private val finalizarCompra: FinalizarCompra
 ):ViewModel(){
+    //Estado de la lista de la compra
     val listaCompraState: MutableState<ListaCompraState> = mutableStateOf(ListaCompraState())
+
     init {
         try {
             //Obtengo el id de la cesta de la compra a tarnsformar

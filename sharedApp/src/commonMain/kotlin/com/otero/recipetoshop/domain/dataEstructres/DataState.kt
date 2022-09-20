@@ -34,7 +34,7 @@ class DataState<T>(
                 active = active
             )
         }
-        //Se utilixza para indicar al controlador que la respuesta está pendiente.
+        //Se utiliza para indicar al controlador que la respuesta está pendiente.
         fun<T> loading() = DataState<T>(isLoading = true)
     }
 }

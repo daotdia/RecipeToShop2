@@ -33,6 +33,7 @@ object InteractorsModule {
     ): OnCLickAlimento{
         return OnCLickAlimento(despensaCache = despensaCache)
     }
+
     @Singleton
     @Provides
     fun provideChangeCantidadFood(
@@ -40,6 +41,10 @@ object InteractorsModule {
     ): AlimentoCantidadChange{
         return AlimentoCantidadChange(despensaCache = despensaCache)
     }
+
+    //..
+
+
     @Singleton
     @Provides
     fun provideInsertNewFoodItem(

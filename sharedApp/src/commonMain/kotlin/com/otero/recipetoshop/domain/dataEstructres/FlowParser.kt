@@ -12,6 +12,7 @@ class CommonFLow<T>(private val originFlow: Flow<T>): Flow<T> by originFlow{
         coroutineScope: CoroutineScope? = null,
         callback: (T) -> Unit,
     ){
+        //Necesario para que IOS pueda utilizar indirectamente las corutinas de Android.
         onEach {
             callback(it)
         }.launchIn(coroutineScope ?: CoroutineScope(Dispatchers.Main))

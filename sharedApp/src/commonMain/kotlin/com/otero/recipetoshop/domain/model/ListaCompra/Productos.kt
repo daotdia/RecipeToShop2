@@ -36,7 +36,6 @@ fun Productos.matchElementos(nombreAlimento: String): ArrayList<Productos.Produc
                 elemento.query.lowercase().trim().equals(nombreAlimento.lowercase().trim()) &&
                 elemento.isComplete()
             ){
-                println("He encontrado un producto coiencidente con el alimento: " + nombreAlimento)
                 result.add(elemento)
             }
         }

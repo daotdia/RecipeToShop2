@@ -19,3 +19,4 @@ class DeleteProductos(
         emit(DataState.data(data = exito, message = null))
     }.asCommonFlow()
 }
+

@@ -29,6 +29,8 @@ class UseCases(
         )
     }
 
+    //...
+
     val deleteAlimentos: DeleteAlimentos by lazy {
         DeleteAlimentos(
             despensaCache = cacheModule.despensaCache

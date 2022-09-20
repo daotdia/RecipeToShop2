@@ -32,13 +32,15 @@ constructor(
     val despensaState: MutableState<ListaAlimentosState> = mutableStateOf(ListaAlimentosState())
 
     init{
-        obtainFoodsCache()
+        getAlimentosCache()
     }
 
     fun onTriggerEvent(event: DespensaEventos){
         when(event){
             is DespensaEventos.onClickAutoCompleteElement -> {
-                despensaState.value = despensaState.value.copy(resultadoAutoCompletado = emptyList())
+                despensaState.value = despensaState.value.copy(
+                    resultadoAutoCompletado = emptyList()
+                )
             }
             is DespensaEventos.onAutoCompleteChange -> {
                 updateAutocomplete(event.nombre)
@@ -54,6 +56,9 @@ constructor(
                     tipo = event.tipo
                 )
             }
+
+            //...
+
             is DespensaEventos.onAddAlimento -> {
                 val alimento = createAlimento(
                     nombre = event.nombre,
@@ -132,13 +137,19 @@ constructor(
         }.launchIn(viewModelScope)
     }
 
-    private fun obtainFoodsCache() {
+    private fun getAlimentosCache() {
+        //Llamo a caso de uso getAlimentos.
         getAlimentos.getAlimentos().onEach { dataState ->
+            //Cuando emita el flow un resultado, será de tipo DataState
+            // que contendrá una List<Alimento>
             dataState.data?.let { alimentos ->
+                //Actualizo el estado del controlador con los nuevos alimentos
+                // para comunicárselo a la vista.
                 despensaState.value = despensaState.value.copy(allAlimentos = alimentos)
             }
             dataState.message?.let { message ->
                 //handleError(message)
+                print(message.description)
             }
         }.launchIn(viewModelScope)
     }

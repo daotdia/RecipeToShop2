@@ -64,6 +64,8 @@ fun Navegacion(
             }
         }
 
+        //..
+
         //Pantalla de lista de listas de recetas.
         composable(
             route = RutasNavegacion.ListaCestasCompra.route
